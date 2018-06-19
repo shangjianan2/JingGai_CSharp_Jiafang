@@ -23,6 +23,9 @@
 
     <Grid>
         <TabControl x:Name="tabcontrol" HorizontalAlignment="Stretch" Height="Auto" Margin="-6,-10,-6,-6" VerticalAlignment="Stretch" Width="Auto">
+            <TabItem x:Name="Tab0" Height="0" Background="Black"/>
+            <TabItem x:Name="Tab1" Height="0" Background="Black"/>
+
             <TabItem x:Name="Tab2" Height="0" Background="Black">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -170,7 +173,8 @@
                             </Grid.ColumnDefinitions>
 
                             <Button x:Name="LieBiao_Tab2_Buttton" 
-                                    Grid.Column="0" Grid.Row="0">
+                                    Grid.Column="0" Grid.Row="0" 
+                                    Click="LieBiao_Tab2_Buttton_Click">
                                 <TextBlock>列表模式</TextBlock>
                             </Button>
                             <Button x:Name="ChaXun_Tab2_Buttton" 

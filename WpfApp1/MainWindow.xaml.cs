@@ -33,6 +33,8 @@ namespace WpfApp1
         {
             InitializeComponent();
 
+            tabcontrol.SelectedIndex = 2;//显示地图模式
+
             #region//udp通讯
             byte[] array_byte = new byte[4] { 192, 168, 1, 84 };
             mysql_Thread = new UDP_Communication(array_byte, 2333);
@@ -69,6 +71,11 @@ namespace WpfApp1
 
             //初始化地图位置
             map_Reset_Click(this, null);
+        }
+
+        private void LieBiao_Tab2_Buttton_Click(object sender, RoutedEventArgs e)
+        {
+            tabcontrol.SelectedIndex = 3;
         }
     }
 }
