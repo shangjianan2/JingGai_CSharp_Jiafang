@@ -22,9 +22,6 @@
             <MenuItem Name="show_jiedian" Click="show_jiedian_Click" Header="显示节点"/>
         </ContextMenu>
 
-
-        <!--<ObjectDataProvider x:Key="JieDians_tab3"
-                            ObjectType="{x:Type local:JieDians}"/>-->
     </Window.Resources>
 
     <Grid>
@@ -727,19 +724,31 @@
                             <Button x:Name="LieBiao_Tab2_Buttton" 
                                     Grid.Column="0" Grid.Row="0" 
                                     Click="LieBiao_Tab2_Buttton_Click">
-                                <TextBlock>列表模式</TextBlock>
+                                <TextBlock Foreground="White">列表模式</TextBlock>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                </Button.Background>
                             </Button>
                             <Button x:Name="ChaXun_Tab2_Buttton" 
                                     Grid.Column="1" Grid.Row="0">
-                                <TextBlock>查询统计</TextBlock>
+                                <TextBlock Foreground="White">查询统计</TextBlock>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                </Button.Background>
                             </Button>
                             <Button x:Name="XiTong_Tab2_Buttton" 
                                     Grid.Column="0" Grid.Row="1">
-                                <TextBlock>系统设置</TextBlock>
+                                <TextBlock Foreground="White">系统设置</TextBlock>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                </Button.Background>
                             </Button>
                             <Button x:Name="TuiChu_Tab2_Buttton" 
                                     Grid.Column="1" Grid.Row="1">
-                                <TextBlock>退出系统</TextBlock>
+                                <TextBlock Foreground="White">退出系统</TextBlock>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                </Button.Background>
                             </Button>
 
                             <!--<DataGrid x:Name="DataGrid" 
@@ -762,7 +771,10 @@
                                     实时信息
                                 </TextBlock>
                                 <DataGrid x:Name="DataGrid" 
-                                          ItemsSource="{Binding Source={StaticResource JieDians}}">
+                                          ItemsSource="{Binding Source={StaticResource JieDians}}" 
+                                          IsReadOnly="true" 
+                                          SelectedCellsChanged="DataGrid_SelectedCellsChanged" 
+                                          ContextMenu="{StaticResource ContextMenu_DataGrid}">
 
                                 </DataGrid>
                             </StackPanel>
@@ -812,22 +824,34 @@
                                     Grid.Column="0" 
                                     Grid.Row="0" 
                                     Click="DiTu_Tab3_Button_Click">
-                                <TextBlock>地图模式</TextBlock>
+                                <TextBlock  Foreground="White">地图模式</TextBlock>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                </Button.Background>
                             </Button>
                             <Button x:Name="ChaXun_Tab3_Button" 
                                     Grid.Column="1" 
                                     Grid.Row="0">
-                                <TextBlock>查询系统</TextBlock>
+                                <TextBlock  Foreground="White">查询系统</TextBlock>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                </Button.Background>
                             </Button>
                             <Button x:Name="XiTong_Tab3_Button" 
                                     Grid.Column="0" 
                                     Grid.Row="1">
-                                <TextBlock>系统设置</TextBlock>
+                                <TextBlock  Foreground="White">系统设置</TextBlock>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                </Button.Background>
                             </Button>
                             <Button x:Name="TuiChu_Tab3_Button" 
                                     Grid.Column="1" 
                                     Grid.Row="1">
-                                <TextBlock>退出系统</TextBlock>
+                                <TextBlock  Foreground="White">退出系统</TextBlock>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                </Button.Background>
                             </Button>
                             
                             <StackPanel Grid.Row="2" 
@@ -836,7 +860,8 @@
                                     实时信息
                                 </TextBlock>
                                 <DataGrid x:Name="DataGrid_tab3" 
-                                          ItemsSource="{Binding Source={StaticResource JieDians}}">
+                                          ItemsSource="{Binding Source={StaticResource JieDians}}" 
+                                          IsReadOnly="true">
 
                                 </DataGrid>
                             </StackPanel>
