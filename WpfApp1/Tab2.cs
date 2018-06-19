@@ -44,51 +44,7 @@ namespace WpfApp1
 
         
 
-        #region//udp接收中断
-        public void rec_NewMessage(byte[] message, ref EndPoint endPoint_tt)
-        {
-            string temp_str = System.Text.Encoding.ASCII.GetString(message);
-            //if (temp_str == "[iotxx:ok]" || temp_str == "[iotxx:update]")//[iotxx:ok]
-            if (temp_str.Contains("[iotxx:"))
-            {
-                System.Diagnostics.Debug.WriteLine("[iotxx:ok]");
-                return;
-            }
-
-            //显示源地址和源端口
-            System.Diagnostics.Debug.WriteLine(endPoint_tt.ToString());
-
-
-            string[] temp_array_str = ShuJuJieXi(message);
-            string str = "INSERT INTO " + "Table1_ShiJIan_JieDian" + " ( `id`, `name`, `type`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
-        "VALUES ( \"" + (message[0]).ToString() + "\",\"2\",\"3\",\"" + temp_array_str[0] + "\",\"" + temp_array_str[1] + "\",\"" + temp_array_str[2] + "\",\"" + temp_array_str[3] + "\",\"" + temp_array_str[4] + "\",\"" + temp_array_str[5] + "\",\"" + temp_array_str[6] + "\",\"" + temp_array_str[7] + "\",now());";
-            MySqlHelper.GetDataSet("Database='NBIoT';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
-                                    CommandType.Text, str, null);
-
-            Action<bool> action = (x) =>//每次都对当前所有节点进行一次监测
-            {
-                DataSet dataSet_temp = new DataSet();
-                string command_str = "select * from Table1_ShiJIan_JieDian order by date desc limit 1";
-                dataSet_temp = MySqlHelper.GetDataSet("Database='NBIoT';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
-                DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
-
-                //更新DataGrid
-                //os.Add(new jiedian(temp_DataRow[0][0].ToString(), temp_DataRow[0][1].ToString(), temp_DataRow[0][2].ToString(),
-                //                   temp_DataRow[0][3].ToString(), temp_DataRow[0][4].ToString(), temp_DataRow[0][5].ToString(),
-                //                   temp_DataRow[0][6].ToString(), temp_DataRow[0][7].ToString(), temp_DataRow[0][8].ToString(),
-                //                   temp_DataRow[0][9].ToString(), temp_DataRow[0][10].ToString(), temp_DataRow[0][11].ToString()));
-
-                os.Insert(0, new jiedian(temp_DataRow[0][0].ToString(), temp_DataRow[0][1].ToString(), temp_DataRow[0][2].ToString(),
-                                   temp_DataRow[0][3].ToString(), temp_DataRow[0][4].ToString(), temp_DataRow[0][5].ToString(),
-                                   temp_DataRow[0][6].ToString(), temp_DataRow[0][7].ToString(), temp_DataRow[0][8].ToString(),
-                                   temp_DataRow[0][9].ToString(), temp_DataRow[0][10].ToString(), temp_DataRow[0][11].ToString()));
-
-                //更新ToolTip
-                update_tooltip(ref Ellipse_Array, (message[0] - 1));
-            };
-            this.Dispatcher.Invoke(action, true);
-        }
-        #endregion
+        
 
         public void jiedian_AutoZoom(ref Ellipse[] ellipse_array, int index)//从零开始索引
         {
