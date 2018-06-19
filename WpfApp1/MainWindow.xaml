@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"
+        Title="MainWindow" Height="700" Width="1000"
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         xmlns:wfi ="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration">
 
@@ -162,6 +162,552 @@
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr10" />
                                         <TranslateTransform x:Name="tlt10" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <Ellipse x:Name="Ellipse11" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="110" Canvas.Top="110">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr11" />
+                                        <TranslateTransform x:Name="tlt11" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse12" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="120" Canvas.Top="120">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr12" />
+                                        <TranslateTransform x:Name="tlt12" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse13" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="130" Canvas.Top="130">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr13" />
+                                        <TranslateTransform x:Name="tlt13" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse14" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="140" Canvas.Top="140">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr14" />
+                                        <TranslateTransform x:Name="tlt14" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse15" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="150" Canvas.Top="150">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr15" />
+                                        <TranslateTransform x:Name="tlt15" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse16" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="160" Canvas.Top="160">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr16" />
+                                        <TranslateTransform x:Name="tlt16" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse17" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="170" Canvas.Top="170">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr17" />
+                                        <TranslateTransform x:Name="tlt17" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse18" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="180" Canvas.Top="180">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr18" />
+                                        <TranslateTransform x:Name="tlt18" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse19" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="190" Canvas.Top="190">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr19" />
+                                        <TranslateTransform x:Name="tlt19" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse20" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="200" Canvas.Top="200">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr20" />
+                                        <TranslateTransform x:Name="tlt20" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <Ellipse x:Name="Ellipse21" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="210" Canvas.Top="210">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr21" />
+                                        <TranslateTransform x:Name="tlt21" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse22" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="220" Canvas.Top="220">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr22" />
+                                        <TranslateTransform x:Name="tlt22" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse23" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="230" Canvas.Top="230">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr23" />
+                                        <TranslateTransform x:Name="tlt23" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse24" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="240" Canvas.Top="240">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr24" />
+                                        <TranslateTransform x:Name="tlt24" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse25" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="250" Canvas.Top="250">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr25" />
+                                        <TranslateTransform x:Name="tlt25" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse26" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="260" Canvas.Top="260">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr26" />
+                                        <TranslateTransform x:Name="tlt26" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse27" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="270" Canvas.Top="270">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr27" />
+                                        <TranslateTransform x:Name="tlt27" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse28" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="280" Canvas.Top="280">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr28" />
+                                        <TranslateTransform x:Name="tlt28" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse29" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="290" Canvas.Top="290">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr29" />
+                                        <TranslateTransform x:Name="tlt29" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse30" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="300" Canvas.Top="300">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr310" />
+                                        <TranslateTransform x:Name="tlt310" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <Ellipse x:Name="Ellipse31" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="310" Canvas.Top="310">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr31" />
+                                        <TranslateTransform x:Name="tlt31" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse32" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="320" Canvas.Top="320">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr32" />
+                                        <TranslateTransform x:Name="tlt32" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse33" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="330" Canvas.Top="330">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr33" />
+                                        <TranslateTransform x:Name="tlt33" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse34" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="340" Canvas.Top="340">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr34" />
+                                        <TranslateTransform x:Name="tlt34" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse35" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="350" Canvas.Top="350">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr35" />
+                                        <TranslateTransform x:Name="tlt35" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse36" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="360" Canvas.Top="360">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr36" />
+                                        <TranslateTransform x:Name="tlt36" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse37" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="370" Canvas.Top="370">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr37" />
+                                        <TranslateTransform x:Name="tlt37" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse38" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="380" Canvas.Top="380">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr38" />
+                                        <TranslateTransform x:Name="tlt38" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse39" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="390" Canvas.Top="390">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr39" />
+                                        <TranslateTransform x:Name="tlt39" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse40" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="400" Canvas.Top="400">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr40" />
+                                        <TranslateTransform x:Name="tlt40" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <Ellipse x:Name="Ellipse41" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="410" Canvas.Top="410">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr41" />
+                                        <TranslateTransform x:Name="tlt41" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse42" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="420" Canvas.Top="420">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr42" />
+                                        <TranslateTransform x:Name="tlt42" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse43" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="430" Canvas.Top="430">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr43" />
+                                        <TranslateTransform x:Name="tlt43" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse44" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="440" Canvas.Top="440">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr44" />
+                                        <TranslateTransform x:Name="tlt44" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse45" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="450" Canvas.Top="450">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr45" />
+                                        <TranslateTransform x:Name="tlt45" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse46" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="460" Canvas.Top="460">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr46" />
+                                        <TranslateTransform x:Name="tlt46" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse47" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="470" Canvas.Top="470">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr47" />
+                                        <TranslateTransform x:Name="tlt47" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse48" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="480" Canvas.Top="480">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr48" />
+                                        <TranslateTransform x:Name="tlt48" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse49" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="490" Canvas.Top="490">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr49" />
+                                        <TranslateTransform x:Name="tlt49" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse50" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="500" Canvas.Top="500">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr50" />
+                                        <TranslateTransform x:Name="tlt50" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <Ellipse x:Name="Ellipse51" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="510" Canvas.Top="510">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr51" />
+                                        <TranslateTransform x:Name="tlt51" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse52" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="520" Canvas.Top="520">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr52" />
+                                        <TranslateTransform x:Name="tlt52" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse53" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="530" Canvas.Top="530">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr53" />
+                                        <TranslateTransform x:Name="tlt53" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse54" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="540" Canvas.Top="540">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr54" />
+                                        <TranslateTransform x:Name="tlt54" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse55" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="550" Canvas.Top="550">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr55" />
+                                        <TranslateTransform x:Name="tlt55" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse56" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="560" Canvas.Top="560">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr56" />
+                                        <TranslateTransform x:Name="tlt56" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse57" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="570" Canvas.Top="570">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr57" />
+                                        <TranslateTransform x:Name="tlt57" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse58" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="580" Canvas.Top="580">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr58" />
+                                        <TranslateTransform x:Name="tlt58" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse59" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="590" Canvas.Top="590">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr59" />
+                                        <TranslateTransform x:Name="tlt59" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse60" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="600" Canvas.Top="600">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr60" />
+                                        <TranslateTransform x:Name="tlt60" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <Ellipse x:Name="Ellipse61" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="610" Canvas.Top="610">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr61" />
+                                        <TranslateTransform x:Name="tlt61" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse62" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="620" Canvas.Top="620">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr62" />
+                                        <TranslateTransform x:Name="tlt62" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse63" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="630" Canvas.Top="630">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr63" />
+                                        <TranslateTransform x:Name="tlt63" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse64" 
+                       ToolTipService.ShowDuration="60000" 
+                       Fill="Red" Height="10" Width="10" Canvas.Left="640" Canvas.Top="640">
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr64" />
+                                        <TranslateTransform x:Name="tlt64" />
                                     </TransformGroup>
                                 </Ellipse.RenderTransform>
                             </Ellipse>
