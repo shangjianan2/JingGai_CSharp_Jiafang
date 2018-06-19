@@ -29,7 +29,7 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         private System.Drawing.Point pointView = new System.Drawing.Point(0, 0);
-        public System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
+        public System.Windows.Forms.ToolTip toolTip_tab3 = new System.Windows.Forms.ToolTip();
 
         ObservableCollection<jiedian> os_tab3 = null;
 
@@ -64,19 +64,21 @@ namespace WpfApp1
 
                 {
 
-                    toolTip.Show(lv.SubItems[0].Text, listview_largeicon, new System.Drawing.Point(e.X, e.Y), 10000);
+                    string str_temp = lv.SubItems[0].Text.Replace("#", "");
+
+                    toolTip_tab3.Show(Ellipse_Array[Convert.ToInt16(str_temp)].ToolTip.ToString(), listview_largeicon, new System.Drawing.Point(e.X, e.Y), 10000);
 
                     pointView.X = e.X;
 
                     pointView.Y = e.Y;
 
-                    toolTip.Active = true;
+                    toolTip_tab3.Active = true;
 
                 }
             }
             else
             {
-                toolTip.Hide(listview_largeicon);
+                toolTip_tab3.Hide(listview_largeicon);
             }
         }
     }

@@ -112,7 +112,7 @@ namespace WpfApp1
 
                 lvi.ImageIndex = i;
 
-                lvi.Text = "item" + i;
+                lvi.Text = i.ToString() + "#";
 
                 this.listview_largeicon.Items.Add(lvi);
             }
