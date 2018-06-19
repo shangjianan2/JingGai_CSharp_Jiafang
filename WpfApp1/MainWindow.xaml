@@ -25,16 +25,22 @@
         <TabControl x:Name="tabcontrol" HorizontalAlignment="Stretch" Height="Auto" Margin="-6,-10,-6,-6" VerticalAlignment="Stretch" Width="Auto">
             <TabItem x:Name="Tab2" Height="0" Background="Black">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Canvas x:Name="canvas_mine" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3"
+                        <Canvas x:Name="canvas_mine" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3"
                 ContextMenu="{StaticResource ContextMenu}">
-                        <Image x:Name="img" Source="C:\NBIoT\timg.jpg"    
+                            <Image x:Name="img" Source="C:\NBIoT\timg.jpg"    
 							MouseDown="img_MouseDown" MouseWheel="img_MouseWheel"
 							MouseMove="img_MouseMove"
 							MouseUp="img_MouseUp"
@@ -42,123 +48,157 @@
 							Stretch="Uniform"  
 							RenderOptions.BitmapScalingMode="NearestNeighbor" Canvas.Top="-100" Canvas.Left="-100">
 
-                            <Image.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform x:Name="sfr" />
-                                    <TranslateTransform x:Name="tlt" />
-                                </TransformGroup>
-                            </Image.RenderTransform>
-                        </Image>
+                                <Image.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr" />
+                                        <TranslateTransform x:Name="tlt" />
+                                    </TransformGroup>
+                                </Image.RenderTransform>
+                            </Image>
 
-                        <Ellipse x:Name="Ellipse1" 
+                            <Ellipse x:Name="Ellipse1" 
                        ToolTipService.ShowDuration="60000" 
                        Fill="Red" Height="10" Width="10" Canvas.Left="10" Canvas.Top="10">
-                            <Ellipse.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform x:Name="sfr1" />
-                                    <TranslateTransform x:Name="tlt1" />
-                                </TransformGroup>
-                            </Ellipse.RenderTransform>
-                        </Ellipse>
-                        <Ellipse x:Name="Ellipse2" 
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr1" />
+                                        <TranslateTransform x:Name="tlt1" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse2" 
                        ToolTipService.ShowDuration="60000" 
                        Fill="Red" Height="10" Width="10" Canvas.Left="20" Canvas.Top="20">
-                            <Ellipse.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform x:Name="sfr2" />
-                                    <TranslateTransform x:Name="tlt2" />
-                                </TransformGroup>
-                            </Ellipse.RenderTransform>
-                        </Ellipse>
-                        <Ellipse x:Name="Ellipse3" 
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr2" />
+                                        <TranslateTransform x:Name="tlt2" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse3" 
                        ToolTipService.ShowDuration="60000" 
                        Fill="Red" Height="10" Width="10" Canvas.Left="30" Canvas.Top="30">
-                            <Ellipse.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform x:Name="sfr3" />
-                                    <TranslateTransform x:Name="tlt3" />
-                                </TransformGroup>
-                            </Ellipse.RenderTransform>
-                        </Ellipse>
-                        <Ellipse x:Name="Ellipse4" 
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr3" />
+                                        <TranslateTransform x:Name="tlt3" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse4" 
                        ToolTipService.ShowDuration="60000" 
                        Fill="Red" Height="10" Width="10" Canvas.Left="40" Canvas.Top="40">
-                            <Ellipse.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform x:Name="sfr4" />
-                                    <TranslateTransform x:Name="tlt4" />
-                                </TransformGroup>
-                            </Ellipse.RenderTransform>
-                        </Ellipse>
-                        <Ellipse x:Name="Ellipse5" 
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr4" />
+                                        <TranslateTransform x:Name="tlt4" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse5" 
                        ToolTipService.ShowDuration="60000" 
                        Fill="Red" Height="10" Width="10" Canvas.Left="50" Canvas.Top="50">
-                            <Ellipse.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform x:Name="sfr5" />
-                                    <TranslateTransform x:Name="tlt5" />
-                                </TransformGroup>
-                            </Ellipse.RenderTransform>
-                        </Ellipse>
-                        <Ellipse x:Name="Ellipse6" 
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr5" />
+                                        <TranslateTransform x:Name="tlt5" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse6" 
                        ToolTipService.ShowDuration="60000" 
                        Fill="Red" Height="10" Width="10" Canvas.Left="60" Canvas.Top="60">
-                            <Ellipse.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform x:Name="sfr6" />
-                                    <TranslateTransform x:Name="tlt6" />
-                                </TransformGroup>
-                            </Ellipse.RenderTransform>
-                        </Ellipse>
-                        <Ellipse x:Name="Ellipse7" 
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr6" />
+                                        <TranslateTransform x:Name="tlt6" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse7" 
                        ToolTipService.ShowDuration="60000" 
                        Fill="Red" Height="10" Width="10" Canvas.Left="70" Canvas.Top="70">
-                            <Ellipse.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform x:Name="sfr7" />
-                                    <TranslateTransform x:Name="tlt7" />
-                                </TransformGroup>
-                            </Ellipse.RenderTransform>
-                        </Ellipse>
-                        <Ellipse x:Name="Ellipse8" 
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr7" />
+                                        <TranslateTransform x:Name="tlt7" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse8" 
                        ToolTipService.ShowDuration="60000" 
                        Fill="Red" Height="10" Width="10" Canvas.Left="80" Canvas.Top="80">
-                            <Ellipse.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform x:Name="sfr8" />
-                                    <TranslateTransform x:Name="tlt8" />
-                                </TransformGroup>
-                            </Ellipse.RenderTransform>
-                        </Ellipse>
-                        <Ellipse x:Name="Ellipse9" 
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr8" />
+                                        <TranslateTransform x:Name="tlt8" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse9" 
                        ToolTipService.ShowDuration="60000" 
                        Fill="Red" Height="10" Width="10" Canvas.Left="90" Canvas.Top="90">
-                            <Ellipse.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform x:Name="sfr9" />
-                                    <TranslateTransform x:Name="tlt9" />
-                                </TransformGroup>
-                            </Ellipse.RenderTransform>
-                        </Ellipse>
-                        <Ellipse x:Name="Ellipse10" 
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr9" />
+                                        <TranslateTransform x:Name="tlt9" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                            <Ellipse x:Name="Ellipse10" 
                        ToolTipService.ShowDuration="60000" 
                        Fill="Red" Height="10" Width="10" Canvas.Left="100" Canvas.Top="100">
-                            <Ellipse.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform x:Name="sfr10" />
-                                    <TranslateTransform x:Name="tlt10" />
-                                </TransformGroup>
-                            </Ellipse.RenderTransform>
-                        </Ellipse>
-                    </Canvas>
+                                <Ellipse.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="sfr10" />
+                                        <TranslateTransform x:Name="tlt10" />
+                                    </TransformGroup>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+                        </Canvas>
 
-                    <DataGrid x:Name="DataGrid" Grid.Column="3"
-                  ItemsSource="{Binding Source={StaticResource JieDians}}" 
-                  IsReadOnly="true" 
-                  SelectedCellsChanged="DataGrid_SelectedCellsChanged" 
-                  ContextMenu="{StaticResource ContextMenu_DataGrid}">
+                        <Grid Grid.Column="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                    </DataGrid>
+                            <Button x:Name="LieBiao_Tab2_Buttton" 
+                                    Grid.Column="0" Grid.Row="0">
+                                <TextBlock>列表模式</TextBlock>
+                            </Button>
+                            <Button x:Name="ChaXun_Tab2_Buttton" 
+                                    Grid.Column="0" Grid.Row="1">
+                                <TextBlock>查询统计</TextBlock>
+                            </Button>
+                            <Button x:Name="XiTong_Tab2_Buttton" 
+                                    Grid.Column="1" Grid.Row="0">
+                                <TextBlock>系统设置</TextBlock>
+                            </Button>
+                            <Button x:Name="TuiChu_Tab2_Buttton" 
+                                    Grid.Column="1" Grid.Row="1">
+                                <TextBlock>退出系统</TextBlock>
+                            </Button>
+
+                            <DataGrid x:Name="DataGrid" 
+                                      Grid.Column="0" Grid.ColumnSpan="2" 
+                                      Grid.Row="2"
+                                      ItemsSource="{Binding Source={StaticResource JieDians}}" 
+                                      IsReadOnly="true" 
+                                      SelectedCellsChanged="DataGrid_SelectedCellsChanged" 
+                                      ContextMenu="{StaticResource ContextMenu_DataGrid}">
+
+                            </DataGrid>
+
+                        </Grid>
+                    </Grid>
+
                 </Grid>
             </TabItem>
             <TabItem x:Name="Tab3" Height="0" Background="Black">
