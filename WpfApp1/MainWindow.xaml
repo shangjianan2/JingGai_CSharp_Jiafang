@@ -213,21 +213,61 @@
             </TabItem>
             <TabItem x:Name="Tab3" Height="0" Background="Black">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <wfi:WindowsFormsHost Grid.Column="0" Grid.ColumnSpan="3">
-                        <wf:ListView x:Name="listview_largeicon" 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <wfi:WindowsFormsHost Grid.Column="0" Grid.ColumnSpan="3">
+                            <wf:ListView x:Name="listview_largeicon" 
                          MouseMove="listview_largeicon_MouseMove"/>
-                    </wfi:WindowsFormsHost>
+                        </wfi:WindowsFormsHost>
 
-                    <DataGrid x:Name="DataGrid_tab3" Grid.Column="3" Grid.ColumnSpan="1" 
-                                ItemsSource="{Binding Source={StaticResource JieDians}}">
+                        <Grid Grid.Column="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="DiTu_Tab3_Button" 
+                                    Grid.Column="0" 
+                                    Grid.Row="0" 
+                                    Click="DiTu_Tab3_Button_Click">
+                                <TextBlock>地图模式</TextBlock>
+                            </Button>
+                            <Button x:Name="ChaXun_Tab3_Button" 
+                                    Grid.Column="1" 
+                                    Grid.Row="0">
+                                <TextBlock>查询系统</TextBlock>
+                            </Button>
+                            <Button x:Name="XiTong_Tab3_Button" 
+                                    Grid.Column="0" 
+                                    Grid.Row="1">
+                                <TextBlock>系统设置</TextBlock>
+                            </Button>
+                            <Button x:Name="TuiChu_Tab3_Button" 
+                                    Grid.Column="1" 
+                                    Grid.Row="1">
+                                <TextBlock>退出系统</TextBlock>
+                            </Button>
+                            <DataGrid x:Name="DataGrid_tab3" 
+                                      Grid.Row="2" 
+                                      Grid.Column="0" Grid.ColumnSpan="2"
+                                      ItemsSource="{Binding Source={StaticResource JieDians}}">
 
-                    </DataGrid>
+                            </DataGrid>
+                        </Grid>
+                    </Grid>
                 </Grid>
             </TabItem>
         </TabControl>

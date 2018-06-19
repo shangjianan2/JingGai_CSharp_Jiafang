@@ -126,5 +126,10 @@ namespace WpfApp1
         {
             tabcontrol.SelectedIndex = 3;
         }
+
+        private void DiTu_Tab3_Button_Click(object sender, RoutedEventArgs e)
+        {
+            tabcontrol.SelectedIndex = 2;
+        }
     }
 }
