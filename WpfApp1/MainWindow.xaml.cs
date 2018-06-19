@@ -87,7 +87,7 @@ namespace WpfApp1
             ImageList imageListLarge = new ImageList();
 
             // Initialize the ImageList objects with bitmaps.
-            for (int i = 0; i < 64; i++)
+            for (int i = 0; i < size_chanel; i++)
             {
                 System.Drawing.Image image = Bitmap.FromFile(".\\jiedian.png");
 
@@ -106,7 +106,7 @@ namespace WpfApp1
 
             this.listview_largeicon.BeginUpdate();
 
-            for (int i = 0; i < 64; i++)
+            for (int i = 0; i < size_chanel; i++)
             {
                 System.Windows.Forms.ListViewItem lvi = new System.Windows.Forms.ListViewItem();
 

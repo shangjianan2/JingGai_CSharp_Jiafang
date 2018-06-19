@@ -362,8 +362,8 @@
                        Fill="Red" Height="10" Width="10" Canvas.Left="300" Canvas.Top="300">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
-                                        <ScaleTransform x:Name="sfr310" />
-                                        <TranslateTransform x:Name="tlt310" />
+                                        <ScaleTransform x:Name="sfr30" />
+                                        <TranslateTransform x:Name="tlt30" />
                                     </TransformGroup>
                                 </Ellipse.RenderTransform>
                             </Ellipse>
