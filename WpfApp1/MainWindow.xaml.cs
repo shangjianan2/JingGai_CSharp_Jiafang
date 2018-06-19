@@ -168,6 +168,26 @@ namespace WpfApp1
         }
         #endregion
 
+        public void update_tooltip(ref Ellipse[] ellipse_array, int index)
+        {
+            DataSet dataSet_temp = new DataSet();
+            string command_str = "select * from Table1_ShiJIan_JieDian where id = " + (index + 1).ToString() + " order by date desc limit 1";
+            dataSet_temp = MySqlHelper.GetDataSet("Database='NBIoT';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+
+            if (temp_DataRow.Count <= 0)
+                return;
+
+            ellipse_array[index].ToolTip = "点位号      ：" + temp_DataRow[0][0].ToString() + "\n" +
+                                           "实际位置    ：" + temp_DataRow[0][1].ToString() + "\n" +
+                                           "实时浓度    ：" + temp_DataRow[0][2].ToString() + "\n" +
+                                           "实时电量    ：" + temp_DataRow[0][3].ToString() + "\n" +
+                                           "环境温度    ：" + temp_DataRow[0][4].ToString() + "\n" +
+                                           "水位信息    ：" + temp_DataRow[0][5].ToString() + "\n" +
+                                           "井盖信息    ：" + temp_DataRow[0][6].ToString() + "\n" +
+                                           "数据更新时间：" + temp_DataRow[0][11].ToString();
+        }
+
         private void LieBiao_Tab2_Buttton_Click(object sender, RoutedEventArgs e)
         {
             tabcontrol.SelectedIndex = 3;
