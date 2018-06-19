@@ -23,8 +23,8 @@
         </ContextMenu>
 
 
-        <ObjectDataProvider x:Key="JieDians_tab3"
-                            ObjectType="{x:Type local:JieDians}"/>
+        <!--<ObjectDataProvider x:Key="JieDians_tab3"
+                            ObjectType="{x:Type local:JieDians}"/>-->
     </Window.Resources>
 
     <Grid>

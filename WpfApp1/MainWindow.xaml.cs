@@ -119,7 +119,7 @@ namespace WpfApp1
 
             this.listview_largeicon.EndUpdate();
 
-            Init_DataGrid_tab3();
+            //Init_DataGrid_tab3();
         }
 
         #region//udp接收中断
