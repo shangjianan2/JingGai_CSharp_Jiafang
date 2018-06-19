@@ -184,11 +184,11 @@
                                 <TextBlock>列表模式</TextBlock>
                             </Button>
                             <Button x:Name="ChaXun_Tab2_Buttton" 
-                                    Grid.Column="0" Grid.Row="1">
+                                    Grid.Column="1" Grid.Row="0">
                                 <TextBlock>查询统计</TextBlock>
                             </Button>
                             <Button x:Name="XiTong_Tab2_Buttton" 
-                                    Grid.Column="1" Grid.Row="0">
+                                    Grid.Column="0" Grid.Row="1">
                                 <TextBlock>系统设置</TextBlock>
                             </Button>
                             <Button x:Name="TuiChu_Tab2_Buttton" 
