@@ -22,6 +22,15 @@ using System.Data;
 using UDP_Thread;
 using System.Net;
 
+using System.Windows.Forms;
+using System.Drawing;
+
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using MySQL_Funtion;
+using System.Data;
+
+
 namespace WpfApp1
 {
     /// <summary>
@@ -71,6 +80,46 @@ namespace WpfApp1
 
             //初始化地图位置
             map_Reset_Click(this, null);
+
+
+            //**************************************************tab3*******************8
+            // Create two ImageList objects.
+            ImageList imageListLarge = new ImageList();
+
+            // Initialize the ImageList objects with bitmaps.
+            for (int i = 0; i < 64; i++)
+            {
+                System.Drawing.Image image = Bitmap.FromFile(".\\jiedian.png");
+
+
+                imageListLarge.Images.Add(image);
+                imageListLarge.ImageSize = new System.Drawing.Size(100, 150);
+            }
+
+
+
+            this.listview_largeicon.View = View.LargeIcon;
+
+            this.listview_largeicon.BackColor = System.Drawing.Color.FromArgb(255, 237, 237, 237);
+
+            this.listview_largeicon.LargeImageList = imageListLarge;
+
+            this.listview_largeicon.BeginUpdate();
+
+            for (int i = 0; i < 64; i++)
+            {
+                System.Windows.Forms.ListViewItem lvi = new System.Windows.Forms.ListViewItem();
+
+                lvi.ImageIndex = i;
+
+                lvi.Text = "item" + i;
+
+                this.listview_largeicon.Items.Add(lvi);
+            }
+
+            this.listview_largeicon.EndUpdate();
+
+            Init_DataGrid_tab3();
         }
 
         private void LieBiao_Tab2_Buttton_Click(object sender, RoutedEventArgs e)

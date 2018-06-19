@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:wfi ="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration">
 
     <Window.Resources>
         <ObjectDataProvider x:Key="JieDians"
@@ -19,6 +21,10 @@
             <MenuItem Name="hid_jiedian" Click="hid_jiedian_Click" Header="隐藏节点"/>
             <MenuItem Name="show_jiedian" Click="show_jiedian_Click" Header="显示节点"/>
         </ContextMenu>
+
+
+        <ObjectDataProvider x:Key="JieDians_tab3"
+                            ObjectType="{x:Type local:JieDians}"/>
     </Window.Resources>
 
     <Grid>
@@ -206,7 +212,23 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="Tab3" Height="0" Background="Black">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <wfi:WindowsFormsHost Grid.Column="0" Grid.ColumnSpan="3">
+                        <wf:ListView x:Name="listview_largeicon" 
+                         MouseMove="listview_largeicon_MouseMove"/>
+                    </wfi:WindowsFormsHost>
 
+                    <DataGrid x:Name="DataGrid_tab3" Grid.Column="3" Grid.ColumnSpan="1" 
+                                ItemsSource="{Binding Source={StaticResource JieDians}}">
+
+                    </DataGrid>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>
