@@ -93,7 +93,7 @@ namespace WpfApp1
 
 
                 imageListLarge.Images.Add(image);
-                imageListLarge.ImageSize = new System.Drawing.Size(100, 150);
+                imageListLarge.ImageSize = new System.Drawing.Size(50, 75);
             }
 
 

@@ -742,7 +742,7 @@
                                 <TextBlock>退出系统</TextBlock>
                             </Button>
 
-                            <DataGrid x:Name="DataGrid" 
+                            <!--<DataGrid x:Name="DataGrid" 
                                       Grid.Column="0" Grid.ColumnSpan="2" 
                                       Grid.Row="2"
                                       ItemsSource="{Binding Source={StaticResource JieDians}}" 
@@ -750,11 +750,34 @@
                                       SelectedCellsChanged="DataGrid_SelectedCellsChanged" 
                                       ContextMenu="{StaticResource ContextMenu_DataGrid}">
 
-                            </DataGrid>
+                            </DataGrid>-->
+
+                            <Rectangle Grid.Row="2" 
+                                       Grid.Column="0" Grid.ColumnSpan="2" 
+                                       Fill="White"/>
+
+                            <StackPanel Grid.Row="2" 
+                                        Grid.Column="0" Grid.ColumnSpan="2">
+                                <TextBlock HorizontalAlignment="Center">
+                                    实时信息
+                                </TextBlock>
+                                <DataGrid x:Name="DataGrid" 
+                                          ItemsSource="{Binding Source={StaticResource JieDians}}">
+
+                                </DataGrid>
+                            </StackPanel>
 
                         </Grid>
                     </Grid>
 
+                    <Rectangle Fill="LightBlue" Grid.Row="0" Grid.RowSpan="1"/>
+                    <TextBlock Grid.Row="0" Grid.RowSpan="1" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" 
+                               FontSize="40" 
+                               Foreground="Blue">
+                        燃气管道井远程无线监控系统
+                    </TextBlock>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Tab3" Height="0" Background="Black">
@@ -806,14 +829,28 @@
                                     Grid.Row="1">
                                 <TextBlock>退出系统</TextBlock>
                             </Button>
-                            <DataGrid x:Name="DataGrid_tab3" 
-                                      Grid.Row="2" 
-                                      Grid.Column="0" Grid.ColumnSpan="2"
-                                      ItemsSource="{Binding Source={StaticResource JieDians}}">
+                            
+                            <StackPanel Grid.Row="2" 
+                                        Grid.Column="0" Grid.ColumnSpan="2">
+                                <TextBlock HorizontalAlignment="Center">
+                                    实时信息
+                                </TextBlock>
+                                <DataGrid x:Name="DataGrid_tab3" 
+                                          ItemsSource="{Binding Source={StaticResource JieDians}}">
 
-                            </DataGrid>
+                                </DataGrid>
+                            </StackPanel>
                         </Grid>
                     </Grid>
+
+                    <Rectangle Fill="LightBlue" Grid.Row="0" Grid.RowSpan="1"/>
+                    <TextBlock Grid.Row="0" Grid.RowSpan="1" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" 
+                               FontSize="40" 
+                               Foreground="Blue">
+                        燃气管道井远程无线监控系统
+                    </TextBlock>
                 </Grid>
             </TabItem>
         </TabControl>
