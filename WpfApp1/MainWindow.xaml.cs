@@ -197,5 +197,10 @@ namespace WpfApp1
         {
             tabcontrol.SelectedIndex = 2;
         }
+
+        private void XiTong_Tab2_Buttton_Click(object sender, RoutedEventArgs e)
+        {
+            tabcontrol.SelectedIndex = 4;
+        }
     }
 }
