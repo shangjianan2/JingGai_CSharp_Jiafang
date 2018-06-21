@@ -182,7 +182,7 @@ namespace WpfApp1
                                            "实际位置    ：" + temp_DataRow[0][1].ToString() + "\n" +
                                            "实时浓度    ：" + temp_DataRow[0][2].ToString() + "\n" +
                                            "实时电量    ：" + temp_DataRow[0][3].ToString() + "\n" +
-                                           "环境温度    ：" + temp_DataRow[0][4].ToString() + "\n" +
+                                           "环境温度    ：" + temp_DataRow[0][10].ToString() + "\n" +
                                            "水位信息    ：" + temp_DataRow[0][5].ToString() + "\n" +
                                            "井盖信息    ：" + temp_DataRow[0][6].ToString() + "\n" +
                                            "数据更新时间：" + temp_DataRow[0][11].ToString();
