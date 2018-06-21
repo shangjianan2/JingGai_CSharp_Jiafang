@@ -38,11 +38,15 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        ImageList imageListLarge = new ImageList();
+
         public MainWindow()
         {
             InitializeComponent();
 
             tabcontrol.SelectedIndex = 2;//显示地图模式
+
+            
 
             #region//udp通讯
             byte[] array_byte = new byte[4] { 192, 168, 1, 84 };
@@ -84,7 +88,7 @@ namespace WpfApp1
 
             //**************************************************tab3*******************8
             // Create two ImageList objects.
-            ImageList imageListLarge = new ImageList();
+            
 
             // Initialize the ImageList objects with bitmaps.
             for (int i = 0; i < size_chanel; i++)
@@ -163,6 +167,16 @@ namespace WpfApp1
 
                 //更新ToolTip
                 update_tooltip(ref Ellipse_Array, (message[0] - 1));
+
+                /////////
+                if(Convert.ToDouble(temp_DataRow[0][10]) > 30.0)
+                {
+                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (message[0] - 1), true);
+                }
+                else
+                {
+                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (message[0] - 1), false);
+                }
             };
             this.Dispatcher.Invoke(action, true);
         }
@@ -186,6 +200,30 @@ namespace WpfApp1
                                            "水位信息    ：" + temp_DataRow[0][5].ToString() + "\n" +
                                            "井盖信息    ：" + temp_DataRow[0][6].ToString() + "\n" +
                                            "数据更新时间：" + temp_DataRow[0][11].ToString();
+        }
+
+        public void change_jiedian_status(ref Ellipse[] ellipse_array, System.Windows.Forms.ListView listView_tt,  int index, bool BaoJing)
+        {
+            if(BaoJing == true)
+            {
+                ellipse_array[index].Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 0, 0));
+                
+
+                listView_tt.BeginUpdate();
+                listView_tt.LargeImageList.Images[index] = Bitmap.FromFile("jiedian_warning.png");
+                listView_tt.EndUpdate();
+            }
+            else
+            {
+                ellipse_array[index].Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 0, 255));
+
+                
+
+                listView_tt.BeginUpdate();
+                listView_tt.LargeImageList.Images[index] = Bitmap.FromFile("jiedian.png");
+                listView_tt.EndUpdate();
+            }
+            
         }
 
         private void LieBiao_Tab2_Buttton_Click(object sender, RoutedEventArgs e)
