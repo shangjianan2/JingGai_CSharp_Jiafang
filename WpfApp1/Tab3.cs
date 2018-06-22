@@ -41,8 +41,8 @@ namespace WpfApp1
             os_tab3 = (ObservableCollection<jiedian>)DataGrid_tab3.ItemsSource;
 
             DataSet dataSet_temp = new DataSet();
-            string command_str = "select * from Table1_ShiJIan_JieDian order by date desc limit " + size_datagrid.ToString();
-            dataSet_temp = MySqlHelper.GetDataSet("Database='NBIoT';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+            string command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " order by date desc limit " + size_datagrid.ToString();
+            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//ªÒ»°¡–
 
             for (int i = 0; i < size_datagrid; i++)

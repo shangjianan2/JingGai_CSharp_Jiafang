@@ -61,10 +61,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="IP_PeiZhiWenJian_JieXi.cs" />
+    <Compile Include="Map_PeiZhiWenJian_JieXi.cs" />
     <Compile Include="MySQL_Function.cs" />
+    <Compile Include="MySQL_PeiZhiWenJian_JieXi.cs" />
     <Compile Include="ShuJuJieXi.cs" />
     <Compile Include="Tab2.cs" />
     <Compile Include="Tab3.cs" />
+    <Compile Include="Test_Enviroment.cs" />
     <Compile Include="UDP_Thread.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
