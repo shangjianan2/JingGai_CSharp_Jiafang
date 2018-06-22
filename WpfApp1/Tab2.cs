@@ -40,9 +40,7 @@ namespace WpfApp1
         ScaleTransform[] scaleTransform_Array_Tab3 = new ScaleTransform[size_chanel];
         Ellipse[] Ellipse_Array = new Ellipse[size_chanel];
 
-        public UDP_Communication mysql_Thread = null;
-
-        
+             
 
         
 

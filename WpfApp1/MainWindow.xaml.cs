@@ -39,12 +39,18 @@ namespace WpfApp1
         ImageList imageListLarge = new ImageList();
 
         public mysql_PZWJ_JieXi ShuJuKu = null;//在处定义，但是是在Test_Enviroment中初始化的
+        public UDP_Communication mysql_Thread = null;
+        public byte[] Local_IP_Byte_Array = new byte[4];
+        public UInt16 Local_DuanKou;
+        public byte[] NBIoT_IP_Byte_Array = new byte[4];
+        public UInt16 NBIoT_DuanKou;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            Init_QiDongJianCe();
+            Init_QiDongJianCe(ref ShuJuKu, ref mysql_Thread, ref Local_IP_Byte_Array, ref Local_DuanKou, 
+                                                             ref NBIoT_IP_Byte_Array, ref NBIoT_DuanKou);
 
             tabcontrol.SelectedIndex = 2;//显示地图模式
 
@@ -181,6 +187,42 @@ namespace WpfApp1
                 }
             };
             this.Dispatcher.Invoke(action, true);
+        }
+        #endregion
+
+        #region//定时器中断
+        public void SendToIoTCall(object state)
+        {
+            string temp_str = "ep=J4JFAJUGYS3GGF7Z&pw=123456";
+            byte[] buff = System.Text.Encoding.ASCII.GetBytes(temp_str);
+
+            //byte[] array_byte = new byte[4] { 115, 29, 240, 46 };//设定远程ip地址
+            //IPAddress ip = new IPAddress(array_byte);
+            //IPEndPoint lep = new IPEndPoint(ip, 6000);
+
+            //mysql_Thread.newsock.Connect(lep);
+            mysql_Thread.newsock.Send(buff);
+
+#if YanShi
+            if(flag_Tab8 >= 2)
+            {
+                
+            }
+            else if(flag_Tab8 < 1)
+            {
+                flag_Tab8++;
+            }
+            else
+            {
+                Action<bool> action_tt = (x) =>
+                {
+                    tabcontrol.SelectedIndex = 0;//开启登陆界面
+                };
+                this.Dispatcher.Invoke(action_tt, true);
+                
+                flag_Tab8++;
+            }
+#endif
         }
         #endregion
 
