@@ -1897,6 +1897,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
@@ -1916,56 +1917,64 @@
                                 <TextBlock Grid.Column="0" Grid.Row="0" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
-                                           FontSize="20" 
+                                           FontSize="15" 
                                            Foreground="Blue">编号</TextBlock>
                                 <TextBlock Grid.Column="0" Grid.Row="1" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
-                                           FontSize="20" 
+                                           FontSize="15" 
                                            Foreground="Blue">检测气体</TextBlock>
                                 <TextBlock Grid.Column="0" Grid.Row="2" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
-                                           FontSize="20" 
+                                           FontSize="15" 
                                            Foreground="Blue">安装位置</TextBlock>
                                 <TextBlock Grid.Column="0" Grid.Row="3" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
-                                           FontSize="20" 
+                                           FontSize="15" 
                                            Foreground="Blue">高限报警</TextBlock>
                                 <TextBlock Grid.Column="0" Grid.Row="4" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
-                                           FontSize="20" 
+                                           FontSize="15" 
                                            Foreground="Blue">低限报警</TextBlock>
 
                                 <TextBlock Grid.Column="0" Grid.Row="5" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
-                                           FontSize="20" 
+                                           FontSize="15" 
                                            Foreground="Blue">文本</TextBlock>
                                 <TextBlock Grid.Column="0" Grid.Row="6" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
-                                           FontSize="20" 
+                                           FontSize="15" 
                                            Foreground="Blue">文本</TextBlock>
                                 <TextBlock Grid.Column="0" Grid.Row="7" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
-                                           FontSize="20" 
+                                           FontSize="15" 
                                            Foreground="Blue">文本</TextBlock>
                                 <TextBlock Grid.Column="0" Grid.Row="8" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
-                                           FontSize="20" 
+                                           FontSize="15" 
                                            Foreground="Blue">文本</TextBlock>
                                 <TextBlock Grid.Column="0" Grid.Row="9" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
-                                           FontSize="20" 
+                                           FontSize="15" 
                                            Foreground="Blue">文本</TextBlock>
 
-                                <Grid Grid.Row="10" Grid.ColumnSpan="2">
+                                <TextBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" 
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center" 
+                                         FontSize="15" 
+                                         Foreground="Blue">
+                                    
+                                </TextBox>
+
+                                <Grid Grid.Row="10" Grid.ColumnSpan="3">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
