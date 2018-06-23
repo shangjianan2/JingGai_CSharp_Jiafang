@@ -469,13 +469,13 @@ namespace WpfApp1
 
 
 
-        private void DataGrid_SelectedCellsChanged_tab4(object sender, SelectedCellsChangedEventArgs e)
-        {
-            jiedian a = (jiedian)this.DataGrid_tab4.SelectedItem;
+        //private void DataGrid_SelectedCellsChanged_tab4(object sender, SelectedCellsChangedEventArgs e)
+        //{
+        //    jiedian a = (jiedian)this.DataGrid_tab4.SelectedItem;
 
-            jiedian_AutoMove_tab4(ref Ellipse_Array_tab4, (Convert.ToUInt16(a.ID) - 1));
-            jiedian_AutoZoom_tab4(ref Ellipse_Array_tab4, (Convert.ToUInt16(a.ID) - 1));
-        }
+        //    jiedian_AutoMove_tab4(ref Ellipse_Array_tab4, (Convert.ToUInt16(a.ID) - 1));
+        //    jiedian_AutoZoom_tab4(ref Ellipse_Array_tab4, (Convert.ToUInt16(a.ID) - 1));
+        //}
 
         private void hid_jiedian_Click_tab4(object sender, RoutedEventArgs e)
         {
