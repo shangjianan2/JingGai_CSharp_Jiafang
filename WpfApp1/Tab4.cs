@@ -31,6 +31,7 @@ namespace WpfApp1
         ObservableCollection<jiedian> os_tab4 = null;
 
         Point previousMousePoint_tab4 = new Point(0, 0);
+        private bool isMouseLeftButtonDown_tab4 = false;
 
         //const int size_chanel = 64;
         //const int size_DataGrid_Display= 20;
@@ -331,36 +332,57 @@ namespace WpfApp1
         #region//地图功能的实现
         private void img_MouseDown_tab4(object sender, MouseButtonEventArgs e)
         {
-            previousMousePoint_tab4 = e.GetPosition(img_tab4);
+            //previousMousePoint_tab4 = e.GetPosition(img_tab4);
+
+            isMouseLeftButtonDown_tab4 = true;
+
+
+            if (sender.ToString() == "System.Windows.Shapes.Ellipse")
+            {                
+                previousMousePoint_tab4 = e.GetPosition((System.Windows.Shapes.Ellipse)sender);
+            }
+            else
+            {
+                previousMousePoint_tab4 = e.GetPosition(img_tab4);
+            }
         }
 
         private void img_MouseUp_tab4(object sender, MouseButtonEventArgs e)
         {
-            //isMouseLeftButtonDown = false;
+            isMouseLeftButtonDown_tab4 = false;
         }
 
         private void img_MouseLeave_tab4(object sender, MouseEventArgs e)
         {
-            //isMouseLeftButtonDown = false;
+            isMouseLeftButtonDown_tab4 = false;
         }
 
         private void img_MouseMove_tab4(object sender, MouseEventArgs e)
         {
-            //if (isMouseLeftButtonDown == true)
-            //{
-            //    //Point position = e.GetPosition(img);
-            //    //tlt.X += (position.X - this.previousMousePoint.X) * sfr.ScaleX;
-            //    //tlt.Y += (position.Y - this.previousMousePoint.Y) * sfr.ScaleY;
+            if (isMouseLeftButtonDown_tab4 == true)
+            {
+                if (sender.ToString() == "System.Windows.Shapes.Ellipse")
+                {
+                    System.Windows.Shapes.Ellipse Ellipse_temp = (System.Windows.Shapes.Ellipse)sender;
 
-            //    //tlt2.X += (position.X - this.previousMousePoint.X) * sfr.ScaleX;
-            //    //tlt2.Y += (position.Y - this.previousMousePoint.Y) * sfr.ScaleY;
+                    Point position_tab4;
 
-            //    Point position = e.GetPosition(img);
-            //    tlt.X += (position.X - this.previousMousePoint.X) * sfr.ScaleX;
-            //    tlt.Y += (position.Y - this.previousMousePoint.Y) * sfr.ScaleY;
+                    for (int i = 0; i < size_chanel; i++)
+                    {
+                        if (Ellipse_Array_tab4[i].Name == Ellipse_temp.Name)
+                        {
+                            position_tab4 = e.GetPosition(Ellipse_Array_tab4[i]);
+                            //单独拖拽节点只会更改节点的在Canvas中的相对位置（left top），不会更改其他变量
+                            Canvas.SetLeft(Ellipse_Array_tab4[i], Canvas.GetLeft(Ellipse_Array_tab4[i]) + (position_tab4.X - this.previousMousePoint_tab4.X) * scaleTransform_Array_tab4[i].ScaleX);
+                            Canvas.SetTop(Ellipse_Array_tab4[i], Canvas.GetTop(Ellipse_Array_tab4[i]) + (position_tab4.Y - this.previousMousePoint_tab4.Y) * scaleTransform_Array_tab4[i].ScaleY);
+                            //System.Diagnostics.Debug.WriteLine("GetLeft {0} GetTop {1}", Canvas.GetLeft(rectangle_Array[i]), Canvas.GetTop(rectangle_Array[i]));此处显示改变
+                            //System.Diagnostics.Debug.WriteLine("translateTransform_Array {0} {1}", translateTransform_Array[i].X, translateTransform_Array[i].Y);此处显示不变
+                            break;
+                        }
+                    }
+                }
 
-
-            //}
+            }
         }
 
         private void img_MouseWheel_tab4(object sender, MouseWheelEventArgs e)

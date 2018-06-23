@@ -917,8 +917,12 @@
                             </Image>
 
                             <Ellipse x:Name="Ellipse1_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="10" Canvas.Top="10">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="10" Canvas.Top="10">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr1_tab4" />
@@ -927,8 +931,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse2_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="20" Canvas.Top="20">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="20" Canvas.Top="20">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr2_tab4" />
@@ -937,8 +945,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse3_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="30" Canvas.Top="30">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="30" Canvas.Top="30">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr3_tab4" />
@@ -947,8 +959,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse4_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="40" Canvas.Top="40">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="40" Canvas.Top="40">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr4_tab4" />
@@ -957,8 +973,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse5_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="50" Canvas.Top="50">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="50" Canvas.Top="50">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr5_tab4" />
@@ -967,8 +987,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse6_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="60" Canvas.Top="60">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="60" Canvas.Top="60">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr6_tab4" />
@@ -977,8 +1001,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse7_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="70" Canvas.Top="70">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="70" Canvas.Top="70">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr7_tab4" />
@@ -987,8 +1015,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse8_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="80" Canvas.Top="80">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="80" Canvas.Top="80">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr8_tab4" />
@@ -997,8 +1029,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse9_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="90" Canvas.Top="90">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="90" Canvas.Top="90">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr9_tab4" />
@@ -1007,8 +1043,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse10_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="100" Canvas.Top="100">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="100" Canvas.Top="100">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr10_tab4" />
@@ -1018,8 +1058,12 @@
                             </Ellipse>
 
                             <Ellipse x:Name="Ellipse11_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="110" Canvas.Top="110">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="110" Canvas.Top="110">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr11_tab4" />
@@ -1028,8 +1072,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse12_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="120" Canvas.Top="120">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="120" Canvas.Top="120">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr12_tab4" />
@@ -1038,8 +1086,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse13_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="130" Canvas.Top="130">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="130" Canvas.Top="130">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr13_tab4" />
@@ -1048,8 +1100,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse14_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="140" Canvas.Top="140">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="140" Canvas.Top="140">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr14_tab4" />
@@ -1058,8 +1114,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse15_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="150" Canvas.Top="150">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="150" Canvas.Top="150">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr15_tab4" />
@@ -1068,8 +1128,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse16_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="160" Canvas.Top="160">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="160" Canvas.Top="160">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr16_tab4" />
@@ -1078,8 +1142,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse17_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="170" Canvas.Top="170">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="170" Canvas.Top="170">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr17_tab4" />
@@ -1088,8 +1156,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse18_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="180" Canvas.Top="180">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="180" Canvas.Top="180">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr18_tab4" />
@@ -1098,8 +1170,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse19_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="190" Canvas.Top="190">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="190" Canvas.Top="190">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr19_tab4" />
@@ -1108,8 +1184,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse20_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="200" Canvas.Top="200">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="200" Canvas.Top="200">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr20_tab4" />
@@ -1119,8 +1199,12 @@
                             </Ellipse>
 
                             <Ellipse x:Name="Ellipse21_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="210" Canvas.Top="210">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="210" Canvas.Top="210">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr21_tab4" />
@@ -1129,8 +1213,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse22_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="220" Canvas.Top="220">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="220" Canvas.Top="220">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr22_tab4" />
@@ -1139,8 +1227,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse23_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="230" Canvas.Top="230">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="230" Canvas.Top="230">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr23_tab4" />
@@ -1149,8 +1241,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse24_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="240" Canvas.Top="240">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="240" Canvas.Top="240">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr24_tab4" />
@@ -1159,8 +1255,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse25_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="250" Canvas.Top="250">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="250" Canvas.Top="250">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr25_tab4" />
@@ -1169,8 +1269,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse26_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="260" Canvas.Top="260">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="260" Canvas.Top="260">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr26_tab4" />
@@ -1179,8 +1283,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse27_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="270" Canvas.Top="270">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="270" Canvas.Top="270">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr27_tab4" />
@@ -1189,8 +1297,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse28_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="280" Canvas.Top="280">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="280" Canvas.Top="280">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr28_tab4" />
@@ -1199,8 +1311,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse29_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="290" Canvas.Top="290">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="290" Canvas.Top="290">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr29_tab4" />
@@ -1209,8 +1325,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse30_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="300" Canvas.Top="300">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="300" Canvas.Top="300">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr30_tab4" />
@@ -1220,8 +1340,12 @@
                             </Ellipse>
 
                             <Ellipse x:Name="Ellipse31_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="310" Canvas.Top="310">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="310" Canvas.Top="310">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr31_tab4" />
@@ -1230,8 +1354,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse32_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="320" Canvas.Top="320">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="320" Canvas.Top="320">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr32_tab4" />
@@ -1240,8 +1368,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse33_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="330" Canvas.Top="330">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="330" Canvas.Top="330">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr33_tab4" />
@@ -1250,8 +1382,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse34_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="340" Canvas.Top="340">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="340" Canvas.Top="340">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr34_tab4" />
@@ -1260,8 +1396,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse35_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="350" Canvas.Top="350">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="350" Canvas.Top="350">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr35_tab4" />
@@ -1270,8 +1410,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse36_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="360" Canvas.Top="360">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="360" Canvas.Top="360">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr36_tab4" />
@@ -1280,8 +1424,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse37_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="370" Canvas.Top="370">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="370" Canvas.Top="370">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr37_tab4" />
@@ -1290,8 +1438,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse38_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="380" Canvas.Top="380">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="380" Canvas.Top="380">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr38_tab4" />
@@ -1300,8 +1452,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse39_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="390" Canvas.Top="390">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="390" Canvas.Top="390">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr39_tab4" />
@@ -1310,8 +1466,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse40_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="400" Canvas.Top="400">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="400" Canvas.Top="400">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr40_tab4" />
@@ -1321,8 +1481,12 @@
                             </Ellipse>
 
                             <Ellipse x:Name="Ellipse41_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="410" Canvas.Top="410">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="410" Canvas.Top="410">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr41_tab4" />
@@ -1331,8 +1495,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse42_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="420" Canvas.Top="420">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="420" Canvas.Top="420">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr42_tab4" />
@@ -1341,8 +1509,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse43_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="430" Canvas.Top="430">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="430" Canvas.Top="430">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr43_tab4" />
@@ -1351,8 +1523,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse44_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="440" Canvas.Top="440">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="440" Canvas.Top="440">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr44_tab4" />
@@ -1361,8 +1537,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse45_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="450" Canvas.Top="450">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="450" Canvas.Top="450">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr45_tab4" />
@@ -1371,8 +1551,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse46_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="460" Canvas.Top="460">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="460" Canvas.Top="460">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr46_tab4" />
@@ -1381,8 +1565,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse47_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="470" Canvas.Top="470">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="470" Canvas.Top="470">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr47_tab4" />
@@ -1391,8 +1579,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse48_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="480" Canvas.Top="480">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="480" Canvas.Top="480">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr48_tab4" />
@@ -1401,8 +1593,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse49_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="490" Canvas.Top="490">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="490" Canvas.Top="490">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr49_tab4" />
@@ -1411,8 +1607,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse50_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="500" Canvas.Top="500">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="500" Canvas.Top="500">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr50_tab4" />
@@ -1422,8 +1622,12 @@
                             </Ellipse>
 
                             <Ellipse x:Name="Ellipse51_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="510" Canvas.Top="510">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="510" Canvas.Top="510">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr51_tab4" />
@@ -1432,8 +1636,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse52_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="520" Canvas.Top="520">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="520" Canvas.Top="520">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr52_tab4" />
@@ -1442,8 +1650,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse53_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="530" Canvas.Top="530">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="530" Canvas.Top="530">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr53_tab4" />
@@ -1452,8 +1664,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse54_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="540" Canvas.Top="540">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="540" Canvas.Top="540">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr54_tab4" />
@@ -1462,8 +1678,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse55_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="550" Canvas.Top="550">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="550" Canvas.Top="550">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr55_tab4" />
@@ -1472,8 +1692,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse56_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="560" Canvas.Top="560">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="560" Canvas.Top="560">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr56_tab4" />
@@ -1482,8 +1706,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse57_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="570" Canvas.Top="570">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="570" Canvas.Top="570">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr57_tab4" />
@@ -1492,8 +1720,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse58_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="580" Canvas.Top="580">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="580" Canvas.Top="580">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr58_tab4" />
@@ -1502,8 +1734,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse59_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="590" Canvas.Top="590">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="590" Canvas.Top="590">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr59_tab4" />
@@ -1512,8 +1748,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse60_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="600" Canvas.Top="600">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="600" Canvas.Top="600">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr60_tab4" />
@@ -1523,8 +1763,12 @@
                             </Ellipse>
 
                             <Ellipse x:Name="Ellipse61_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="610" Canvas.Top="610">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="610" Canvas.Top="610">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr61_tab4" />
@@ -1533,8 +1777,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse62_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="620" Canvas.Top="620">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="620" Canvas.Top="620">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr62_tab4" />
@@ -1543,8 +1791,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse63_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="630" Canvas.Top="630">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="630" Canvas.Top="630">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr63_tab4" />
@@ -1553,8 +1805,12 @@
                                 </Ellipse.RenderTransform>
                             </Ellipse>
                             <Ellipse x:Name="Ellipse64_tab4" 
-                       ToolTipService.ShowDuration="60000" 
-                       Fill="Blue" Height="10" Width="10" Canvas.Left="640" Canvas.Top="640">
+                                     MouseDown="img_MouseDown_tab4" 
+							         MouseMove="img_MouseMove_tab4"
+							         MouseUp="img_MouseUp_tab4"
+							         MouseLeave="img_MouseLeave_tab4" 
+                                     ToolTipService.ShowDuration="60000" 
+                                     Fill="Blue" Height="10" Width="10" Canvas.Left="640" Canvas.Top="640">
                                 <Ellipse.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform x:Name="sfr64_tab4" />
