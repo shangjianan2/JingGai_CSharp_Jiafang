@@ -21,6 +21,10 @@
             <MenuItem Name="hid_jiedian" Click="hid_jiedian_Click" Header="隐藏节点"/>
             <MenuItem Name="show_jiedian" Click="show_jiedian_Click" Header="显示节点"/>
         </ContextMenu>
+        <ContextMenu x:Key="ContextMenu_tab4">
+            <MenuItem Name="map_Reset_tab4" Click="map_Reset_Click_tab4" Header="恢复比例"/>
+            <MenuItem Name="AutoZoom_tab4" Click="AutoZoom_Click_tab4" Header="自动放大"/>
+        </ContextMenu>
 
     </Window.Resources>
 
@@ -895,14 +899,14 @@
                         </Grid.ColumnDefinitions>
 
                         <Canvas x:Name="canvas_mine_tab4" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3"
-                ContextMenu="{StaticResource ContextMenu}">
+                ContextMenu="{StaticResource ContextMenu_tab4}">
                             <Image x:Name="img_tab4" Source="C:\NBIoT\timg.jpg"    
-							MouseDown="img_MouseDown" MouseWheel="img_MouseWheel"
-							MouseMove="img_MouseMove"
-							MouseUp="img_MouseUp"
-							MouseLeave="img_MouseLeave"
+							MouseDown="img_MouseDown_tab4" MouseWheel="img_MouseWheel_tab4"
+							MouseMove="img_MouseMove_tab4"
+							MouseUp="img_MouseUp_tab4"
+							MouseLeave="img_MouseLeave_tab4"
 							Stretch="Uniform"  
-							RenderOptions.BitmapScalingMode="NearestNeighbor" Canvas.Top="-100" Canvas.Left="-100">
+							RenderOptions.BitmapScalingMode="NearestNeighbor" Canvas.Top="0" Canvas.Left="0">
 
                                 <Image.RenderTransform>
                                     <TransformGroup>
@@ -1575,28 +1579,29 @@
                             <Button x:Name="LieBiao_Tab4_Buttton" 
                                     Grid.Column="0" Grid.Row="0" 
                                     Click="LieBiao_Tab2_Buttton_Click">
-                                <TextBlock Foreground="White">列表模式</TextBlock>
+                                <TextBlock Foreground="White">地图模式</TextBlock>
                                 <Button.Background>
                                     <ImageBrush ImageSource="C:\NBIoT\button.png"/>
                                 </Button.Background>
                             </Button>
                             <Button x:Name="ChaXun_Tab4_Buttton" 
                                     Grid.Column="1" Grid.Row="0">
-                                <TextBlock Foreground="White">查询统计</TextBlock>
+                                <TextBlock Foreground="White">列表模式</TextBlock>
                                 <Button.Background>
                                     <ImageBrush ImageSource="C:\NBIoT\button.png"/>
                                 </Button.Background>
                             </Button>
                             <Button x:Name="XiTong_Tab4_Buttton" 
                                     Grid.Column="0" Grid.Row="1">
-                                <TextBlock Foreground="White">系统设置</TextBlock>
+                                <TextBlock Foreground="White">信息变更</TextBlock>
                                 <Button.Background>
                                     <ImageBrush ImageSource="C:\NBIoT\button.png"/>
                                 </Button.Background>
                             </Button>
                             <Button x:Name="TuiChu_Tab4_Buttton" 
-                                    Grid.Column="1" Grid.Row="1">
-                                <TextBlock Foreground="White">退出系统</TextBlock>
+                                    Grid.Column="1" Grid.Row="1" 
+                                    Click="TuiChu_Tab4_Buttton_Click">
+                                <TextBlock Foreground="White">增删点位</TextBlock>
                                 <Button.Background>
                                     <ImageBrush ImageSource="C:\NBIoT\button.png"/>
                                 </Button.Background>
@@ -1639,7 +1644,7 @@
                                 <DataGrid x:Name="DataGrid_tab4" 
                                           ItemsSource="{Binding Source={StaticResource JieDians}}" 
                                           IsReadOnly="true" 
-                                          SelectedCellsChanged="DataGrid_SelectedCellsChanged" 
+                                          SelectedCellsChanged="DataGrid_SelectedCellsChanged_tab4" 
                                           ContextMenu="{StaticResource ContextMenu_DataGrid}">
 
                                 </DataGrid>

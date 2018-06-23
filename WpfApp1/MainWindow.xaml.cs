@@ -81,6 +81,7 @@ namespace WpfApp1
 
 
 
+            //Tab2地图初始化
             Init_Ellipse_Array();
             Init_translateTransform_Array();
             Init_scaleTransform_Array();
@@ -89,6 +90,17 @@ namespace WpfApp1
             {
                 update_tooltip(ref Ellipse_Array, i);
             }
+
+            //Tab4地图初始化
+            Init_Ellipse_Array_tab4();
+            Init_translateTransform_Array_tab4();
+            Init_scaleTransform_Array_tab4();
+
+            for (int i = 0; i < size_chanel; i++)
+            {
+                update_tooltip(ref Ellipse_Array_tab4, i);
+            }
+
 
             //初始化地图位置
             map_Reset_Click(this, null);
@@ -283,6 +295,13 @@ namespace WpfApp1
         private void XiTong_Tab2_Buttton_Click(object sender, RoutedEventArgs e)
         {
             tabcontrol.SelectedIndex = 4;
+        }
+
+
+        //增删点位
+        private void TuiChu_Tab4_Buttton_Click(object sender, RoutedEventArgs e)
+        {
+            tabcontrol.SelectedIndex = 2;
         }
     }
 }
