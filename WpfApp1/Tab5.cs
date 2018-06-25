@@ -60,7 +60,7 @@ namespace WpfApp1
             }
             else
             {
-                toolTip_tab5.Hide(listview_largeicon);
+                toolTip_tab5.Hide(listview_largeicon_tab5);
             }
         }
     }
