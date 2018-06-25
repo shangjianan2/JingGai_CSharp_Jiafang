@@ -49,8 +49,13 @@ namespace WpfApp1
             }
         }
 
+        private void QueRenBianGeng_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Update_Information_Jiedian(Convert.ToInt16(BianHao.Text));
+        }
+
         /// <summary>
-        /// 编号，检测气体， 安装位置，安装时间，高限报警，低限报警
+        /// 显示编号，检测气体， 安装位置，安装时间，高限报警，低限报警
         /// </summary>
         public void Show_Information_Jiedian(int index)
         {
@@ -70,11 +75,41 @@ namespace WpfApp1
             }
             else
             {
-                JianCeQiTi.Text = temp_DataRow[0][0].ToString();
-                AnZhuangWeiZhi.Text = temp_DataRow[0][1].ToString();
-                AnZhuangShiJina.Text = temp_DataRow[0][2].ToString();
-                GaoXianBaoJing.Text = temp_DataRow[0][3].ToString();
-                DiXianBaoJing.Text = temp_DataRow[0][4].ToString();
+                JianCeQiTi.Text = temp_DataRow[0][1].ToString();
+                AnZhuangWeiZhi.Text = temp_DataRow[0][2].ToString();
+                AnZhuangShiJina.Text = temp_DataRow[0][3].ToString();
+                GaoXianBaoJing.Text = temp_DataRow[0][4].ToString();
+                DiXianBaoJing.Text = temp_DataRow[0][5].ToString();
+            }
+        }
+
+        /// <summary>
+        /// 更改编号，检测气体， 安装位置，安装时间，高限报警，低限报警
+        /// </summary>
+        public void Update_Information_Jiedian(int index)
+        {
+            DataSet dataSet_temp = new DataSet();
+            string command_str = "select * from " + ShuJuKu.Table3_JieDian + " where `id`=" + index.ToString();
+            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                                  CommandType.Text, command_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+
+            if (temp_DataRow.Count <= 0)//没有相应节点的信息，建立新的节点
+            {
+                JianCeQiTi.Text = "默认值";
+                AnZhuangWeiZhi.Text = "默认值";
+                AnZhuangShiJina.Text = DateTime.Now.ToString();//默认为当前时间
+                GaoXianBaoJing.Text = "默认值";
+                DiXianBaoJing.Text = "默认值";
+            }
+            else//将已有的节点信息更改
+            {
+                string UpdataCommand_str = "UPDATE Table3_JieDian SET `gas type` = '" + JianCeQiTi.Text + 
+                    "', location = '" + AnZhuangWeiZhi.Text + "', `time of install` = '" + AnZhuangShiJina.Text + 
+                    "', `high to warning` = '" + GaoXianBaoJing.Text + "', `low to warning` = '" + DiXianBaoJing.Text + 
+                    "' WHERE id = " + index;
+                MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                                  CommandType.Text, UpdataCommand_str, null);
             }
         }
 

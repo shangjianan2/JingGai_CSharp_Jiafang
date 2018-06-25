@@ -1933,18 +1933,18 @@
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
                                            FontSize="15" 
-                                           Foreground="Blue">高限报警</TextBlock>
+                                           Foreground="Blue">安装时间</TextBlock>
                                 <TextBlock Grid.Column="0" Grid.Row="4" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
                                            FontSize="15" 
-                                           Foreground="Blue">低限报警</TextBlock>
-
+                                           Foreground="Blue">高限报警</TextBlock>
+                                
                                 <TextBlock Grid.Column="0" Grid.Row="5" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
                                            FontSize="15" 
-                                           Foreground="Blue">文本</TextBlock>
+                                           Foreground="Blue">低限报警</TextBlock>
                                 <TextBlock Grid.Column="0" Grid.Row="6" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
@@ -2027,8 +2027,9 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Button 
-                                        Grid.Column="0">
+                                    <Button x:Name="QueRenBianGeng_Button" 
+                                            Click="QueRenBianGeng_Button_Click"
+                                            Grid.Column="0">
                                         <TextBlock Foreground="White">确认变更</TextBlock>
                                         <Button.Background>
                                             <ImageBrush ImageSource="C:\NBIoT\button.png"/>
