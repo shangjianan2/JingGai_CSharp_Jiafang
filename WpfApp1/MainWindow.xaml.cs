@@ -133,13 +133,23 @@ namespace WpfApp1
 
 
 
-            this.listview_largeicon.View = View.LargeIcon;
+            Init_LargeIcon_ListView(listview_largeicon);
+            Init_LargeIcon_ListView(listview_largeicon_tab5);
 
-            this.listview_largeicon.BackColor = System.Drawing.Color.FromArgb(255, 237, 237, 237);
 
-            this.listview_largeicon.LargeImageList = imageListLarge;
 
-            this.listview_largeicon.BeginUpdate();
+            //Init_DataGrid_tab3();
+        }
+
+        public void Init_LargeIcon_ListView(System.Windows.Forms.ListView listView_tt)
+        {
+            listView_tt.View = View.LargeIcon;
+
+            listView_tt.BackColor = System.Drawing.Color.FromArgb(255, 237, 237, 237);
+
+            listView_tt.LargeImageList = imageListLarge;
+
+            listView_tt.BeginUpdate();
 
             for (int i = 0; i < size_chanel; i++)
             {
@@ -149,12 +159,10 @@ namespace WpfApp1
 
                 lvi.Text = (i + 1).ToString() + "#";
 
-                this.listview_largeicon.Items.Add(lvi);
+                listView_tt.Items.Add(lvi);
             }
 
-            this.listview_largeicon.EndUpdate();
-
-            //Init_DataGrid_tab3();
+            listView_tt.EndUpdate();
         }
 
         #region//udp接收中断
@@ -203,10 +211,12 @@ namespace WpfApp1
                 if(Convert.ToDouble(temp_DataRow[0][10]) > 30.0)
                 {
                     change_jiedian_status(ref Ellipse_Array, listview_largeicon, (message[0] - 1), true);
+                    change_jiedian_status(ref Ellipse_Array, listview_largeicon_tab5, (message[0] - 1), true);
                 }
                 else
                 {
                     change_jiedian_status(ref Ellipse_Array, listview_largeicon, (message[0] - 1), false);
+                    change_jiedian_status(ref Ellipse_Array, listview_largeicon_tab5, (message[0] - 1), false);
                 }
             };
             this.Dispatcher.Invoke(action, true);
