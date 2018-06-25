@@ -60,11 +60,22 @@ namespace WpfApp1
                                                   CommandType.Text, command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
-            if (temp_DataRow.Count <= 0)//如果没有相应节点的数据，就停止操作
-                return;
-
-            System.Diagnostics.Debug.WriteLine(temp_DataRow[0][0].ToString() + temp_DataRow[0][1].ToString() + temp_DataRow[0][2].ToString() +
-                                               temp_DataRow[0][3].ToString() + temp_DataRow[0][4].ToString() + temp_DataRow[0][5].ToString());
+            if(temp_DataRow.Count <= 0)//没有相应节点的信息，就将下面的数据设置成默认值
+            {
+                JianCeQiTi.Text = "默认值";
+                AnZhuangWeiZhi.Text = "默认值";
+                AnZhuangShiJina.Text = DateTime.Now.ToString();//默认为当前时间
+                GaoXianBaoJing.Text = "默认值";
+                DiXianBaoJing.Text = "默认值";
+            }
+            else
+            {
+                JianCeQiTi.Text = temp_DataRow[0][0].ToString();
+                AnZhuangWeiZhi.Text = temp_DataRow[0][1].ToString();
+                AnZhuangShiJina.Text = temp_DataRow[0][2].ToString();
+                GaoXianBaoJing.Text = temp_DataRow[0][3].ToString();
+                DiXianBaoJing.Text = temp_DataRow[0][4].ToString();
+            }
         }
 
 

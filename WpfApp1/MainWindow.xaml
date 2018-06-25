@@ -1976,6 +1976,51 @@
                                     
                                 </TextBox>
 
+                                <TextBox x:Name="JianCeQiTi" 
+                                         Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" 
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center" 
+                                         FontSize="15" 
+                                         Foreground="Blue">
+
+                                </TextBox>
+
+                                <TextBox x:Name="AnZhuangWeiZhi" 
+                                         Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" 
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center" 
+                                         FontSize="15" 
+                                         Foreground="Blue">
+
+                                </TextBox>
+
+                                <TextBox x:Name="AnZhuangShiJina" 
+                                         Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" 
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center" 
+                                         FontSize="15" 
+                                         Foreground="Blue">
+
+                                </TextBox>
+
+                                <TextBox x:Name="GaoXianBaoJing" 
+                                         Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" 
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center" 
+                                         FontSize="15" 
+                                         Foreground="Blue">
+
+                                </TextBox>
+
+                                <TextBox x:Name="DiXianBaoJing" 
+                                         Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" 
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center" 
+                                         FontSize="15" 
+                                         Foreground="Blue">
+
+                                </TextBox>
+
                                 <Grid Grid.Row="10" Grid.ColumnSpan="3">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
