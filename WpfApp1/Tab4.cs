@@ -84,7 +84,7 @@ namespace WpfApp1
         }
 
         /// <summary>
-        /// 更改编号，检测气体， 安装位置，安装时间，高限报警，低限报警
+        /// 更改或新增节点信息。编号，检测气体， 安装位置，安装时间，高限报警，低限报警
         /// </summary>
         public void Update_Information_Jiedian(int index)
         {
@@ -96,11 +96,11 @@ namespace WpfApp1
 
             if (temp_DataRow.Count <= 0)//没有相应节点的信息，建立新的节点
             {
-                JianCeQiTi.Text = "默认值";
-                AnZhuangWeiZhi.Text = "默认值";
-                AnZhuangShiJina.Text = DateTime.Now.ToString();//默认为当前时间
-                GaoXianBaoJing.Text = "默认值";
-                DiXianBaoJing.Text = "默认值";
+                string InsertCommand_str = "INSERT INTO Table3_JieDian (`id`, `gas type`, `location`, `time of install`, `high to warning`, `low to warning` ) VALUES (\"" + 
+                    BianHao.Text + "\", \"" + JianCeQiTi.Text + "\", \"" + AnZhuangWeiZhi.Text + 
+                    "\", \"" + DateTime.Now.ToString() + "\", \"" + GaoXianBaoJing.Text + "\", \"" + DiXianBaoJing.Text + "\"); ";
+                MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                                  CommandType.Text, InsertCommand_str, null);
             }
             else//将已有的节点信息更改
             {
