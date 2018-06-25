@@ -45,8 +45,26 @@ namespace WpfApp1
         {
             if(e.Key == Key.Enter)
             {
-                System.Diagnostics.Debug.WriteLine(BianHao.Text);
+                Show_Information_Jiedian(Convert.ToInt16(BianHao.Text));
             }
+        }
+
+        /// <summary>
+        /// 编号，检测气体， 安装位置，安装时间，高限报警，低限报警
+        /// </summary>
+        public void Show_Information_Jiedian(int index)
+        {
+            DataSet dataSet_temp = new DataSet();
+            string command_str = "select * from " + ShuJuKu.Table3_JieDian + " where `id`=" + index.ToString();
+            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                                  CommandType.Text, command_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+
+            if (temp_DataRow.Count <= 0)//如果没有相应节点的数据，就停止操作
+                return;
+
+            System.Diagnostics.Debug.WriteLine(temp_DataRow[0][0].ToString() + temp_DataRow[0][1].ToString() + temp_DataRow[0][2].ToString() +
+                                               temp_DataRow[0][3].ToString() + temp_DataRow[0][4].ToString() + temp_DataRow[0][5].ToString());
         }
 
 
