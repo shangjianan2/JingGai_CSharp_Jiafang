@@ -138,7 +138,7 @@ namespace WpfApp1
 
 
 
-            //Init_DataGrid_tab3();
+            //Ellipse_Array[63].Visibility = Visibility.Collapsed;
         }
 
         public void Init_LargeIcon_ListView(System.Windows.Forms.ListView listView_tt)
