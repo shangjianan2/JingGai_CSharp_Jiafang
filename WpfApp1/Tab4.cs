@@ -96,11 +96,7 @@ namespace WpfApp1
 
             if (temp_DataRow.Count <= 0)//没有相应节点的信息，建立新的节点
             {
-                string InsertCommand_str = "INSERT INTO Table3_JieDian (`id`, `gas type`, `location`, `time of install`, `high to warning`, `low to warning` ) VALUES (\"" + 
-                    BianHao.Text + "\", \"" + JianCeQiTi.Text + "\", \"" + AnZhuangWeiZhi.Text + 
-                    "\", \"" + DateTime.Now.ToString() + "\", \"" + GaoXianBaoJing.Text + "\", \"" + DiXianBaoJing.Text + "\"); ";
-                MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
-                                                  CommandType.Text, InsertCommand_str, null);
+                MessageBox.Show("未在已录入的范围内", "提示");
             }
             else//将已有的节点信息更改
             {
