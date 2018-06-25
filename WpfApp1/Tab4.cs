@@ -54,6 +54,16 @@ namespace WpfApp1
             Update_Information_Jiedian(Convert.ToInt16(BianHao.Text));
         }
 
+        private void PuTongMoShi_Tab4_Button_Click(object sender, RoutedEventArgs e)
+        {
+            tabcontrol.SelectedIndex = 2;
+        }
+
+        private void LieBiaoMoShi_Tab4_Buttton_Click(object sender, RoutedEventArgs e)
+        {
+            tabcontrol.SelectedIndex = 5;
+        }
+
         /// <summary>
         /// 显示编号，检测气体， 安装位置，安装时间，高限报警，低限报警
         /// </summary>

@@ -1832,29 +1832,29 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Button x:Name="LieBiao_Tab4_Buttton" 
-                                    Grid.Column="0" Grid.Row="0" 
-                                    Click="LieBiao_Tab2_Buttton_Click">
+                            <Button x:Name="DiTuMoShi_Tab4_Buttton" 
+                                    Grid.Column="0" Grid.Row="0">
                                 <TextBlock Foreground="White">地图模式</TextBlock>
                                 <Button.Background>
                                     <ImageBrush ImageSource="C:\NBIoT\button.png"/>
                                 </Button.Background>
                             </Button>
-                            <Button x:Name="ChaXun_Tab4_Buttton" 
-                                    Grid.Column="1" Grid.Row="0">
+                            <Button x:Name="LieBiaoMoShi_Tab4_Buttton" 
+                                    Grid.Column="1" Grid.Row="0" 
+                                    Click="LieBiaoMoShi_Tab4_Buttton_Click">
                                 <TextBlock Foreground="White">列表模式</TextBlock>
                                 <Button.Background>
                                     <ImageBrush ImageSource="C:\NBIoT\button.png"/>
                                 </Button.Background>
                             </Button>
-                            <Button x:Name="XiTong_Tab4_Buttton" 
+                            <Button x:Name="XinXiBianGeng_Tab4_Buttton" 
                                     Grid.Column="0" Grid.Row="1">
                                 <TextBlock Foreground="White">信息变更</TextBlock>
                                 <Button.Background>
                                     <ImageBrush ImageSource="C:\NBIoT\button.png"/>
                                 </Button.Background>
                             </Button>
-                            <Button x:Name="TuiChu_Tab4_Buttton" 
+                            <Button x:Name="ZengShan_Tab4_Buttton" 
                                     Grid.Column="1" Grid.Row="1" 
                                     Click="TuiChu_Tab4_Buttton_Click">
                                 <TextBlock Foreground="White">增删点位</TextBlock>
@@ -1863,9 +1863,10 @@
                                 </Button.Background>
                             </Button>
 
-                            <Button 
-                                    Grid.Column="0" Grid.Row="2">
-                                <TextBlock Foreground="White">备用</TextBlock>
+                            <Button x:Name="PuTongMoShi_Tab4_Button"
+                                    Grid.Column="0" Grid.Row="2" 
+                                    Click="PuTongMoShi_Tab4_Button_Click">
+                                <TextBlock Foreground="White">普通模式</TextBlock>
                                 <Button.Background>
                                     <ImageBrush ImageSource="C:\NBIoT\button.png"/>
                                 </Button.Background>
@@ -2064,6 +2065,265 @@
                                Foreground="Blue">
                         燃气管道井远程无线监控系统(管理员)
                     </TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="Tab5" Height="0" Background="Black">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <wfi:WindowsFormsHost Grid.Column="0" Grid.ColumnSpan="3">
+                            <wf:ListView x:Name="listview_largeicon_tab5" 
+                         MouseMove="listview_largeicon_MouseMove_tab5"/>
+                        </wfi:WindowsFormsHost>
+
+                        <Grid Grid.Column="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="DiTuMoShi_Tab5_Buttton" 
+                                    Grid.Column="0" Grid.Row="0" 
+                                    Click="DiTuMoShi_Tab5_Buttton_Click">
+                                <TextBlock Foreground="White">地图模式</TextBlock>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                </Button.Background>
+                            </Button>
+                            <Button x:Name="LieBianMoShi_Tab5_Buttton" 
+                                    Grid.Column="1" Grid.Row="0">
+                                <TextBlock Foreground="White">列表模式</TextBlock>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                </Button.Background>
+                            </Button>
+                            <Button x:Name="XinXiBianGeng_Tab5_Buttton" 
+                                    Grid.Column="0" Grid.Row="1">
+                                <TextBlock Foreground="White">信息变更</TextBlock>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                </Button.Background>
+                            </Button>
+                            <Button x:Name="ZengShan_Tab5_Buttton" 
+                                    Grid.Column="1" Grid.Row="1" 
+                                    Click="TuiChu_Tab4_Buttton_Click">
+                                <TextBlock Foreground="White">增删点位</TextBlock>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                </Button.Background>
+                            </Button>
+
+                            <Button 
+                                    Grid.Column="0" Grid.Row="2">
+                                <TextBlock Foreground="White">备用</TextBlock>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                </Button.Background>
+                            </Button>
+                            <Button 
+                                    Grid.Column="1" Grid.Row="2">
+                                <TextBlock Foreground="White">备用</TextBlock>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                </Button.Background>
+                            </Button>
+
+                            <Rectangle Grid.Row="3" 
+                                       Grid.Column="0" Grid.ColumnSpan="2" 
+                                       Fill="White"/>
+
+                            <Grid Grid.Row="3" 
+                                  Grid.Column="0" Grid.ColumnSpan="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           FontSize="15" 
+                                           Foreground="Blue">编号</TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="1" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           FontSize="15" 
+                                           Foreground="Blue">检测气体</TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="2" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           FontSize="15" 
+                                           Foreground="Blue">安装位置</TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="3" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           FontSize="15" 
+                                           Foreground="Blue">安装时间</TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="4" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           FontSize="15" 
+                                           Foreground="Blue">高限报警</TextBlock>
+
+                                <TextBlock Grid.Column="0" Grid.Row="5" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           FontSize="15" 
+                                           Foreground="Blue">低限报警</TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="6" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           FontSize="15" 
+                                           Foreground="Blue">文本</TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="7" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           FontSize="15" 
+                                           Foreground="Blue">文本</TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="8" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           FontSize="15" 
+                                           Foreground="Blue">文本</TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="9" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           FontSize="15" 
+                                           Foreground="Blue">文本</TextBlock>
+
+                                <TextBox x:Name="BianHao_tab5" 
+                                         KeyUp="BianHao_KeyUp"
+                                         Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" 
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center" 
+                                         FontSize="15" 
+                                         Foreground="Blue">
+
+                                </TextBox>
+
+                                <TextBox x:Name="JianCeQiTi_tab5" 
+                                         Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" 
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center" 
+                                         FontSize="15" 
+                                         Foreground="Blue">
+
+                                </TextBox>
+
+                                <TextBox x:Name="AnZhuangWeiZhi_tab5" 
+                                         Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" 
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center" 
+                                         FontSize="15" 
+                                         Foreground="Blue">
+
+                                </TextBox>
+
+                                <TextBox x:Name="AnZhuangShiJina_tab5" 
+                                         Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" 
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center" 
+                                         FontSize="15" 
+                                         Foreground="Blue">
+
+                                </TextBox>
+
+                                <TextBox x:Name="GaoXianBaoJing_tab5" 
+                                         Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" 
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center" 
+                                         FontSize="15" 
+                                         Foreground="Blue">
+
+                                </TextBox>
+
+                                <TextBox x:Name="DiXianBaoJing_tab5" 
+                                         Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" 
+                                         HorizontalAlignment="Center" 
+                                         VerticalAlignment="Center" 
+                                         FontSize="15" 
+                                         Foreground="Blue">
+
+                                </TextBox>
+
+                                <Grid Grid.Row="10" Grid.ColumnSpan="3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="QueRenBianGeng_Button_tab5" 
+                                            Click="QueRenBianGeng_Button_Click"
+                                            Grid.Column="0">
+                                        <TextBlock Foreground="White">确认变更</TextBlock>
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                    <Button 
+                                        Grid.Column="1">
+                                        <TextBlock Foreground="White">增加变更</TextBlock>
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                    <Button 
+                                        Grid.Column="2">
+                                        <TextBlock Foreground="White">删除点位</TextBlock>
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                </Grid>
+
+                            </Grid>
+
+                        </Grid>
+
+
+                    </Grid>                    
+
+                    <Rectangle Fill="LightBlue" Grid.Row="0" Grid.RowSpan="1"/>
+                    <TextBlock Grid.Row="0" Grid.RowSpan="1" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center" 
+                               FontSize="40" 
+                               Foreground="Blue">
+                        燃气管道井远程无线监控系统
+                    </TextBlock>
+                    
+                    
                 </Grid>
             </TabItem>
         </TabControl>
