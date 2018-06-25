@@ -1966,7 +1966,9 @@
                                            FontSize="15" 
                                            Foreground="Blue">文本</TextBlock>
 
-                                <TextBox Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" 
+                                <TextBox x:Name="BianHao" 
+                                         KeyUp="BianHao_KeyUp"
+                                         Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" 
                                          HorizontalAlignment="Center" 
                                          VerticalAlignment="Center" 
                                          FontSize="15" 

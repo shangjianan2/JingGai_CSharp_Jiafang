@@ -41,7 +41,13 @@ namespace WpfApp1
         Ellipse[] Ellipse_Array_tab4 = new Ellipse[size_chanel];
 
 
-
+        private void BianHao_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                System.Diagnostics.Debug.WriteLine(BianHao.Text);
+            }
+        }
 
 
         public void jiedian_AutoZoom_tab4(ref Ellipse[] ellipse_array, int index)//从零开始索引
