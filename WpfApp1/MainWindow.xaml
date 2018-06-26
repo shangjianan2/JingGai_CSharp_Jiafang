@@ -2044,8 +2044,9 @@
                                             <ImageBrush ImageSource="C:\NBIoT\button.png"/>
                                         </Button.Background>
                                     </Button>
-                                    <Button 
-                                        Grid.Column="2">
+                                    <Button x:Name="ShanChuDianWei" 
+                                            Click="ShanChuDianWei_Click" 
+                                            Grid.Column="2">
                                         <TextBlock Foreground="White">删除点位</TextBlock>
                                         <Button.Background>
                                             <ImageBrush ImageSource="C:\NBIoT\button.png"/>

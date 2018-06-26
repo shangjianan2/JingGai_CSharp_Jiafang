@@ -40,6 +40,15 @@ namespace WpfApp1
         ScaleTransform[] scaleTransform_Array_tab4 = new ScaleTransform[size_chanel];
         Ellipse[] Ellipse_Array_tab4 = new Ellipse[size_chanel];
 
+        private void ShanChuDianWei_Click(object sender, RoutedEventArgs e)
+        {
+            string command_str = "delete from table3_jiedian where id=" + BianHao.Text + ";";
+            MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                                  CommandType.Text, command_str, null);
+
+            Init_Jiedian_DisplayOrNot();//刷新所有节点，包括地图模式和列表模式
+        }
+
         private void ZengJiaBianGeng_Button_Click(object sender, RoutedEventArgs e)
         {
             //检测数据库中是否已经存在此节点
