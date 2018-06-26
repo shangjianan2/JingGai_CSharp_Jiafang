@@ -133,8 +133,8 @@ namespace WpfApp1
 
 
 
-            Init_LargeIcon_ListView(listview_largeicon);
-            Init_LargeIcon_ListView(listview_largeicon_tab5);
+            //Init_LargeIcon_ListView(listview_largeicon);
+            //Init_LargeIcon_ListView(listview_largeicon_tab5);
 
 
 
@@ -151,6 +151,9 @@ namespace WpfApp1
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
             HideOrShow_jiedian_map(temp_DataRow, ref Ellipse_Array);
+            HideOrShow_jiedian_map(temp_DataRow, ref Ellipse_Array_tab4);
+            HideOrShow_jiedian_liebiao(temp_DataRow, listview_largeicon);
+            HideOrShow_jiedian_liebiao(temp_DataRow, listview_largeicon_tab5);
         }
 
 
@@ -167,19 +170,39 @@ namespace WpfApp1
             {
                 mem.Visibility = Visibility.Collapsed;
             }
-            System.Diagnostics.Debug.WriteLine("{0}", temp_DataRow_tt.Count);
             for(int i = 0; i < temp_DataRow_tt.Count; i++)
             {
                 Ellipse_Array_tt[Convert.ToInt16(temp_DataRow_tt[i][0]) - 1].Visibility = Visibility.Visible;
             }
         }
 
-        public void HideOrShow_jiedian_liebiao(DataRowCollection temp_DataRow_tt)
+        /// <summary>
+        /// 根据数据库中的实际情况在列表模式下显示相应的节点
+        /// </summary>
+        /// <param name="temp_DataRow_tt">
+        /// 从数据库中获取的集合
+        /// </param>
+        public void HideOrShow_jiedian_liebiao(DataRowCollection temp_DataRow_tt, System.Windows.Forms.ListView listView_tt)
         {
-            for(int i = 0; i < size_chanel; i++)
-            {
+            listView_tt.View = View.LargeIcon;
 
+            listView_tt.BackColor = System.Drawing.Color.FromArgb(255, 237, 237, 237);
+
+            listView_tt.LargeImageList = imageListLarge;
+
+            listView_tt.BeginUpdate();
+
+            for(int i = 0; i < temp_DataRow_tt.Count; i++)
+            {
+                System.Windows.Forms.ListViewItem lvi = new System.Windows.Forms.ListViewItem();
+
+                lvi.ImageIndex = Convert.ToInt16(temp_DataRow_tt[i][0]);
+                lvi.Text = lvi.ImageIndex.ToString() + "#";
+                listView_tt.Items.Add(lvi);
             }
+
+
+            listView_tt.EndUpdate();
         }
 
         public void Init_LargeIcon_ListView(System.Windows.Forms.ListView listView_tt)
