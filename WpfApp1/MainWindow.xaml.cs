@@ -150,6 +150,13 @@ namespace WpfApp1
                                                   CommandType.Text, command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
+            clear_img_canvas_tab4();
+            clear_scale_tab4();
+            clear_tlt_tab4();
+            clear_img_canvas();
+            clear_scale();
+            clear_tlt();
+
             HideOrShow_jiedian_map(temp_DataRow, ref Ellipse_Array);
             HideOrShow_jiedian_map(temp_DataRow, ref Ellipse_Array_tab4);
             HideOrShow_jiedian_liebiao(temp_DataRow, listview_largeicon);
@@ -174,6 +181,7 @@ namespace WpfApp1
             {
                 int index_tempj = Convert.ToInt16(temp_DataRow_tt[i][0]) - 1;
                 Ellipse_Array_tt[index_tempj].Visibility = Visibility.Visible;
+
                 change_XY_rectangle(Ellipse_Array_tt[index_tempj], 
                                     Convert.ToDouble(temp_DataRow_tt[i][1]), 
                                     Convert.ToDouble(temp_DataRow_tt[i][2]));
