@@ -145,7 +145,7 @@ namespace WpfApp1
         public void Init_Jiedian_DisplayOrNot()
         {
             DataSet dataSet_temp = new DataSet();
-            string command_str = "select id from " + ShuJuKu.Table3_JieDian;
+            string command_str = "select id, xmin, ymin from " + ShuJuKu.Table3_JieDian;
             dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
@@ -158,7 +158,7 @@ namespace WpfApp1
 
 
         /// <summary>
-        /// 无论数据库中的数据是否是顺序排列，都会检测出哪些节点应该显示
+        /// 无论数据库中的数据是否是顺序排列，都会检测出哪些节点应该显示，并按照数据库中的信息调整节点位置
         /// </summary>
         /// <param name="temp_DataRow_tt">
         /// 从数据库中获取的集合
@@ -172,7 +172,11 @@ namespace WpfApp1
             }
             for(int i = 0; i < temp_DataRow_tt.Count; i++)
             {
-                Ellipse_Array_tt[Convert.ToInt16(temp_DataRow_tt[i][0]) - 1].Visibility = Visibility.Visible;
+                int index_tempj = Convert.ToInt16(temp_DataRow_tt[i][0]) - 1;
+                Ellipse_Array_tt[index_tempj].Visibility = Visibility.Visible;
+                change_XY_rectangle(Ellipse_Array_tt[index_tempj], 
+                                    Convert.ToInt16(temp_DataRow_tt[i][1]), 
+                                    Convert.ToInt16(temp_DataRow_tt[i][2]));
             }
         }
 
