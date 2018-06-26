@@ -2036,8 +2036,9 @@
                                             <ImageBrush ImageSource="C:\NBIoT\button.png"/>
                                         </Button.Background>
                                     </Button>
-                                    <Button 
-                                        Grid.Column="1">
+                                    <Button x:Name="ZengJiaBianGeng_Button" 
+                                            Click="ZengJiaBianGeng_Button_Click"
+                                            Grid.Column="1">
                                         <TextBlock Foreground="White">增加变更</TextBlock>
                                         <Button.Background>
                                             <ImageBrush ImageSource="C:\NBIoT\button.png"/>

@@ -40,6 +40,37 @@ namespace WpfApp1
         ScaleTransform[] scaleTransform_Array_tab4 = new ScaleTransform[size_chanel];
         Ellipse[] Ellipse_Array_tab4 = new Ellipse[size_chanel];
 
+        private void ZengJiaBianGeng_Button_Click(object sender, RoutedEventArgs e)
+        {
+            //检测数据库中是否已经存在此节点
+            DataSet dataSet_temp = new DataSet();
+            string exist_str = "select `id` from " + ShuJuKu.Table3_JieDian;
+            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                                  CommandType.Text, exist_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+            for(int i = 0; i < temp_DataRow.Count; i++)
+            {
+                if(Convert.ToInt16(temp_DataRow[i][0]) == Convert.ToInt16(BianHao.Text))
+                {
+                    return;//如果数据库中已经有这个节点的id的时候，直接跳出
+                }
+            }
+
+            //能运行到这里说明这个节点使个新的，然后将新的数据输入到数据库
+            string command_str = "INSERT INTO " + ShuJuKu.Table3_JieDian + " (`id`, `gas type`, `location`, `time of install`, `high to warning`, `low to warning` ) VALUES ( \"" + 
+                BianHao.Text + "\",  \"" + JianCeQiTi.Text + "\", \"" + AnZhuangWeiZhi.Text + 
+                "\", \"" + AnZhuangShiJina.Text + "\", \"" + GaoXianBaoJing.Text + "\", \"" + DiXianBaoJing.Text + "\");";
+            MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                                  CommandType.Text, command_str, null);
+
+            //在管理员地图界面和普通地图界面中显示新增节点，初始节点位置为右上角
+            Ellipse_Array[Convert.ToInt16(BianHao.Text)].Visibility = Visibility.Visible;
+            Ellipse_Array_tab4[Convert.ToInt16(BianHao.Text)].Visibility = Visibility.Visible;
+
+            //根据当前新增节点的坐标更新数据库中的数据
+            Init_Jiedian_DisplayOrNot();//刷新所有节点，包括地图模式和列表模式
+            //Update_Information_Jiedian(Ellipse_Array_tab4, Convert.ToInt16(BianHao.Text));
+        }
 
         private void BianHao_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
