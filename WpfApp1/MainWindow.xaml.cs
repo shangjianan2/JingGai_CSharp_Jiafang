@@ -204,7 +204,9 @@ namespace WpfApp1
 
             listView_tt.BeginUpdate();
 
-            for(int i = 0; i < temp_DataRow_tt.Count; i++)
+            listView_tt.Items.Clear();
+
+            for (int i = 0; i < temp_DataRow_tt.Count; i++)
             {
                 System.Windows.Forms.ListViewItem lvi = new System.Windows.Forms.ListViewItem();
 
