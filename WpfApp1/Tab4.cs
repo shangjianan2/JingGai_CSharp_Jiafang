@@ -46,6 +46,8 @@ namespace WpfApp1
             if(e.Key == Key.Enter)
             {
                 Show_Information_Jiedian(Convert.ToInt16(BianHao.Text));
+                jiedian_AutoMove_tab4(ref Ellipse_Array_tab4, Convert.ToInt16(BianHao.Text));
+                jiedian_AutoZoom_tab4(ref Ellipse_Array_tab4, Convert.ToInt16(BianHao.Text));
             }
         }
 
@@ -177,6 +179,7 @@ namespace WpfApp1
             }
         }
 
+        //这个只是用于测试，并无实际作用
         private void AutoZoom_Click_tab4(object sender, RoutedEventArgs e)
         {
             jiedian_AutoMove_tab4(ref Ellipse_Array_tab4, 0);
