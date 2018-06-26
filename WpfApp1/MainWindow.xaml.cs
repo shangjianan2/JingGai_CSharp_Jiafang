@@ -175,8 +175,8 @@ namespace WpfApp1
                 int index_tempj = Convert.ToInt16(temp_DataRow_tt[i][0]) - 1;
                 Ellipse_Array_tt[index_tempj].Visibility = Visibility.Visible;
                 change_XY_rectangle(Ellipse_Array_tt[index_tempj], 
-                                    Convert.ToInt16(temp_DataRow_tt[i][1]), 
-                                    Convert.ToInt16(temp_DataRow_tt[i][2]));
+                                    Convert.ToDouble(temp_DataRow_tt[i][1]), 
+                                    Convert.ToDouble(temp_DataRow_tt[i][2]));
             }
         }
 

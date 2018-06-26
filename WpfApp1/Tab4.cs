@@ -46,14 +46,15 @@ namespace WpfApp1
             if(e.Key == Key.Enter)
             {
                 Show_Information_Jiedian(Convert.ToInt16(BianHao.Text));
-                jiedian_AutoMove_tab4(ref Ellipse_Array_tab4, Convert.ToInt16(BianHao.Text));
-                jiedian_AutoZoom_tab4(ref Ellipse_Array_tab4, Convert.ToInt16(BianHao.Text));
+                jiedian_AutoMove_tab4(ref Ellipse_Array_tab4, Convert.ToInt16(BianHao.Text) - 1);
+                jiedian_AutoZoom_tab4(ref Ellipse_Array_tab4, Convert.ToInt16(BianHao.Text) - 1);
             }
         }
 
         private void QueRenBianGeng_Button_Click(object sender, RoutedEventArgs e)
         {
-            Update_Information_Jiedian(Convert.ToInt16(BianHao.Text));
+            Update_Information_Jiedian(Ellipse_Array_tab4, Convert.ToInt16(BianHao.Text));
+            Init_Jiedian_DisplayOrNot();//刷新所有节点
         }
 
         private void PuTongMoShi_Tab4_Button_Click(object sender, RoutedEventArgs e)
@@ -98,7 +99,7 @@ namespace WpfApp1
         /// <summary>
         /// 更改或新增节点信息。编号，检测气体， 安装位置，安装时间，高限报警，低限报警
         /// </summary>
-        public void Update_Information_Jiedian(int index)
+        public void Update_Information_Jiedian(Ellipse[] Ellipse_Array_tt, int index)
         {
             DataSet dataSet_temp = new DataSet();
             string command_str = "select * from " + ShuJuKu.Table3_JieDian + " where `id`=" + index.ToString();
@@ -112,9 +113,11 @@ namespace WpfApp1
             }
             else//将已有的节点信息更改
             {
-                string UpdataCommand_str = "UPDATE Table3_JieDian SET `gas type` = '" + JianCeQiTi.Text + 
-                    "', location = '" + AnZhuangWeiZhi.Text + "', `time of install` = '" + AnZhuangShiJina.Text + 
-                    "', `high to warning` = '" + GaoXianBaoJing.Text + "', `low to warning` = '" + DiXianBaoJing.Text + 
+                Point point_temp = Ellipse_Array_tt[index - 1].TranslatePoint(new Point(0, 0), img_tab4);
+                string UpdataCommand_str = "UPDATE Table3_JieDian SET `gas type` = '" + JianCeQiTi.Text +
+                    "', location = '" + AnZhuangWeiZhi.Text + "', `time of install` = '" + AnZhuangShiJina.Text +
+                    "', `high to warning` = '" + GaoXianBaoJing.Text + "', `low to warning` = '" + DiXianBaoJing.Text +
+                    "', `xmin` = '" + point_temp.X.ToString() + "', `ymin` = '" + point_temp.Y.ToString() +
                     "' WHERE id = " + index;
                 MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, UpdataCommand_str, null);
