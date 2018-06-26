@@ -139,6 +139,47 @@ namespace WpfApp1
 
 
             //Ellipse_Array[63].Visibility = Visibility.Collapsed;
+            Init_Jiedian_DisplayOrNot();
+        }
+
+        public void Init_Jiedian_DisplayOrNot()
+        {
+            DataSet dataSet_temp = new DataSet();
+            string command_str = "select id from " + ShuJuKu.Table3_JieDian;
+            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                                  CommandType.Text, command_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+
+            HideOrShow_jiedian_map(temp_DataRow, ref Ellipse_Array);
+        }
+
+
+        /// <summary>
+        /// 无论数据库中的数据是否是顺序排列，都会检测出哪些节点应该显示
+        /// </summary>
+        /// <param name="temp_DataRow_tt">
+        /// 从数据库中获取的集合
+        /// </param>
+        public void HideOrShow_jiedian_map(DataRowCollection temp_DataRow_tt, ref Ellipse[] Ellipse_Array_tt)
+        {
+            //将所有节点隐藏
+            foreach (Ellipse mem in Ellipse_Array_tt)
+            {
+                mem.Visibility = Visibility.Collapsed;
+            }
+            System.Diagnostics.Debug.WriteLine("{0}", temp_DataRow_tt.Count);
+            for(int i = 0; i < temp_DataRow_tt.Count; i++)
+            {
+                Ellipse_Array_tt[Convert.ToInt16(temp_DataRow_tt[i][0]) - 1].Visibility = Visibility.Visible;
+            }
+        }
+
+        public void HideOrShow_jiedian_liebiao(DataRowCollection temp_DataRow_tt)
+        {
+            for(int i = 0; i < size_chanel; i++)
+            {
+
+            }
         }
 
         public void Init_LargeIcon_ListView(System.Windows.Forms.ListView listView_tt)
