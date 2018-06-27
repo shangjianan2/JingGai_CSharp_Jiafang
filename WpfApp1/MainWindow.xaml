@@ -6,10 +6,127 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="1000"
-        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" 
+        xmlns:sys="clr-namespace:System;assembly=mscorlib" 
         xmlns:wfi ="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration">
 
     <Window.Resources>
+        <SolidColorBrush x:Key="TextSelectionBrush" Color="#8F8787"></SolidColorBrush>
+        <FontFamily x:Key="FontFamily" >Microsoft YaHei</FontFamily>
+        <sys:Double x:Key="FontSize">13</sys:Double>
+        <SolidColorBrush x:Key="TextBackground" Color="White"></SolidColorBrush>
+        <SolidColorBrush x:Key="TextForeground" Color="Blue"></SolidColorBrush>
+        <SolidColorBrush x:Key="ControlBorderBrush" Color="Blue"></SolidColorBrush>
+        <SolidColorBrush x:Key="FocusBorderBrush" Color="#EBCECE"></SolidColorBrush>
+        <SolidColorBrush x:Key="MouseOverBorderBrush" Color="#F6D1D1"></SolidColorBrush>
+        <sys:Double x:Key="WatermarkOpacity">0.4</sys:Double>
+        <sys:Double x:Key="DisableOpacity">0.5</sys:Double>
+        <sys:Double x:Key="ReadonlyOpacity">0.88</sys:Double>
+        <SolidColorBrush x:Key="TextLabelBackground" Color="White"></SolidColorBrush>
+        <!--TextBox默认样式-->
+        <Style TargetType="{x:Type TextBox}" x:Key="DefaultTextBox">
+            <Setter Property="ContextMenu" Value="{DynamicResource TextBoxContextMenu}" />
+            <Setter Property="SelectionBrush" Value="{StaticResource TextSelectionBrush}" />
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="MinHeight" Value="26" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Background" Value="{StaticResource TextBackground}" />
+            <Setter Property="Foreground" Value="{StaticResource TextForeground}" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}" />
+            <Setter Property="local:ControlAttachProperty.FocusBorderBrush" Value="{StaticResource FocusBorderBrush}" />
+            <Setter Property="local:ControlAttachProperty.MouseOverBorderBrush" Value="{StaticResource MouseOverBorderBrush}" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <!-- change SnapsToDevicePixels to True to view a better border and validation error -->
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <!--英 ['kærət]  美 ['kærət]  插入符号-->
+            <Setter Property="CaretBrush" Value="{StaticResource TextForeground}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid x:Name="PART_Root">
+                            <Border x:Name="Bg" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                CornerRadius="{TemplateBinding local:ControlAttachProperty.CornerRadius}"
+                                BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" />
+                            <Grid x:Name="PART_InnerGrid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition  Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <!--Label区域-->
+                                <ContentControl x:Name="Label" Margin="1" Template="{TemplateBinding local:ControlAttachProperty.LabelTemplate}"
+                                            Content="{TemplateBinding local:ControlAttachProperty.Label}"/>
+                                <!--内容区域-->
+                                <ScrollViewer x:Name="PART_ContentHost" BorderThickness="0" Grid.Column="1" IsTabStop="False" Margin="2"
+                                          VerticalAlignment="Stretch" Background="{x:Null}" />
+                                <!--水印-->
+                                <TextBlock x:Name="Message"  Padding="{TemplateBinding Padding}" Visibility="Collapsed"
+                                       Text="{TemplateBinding local:ControlAttachProperty.Watermark}" Grid.Column="1"
+                                       Foreground="{TemplateBinding Foreground}" IsHitTestVisible="False" Opacity="{StaticResource WatermarkOpacity}"
+                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="5,2,5,2" />
+                                <!--附加内容区域-->
+                                <Border x:Name="PART_AttachContent" Grid.Column="2" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                    <ContentControl VerticalAlignment="Center" VerticalContentAlignment="Center" Template="{TemplateBinding local:ControlAttachProperty.AttachContent}" />
+                                </Border>
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <!--显示水印-->
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Text}" Value="">
+                                <Setter TargetName="Message" Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="{Binding Path=(local:ControlAttachProperty.MouseOverBorderBrush),RelativeSource={RelativeSource Self}}"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter  Property="BorderBrush" Value="{Binding Path=(local:ControlAttachProperty.FocusBorderBrush),RelativeSource={RelativeSource Self}}"/>
+                            </Trigger>
+                            <!--不可用-->
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="PART_Root" Property="Opacity" Value="{StaticResource DisableOpacity}" />
+                            </Trigger>
+                            <!--只读时，禁用PART_AttachContent-->
+                            <Trigger Property="IsReadOnly" Value="True">
+                                <Setter TargetName="PART_AttachContent" Property="IsEnabled" Value="False" />
+                                <Setter TargetName="Bg" Property="Opacity" Value="{StaticResource ReadonlyOpacity}" />
+                                <Setter TargetName="PART_ContentHost" Property="Opacity" Value="{StaticResource ReadonlyOpacity}" />
+                                <Setter TargetName="Label" Property="Opacity" Value="{StaticResource ReadonlyOpacity}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--TextBox包含附加属性Label的样式-->
+        <Style TargetType="{x:Type TextBox}" x:Key="LabelTextBox" BasedOn="{StaticResource DefaultTextBox}">
+            <Setter Property="local:ControlAttachProperty.LabelTemplate" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="ContentControl">
+                        <Border Width="60" Background="{StaticResource TextLabelBackground}">
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="3" Text="{TemplateBinding Content}"></TextBlock>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <ObjectDataProvider x:Key="JieDians"
                             ObjectType="{x:Type local:JieDians}"/>
 
@@ -1969,11 +2086,9 @@
 
                                 <TextBox x:Name="BianHao" 
                                          KeyUp="BianHao_KeyUp"
-                                         Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" 
-                                         HorizontalAlignment="Center" 
-                                         VerticalAlignment="Center" 
-                                         FontSize="15" 
-                                         Foreground="Blue">
+                                         Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Width="Auto"
+                                         local:ControlAttachProperty.Watermark="请输入编号" 
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编号：">
                                     
                                 </TextBox>
 
@@ -2172,11 +2287,11 @@
 
                                     <RowDefinition Height="30"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Grid.Column="0" Grid.Row="0" 
+                                <!--<TextBlock Grid.Column="0" Grid.Row="0" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
                                            FontSize="15" 
-                                           Foreground="Blue">编号</TextBlock>
+                                           Foreground="Blue">编号</TextBlock>-->
                                 <TextBlock Grid.Column="0" Grid.Row="1" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
@@ -2226,11 +2341,9 @@
 
                                 <TextBox x:Name="BianHao_tab5" 
                                          KeyUp="BianHao_KeyUp"
-                                         Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" 
-                                         HorizontalAlignment="Center" 
-                                         VerticalAlignment="Center" 
-                                         FontSize="15" 
-                                         Foreground="Blue">
+                                         Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Width="Auto"
+                                         local:ControlAttachProperty.Watermark="请输入编号" 
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编号：">
 
                                 </TextBox>
 

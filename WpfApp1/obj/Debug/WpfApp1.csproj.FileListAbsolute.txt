@@ -13,4 +13,3 @@ E:\biancheng\mysql\0619\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileInpu
 E:\biancheng\mysql\0619\WpfApp1\WpfApp1\obj\Debug\WpfApp1.exe
 E:\biancheng\mysql\0619\WpfApp1\WpfApp1\obj\Debug\WpfApp1.pdb
 E:\biancheng\mysql\0619\WpfApp1\WpfApp1\obj\Debug\GeneratedInternalTypeHelper.g.cs
-E:\biancheng\mysql\0619\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csprojResolveAssemblyReference.cache

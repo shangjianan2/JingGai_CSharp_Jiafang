@@ -61,8 +61,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ControlAttachProperty.cs" />
+    <Compile Include="FButton.cs" />
     <Compile Include="IP_PeiZhiWenJian_JieXi.cs" />
     <Compile Include="Map_PeiZhiWenJian_JieXi.cs" />
+    <Compile Include="multicombobox.cs" />
     <Compile Include="MySQL_Function.cs" />
     <Compile Include="MySQL_PeiZhiWenJian_JieXi.cs" />
     <Compile Include="ShuJuJieXi.cs" />
