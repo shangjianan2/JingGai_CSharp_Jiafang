@@ -73,6 +73,7 @@
     <Compile Include="Tab3.cs" />
     <Compile Include="Tab4.cs" />
     <Compile Include="Tab5.cs" />
+    <Compile Include="Tab6.cs" />
     <Compile Include="Test_Enviroment.cs" />
     <Compile Include="UDP_Thread.cs" />
     <Page Include="MainWindow.xaml">

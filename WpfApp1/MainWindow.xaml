@@ -130,6 +130,9 @@
         <ObjectDataProvider x:Key="JieDians"
                             ObjectType="{x:Type local:JieDians}"/>
 
+        <ObjectDataProvider x:Key="JieDians_tab6"
+                            ObjectType="{x:Type local:JieDians}"/>
+
         <ContextMenu x:Key="ContextMenu">
             <MenuItem Name="map_Reset" Click="map_Reset_Click" Header="恢复比例"/>
             <MenuItem Name="AutoZoom" Click="AutoZoom_Click" Header="自动放大"/>
@@ -2448,7 +2451,7 @@
                         </Grid.ColumnDefinitions>
 
                         <DataGrid x:Name="DataGrid_tab6" Grid.Column="0" Grid.ColumnSpan="3" 
-                                          ItemsSource="{Binding Source={StaticResource JieDians}}" 
+                                          ItemsSource="{Binding Source={StaticResource JieDians_tab6}}" 
                                           IsReadOnly="true">
 
                         </DataGrid>
@@ -2473,20 +2476,20 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Button Content="按时间查询" Grid.Column="0" Grid.ColumnSpan="2"/>
-                            <Button Content="查询" Grid.Column="2"/>
-                            <TextBox 
+                            <Button x:Name="ChaXun1_tab6" Click="ChaXun1_tab6_Click" Content="查询" Grid.Column="2"/>
+                            <TextBox x:Name="QiShi1_TextBox_tab6"
                                          Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入起始时间" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="起始："/>
 
-                            <TextBox 
+                            <TextBox x:Name="ZhongZhi1_TextBox_tab6"
                                          Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入终止时间" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="终止："/>
 
 
                             <Button Content="按时间查询" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
-                            <Button Content="查询" Grid.Row="3" Grid.Column="2"/>
+                            <Button x:Name="ChaXun2_tab6" Click="ChaXun2_tab6_Click" Content="查询" Grid.Row="3" Grid.Column="2"/>
                             <TextBox 
                                          Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入节点编号" 
@@ -2494,7 +2497,7 @@
                             
 
                             <Button Content="按时间查询" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
-                            <Button Content="查询" Grid.Row="5" Grid.Column="2"/>
+                            <Button x:Name="ChaXun3_tab6" Click="ChaXun3_tab6_Click" Content="查询" Grid.Row="5" Grid.Column="2"/>
                             <TextBox 
                                          Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入节点编号" 

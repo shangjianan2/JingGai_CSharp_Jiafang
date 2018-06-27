@@ -85,6 +85,7 @@ namespace WpfApp1
         private void ChaXun_Tab3_Button_Click(object sender, RoutedEventArgs e)
         {
             tabcontrol.SelectedIndex = 6;
+            Display_CurrentTime_on_TextBox();
         }
 
     }
