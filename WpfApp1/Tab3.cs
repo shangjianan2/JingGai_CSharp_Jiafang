@@ -81,8 +81,14 @@ namespace WpfApp1
                 toolTip_tab3.Hide(listview_largeicon);
             }
         }
+
+        private void ChaXun_Tab3_Button_Click(object sender, RoutedEventArgs e)
+        {
+            tabcontrol.SelectedIndex = 6;
+        }
+
     }
-    
+
     //public class JieDians_tab3 :
     //        ObservableCollection<jiedian>
     //{
