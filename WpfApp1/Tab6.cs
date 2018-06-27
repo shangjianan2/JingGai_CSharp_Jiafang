@@ -49,8 +49,9 @@ namespace WpfApp1
 
             //想DataGrid中添加数据
             os_tab6 = (ObservableCollection<jiedian>)DataGrid_tab6.ItemsSource;
+            os_tab6.Clear();//清除上次的数据
 
-            for(int i = 0; i < temp_DataRow.Count; i++)
+            for (int i = 0; i < temp_DataRow.Count; i++)
             {
                 os_tab6.Add(new jiedian(temp_DataRow[i][0].ToString(), temp_DataRow[i][1].ToString(), temp_DataRow[i][2].ToString(),
                                    temp_DataRow[i][3].ToString(), temp_DataRow[i][4].ToString(), temp_DataRow[i][5].ToString(),
@@ -61,13 +62,26 @@ namespace WpfApp1
 
         private void ChaXun2_tab6_Click(object sender, RoutedEventArgs e)
         {
-            os_tab6 = (ObservableCollection<jiedian>)DataGrid_tab6.ItemsSource;
-            DataSet dataSet_temp = new DataSet();
-            string command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " order by date desc limit " + size_DataGrid_Display.ToString();
-            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+            string[] temp_str_begin_array = Split_Time(QiShi1_TextBox_tab6.Text);
+            string[] temp_str_end_array = Split_Time(ZhongZhi1_TextBox_tab6.Text);
+
+            string temp_str_begin = temp_str_begin_array[0] + " " + temp_str_begin_array[1] + " " + temp_str_begin_array[2] + " " + temp_str_begin_array[3];
+            string temp_str_end = temp_str_end_array[0] + " " + temp_str_end_array[1] + " " + temp_str_end_array[2] + " " + temp_str_end_array[3];
+
+            DateTime date_begin = DateTime.ParseExact(temp_str_begin, "yyyy M d H", null);
+            DateTime date_end = DateTime.ParseExact(temp_str_end, "yyyy M d H", null);
+
+            //添加列
+            string dataSet_temp_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `id`=\"" + BianHaoChaXun1_tab6.Text + "\" order by `Date` desc";
+            //string dataSet_temp_str = "select * from test5 order by `Date` desc";
+            DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, dataSet_temp_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
-            for (int i = 0; i < size_DataGrid_Display; i++)
+            //想DataGrid中添加数据
+            os_tab6 = (ObservableCollection<jiedian>)DataGrid_tab6.ItemsSource;
+            os_tab6.Clear();//清除上次的数据
+
+            for (int i = 0; i < temp_DataRow.Count; i++)
             {
                 os_tab6.Add(new jiedian(temp_DataRow[i][0].ToString(), temp_DataRow[i][1].ToString(), temp_DataRow[i][2].ToString(),
                                    temp_DataRow[i][3].ToString(), temp_DataRow[i][4].ToString(), temp_DataRow[i][5].ToString(),
@@ -78,7 +92,32 @@ namespace WpfApp1
 
         private void ChaXun3_tab6_Click(object sender, RoutedEventArgs e)
         {
+            string[] temp_str_begin_array = Split_Time(QiShi2_TextBox_tab6.Text);
+            string[] temp_str_end_array = Split_Time(ZhongZhi2_TextBox_tab6.Text);
 
+            string temp_str_begin = temp_str_begin_array[0] + " " + temp_str_begin_array[1] + " " + temp_str_begin_array[2] + " " + temp_str_begin_array[3];
+            string temp_str_end = temp_str_end_array[0] + " " + temp_str_end_array[1] + " " + temp_str_end_array[2] + " " + temp_str_end_array[3];
+
+            DateTime date_begin = DateTime.ParseExact(temp_str_begin, "yyyy M d H", null);
+            DateTime date_end = DateTime.ParseExact(temp_str_end, "yyyy M d H", null);
+
+            //添加列
+            string dataSet_temp_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" and `id`=\"" +BianHaoChaXun2_tab6.Text + "\" order by `Date` desc";
+            //string dataSet_temp_str = "select * from test5 order by `Date` desc";
+            DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, dataSet_temp_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+
+            //想DataGrid中添加数据
+            os_tab6 = (ObservableCollection<jiedian>)DataGrid_tab6.ItemsSource;
+            os_tab6.Clear();//清除上次的数据
+
+            for (int i = 0; i < temp_DataRow.Count; i++)
+            {
+                os_tab6.Add(new jiedian(temp_DataRow[i][0].ToString(), temp_DataRow[i][1].ToString(), temp_DataRow[i][2].ToString(),
+                                   temp_DataRow[i][3].ToString(), temp_DataRow[i][4].ToString(), temp_DataRow[i][5].ToString(),
+                                   temp_DataRow[i][6].ToString(), temp_DataRow[i][7].ToString(), temp_DataRow[i][8].ToString(),
+                                   temp_DataRow[i][9].ToString(), temp_DataRow[i][10].ToString(), temp_DataRow[i][11].ToString()));
+            }
         }
 
         public void Display_CurrentTime_on_TextBox()
@@ -91,11 +130,13 @@ namespace WpfApp1
             temp_str = temp_str_array[0] + "年" + temp_str_array[1] + "月" + temp_str_array[2] + "日" + temp_str_array[3] + "时";
 
             QiShi1_TextBox_tab6.Text = temp_str;
+            QiShi2_TextBox_tab6.Text = temp_str;
 
             temp_str_array[3] = (Convert.ToInt16(temp_str_array[3]) + 2).ToString();//起始时间为当前时间的前一个小时
             temp_str = temp_str_array[0] + "年" + temp_str_array[1] + "月" + temp_str_array[2] + "日" + temp_str_array[3] + "时";
 
             ZhongZhi1_TextBox_tab6.Text = temp_str;
+            ZhongZhi2_TextBox_tab6.Text = temp_str;
         }
 
         public string[] Split_Time(string time_str)

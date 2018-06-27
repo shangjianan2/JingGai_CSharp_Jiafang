@@ -2490,7 +2490,7 @@
 
                             <Button Content="按时间查询" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
                             <Button x:Name="ChaXun2_tab6" Click="ChaXun2_tab6_Click" Content="查询" Grid.Row="3" Grid.Column="2"/>
-                            <TextBox 
+                            <TextBox x:Name="BianHaoChaXun1_tab6"
                                          Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入节点编号" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编号："/>
@@ -2498,15 +2498,15 @@
 
                             <Button Content="按时间查询" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
                             <Button x:Name="ChaXun3_tab6" Click="ChaXun3_tab6_Click" Content="查询" Grid.Row="5" Grid.Column="2"/>
-                            <TextBox 
+                            <TextBox x:Name="BianHaoChaXun2_tab6"
                                          Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入节点编号" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编号："/>
-                            <TextBox 
+                            <TextBox x:Name="QiShi2_TextBox_tab6"
                                          Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入起始时间" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="起始："/>
-                            <TextBox 
+                            <TextBox x:Name="ZhongZhi2_TextBox_tab6"
                                          Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入终止时间" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="终止："/>
