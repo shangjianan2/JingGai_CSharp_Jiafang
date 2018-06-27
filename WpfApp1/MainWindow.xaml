@@ -13,7 +13,7 @@
     <Window.Resources>
         <SolidColorBrush x:Key="TextSelectionBrush" Color="#8F8787"></SolidColorBrush>
         <FontFamily x:Key="FontFamily" >Microsoft YaHei</FontFamily>
-        <sys:Double x:Key="FontSize">13</sys:Double>
+        <sys:Double x:Key="FontSize">15</sys:Double>
         <SolidColorBrush x:Key="TextBackground" Color="White"></SolidColorBrush>
         <SolidColorBrush x:Key="TextForeground" Color="Blue"></SolidColorBrush>
         <SolidColorBrush x:Key="ControlBorderBrush" Color="Blue"></SolidColorBrush>
@@ -2032,7 +2032,7 @@
 
                                     <RowDefinition Height="30"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Grid.Column="0" Grid.Row="0" 
+                                <!--<TextBlock Grid.Column="0" Grid.Row="0" 
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
                                            FontSize="15" 
@@ -2082,7 +2082,7 @@
                                            HorizontalAlignment="Center" 
                                            VerticalAlignment="Center" 
                                            FontSize="15" 
-                                           Foreground="Blue">文本</TextBlock>
+                                           Foreground="Blue">文本</TextBlock>-->
 
                                 <TextBox x:Name="BianHao" 
                                          KeyUp="BianHao_KeyUp"
@@ -2093,47 +2093,37 @@
                                 </TextBox>
 
                                 <TextBox x:Name="JianCeQiTi" 
-                                         Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" 
-                                         HorizontalAlignment="Center" 
-                                         VerticalAlignment="Center" 
-                                         FontSize="15" 
-                                         Foreground="Blue">
+                                         Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Width="Auto"
+                                         local:ControlAttachProperty.Watermark="请输入气体类型" 
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="气体：">
 
                                 </TextBox>
 
                                 <TextBox x:Name="AnZhuangWeiZhi" 
-                                         Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" 
-                                         HorizontalAlignment="Center" 
-                                         VerticalAlignment="Center" 
-                                         FontSize="15" 
-                                         Foreground="Blue">
+                                         Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Width="Auto"
+                                         local:ControlAttachProperty.Watermark="请输入安装位置" 
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="位置：">
 
                                 </TextBox>
 
                                 <TextBox x:Name="AnZhuangShiJina" 
-                                         Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" 
-                                         HorizontalAlignment="Center" 
-                                         VerticalAlignment="Center" 
-                                         FontSize="15" 
-                                         Foreground="Blue">
+                                         Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Width="Auto"
+                                         local:ControlAttachProperty.Watermark="请输入安装时间" 
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="时间：">
 
                                 </TextBox>
 
                                 <TextBox x:Name="GaoXianBaoJing" 
-                                         Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" 
-                                         HorizontalAlignment="Center" 
-                                         VerticalAlignment="Center" 
-                                         FontSize="15" 
-                                         Foreground="Blue">
+                                         Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Width="Auto"
+                                         local:ControlAttachProperty.Watermark="请输入高限报警" 
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="高限：">
 
                                 </TextBox>
 
                                 <TextBox x:Name="DiXianBaoJing" 
-                                         Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" 
-                                         HorizontalAlignment="Center" 
-                                         VerticalAlignment="Center" 
-                                         FontSize="15" 
-                                         Foreground="Blue">
+                                         Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" Width="Auto"
+                                         local:ControlAttachProperty.Watermark="请输入低限报警" 
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="低限：">
 
                                 </TextBox>
 
