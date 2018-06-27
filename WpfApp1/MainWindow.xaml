@@ -2447,6 +2447,11 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
+                        <DataGrid x:Name="DataGrid_tab6" Grid.Column="0" Grid.ColumnSpan="3" 
+                                          ItemsSource="{Binding Source={StaticResource JieDians}}" 
+                                          IsReadOnly="true">
+
+                        </DataGrid>
 
                         <Grid Grid.Column="3">
                             <Grid.RowDefinitions>
