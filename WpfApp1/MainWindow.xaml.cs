@@ -286,20 +286,43 @@ namespace WpfApp1
                 update_tooltip(ref Ellipse_Array, (message[0] - 1));
 
                 /////////
-                if(Convert.ToDouble(temp_DataRow[0][8]) > 30.0)
+                if(GaoDiXian_BaiJing_PanDuan(Convert.ToInt16(message[0])) != 0)
                 {
                     change_jiedian_status(ref Ellipse_Array, listview_largeicon, (message[0] - 1), true);
-                    change_jiedian_status(ref Ellipse_Array, listview_largeicon_tab5, (message[0] - 1), true);
+                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (message[0] - 1), true);
                 }
                 else
                 {
                     change_jiedian_status(ref Ellipse_Array, listview_largeicon, (message[0] - 1), false);
-                    change_jiedian_status(ref Ellipse_Array, listview_largeicon_tab5, (message[0] - 1), false);
+                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (message[0] - 1), false);
                 }
             };
             this.Dispatcher.Invoke(action, true);
         }
         #endregion
+
+        public int GaoDiXian_BaiJing_PanDuan(int index)
+        {
+            DataSet dataSet_temp = new DataSet();
+            string command_str = "select `NongDu`, `GaoXian`, `DiXian` from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `id`=" + index.ToString() + " order by date desc limit 1;";
+            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+            double NongDu = Convert.ToDouble(temp_DataRow[0][0]);
+            double GaoXian = Convert.ToDouble(temp_DataRow[0][1]);
+            double DiXian = Convert.ToDouble(temp_DataRow[0][2]);
+            if (NongDu > GaoXian)//如果大于高限程序返回1
+            {
+                return 1;
+            }
+            else if(NongDu < DiXian)//小于低限程序返回2
+            {
+                return 2;
+            }
+            else//如果浓度在正常范围之内程序返回0
+            {
+                return 0;
+            }
+        }
 
         #region//有关地图加载
         public void Init_Map(int num_tab)
@@ -409,7 +432,7 @@ namespace WpfApp1
                 
 
                 listView_tt.BeginUpdate();
-                listView_tt.LargeImageList.Images[index] = Bitmap.FromFile("jiedian_warning.png");
+                listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian_warning.png");//这个列表的表头貌似是从1开始索引
                 listView_tt.EndUpdate();
             }
             else
@@ -419,7 +442,7 @@ namespace WpfApp1
                 
 
                 listView_tt.BeginUpdate();
-                listView_tt.LargeImageList.Images[index] = Bitmap.FromFile("jiedian.png");
+                listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian.png");//这个列表的表头貌似是从1开始索引
                 listView_tt.EndUpdate();
             }
             
