@@ -142,6 +142,9 @@ namespace WpfApp1
             Init_Jiedian_DisplayOrNot();
         }
 
+        /// <summary>
+        /// 判断所有节点是否显示，并判断是否让其处于报警状态
+        /// </summary>
         public void Init_Jiedian_DisplayOrNot()
         {
             DataSet dataSet_temp = new DataSet();
@@ -161,6 +164,21 @@ namespace WpfApp1
             HideOrShow_jiedian_map(temp_DataRow, ref Ellipse_Array_tab4);
             HideOrShow_jiedian_liebiao(temp_DataRow, listview_largeicon);
             HideOrShow_jiedian_liebiao(temp_DataRow, listview_largeicon_tab5);
+
+            for(int i = 0; i < temp_DataRow.Count; i++)
+            {
+                int temp_index = Convert.ToInt16(temp_DataRow[i][0]);
+                if (GaoDiXian_BaiJing_PanDuan(temp_index) != 0)
+                {
+                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), true);
+                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), true);
+                }
+                else
+                {
+                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), false);
+                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), false);
+                }
+            }
         }
 
 
