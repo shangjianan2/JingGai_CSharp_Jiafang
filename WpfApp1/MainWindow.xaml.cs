@@ -83,7 +83,7 @@ namespace WpfApp1
                 os.Add(new jiedian(temp_DataRow[i][0].ToString(), temp_DataRow[i][1].ToString(), temp_DataRow[i][2].ToString(),
                                    temp_DataRow[i][3].ToString(), temp_DataRow[i][4].ToString(), temp_DataRow[i][5].ToString(),
                                    temp_DataRow[i][6].ToString(), temp_DataRow[i][7].ToString(), temp_DataRow[i][8].ToString(),
-                                   temp_DataRow[i][9].ToString(), temp_DataRow[i][10].ToString(), temp_DataRow[i][11].ToString()));
+                                   temp_DataRow[i][9].ToString()));
             }
 
 
@@ -259,8 +259,8 @@ namespace WpfApp1
 
 
             string[] temp_array_str = ShuJuJieXi(message);
-            string str = "INSERT INTO " + ShuJuKu.Table1_ShiJIna_JieDian + " ( `id`, `name`, `type`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
-        "VALUES ( \"" + (message[0]).ToString() + "\",\"2\",\"3\",\"" + temp_array_str[0] + "\",\"" + temp_array_str[1] + "\",\"" + temp_array_str[2] + "\",\"" + temp_array_str[3] + "\",\"" + temp_array_str[4] + "\",\"" + temp_array_str[5] + "\",\"" + temp_array_str[6] + "\",\"" + temp_array_str[7] + "\",now());";
+            string str = "INSERT INTO " + ShuJuKu.Table1_ShiJIna_JieDian + " ( `id`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
+        "VALUES ( \"" + (message[0]).ToString() + "\",\"" + temp_array_str[0] + "\",\"" + temp_array_str[1] + "\",\"" + temp_array_str[2] + "\",\"" + temp_array_str[3] + "\",\"" + temp_array_str[4] + "\",\"" + temp_array_str[5] + "\",\"" + temp_array_str[6] + "\",\"" + temp_array_str[7] + "\",now());";
             MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                     CommandType.Text, str, null);
 
@@ -280,13 +280,13 @@ namespace WpfApp1
                 os.Insert(0, new jiedian(temp_DataRow[0][0].ToString(), temp_DataRow[0][1].ToString(), temp_DataRow[0][2].ToString(),
                                    temp_DataRow[0][3].ToString(), temp_DataRow[0][4].ToString(), temp_DataRow[0][5].ToString(),
                                    temp_DataRow[0][6].ToString(), temp_DataRow[0][7].ToString(), temp_DataRow[0][8].ToString(),
-                                   temp_DataRow[0][9].ToString(), temp_DataRow[0][10].ToString(), temp_DataRow[0][11].ToString()));
+                                   temp_DataRow[0][9].ToString()));
 
                 //更新ToolTip
                 update_tooltip(ref Ellipse_Array, (message[0] - 1));
 
                 /////////
-                if(Convert.ToDouble(temp_DataRow[0][10]) > 30.0)
+                if(Convert.ToDouble(temp_DataRow[0][8]) > 30.0)
                 {
                     change_jiedian_status(ref Ellipse_Array, listview_largeicon, (message[0] - 1), true);
                     change_jiedian_status(ref Ellipse_Array, listview_largeicon_tab5, (message[0] - 1), true);
@@ -395,10 +395,10 @@ namespace WpfApp1
                                            "实际位置    ：" + temp_DataRow[0][1].ToString() + "\n" +
                                            "实时浓度    ：" + temp_DataRow[0][2].ToString() + "\n" +
                                            "实时电量    ：" + temp_DataRow[0][3].ToString() + "\n" +
-                                           "环境温度    ：" + temp_DataRow[0][10].ToString() + "\n" +
+                                           "环境温度    ：" + temp_DataRow[0][8].ToString() + "\n" +
                                            "水位信息    ：" + temp_DataRow[0][5].ToString() + "\n" +
                                            "井盖信息    ：" + temp_DataRow[0][6].ToString() + "\n" +
-                                           "数据更新时间：" + temp_DataRow[0][11].ToString();
+                                           "数据更新时间：" + temp_DataRow[0][9].ToString();
         }
 
         public void change_jiedian_status(ref Ellipse[] ellipse_array, System.Windows.Forms.ListView listView_tt,  int index, bool BaoJing)

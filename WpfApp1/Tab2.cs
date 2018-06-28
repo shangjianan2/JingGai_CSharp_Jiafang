@@ -474,8 +474,6 @@ namespace WpfApp1
         public event PropertyChangedEventHandler PropertyChanged;
 
         private string id;
-        private string name;
-        private string type;
         private string gas_type;
         private string danwei;
 
@@ -504,40 +502,7 @@ namespace WpfApp1
                 OnPropertyChanged("ID");
             }
         }
-
-        public string Name
-        {
-            get { return name; }
-            set
-            {
-                if (value == null)
-                {
-                    name = " ";
-                }
-                else
-                {
-                    name = value;
-                }
-                OnPropertyChanged("Name");
-            }
-        }
-
-        public string Type
-        {
-            get { return type; }
-            set
-            {
-                if (value == null)
-                {
-                    type = " ";
-                }
-                else
-                {
-                    type = value;
-                }
-                OnPropertyChanged("Type");
-            }
-        }
+        
 
         public string Gas_Type
         {
@@ -693,13 +658,11 @@ namespace WpfApp1
             }
         }
 
-        public jiedian(string id_tt, string name_tt, string type_tt, string gas_type_tt, string danwei_tt,
+        public jiedian(string id_tt, string gas_type_tt, string danwei_tt,
             string status_tt, string nongdu_tt, string dixian_tt, string gaoxian_tt, string dianliang_tt,
             string wendu_tt, string date_tt)
         {
             id = id_tt;
-            name = name_tt;
-            type = type_tt;
             gas_type = gas_type_tt;
             danwei = danwei_tt;
 
