@@ -21,6 +21,8 @@ using System.ComponentModel;
 using MySQL_Funtion;
 using System.Data;
 
+using Excel = Microsoft.Office.Interop.Excel;
+
 namespace WpfApp1
 {
     /// <summary>
@@ -29,6 +31,31 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         ObservableCollection<jiedian> os_tab6 = null;
+        string chaxun_command_str = null;
+
+        private void DaoChuExcel_Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                #region
+                Microsoft.Win32.SaveFileDialog sfd = new Microsoft.Win32.SaveFileDialog();
+                sfd.DefaultExt = "xls";
+                sfd.Filter = "文件(*.xls)|*.xls";
+                DaoChuExcel_Button.Content = "保存中...";
+                if (sfd.ShowDialog() == true)
+                {
+                    output_excel(sfd.FileName);
+                    DaoChuExcel_Button.Content = "";
+                }
+                #endregion
+            }
+            catch
+            {
+                System.Windows.MessageBox.Show("日期格式错误", "error");
+                return;
+            }
+        }
 
         private void ChaXun1_tab6_Click(object sender, RoutedEventArgs e)
         {            
@@ -42,9 +69,9 @@ namespace WpfApp1
             DateTime date_end = DateTime.ParseExact(temp_str_end, "yyyy M d H", null);
 
             //添加列
-            string dataSet_temp_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" order by `Date` desc";
+            chaxun_command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" order by `Date` desc";
             //string dataSet_temp_str = "select * from test5 order by `Date` desc";
-            DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, dataSet_temp_str, null);
+            DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, chaxun_command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
             //想DataGrid中添加数据
@@ -72,9 +99,9 @@ namespace WpfApp1
             DateTime date_end = DateTime.ParseExact(temp_str_end, "yyyy M d H", null);
 
             //添加列
-            string dataSet_temp_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `id`=\"" + BianHaoChaXun1_tab6.Text + "\" order by `Date` desc";
+            chaxun_command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `id`=\"" + BianHaoChaXun1_tab6.Text + "\" order by `Date` desc";
             //string dataSet_temp_str = "select * from test5 order by `Date` desc";
-            DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, dataSet_temp_str, null);
+            DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, chaxun_command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
             //想DataGrid中添加数据
@@ -102,9 +129,9 @@ namespace WpfApp1
             DateTime date_end = DateTime.ParseExact(temp_str_end, "yyyy M d H", null);
 
             //添加列
-            string dataSet_temp_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" and `id`=\"" +BianHaoChaXun2_tab6.Text + "\" order by `Date` desc";
+            chaxun_command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" and `id`=\"" +BianHaoChaXun2_tab6.Text + "\" order by `Date` desc";
             //string dataSet_temp_str = "select * from test5 order by `Date` desc";
-            DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, dataSet_temp_str, null);
+            DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, chaxun_command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
             //想DataGrid中添加数据
@@ -156,5 +183,65 @@ namespace WpfApp1
                 return time_str.Split('-');
             }
         }
+
+        public void output_excel(string strFileName)
+        {
+            Microsoft.Office.Interop.Excel.Application xlApp = new Excel.Application();
+
+            if (xlApp == null)
+            {
+
+                System.Windows.MessageBox.Show("无法创建excel对象，可能您的系统没有安装excel");
+
+                return;
+
+            }
+
+            xlApp.DefaultFilePath = "";
+
+            xlApp.DisplayAlerts = true;
+
+            xlApp.SheetsInNewWorkbook = 1;
+
+            Microsoft.Office.Interop.Excel.Workbook xlBook = xlApp.Workbooks.Add(true);
+
+            //添加列表头
+            DataSet temp_dataset = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, "show columns from " + ShuJuKu.Table1_ShiJIna_JieDian + ";", null);
+            DataRowCollection temp_dataRow = temp_dataset.Tables[0].Rows;
+            for (int i = 0; i < temp_dataRow.Count; i++)
+            {
+                //listView_tt.Columns.Add(temp_dataRow[i][0].ToString(), 50);
+                xlApp.Cells[1, (i + 1)] = temp_dataRow[i][0].ToString();
+            }
+
+            //string dataSet_temp_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" order by `Date` desc";
+            //string dataSet_temp_str = "select * from test5 order by `Date` desc";
+            DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, chaxun_command_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+
+            //将ListView中的数据导入Excel中
+            for (int i = 0; i < temp_DataRow.Count; i++)
+            {
+                for (int j = 0; j < temp_dataRow.Count; j++)
+                {
+                    //注意这个在导出的时候加了“\t” 的目的就是避免导出的数据显示为科学计数法。可以放在每行的首尾。
+
+                    xlApp.Cells[(i + 2), (j + 1)] = temp_DataRow[i][j].ToString() + "\t";
+
+                }
+
+            }
+
+            //例外需要说明的是用strFileName,Excel.XlFileFormat.xlExcel9795保存方式时 当你的Excel版本不是95、97 而是2003、2007 时导出的时候会报一个错误：异常来自 HRESULT:0x800A03EC。 解决办法就是换成strFileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal。
+
+            xlBook.SaveAs(strFileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal, Type.Missing, Type.Missing, false, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            xlBook.Close();
+            xlApp = null;
+
+            xlBook = null;
+
+            System.Windows.MessageBox.Show("生成报表完成");
+        }
+
     }
 }
