@@ -93,7 +93,7 @@ namespace WpfApp1
 
         private void QueRenBianGeng_Button_Click(object sender, RoutedEventArgs e)
         {
-            Update_Information_Jiedian(Ellipse_Array_tab4, Convert.ToInt16(BianHao.Text));
+            Update_Information_Jiedian(Ellipse_Array_tab4, Convert.ToInt16(BianHao.Text), JianCeQiTi.Text, AnZhuangWeiZhi.Text, AnZhuangShiJina.Text, GaoXianBaoJing.Text, DiXianBaoJing.Text);
             Init_Jiedian_DisplayOrNot();//刷新所有节点
         }
 
@@ -139,7 +139,7 @@ namespace WpfApp1
         /// <summary>
         /// 更改或新增节点信息。编号，检测气体， 安装位置，安装时间，高限报警，低限报警
         /// </summary>
-        public void Update_Information_Jiedian(Ellipse[] Ellipse_Array_tt, int index)
+        public void Update_Information_Jiedian(Ellipse[] Ellipse_Array_tt, int index, string jianceqiti_tt, string anzhuangweizhi_tt, string anzhuangshijian_tt, string gaoxianbaojing_tt, string dixianbaojing_tt)
         {
             DataSet dataSet_temp = new DataSet();
             string command_str = "select * from " + ShuJuKu.Table3_JieDian + " where `id`=" + index.ToString();
@@ -154,9 +154,9 @@ namespace WpfApp1
             else//将已有的节点信息更改
             {
                 Point point_temp = Ellipse_Array_tt[index - 1].TranslatePoint(new Point(0, 0), img_tab4);
-                string UpdataCommand_str = "UPDATE Table3_JieDian SET `gas type` = '" + JianCeQiTi.Text +
-                    "', location = '" + AnZhuangWeiZhi.Text + "', `time of install` = '" + AnZhuangShiJina.Text +
-                    "', `high to warning` = '" + GaoXianBaoJing.Text + "', `low to warning` = '" + DiXianBaoJing.Text +
+                string UpdataCommand_str = "UPDATE Table3_JieDian SET `gas type` = '" + jianceqiti_tt +
+                    "', location = '" + anzhuangweizhi_tt + "', `time of install` = '" + anzhuangshijian_tt +
+                    "', `high to warning` = '" + gaoxianbaojing_tt + "', `low to warning` = '" + dixianbaojing_tt +
                     "', `xmin` = '" + point_temp.X.ToString() + "', `ymin` = '" + point_temp.Y.ToString() +
                     "' WHERE id = " + index;
                 MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",

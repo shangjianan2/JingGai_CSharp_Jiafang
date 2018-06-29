@@ -2394,7 +2394,7 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Button x:Name="QueRenBianGeng_Button_tab5" 
-                                            Click="QueRenBianGeng_Button_Click"
+                                            Click="QueRenBianGeng_Button_tab5_Click"
                                             Grid.Column="0">
                                         <TextBlock Foreground="White">确认变更</TextBlock>
                                         <Button.Background>

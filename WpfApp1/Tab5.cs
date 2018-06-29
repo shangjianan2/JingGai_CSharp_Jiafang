@@ -31,6 +31,12 @@ namespace WpfApp1
         private System.Drawing.Point pointView_tab5 = new System.Drawing.Point(0, 0);
         public System.Windows.Forms.ToolTip toolTip_tab5 = new System.Windows.Forms.ToolTip();
 
+        private void QueRenBianGeng_Button_tab5_Click(object sender, RoutedEventArgs e)
+        {
+            Update_Information_Jiedian(Ellipse_Array_tab4, Convert.ToInt16(BianHao_tab5.Text), JianCeQiTi_tab5.Text, AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text, GaoXianBaoJing_tab5.Text, DiXianBaoJing_tab5.Text);
+            Init_Jiedian_DisplayOrNot();//刷新所有节点
+        }
+
         private void DiTuMoShi_Tab5_Buttton_Click(object sender, RoutedEventArgs e)
         {
             tabcontrol.SelectedIndex = 4;
