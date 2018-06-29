@@ -275,6 +275,10 @@ namespace WpfApp1
             //显示源地址和源端口
             System.Diagnostics.Debug.WriteLine(endPoint_tt.ToString());
 
+            //检测数据中的节点id是否在数据库中存在
+            if (ID_Exsit_or_Not(message[0]) == false)
+                return;
+
 
             string[] temp_array_str = ShuJuJieXi(message);
             string str = "INSERT INTO " + ShuJuKu.Table1_ShiJIna_JieDian + " ( `id`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
@@ -318,6 +322,23 @@ namespace WpfApp1
             this.Dispatcher.Invoke(action, true);
         }
         #endregion
+
+        public bool ID_Exsit_or_Not(int index)
+        {
+            DataSet dataSet_temp = new DataSet();
+            string command_str = "select `id` from " + ShuJuKu.Table3_JieDian + ";";
+            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+
+            for(int i = 0; i < temp_DataRow.Count; i++)
+            {
+                if(Convert.ToInt16(temp_DataRow[i][0]) == index)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public int GaoDiXian_BaiJing_PanDuan(int index)
         {
