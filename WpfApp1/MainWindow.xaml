@@ -2335,7 +2335,7 @@
                                            Foreground="Blue">文本</TextBlock>
 
                                 <TextBox x:Name="BianHao_tab5" 
-                                         KeyUp="BianHao_KeyUp"
+                                         KeyUp="BianHao_tab5_KeyUp"
                                          Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入编号" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编号：">
@@ -2401,15 +2401,17 @@
                                             <ImageBrush ImageSource="C:\NBIoT\button.png"/>
                                         </Button.Background>
                                     </Button>
-                                    <Button 
-                                        Grid.Column="1">
+                                    <Button x:Name="ZengJiaBianGeng_Button_tab5" 
+                                            Click="ZengJiaBianGeng_Button_tab5_Click"
+                                            Grid.Column="1">
                                         <TextBlock Foreground="White">增加变更</TextBlock>
                                         <Button.Background>
                                             <ImageBrush ImageSource="C:\NBIoT\button.png"/>
                                         </Button.Background>
                                     </Button>
-                                    <Button 
-                                        Grid.Column="2">
+                                    <Button x:Name="ShanChuDianWei_Button_tab5" 
+                                            Click="ShanChuDianWei_Button_tab5_Click"
+                                            Grid.Column="2">
                                         <TextBlock Foreground="White">删除点位</TextBlock>
                                         <Button.Background>
                                             <ImageBrush ImageSource="C:\NBIoT\button.png"/>
