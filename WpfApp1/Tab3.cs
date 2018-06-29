@@ -90,13 +90,5 @@ namespace WpfApp1
 
     }
 
-    //public class JieDians_tab3 :
-    //        ObservableCollection<jiedian>
-    //{
-    //    public JieDians_tab3()
-    //    {
-    //        Add(new jiedian("Jesper", "Aaberg", "1234567890", "Jesper", "Aaberg", "1234567890", "Jesper", "Aaberg", "1234567890", "Jesper", "Aaberg", "1234567890"));
-
-    //    }
-    //}
+    
 }

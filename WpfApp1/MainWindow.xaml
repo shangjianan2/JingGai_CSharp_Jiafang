@@ -131,7 +131,7 @@
                             ObjectType="{x:Type local:JieDians}"/>
 
         <ObjectDataProvider x:Key="JieDians_tab6"
-                            ObjectType="{x:Type local:JieDians}"/>
+                            ObjectType="{x:Type local:JieDians_tab6}"/>
 
         <ContextMenu x:Key="ContextMenu">
             <MenuItem Name="map_Reset" Click="map_Reset_Click" Header="恢复比例"/>

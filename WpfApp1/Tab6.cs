@@ -30,7 +30,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<jiedian> os_tab6 = null;
+        ObservableCollection<jiedian_tab6> os_tab6 = null;
         string chaxun_command_str = null;
 
         private void DaoChuExcel_Button_Click(object sender, RoutedEventArgs e)
@@ -69,22 +69,23 @@ namespace WpfApp1
             DateTime date_end = DateTime.ParseExact(temp_str_end, "yyyy M d H", null);
 
             //添加列
-            chaxun_command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + ", " + ShuJuKu.Table3_JieDian + 
-                " where " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=" + ShuJuKu.Table3_JieDian + ".id and" + "`Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" order by `Date` desc";
-            //string dataSet_temp_str = "select * from test5 order by `Date` desc";
+            //chaxun_command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + ", " + ShuJuKu.Table3_JieDian + 
+            //    " where " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=" + ShuJuKu.Table3_JieDian + ".id and" + "`Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" order by `Date` desc";
+            chaxun_command_str = "select " + ShuJuKu.Table1_ShiJIna_JieDian + ".id, " + ShuJuKu.Table1_ShiJIna_JieDian + ".`gas type`, danwei, status, nongdu, dixian, gaoxian, dianliang, wendu, `Date`, `location`, `time of install` from " + ShuJuKu.Table1_ShiJIna_JieDian + 
+                ", " + ShuJuKu.Table3_JieDian + " where " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=" + ShuJuKu.Table3_JieDian + ".id and" + "`Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" order by `Date` desc;";
             DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, chaxun_command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
             //想DataGrid中添加数据
-            os_tab6 = (ObservableCollection<jiedian>)DataGrid_tab6.ItemsSource;
+            os_tab6 = (ObservableCollection<jiedian_tab6>)DataGrid_tab6.ItemsSource;
             os_tab6.Clear();//清除上次的数据
 
             for (int i = 0; i < temp_DataRow.Count; i++)
             {
-                os_tab6.Add(new jiedian(temp_DataRow[i][0].ToString(), temp_DataRow[i][1].ToString(), temp_DataRow[i][2].ToString(),
+                os_tab6.Add(new jiedian_tab6(temp_DataRow[i][0].ToString(), temp_DataRow[i][1].ToString(), temp_DataRow[i][2].ToString(),
                                    temp_DataRow[i][3].ToString(), temp_DataRow[i][4].ToString(), temp_DataRow[i][5].ToString(),
                                    temp_DataRow[i][6].ToString(), temp_DataRow[i][7].ToString(), temp_DataRow[i][8].ToString(),
-                                   temp_DataRow[i][9].ToString()));
+                                   temp_DataRow[i][9].ToString(), temp_DataRow[i][10].ToString(), temp_DataRow[i][11].ToString()));
             }
         }
 
@@ -100,21 +101,22 @@ namespace WpfApp1
             DateTime date_end = DateTime.ParseExact(temp_str_end, "yyyy M d H", null);
 
             //添加列
-            chaxun_command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `id`=\"" + BianHaoChaXun1_tab6.Text + "\" order by `Date` desc";
+            chaxun_command_str = "select " + ShuJuKu.Table1_ShiJIna_JieDian + ".id, " + ShuJuKu.Table1_ShiJIna_JieDian + ".`gas type`, danwei, status, nongdu, dixian, gaoxian, dianliang, wendu, `Date`, `location`, `time of install` from " + ShuJuKu.Table1_ShiJIna_JieDian +
+                ", " + ShuJuKu.Table3_JieDian + " where " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=" + ShuJuKu.Table3_JieDian + ".id and " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=\"" + BianHaoChaXun1_tab6.Text + "\" order by `Date` desc;";
             //string dataSet_temp_str = "select * from test5 order by `Date` desc";
             DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, chaxun_command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
             //想DataGrid中添加数据
-            os_tab6 = (ObservableCollection<jiedian>)DataGrid_tab6.ItemsSource;
+            os_tab6 = (ObservableCollection<jiedian_tab6>)DataGrid_tab6.ItemsSource;
             os_tab6.Clear();//清除上次的数据
 
             for (int i = 0; i < temp_DataRow.Count; i++)
             {
-                os_tab6.Add(new jiedian(temp_DataRow[i][0].ToString(), temp_DataRow[i][1].ToString(), temp_DataRow[i][2].ToString(),
+                os_tab6.Add(new jiedian_tab6(temp_DataRow[i][0].ToString(), temp_DataRow[i][1].ToString(), temp_DataRow[i][2].ToString(),
                                    temp_DataRow[i][3].ToString(), temp_DataRow[i][4].ToString(), temp_DataRow[i][5].ToString(),
                                    temp_DataRow[i][6].ToString(), temp_DataRow[i][7].ToString(), temp_DataRow[i][8].ToString(),
-                                   temp_DataRow[i][9].ToString()));
+                                   temp_DataRow[i][9].ToString(), temp_DataRow[i][10].ToString(), temp_DataRow[i][11].ToString()));
             }
         }
 
@@ -130,21 +132,22 @@ namespace WpfApp1
             DateTime date_end = DateTime.ParseExact(temp_str_end, "yyyy M d H", null);
 
             //添加列
-            chaxun_command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" and `id`=\"" +BianHaoChaXun2_tab6.Text + "\" order by `Date` desc";
+            chaxun_command_str = "select " + ShuJuKu.Table1_ShiJIna_JieDian + ".id, " + ShuJuKu.Table1_ShiJIna_JieDian + ".`gas type`, danwei, status, nongdu, dixian, gaoxian, dianliang, wendu, `Date`, `location`, `time of install` from " + ShuJuKu.Table1_ShiJIna_JieDian +
+                ", " + ShuJuKu.Table3_JieDian + " where " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=" + ShuJuKu.Table3_JieDian + ".id and" + "`Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" and " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=\"" + BianHaoChaXun1_tab6.Text + "\" order by `Date` desc;";
             //string dataSet_temp_str = "select * from test5 order by `Date` desc";
             DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, chaxun_command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
             //想DataGrid中添加数据
-            os_tab6 = (ObservableCollection<jiedian>)DataGrid_tab6.ItemsSource;
+            os_tab6 = (ObservableCollection<jiedian_tab6>)DataGrid_tab6.ItemsSource;
             os_tab6.Clear();//清除上次的数据
 
             for (int i = 0; i < temp_DataRow.Count; i++)
             {
-                os_tab6.Add(new jiedian(temp_DataRow[i][0].ToString(), temp_DataRow[i][1].ToString(), temp_DataRow[i][2].ToString(),
+                os_tab6.Add(new jiedian_tab6(temp_DataRow[i][0].ToString(), temp_DataRow[i][1].ToString(), temp_DataRow[i][2].ToString(),
                                    temp_DataRow[i][3].ToString(), temp_DataRow[i][4].ToString(), temp_DataRow[i][5].ToString(),
                                    temp_DataRow[i][6].ToString(), temp_DataRow[i][7].ToString(), temp_DataRow[i][8].ToString(),
-                                   temp_DataRow[i][9].ToString()));
+                                   temp_DataRow[i][9].ToString(), temp_DataRow[i][10].ToString(), temp_DataRow[i][11].ToString()));
             }
         }
 
@@ -244,5 +247,78 @@ namespace WpfApp1
             System.Windows.MessageBox.Show("生成报表完成");
         }
 
+    }
+
+    public class jiedian_tab6 : jiedian
+    {
+        public string location;
+        public string time_of_install;
+
+        public string Location
+        {
+            get { return location; }
+            set
+            {
+                if (value == null)
+                {
+                    location = " ";
+                }
+                else
+                {
+                    location = value;
+                }
+                OnPropertyChanged("Location");
+            }
+        }
+
+        public string Time_of_install
+        {
+            get { return time_of_install; }
+            set
+            {
+                if (value == null)
+                {
+                    time_of_install = " ";
+                }
+                else
+                {
+                    time_of_install = value;
+                }
+                OnPropertyChanged("Time_of_install");
+            }
+        }
+
+
+        public jiedian_tab6(string id_tt, string gas_type_tt, string danwei_tt,
+            string status_tt, string nongdu_tt, string dixian_tt, string gaoxian_tt, string dianliang_tt,
+            string wendu_tt, string date_tt, string location_tt, string time_of_install_tt) : base(id_tt, gas_type_tt, danwei_tt,
+            status_tt, nongdu_tt, dixian_tt, gaoxian_tt, dianliang_tt,
+            wendu_tt, date_tt)
+        {
+            id = id_tt;
+            gas_type = gas_type_tt;
+            danwei = danwei_tt;
+
+            status = status_tt;
+            nongdu = nongdu_tt;
+            dixian = dixian_tt;
+            gaoxian = gaoxian_tt;
+            dianliang = dianliang_tt;
+
+            wendu = wendu_tt;
+            date = date_tt;
+
+            location = location_tt;
+            time_of_install = time_of_install_tt;
+        }
+    }
+
+    public class JieDians_tab6 :
+            ObservableCollection<jiedian_tab6>
+    {
+        public JieDians_tab6()
+        {
+
+        }
     }
 }

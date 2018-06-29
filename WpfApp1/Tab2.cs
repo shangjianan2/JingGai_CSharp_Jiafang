@@ -473,18 +473,18 @@ namespace WpfApp1
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private string id;
-        private string gas_type;
-        private string danwei;
+        protected string id;
+        protected string gas_type;
+        protected string danwei;
 
-        private string status;
-        private string nongdu;
-        private string dixian;
-        private string gaoxian;
-        private string dianliang;
+        protected string status;
+        protected string nongdu;
+        protected string dixian;
+        protected string gaoxian;
+        protected string dianliang;
 
-        private string wendu;
-        private string date;
+        protected string wendu;
+        protected string date;
 
         public string ID
         {
@@ -676,7 +676,7 @@ namespace WpfApp1
             date = date_tt;
         }
 
-        private void OnPropertyChanged(string strPropertyInfo)
+        protected void OnPropertyChanged(string strPropertyInfo)
         {
             if (PropertyChanged != null)
             {
