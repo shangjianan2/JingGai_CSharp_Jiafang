@@ -2452,7 +2452,26 @@
 
                         <DataGrid x:Name="DataGrid_tab6" Grid.Column="0" Grid.ColumnSpan="3" 
                                           ItemsSource="{Binding Source={StaticResource JieDians_tab6}}" 
-                                          IsReadOnly="true">
+                                          IsReadOnly="true" 
+                                          AutoGenerateColumns="False">
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="120" Header="编号" Binding="{Binding ID}"/>
+                                <DataGridTextColumn Width="120" Header="气体浓度" Binding="{Binding Gas_Type}"/>
+                                <DataGridTextColumn Width="120" Header="单位" Binding="{Binding DanWei}"/>
+                                <DataGridTextColumn Width="120" Header="传感器状态" Binding="{Binding Status}"/>
+                                <DataGridTextColumn Width="120" Header="浓度" Binding="{Binding NongDu}"/>
+
+                                <DataGridTextColumn Width="120" Header="低限报警" Binding="{Binding DiXian}"/>
+                                <DataGridTextColumn Width="120" Header="高限报警" Binding="{Binding GaoXian}"/>
+                                <DataGridTextColumn Width="120" Header="电量" Binding="{Binding DianLiang}"/>
+                                <DataGridTextColumn Width="120" Header="温度" Binding="{Binding WenDu}"/>
+                                <DataGridTextColumn Width="120" Header="时间" Binding="{Binding Date}"/>
+
+                                <DataGridTextColumn Width="120" Header="安装地点" Binding="{Binding Location}"/>
+                                <DataGridTextColumn Width="120" Header="安装时间" Binding="{Binding Time_of_install}"/>
+                            </DataGrid.Columns>
+                            
 
                         </DataGrid>
 
