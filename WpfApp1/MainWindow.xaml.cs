@@ -489,17 +489,28 @@ namespace WpfApp1
 
         private void LieBiao_Tab2_Buttton_Click(object sender, RoutedEventArgs e)
         {
-            tabcontrol.SelectedIndex = 3;
+            //tabcontrol.SelectedIndex = 3;
+            Tab_change_fore(2, 3);
         }
 
         private void DiTu_Tab3_Button_Click(object sender, RoutedEventArgs e)
         {
-            tabcontrol.SelectedIndex = 2;
+            //tabcontrol.SelectedIndex = 2;
+            Tab_change_fore(3, 2);
         }
 
         private void XiTong_Tab2_Buttton_Click(object sender, RoutedEventArgs e)
         {
-            tabcontrol.SelectedIndex = 4;
+            //tabcontrol.SelectedIndex = 4;
+            System.Windows.Controls.Button sender_Button = (System.Windows.Controls.Button)sender;
+            if(sender_Button.Name.Contains("ab2"))//如果是Tab2的按键
+            {
+                Tab_change_fore(2, 4);
+            }
+            else if(sender_Button.Name.Contains("ab3"))//如果是Tab3的按键
+            {
+                Tab_change_fore(3, 5);
+            }
         }
 
 

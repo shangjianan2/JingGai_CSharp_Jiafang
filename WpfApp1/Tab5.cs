@@ -31,6 +31,11 @@ namespace WpfApp1
         private System.Drawing.Point pointView_tab5 = new System.Drawing.Point(0, 0);
         public System.Windows.Forms.ToolTip toolTip_tab5 = new System.Windows.Forms.ToolTip();
 
+        private void PuTongMoShi_Tab5_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Tab_change_RootToUser();
+        }
+
         private void QueRenBianGeng_Button_tab5_Click(object sender, RoutedEventArgs e)
         {
             Update_Information_Jiedian(Ellipse_Array_tab4, Convert.ToInt16(BianHao_tab5.Text), JianCeQiTi_tab5.Text, AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text, GaoXianBaoJing_tab5.Text, DiXianBaoJing_tab5.Text);
@@ -96,7 +101,8 @@ namespace WpfApp1
 
         private void DiTuMoShi_Tab5_Buttton_Click(object sender, RoutedEventArgs e)
         {
-            tabcontrol.SelectedIndex = 4;
+            //tabcontrol.SelectedIndex = 4;
+            Tab_change_fore(5, 4);
         }
 
         private void listview_largeicon_MouseMove_tab5(object sender, System.Windows.Forms.MouseEventArgs e)

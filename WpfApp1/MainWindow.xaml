@@ -966,7 +966,8 @@
                             </Button>
                             <Button x:Name="XiTong_Tab3_Button" 
                                     Grid.Column="0" 
-                                    Grid.Row="1">
+                                    Grid.Row="1" 
+                                    Click="XiTong_Tab2_Buttton_Click">
                                 <TextBlock  Foreground="White">系统设置</TextBlock>
                                 <Button.Background>
                                     <ImageBrush ImageSource="C:\NBIoT\button.png"/>
@@ -2241,9 +2242,10 @@
                                 </Button.Background>
                             </Button>
 
-                            <Button 
-                                    Grid.Column="0" Grid.Row="2">
-                                <TextBlock Foreground="White">备用</TextBlock>
+                            <Button x:Name="PuTongMoShi_Tab5_Button"
+                                    Grid.Column="0" Grid.Row="2" 
+                                    Click="PuTongMoShi_Tab5_Button_Click">
+                                <TextBlock Foreground="White">普通模式</TextBlock>
                                 <Button.Background>
                                     <ImageBrush ImageSource="C:\NBIoT\button.png"/>
                                 </Button.Background>
