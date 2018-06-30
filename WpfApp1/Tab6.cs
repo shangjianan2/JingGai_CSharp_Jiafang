@@ -33,6 +33,12 @@ namespace WpfApp1
         ObservableCollection<jiedian_tab6> os_tab6 = null;
         string chaxun_command_str = null;
 
+
+        private void Back_tab6_Click(object sender, RoutedEventArgs e)
+        {
+            Tab_change_back();
+        }
+
         private void DaoChuExcel_Button_Click(object sender, RoutedEventArgs e)
         {
             try

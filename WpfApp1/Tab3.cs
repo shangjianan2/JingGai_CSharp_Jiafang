@@ -84,7 +84,18 @@ namespace WpfApp1
 
         private void ChaXun_Tab3_Button_Click(object sender, RoutedEventArgs e)
         {
-            tabcontrol.SelectedIndex = 6;
+            //tabcontrol.SelectedIndex = 6;
+            System.Windows.Controls.Button sender_Button = (System.Windows.Controls.Button)sender;
+
+            if(sender_Button.Name.Contains("ab2"))//如果是Tab2
+            {
+                Tab_change_fore(2, 6);
+            }
+            else if(sender_Button.Name.Contains("ab3"))//如果是Tab3
+            {
+                Tab_change_fore(3, 6);
+            }
+
             Display_CurrentTime_on_TextBox();
         }
 

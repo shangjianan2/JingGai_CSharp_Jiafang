@@ -2536,7 +2536,7 @@
 
                             <Button Grid.Column="0" Grid.Row="10"/>
                             <Button x:Name="DaoChuExcel_Button" Content="导出excel" Click="DaoChuExcel_Button_Click"  Grid.Column="1" Grid.Row="10"/>
-                            <Button Grid.Column="2" Grid.Row="10"/>
+                            <Button x:Name="Back_tab6" Content="返回" Click="Back_tab6_Click" Grid.Column="2" Grid.Row="10"/>
                         </Grid>
                     </Grid>
 
