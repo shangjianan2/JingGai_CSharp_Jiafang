@@ -168,15 +168,20 @@ namespace WpfApp1
             for(int i = 0; i < temp_DataRow.Count; i++)
             {
                 int temp_index = Convert.ToInt16(temp_DataRow[i][0]);
-                if (GaoDiXian_BaiJing_PanDuan(temp_index) != 0)
+                if (GaoDiXian_BaiJing_PanDuan(temp_index) == 1 || GaoDiXian_BaiJing_PanDuan(temp_index) == 2)
                 {
-                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), true);
-                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), true);
+                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 1);
+                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 1);
+                }
+                else if(GaoDiXian_BaiJing_PanDuan(temp_index) == 3)
+                {
+                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 2);
+                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 2);
                 }
                 else
                 {
-                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), false);
-                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), false);
+                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 0);
+                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 0);
                 }
             }
         }
@@ -308,15 +313,21 @@ namespace WpfApp1
                 update_tooltip(ref Ellipse_Array, (message[0] - 1));
 
                 /////////
-                if(GaoDiXian_BaiJing_PanDuan(Convert.ToInt16(message[0])) != 0)
+                int temp_index = Convert.ToInt16(message[0]);
+                if (GaoDiXian_BaiJing_PanDuan(temp_index) == 1 || GaoDiXian_BaiJing_PanDuan(temp_index) == 2)
                 {
-                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (message[0] - 1), true);
-                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (message[0] - 1), true);
+                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 1);
+                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 1);
+                }
+                else if (GaoDiXian_BaiJing_PanDuan(temp_index) == 3)
+                {
+                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 2);
+                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 2);
                 }
                 else
                 {
-                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (message[0] - 1), false);
-                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (message[0] - 1), false);
+                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 0);
+                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 0);
                 }
             };
             this.Dispatcher.Invoke(action, true);
@@ -343,12 +354,13 @@ namespace WpfApp1
         public int GaoDiXian_BaiJing_PanDuan(int index)
         {
             DataSet dataSet_temp = new DataSet();
-            string command_str = "select `NongDu`, `GaoXian`, `DiXian` from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `id`=" + index.ToString() + " order by date desc limit 1;";
+            string command_str = "select `NongDu`, `GaoXian`, `DiXian`, `status` from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `id`=" + index.ToString() + " order by date desc limit 1;";
             dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
             double NongDu = Convert.ToDouble(temp_DataRow[0][0]);
             double GaoXian = Convert.ToDouble(temp_DataRow[0][1]);
             double DiXian = Convert.ToDouble(temp_DataRow[0][2]);
+            string Status = temp_DataRow[0][3].ToString();
             if (NongDu > GaoXian)//如果大于高限程序返回1
             {
                 return 1;
@@ -356,6 +368,10 @@ namespace WpfApp1
             else if(NongDu < DiXian)//小于低限程序返回2
             {
                 return 2;
+            }
+            else if(Status != "")
+            {
+                return 3;
             }
             else//如果浓度在正常范围之内程序返回0
             {
@@ -463,25 +479,35 @@ namespace WpfApp1
                                            "数据更新时间：" + temp_DataRow[0][9].ToString();
         }
 
-        public void change_jiedian_status(ref Ellipse[] ellipse_array, System.Windows.Forms.ListView listView_tt,  int index, bool BaoJing)
+        public void change_jiedian_status(ref Ellipse[] ellipse_array, System.Windows.Forms.ListView listView_tt,  int index, int BaoJing)
         {
-            if(BaoJing == true)
+            if(BaoJing == 0)
+            {
+                ellipse_array[index].Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 0, 255));
+                
+
+                listView_tt.BeginUpdate();
+                listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian.png");//这个列表的表头貌似是从1开始索引
+                listView_tt.EndUpdate();
+            }
+            else if(BaoJing == 1)//暂定为浓度超出界限
             {
                 ellipse_array[index].Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 0, 0));
+
                 
 
                 listView_tt.BeginUpdate();
                 listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian_warning.png");//这个列表的表头貌似是从1开始索引
                 listView_tt.EndUpdate();
             }
-            else
+            else if(BaoJing == 2)//暂定为掉线，丢失
             {
-                ellipse_array[index].Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 0, 255));
+                ellipse_array[index].Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(128, 128, 128));
 
-                
+
 
                 listView_tt.BeginUpdate();
-                listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian.png");//这个列表的表头貌似是从1开始索引
+                listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian_warning_diaoxian.png");//这个列表的表头貌似是从1开始索引
                 listView_tt.EndUpdate();
             }
             

@@ -105,7 +105,7 @@ namespace WpfApp1
         private void PuTongMoShi_Tab4_Button_Click(object sender, RoutedEventArgs e)
         {
             //tabcontrol.SelectedIndex = 2;
-            Tab_change_RootToUser();
+            Tab_change_fore(4, 2);
         }
 
         private void LieBiaoMoShi_Tab4_Buttton_Click(object sender, RoutedEventArgs e)

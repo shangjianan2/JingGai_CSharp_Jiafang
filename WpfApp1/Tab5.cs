@@ -33,7 +33,7 @@ namespace WpfApp1
 
         private void PuTongMoShi_Tab5_Button_Click(object sender, RoutedEventArgs e)
         {
-            Tab_change_RootToUser();
+            Tab_change_fore(5, 3);
         }
 
         private void QueRenBianGeng_Button_tab5_Click(object sender, RoutedEventArgs e)
