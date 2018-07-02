@@ -38,12 +38,17 @@ namespace WpfApp1
 
         private void QueRenBianGeng_Button_tab5_Click(object sender, RoutedEventArgs e)
         {
+            if (BianHao_tab5.Text == "")//如果TextBox中没有数据就不进行任何操作
+                return;
             Update_Information_Jiedian(Ellipse_Array_tab4, Convert.ToInt16(BianHao_tab5.Text), JianCeQiTi_tab5.Text, AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text, GaoXianBaoJing_tab5.Text, DiXianBaoJing_tab5.Text);
             Init_Jiedian_DisplayOrNot();//刷新所有节点
         }
 
         private void ZengJiaBianGeng_Button_tab5_Click(object sender, RoutedEventArgs e)
         {
+            if (BianHao_tab5.Text == "")//如果TextBox中没有数据就不进行任何操作
+                return;
+
             ZengJiaBianGeng(Convert.ToInt16(BianHao_tab5.Text), JianCeQiTi_tab5.Text, AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text, GaoXianBaoJing_tab5.Text, DiXianBaoJing_tab5.Text);
 
             //根据当前新增节点的坐标更新数据库中的数据
@@ -53,6 +58,9 @@ namespace WpfApp1
 
         private void ShanChuDianWei_Button_tab5_Click(object sender, RoutedEventArgs e)
         {
+            if (BianHao_tab5.Text == "")//如果TextBox中没有数据就不进行任何操作
+                return;
+
             string command_str = "delete from table3_jiedian where id=" + BianHao_tab5.Text + ";";
             MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, command_str, null);
