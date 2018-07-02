@@ -18,6 +18,7 @@ namespace UDP_Thread
 {
     public delegate void recNewMessage(byte[] NewMessage);//至回传数据，不回传源地址及源端口
     public delegate void recNewMessage2(byte[] NewMessage, ref EndPoint endPoint_tt);//回传源地址及源端口
+    public delegate void warning_from_udp(Exception e);
 
     public class UDP_Communication
     {
@@ -25,6 +26,7 @@ namespace UDP_Thread
 
         public event recNewMessage rev_New;//至回传数据，不回传源地址及源端口
         public event recNewMessage2 rev_New2;//回传源地址及源端口
+        public warning_from_udp warning_From_Udp;
         public Socket newsock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         public IPEndPoint ip = null;
 
@@ -65,7 +67,16 @@ namespace UDP_Thread
             {
                 byte[] recData = new byte[1024];
                 //int n = newsock.Receive(recData);
-                int n = newsock.ReceiveFrom(recData, ref senderRemote);
+
+                int n = 0;
+                try
+                {
+                    n = newsock.ReceiveFrom(recData, ref senderRemote);
+                }
+                catch(Exception e)
+                {
+                    warning_From_Udp(e);
+                }
                 if (n > 0)
                 {
                     rev_New2(recData, ref senderRemote);

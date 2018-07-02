@@ -109,6 +109,10 @@ namespace WpfApp1
             mysql_Thread_tt = new UDP_Communication(Local_IP_Byte_Array_tt, Local_DuanKou_tt);
             //注册事件
             mysql_Thread_tt.rev_New2 += new recNewMessage2(rec_NewMessage);
+
+            //注册报警错误事件
+            mysql_Thread_tt.warning_From_Udp += new warning_from_udp(udp_warning_to_shutdown);
+
             //mysql_Thread.recThread_Start();
 
             Init_NBIoT(NBIoT_IP_Byte_Array_tt, NBIoT_DuanKou_tt, ref mysql_Thread_tt);//将NBIoT的远程地址绑定在相应的"UDP_Communication"类里，并发送第一个注册码

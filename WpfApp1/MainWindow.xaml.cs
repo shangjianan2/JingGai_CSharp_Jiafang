@@ -334,6 +334,19 @@ namespace WpfApp1
         }
         #endregion
 
+        #region//udp出错处理
+        public void udp_warning_to_shutdown(Exception e)
+        {
+            System.Windows.MessageBox.Show("网络连接错误", "程序即将关闭");
+
+            Action<bool> action = (x) =>//每次都对当前所有节点进行一次监测
+            {
+                System.Windows.Application.Current.Shutdown();//关闭程序
+            };
+            this.Dispatcher.Invoke(action, true);            
+        }
+        #endregion
+
         public bool ID_Exsit_or_Not(int index)
         {
             DataSet dataSet_temp = new DataSet();
