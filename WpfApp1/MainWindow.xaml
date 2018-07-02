@@ -119,7 +119,7 @@
             <Setter Property="local:ControlAttachProperty.LabelTemplate" >
                 <Setter.Value>
                     <ControlTemplate TargetType="ContentControl">
-                        <Border Width="60" Background="{StaticResource TextLabelBackground}">
+                        <Border Width="90" Background="{StaticResource TextLabelBackground}">
                             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="3" Text="{TemplateBinding Content}"></TextBlock>
                         </Border>
                     </ControlTemplate>
@@ -2073,42 +2073,42 @@
                                          KeyUp="BianHao_KeyUp"
                                          Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入编号" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编号：">
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编       号：">
                                     
                                 </TextBox>
 
                                 <TextBox x:Name="JianCeQiTi" 
                                          Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入气体类型" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="气体：">
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="检测气体：">
 
                                 </TextBox>
 
                                 <TextBox x:Name="AnZhuangWeiZhi" 
                                          Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入安装位置" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="位置：">
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="安装位置：">
 
                                 </TextBox>
 
                                 <TextBox x:Name="AnZhuangShiJina" 
                                          Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入安装时间" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="时间：">
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="安装时间：">
 
                                 </TextBox>
 
                                 <TextBox x:Name="GaoXianBaoJing" 
                                          Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入高限报警" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="高限：">
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="高限报警：">
 
                                 </TextBox>
 
                                 <TextBox x:Name="DiXianBaoJing" 
                                          Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入低限报警" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="低限：">
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="低限报警：">
 
                                 </TextBox>
 
@@ -2231,42 +2231,42 @@
                                          KeyUp="BianHao_tab5_KeyUp"
                                          Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入编号" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编号：">
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编       号：">
 
                                 </TextBox>
 
                                 <TextBox x:Name="JianCeQiTi_tab5" 
                                          Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入气体类型" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="气体：">
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="检测气体：">
 
                                 </TextBox>
 
                                 <TextBox x:Name="AnZhuangWeiZhi_tab5" 
                                          Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入安装位置" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="位置：">
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="安装位置：">
 
                                 </TextBox>
 
                                 <TextBox x:Name="AnZhuangShiJina_tab5" 
                                          Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入安装时间" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="时间：">
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="安装时间：">
 
                                 </TextBox>
 
                                 <TextBox x:Name="GaoXianBaoJing_tab5" 
                                          Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入高限报警" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="高限：">
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="高限报警：">
 
                                 </TextBox>
 
                                 <TextBox x:Name="DiXianBaoJing_tab5" 
                                          Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入低限报警" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="低限：">
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="低限报警：">
 
                                 </TextBox>
 
