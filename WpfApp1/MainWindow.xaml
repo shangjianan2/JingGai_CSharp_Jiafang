@@ -886,19 +886,32 @@
                                        Grid.Column="0" Grid.ColumnSpan="2" 
                                        Fill="White"/>
 
-                            <StackPanel Grid.Row="2" 
+                            <Grid Grid.Row="2" 
                                         Grid.Column="0" Grid.ColumnSpan="2">
-                                <TextBlock HorizontalAlignment="Center">
-                                    实时信息
-                                </TextBlock>
                                 <DataGrid x:Name="DataGrid" 
                                           ItemsSource="{Binding Source={StaticResource JieDians}}" 
                                           IsReadOnly="true" 
                                           SelectedCellsChanged="DataGrid_SelectedCellsChanged" 
-                                          ContextMenu="{StaticResource ContextMenu_DataGrid}">
+                                          ContextMenu="{StaticResource ContextMenu_DataGrid}" 
+                                          Style="{StaticResource DefaultDataGrid}">
+
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Width="60" Header="编号" Binding="{Binding ID}"/>
+                                        <DataGridTextColumn Width="100" Header="气体浓度" Binding="{Binding Gas_Type}"/>
+                                        <DataGridTextColumn Width="100" Header="单位" Binding="{Binding DanWei}"/>
+                                        <DataGridTextColumn Width="100" Header="传感器状态" Binding="{Binding Status}"/>
+                                        <DataGridTextColumn Width="100" Header="浓度" Binding="{Binding NongDu}"/>
+
+                                        <DataGridTextColumn Width="100" Header="低限报警" Binding="{Binding DiXian}"/>
+                                        <DataGridTextColumn Width="100" Header="高限报警" Binding="{Binding GaoXian}"/>
+                                        <DataGridTextColumn Width="100" Header="电量" Binding="{Binding DianLiang}"/>
+                                        <DataGridTextColumn Width="100" Header="温度" Binding="{Binding WenDu}"/>
+                                        <DataGridTextColumn Width="120" Header="时间" Binding="{Binding Date}"/>
+                                    </DataGrid.Columns>
+
 
                                 </DataGrid>
-                            </StackPanel>
+                            </Grid>
 
                         </Grid>
                     </Grid>
@@ -961,17 +974,29 @@
                                     Grid.Row="1" 
                                     Content="退出系统"/>
 
-                            <StackPanel Grid.Row="2" 
+                            <Grid Grid.Row="2" 
                                         Grid.Column="0" Grid.ColumnSpan="2">
-                                <TextBlock HorizontalAlignment="Center">
-                                    实时信息
-                                </TextBlock>
                                 <DataGrid x:Name="DataGrid_tab3" 
                                           ItemsSource="{Binding Source={StaticResource JieDians}}" 
-                                          IsReadOnly="true">
+                                          IsReadOnly="true" 
+                                          Style="{StaticResource DefaultDataGrid}">
+
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Width="60" Header="编号" Binding="{Binding ID}"/>
+                                        <DataGridTextColumn Width="100" Header="气体浓度" Binding="{Binding Gas_Type}"/>
+                                        <DataGridTextColumn Width="100" Header="单位" Binding="{Binding DanWei}"/>
+                                        <DataGridTextColumn Width="100" Header="传感器状态" Binding="{Binding Status}"/>
+                                        <DataGridTextColumn Width="100" Header="浓度" Binding="{Binding NongDu}"/>
+
+                                        <DataGridTextColumn Width="100" Header="低限报警" Binding="{Binding DiXian}"/>
+                                        <DataGridTextColumn Width="100" Header="高限报警" Binding="{Binding GaoXian}"/>
+                                        <DataGridTextColumn Width="100" Header="电量" Binding="{Binding DianLiang}"/>
+                                        <DataGridTextColumn Width="100" Header="温度" Binding="{Binding WenDu}"/>
+                                        <DataGridTextColumn Width="120" Header="时间" Binding="{Binding Date}"/>
+                                    </DataGrid.Columns>
 
                                 </DataGrid>
-                            </StackPanel>
+                            </Grid>
                         </Grid>
                     </Grid>
 

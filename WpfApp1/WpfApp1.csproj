@@ -77,6 +77,10 @@
     <Compile Include="Tab_Change.cs" />
     <Compile Include="Test_Enviroment.cs" />
     <Compile Include="UDP_Thread.cs" />
+    <Page Include="Dictionary_DataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
