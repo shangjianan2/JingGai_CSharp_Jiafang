@@ -11,6 +11,17 @@
         xmlns:wfi ="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration">
 
     <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>                    
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        
+        
+        
         <SolidColorBrush x:Key="TextSelectionBrush" Color="#8F8787"></SolidColorBrush>
         <FontFamily x:Key="FontFamily" >Microsoft YaHei</FontFamily>
         <sys:Double x:Key="FontSize">15</sys:Double>
@@ -847,35 +858,19 @@
 
                             <Button x:Name="LieBiao_Tab2_Buttton" 
                                     Grid.Column="0" Grid.Row="0" 
-                                    Click="LieBiao_Tab2_Buttton_Click">
-                                <TextBlock Foreground="White">列表模式</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Click="LieBiao_Tab2_Buttton_Click" 
+                                    Content="列表模式"/>
                             <Button x:Name="ChaXun_Tab2_Buttton" 
                                     Grid.Column="1" Grid.Row="0" 
-                                    Click="ChaXun_Tab3_Button_Click">
-                                <TextBlock Foreground="White">查询统计</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Click="ChaXun_Tab3_Button_Click" 
+                                    Content="查询统计"/>
                             <Button x:Name="XiTong_Tab2_Buttton" 
                                     Grid.Column="0" Grid.Row="1" 
-                                    Click="XiTong_Tab2_Buttton_Click">
-                                <TextBlock Foreground="White">系统设置</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Click="XiTong_Tab2_Buttton_Click" 
+                                    Content="系统设置"/>
                             <Button x:Name="TuiChu_Tab2_Buttton" 
-                                    Grid.Column="1" Grid.Row="1">
-                                <TextBlock Foreground="White">退出系统</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Grid.Column="1" Grid.Row="1" 
+                                    Content="退出系统"/>
 
                             <!--<DataGrid x:Name="DataGrid" 
                                       Grid.Column="0" Grid.ColumnSpan="2" 
@@ -949,39 +944,23 @@
                             <Button x:Name="DiTu_Tab3_Button" 
                                     Grid.Column="0" 
                                     Grid.Row="0" 
-                                    Click="DiTu_Tab3_Button_Click">
-                                <TextBlock  Foreground="White">地图模式</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Click="DiTu_Tab3_Button_Click" 
+                                    Content="地图模式"/>
                             <Button x:Name="ChaXun_Tab3_Button" 
                                     Grid.Column="1" 
                                     Grid.Row="0" 
-                                    Click="ChaXun_Tab3_Button_Click">
-                                <TextBlock  Foreground="White">查询系统</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Click="ChaXun_Tab3_Button_Click" 
+                                    Content="查询统计"/>
                             <Button x:Name="XiTong_Tab3_Button" 
                                     Grid.Column="0" 
                                     Grid.Row="1" 
-                                    Click="XiTong_Tab2_Buttton_Click">
-                                <TextBlock  Foreground="White">系统设置</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Click="XiTong_Tab2_Buttton_Click" 
+                                    Content="系统设置"/>
                             <Button x:Name="TuiChu_Tab3_Button" 
                                     Grid.Column="1" 
-                                    Grid.Row="1">
-                                <TextBlock  Foreground="White">退出系统</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
-                            
+                                    Grid.Row="1" 
+                                    Content="退出系统"/>
+
                             <StackPanel Grid.Row="2" 
                                         Grid.Column="0" Grid.ColumnSpan="2">
                                 <TextBlock HorizontalAlignment="Center">
@@ -1956,51 +1935,26 @@
                             </Grid.ColumnDefinitions>
 
                             <Button x:Name="DiTuMoShi_Tab4_Buttton" 
-                                    Grid.Column="0" Grid.Row="0">
-                                <TextBlock Foreground="White">地图模式</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Grid.Column="0" Grid.Row="0" 
+                                    Content="地图模式"/>
                             <Button x:Name="LieBiaoMoShi_Tab4_Buttton" 
                                     Grid.Column="1" Grid.Row="0" 
-                                    Click="LieBiaoMoShi_Tab4_Buttton_Click">
-                                <TextBlock Foreground="White">列表模式</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Click="LieBiaoMoShi_Tab4_Buttton_Click" 
+                                    Content="列表模式"/>
                             <Button x:Name="XinXiBianGeng_Tab4_Buttton" 
-                                    Grid.Column="0" Grid.Row="1">
-                                <TextBlock Foreground="White">信息变更</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Grid.Column="0" Grid.Row="1" 
+                                    Content="信息变更"/>
                             <Button x:Name="ZengShan_Tab4_Buttton" 
                                     Grid.Column="1" Grid.Row="1" 
-                                    Click="TuiChu_Tab4_Buttton_Click">
-                                <TextBlock Foreground="White">增删点位</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
-
+                                    Click="TuiChu_Tab4_Buttton_Click" 
+                                    Content="增删点位"/>
                             <Button x:Name="PuTongMoShi_Tab4_Button"
                                     Grid.Column="0" Grid.Row="2" 
-                                    Click="PuTongMoShi_Tab4_Button_Click">
-                                <TextBlock Foreground="White">普通模式</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Click="PuTongMoShi_Tab4_Button_Click" 
+                                    Content="普通模式"/>
                             <Button 
-                                    Grid.Column="1" Grid.Row="2">
-                                <TextBlock Foreground="White">备用</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Grid.Column="1" Grid.Row="2" 
+                                    Content="备用"/>
 
                             <!--<DataGrid x:Name="DataGrid" 
                                       Grid.Column="0" Grid.ColumnSpan="2" 
@@ -2141,28 +2095,16 @@
                                     </Grid.ColumnDefinitions>
                                     <Button x:Name="QueRenBianGeng_Button" 
                                             Click="QueRenBianGeng_Button_Click"
-                                            Grid.Column="0">
-                                        <TextBlock Foreground="White">确认变更</TextBlock>
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                        </Button.Background>
-                                    </Button>
+                                            Grid.Column="0" 
+                                            Content="确认变更"/>
                                     <Button x:Name="ZengJiaBianGeng_Button" 
                                             Click="ZengJiaBianGeng_Button_Click"
-                                            Grid.Column="1">
-                                        <TextBlock Foreground="White">增加变更</TextBlock>
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                        </Button.Background>
-                                    </Button>
+                                            Grid.Column="1" 
+                                            Content="增加点位"/>
                                     <Button x:Name="ShanChuDianWei" 
                                             Click="ShanChuDianWei_Click" 
-                                            Grid.Column="2">
-                                        <TextBlock Foreground="White">删除点位</TextBlock>
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                        </Button.Background>
-                                    </Button>
+                                            Grid.Column="2" 
+                                            Content="删除点位"/>
                                 </Grid>
 
                             </Grid>
@@ -2213,51 +2155,26 @@
 
                             <Button x:Name="DiTuMoShi_Tab5_Buttton" 
                                     Grid.Column="0" Grid.Row="0" 
-                                    Click="DiTuMoShi_Tab5_Buttton_Click">
-                                <TextBlock Foreground="White">地图模式</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Click="DiTuMoShi_Tab5_Buttton_Click" 
+                                    Content="地图模式"/>
                             <Button x:Name="LieBianMoShi_Tab5_Buttton" 
-                                    Grid.Column="1" Grid.Row="0">
-                                <TextBlock Foreground="White">列表模式</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Grid.Column="1" Grid.Row="0" 
+                                    Content="列表模式"/>
                             <Button x:Name="XinXiBianGeng_Tab5_Buttton" 
-                                    Grid.Column="0" Grid.Row="1">
-                                <TextBlock Foreground="White">信息变更</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Grid.Column="0" Grid.Row="1" 
+                                    Content="信息更改"/>
                             <Button x:Name="ZengShan_Tab5_Buttton" 
                                     Grid.Column="1" Grid.Row="1" 
-                                    Click="TuiChu_Tab4_Buttton_Click">
-                                <TextBlock Foreground="White">增删点位</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Click="TuiChu_Tab4_Buttton_Click" 
+                                    Content="增删点位"/>
 
                             <Button x:Name="PuTongMoShi_Tab5_Button"
                                     Grid.Column="0" Grid.Row="2" 
-                                    Click="PuTongMoShi_Tab5_Button_Click">
-                                <TextBlock Foreground="White">普通模式</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Click="PuTongMoShi_Tab5_Button_Click" 
+                                    Content="普通模式"/>
                             <Button 
-                                    Grid.Column="1" Grid.Row="2">
-                                <TextBlock Foreground="White">备用</TextBlock>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                </Button.Background>
-                            </Button>
-
+                                    Grid.Column="1" Grid.Row="2" 
+                                    Content="备用"/>
                             <Rectangle Grid.Row="3" 
                                        Grid.Column="0" Grid.ColumnSpan="2" 
                                        Fill="White"/>
@@ -2397,28 +2314,16 @@
                                     </Grid.ColumnDefinitions>
                                     <Button x:Name="QueRenBianGeng_Button_tab5" 
                                             Click="QueRenBianGeng_Button_tab5_Click"
-                                            Grid.Column="0">
-                                        <TextBlock Foreground="White">确认变更</TextBlock>
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                        </Button.Background>
-                                    </Button>
+                                            Grid.Column="0" 
+                                            Content="确认变更"/>
                                     <Button x:Name="ZengJiaBianGeng_Button_tab5" 
                                             Click="ZengJiaBianGeng_Button_tab5_Click"
-                                            Grid.Column="1">
-                                        <TextBlock Foreground="White">增加变更</TextBlock>
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                        </Button.Background>
-                                    </Button>
+                                            Grid.Column="1" 
+                                            Content="增加点位"/>
                                     <Button x:Name="ShanChuDianWei_Button_tab5" 
                                             Click="ShanChuDianWei_Button_tab5_Click"
-                                            Grid.Column="2">
-                                        <TextBlock Foreground="White">删除点位</TextBlock>
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="C:\NBIoT\button.png"/>
-                                        </Button.Background>
-                                    </Button>
+                                            Grid.Column="2" 
+                                            Content="删除点位"/>
                                 </Grid>
 
                             </Grid>
@@ -2517,7 +2422,7 @@
                                          Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入节点编号" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编号："/>
-                            
+
 
                             <Button Content="按时间查询" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
                             <Button x:Name="ChaXun3_tab6" Click="ChaXun3_tab6_Click" Content="查询" Grid.Row="5" Grid.Column="2"/>
