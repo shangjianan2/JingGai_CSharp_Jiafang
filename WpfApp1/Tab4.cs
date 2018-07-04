@@ -471,11 +471,12 @@ namespace WpfApp1
         {
             //previousMousePoint_tab4 = e.GetPosition(img_tab4);
 
-            isMouseLeftButtonDown_tab4 = true;
+            
 
 
             if (sender.ToString() == "System.Windows.Shapes.Ellipse")
-            {                
+            {
+                isMouseLeftButtonDown_tab4 = true;//只有在节点处按下按键才算按下
                 previousMousePoint_tab4 = e.GetPosition((System.Windows.Shapes.Ellipse)sender);
             }
             else
@@ -491,7 +492,17 @@ namespace WpfApp1
 
         private void img_MouseLeave_tab4(object sender, MouseEventArgs e)
         {
-            isMouseLeftButtonDown_tab4 = false;
+            if (isMouseLeftButtonDown_tab4 == false)
+                return;
+            if (sender.ToString() == "System.Windows.Shapes.Ellipse")
+            {
+                Point position_tab4;
+                System.Windows.Shapes.Ellipse ellipse = (System.Windows.Shapes.Ellipse)sender;
+                position_tab4 = e.GetPosition(ellipse);
+                //单独拖拽节点只会更改节点的在Canvas中的相对位置（left top），不会更改其他变量
+                Canvas.SetLeft(ellipse, Canvas.GetLeft(ellipse) + (position_tab4.X - this.previousMousePoint_tab4.X) * sfr_tab4.ScaleX);
+                Canvas.SetTop(ellipse, Canvas.GetTop(ellipse) + (position_tab4.Y - this.previousMousePoint_tab4.Y) * sfr_tab4.ScaleY);
+            }
         }
 
         private void img_MouseMove_tab4(object sender, MouseEventArgs e)
