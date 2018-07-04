@@ -40,6 +40,16 @@ namespace WpfApp1
         ScaleTransform[] scaleTransform_Array_tab4 = new ScaleTransform[size_chanel];
         Ellipse[] Ellipse_Array_tab4 = new Ellipse[size_chanel];
 
+        private void XinXiBianGeng_Tab4_Buttton_Click(object sender, RoutedEventArgs e)
+        {
+            Enable_verify_add_del(true, false, false);
+        }
+
+        private void ZengShan_Tab4_Buttton_Click(object sender, RoutedEventArgs e)
+        {
+            Enable_verify_add_del(false, true, true);
+        }
+
         private void ShanChuDianWei_Click(object sender, RoutedEventArgs e)
         {
             if (BianHao.Text == "")//如果TextBox中没有数据就不进行任何操作

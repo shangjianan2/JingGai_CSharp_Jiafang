@@ -31,6 +31,16 @@ namespace WpfApp1
         private System.Drawing.Point pointView_tab5 = new System.Drawing.Point(0, 0);
         public System.Windows.Forms.ToolTip toolTip_tab5 = new System.Windows.Forms.ToolTip();
 
+        private void XinXiBianGeng_Tab5_Buttton_Click(object sender, RoutedEventArgs e)
+        {
+            Enable_verify_add_del(true, false, false);
+        }
+
+        private void ZengShan_Tab5_Buttton_Click(object sender, RoutedEventArgs e)
+        {
+            Enable_verify_add_del(false, true, true);
+        }
+
         private void PuTongMoShi_Tab5_Button_Click(object sender, RoutedEventArgs e)
         {
             Tab_change_fore(5, 3);
