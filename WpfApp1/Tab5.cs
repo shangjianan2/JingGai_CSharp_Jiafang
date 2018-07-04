@@ -59,6 +59,10 @@ namespace WpfApp1
             if (BianHao_tab5.Text == "")//如果TextBox中没有数据就不进行任何操作
                 return;
 
+            //确认对话框
+            if (System.Windows.MessageBox.Show("确定增加节点？", "提示", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
+                return;
+
             ZengJiaBianGeng(Convert.ToInt16(BianHao_tab5.Text), JianCeQiTi_tab5.Text, AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text, GaoXianBaoJing_tab5.Text, DiXianBaoJing_tab5.Text);
 
             //根据当前新增节点的坐标更新数据库中的数据
@@ -69,6 +73,10 @@ namespace WpfApp1
         private void ShanChuDianWei_Button_tab5_Click(object sender, RoutedEventArgs e)
         {
             if (BianHao_tab5.Text == "")//如果TextBox中没有数据就不进行任何操作
+                return;
+
+            //确认对话框
+            if (System.Windows.MessageBox.Show("确定删除节点？", "提示", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
                 return;
 
             string command_str = "delete from table3_jiedian where id=" + BianHao_tab5.Text + ";";

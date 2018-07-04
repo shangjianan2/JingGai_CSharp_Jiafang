@@ -55,6 +55,10 @@ namespace WpfApp1
             if (BianHao.Text == "")//如果TextBox中没有数据就不进行任何操作
                 return;
 
+            //确认对话框
+            if (System.Windows.MessageBox.Show("确定删除节点？", "提示", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
+                return;
+
             string command_str = "delete from table3_jiedian where id=" + BianHao.Text + ";";
             MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, command_str, null);
@@ -65,6 +69,10 @@ namespace WpfApp1
         private void ZengJiaBianGeng_Button_Click(object sender, RoutedEventArgs e)
         {
             if (BianHao.Text == "")//如果TextBox中没有数据就不进行任何操作
+                return;
+
+            //确认对话框
+            if (System.Windows.MessageBox.Show("确定增加节点？", "提示", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
                 return;
 
             ZengJiaBianGeng(Convert.ToInt16(BianHao.Text), JianCeQiTi.Text, AnZhuangWeiZhi.Text, AnZhuangShiJina.Text, GaoXianBaoJing.Text, DiXianBaoJing.Text);
