@@ -66,6 +66,9 @@ namespace WpfApp1
 
             switch (TanCeQiZhuangTai)
             {
+                case 0x00:
+                    output[2] = "";
+                    break;
                 case 0x02:
                     output[2] = "µÍ±¨";
                     break;

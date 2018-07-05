@@ -286,10 +286,14 @@ namespace WpfApp1
 
 
             string[] temp_array_str = ShuJuJieXi(message);
-            string str = "INSERT INTO " + ShuJuKu.Table1_ShiJIna_JieDian + " ( `id`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
-        "VALUES ( \"" + (message[0]).ToString() + "\",\"" + temp_array_str[0] + "\",\"" + temp_array_str[1] + "\",\"" + temp_array_str[2] + "\",\"" + temp_array_str[3] + "\",\"" + temp_array_str[4] + "\",\"" + temp_array_str[5] + "\",\"" + temp_array_str[6] + "\",\"" + temp_array_str[7] + "\",now());";
-            MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
-                                    CommandType.Text, str, null);
+            bool change_or_not = remember_to_databases_or_not(temp_array_str, message[0]);//有选择性的将数据输入到数据库
+            if (change_or_not == false)//如果数据库没有更新，就不进行下面的运算
+                return;
+
+        //    string str = "INSERT INTO " + ShuJuKu.Table1_ShiJIna_JieDian + " ( `id`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
+        //"VALUES ( \"" + (message[0]).ToString() + "\",\"" + temp_array_str[0] + "\",\"" + temp_array_str[1] + "\",\"" + temp_array_str[2] + "\",\"" + temp_array_str[3] + "\",\"" + temp_array_str[4] + "\",\"" + temp_array_str[5] + "\",\"" + temp_array_str[6] + "\",\"" + temp_array_str[7] + "\",now());";
+        //    MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+        //                            CommandType.Text, str, null);
 
             Action<bool> action = (x) =>//每次都对当前所有节点进行一次监测
             {
@@ -331,6 +335,44 @@ namespace WpfApp1
                 }
             };
             this.Dispatcher.Invoke(action, true);
+        }
+
+        public bool remember_to_databases_or_not(string[] temp_array_str_tt, int index)
+        {
+            DataSet dataSet_temp = new DataSet();
+            string command_str = "select `status`, `date` from table1_shijian_jiedian where to_days(now())-to_days(date) < 1 and id=" + index.ToString() + " order by date desc limit 1";
+            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+
+            //判断今天此节点是否有数据
+            if(temp_DataRow.Count == 0)
+            {
+                //没有数据，直接将当前数据存入数据库
+                string str = "INSERT INTO " + ShuJuKu.Table1_ShiJIna_JieDian + " ( `id`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
+        "VALUES ( \"" + (index).ToString() + "\",\"" + temp_array_str_tt[0] + "\",\"" + temp_array_str_tt[1] + "\",\"" + temp_array_str_tt[2] + "\",\"" + temp_array_str_tt[3] + "\",\"" + temp_array_str_tt[4] + "\",\"" + temp_array_str_tt[5] + "\",\"" + temp_array_str_tt[6] + "\",\"" + temp_array_str_tt[7] + "\",now());";
+                MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                        CommandType.Text, str, null);
+                return true;
+                
+            }
+            else
+            {
+                //有数据，判断数据中的节点状态是否和新的数据中的节点状态相同
+                if (temp_DataRow[0][0].ToString() == temp_array_str_tt[2])
+                {
+                    //如果相同，不进行任何操作
+                    return false;
+                }
+                else
+                {
+                    //如果不相同，将本次数据存入数据库
+                    string str = "INSERT INTO " + ShuJuKu.Table1_ShiJIna_JieDian + " ( `id`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
+            "VALUES ( \"" + (index).ToString() + "\",\"" + temp_array_str_tt[0] + "\",\"" + temp_array_str_tt[1] + "\",\"" + temp_array_str_tt[2] + "\",\"" + temp_array_str_tt[3] + "\",\"" + temp_array_str_tt[4] + "\",\"" + temp_array_str_tt[5] + "\",\"" + temp_array_str_tt[6] + "\",\"" + temp_array_str_tt[7] + "\",now());";
+                    MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                            CommandType.Text, str, null);
+                    return true;
+                }
+            }
         }
         #endregion
 
