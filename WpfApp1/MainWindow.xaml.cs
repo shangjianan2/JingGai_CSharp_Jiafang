@@ -50,6 +50,9 @@ namespace WpfApp1
         public int[,] JieDianZuoBiao_Array_int = new int[size_chanel, 2];
         public string map_LuJing = null;
 
+        const double map_rightup_X = 1500;
+        const double map_rightup_Y = 1500;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -140,6 +143,46 @@ namespace WpfApp1
 
             //Ellipse_Array[63].Visibility = Visibility.Collapsed;
             Init_Jiedian_DisplayOrNot();
+
+            //每次重新绘制地图的时候都会有一定的偏置
+            Init_map_location_XY(map_rightup_X, map_rightup_Y, 2);
+            Init_map_location_XY(map_rightup_X, map_rightup_Y, 4);
+        }
+
+        public void Init_map_location_XY(double X, double Y, int tab)
+        {
+            if(tab == 2)
+            {
+                clear_img_canvas();
+                clear_scale();
+                clear_tlt();
+
+                tlt.X = -X;
+                tlt.Y = -Y;
+
+
+                for (int i = 0; i < size_chanel; i++)//size_chanel
+                {
+                    translateTransform_Array_Tab3[i].X = -X * scaleTransform_Array_Tab3[i].ScaleX;
+                    translateTransform_Array_Tab3[i].Y = -Y * scaleTransform_Array_Tab3[i].ScaleY;
+                }
+            }
+            else if(tab == 4)
+            {
+                clear_img_canvas_tab4();
+                clear_scale_tab4();
+                clear_tlt_tab4();
+
+                tlt_tab4.X = -X;
+                tlt_tab4.Y = -Y;
+
+
+                for (int i = 0; i < size_chanel; i++)//size_chanel
+                {
+                    translateTransform_Array_tab4[i].X = -X * scaleTransform_Array_tab4[i].ScaleX;
+                    translateTransform_Array_tab4[i].Y = -Y * scaleTransform_Array_tab4[i].ScaleY;
+                }
+            }
         }
 
         /// <summary>
@@ -152,13 +195,14 @@ namespace WpfApp1
             dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
-
+            
             clear_img_canvas_tab4();
             clear_scale_tab4();
             clear_tlt_tab4();
             clear_img_canvas();
             clear_scale();
             clear_tlt();
+
 
             HideOrShow_jiedian_map(temp_DataRow, ref Ellipse_Array);
             HideOrShow_jiedian_map(temp_DataRow, ref Ellipse_Array_tab4);
@@ -430,9 +474,10 @@ namespace WpfApp1
 
                 for (int i = 0; i < size_chanel; i++)
                 {
-                    change_XY_rectangle(Ellipse_Array[i], Convert.ToDouble(JieDianZuoBiao_Array_int[i, 0]), Convert.ToDouble(JieDianZuoBiao_Array_int[i, 1]));
+                    change_XY_rectangle(Ellipse_Array[i], map_rightup_X, map_rightup_Y);
                 }
                 img.Source = new BitmapImage(new Uri(map_LuJing));
+
             }
             else if(num_tab == 4)//更新他爸中的地图
             {
@@ -443,7 +488,7 @@ namespace WpfApp1
 
                 for (int i = 0; i < size_chanel; i++)
                 {
-                    change_XY_rectangle(Ellipse_Array_tab4[i], Convert.ToDouble(JieDianZuoBiao_Array_int[i, 0]), Convert.ToDouble(JieDianZuoBiao_Array_int[i, 1]));
+                    change_XY_rectangle(Ellipse_Array_tab4[i], map_rightup_X, map_rightup_Y);
                 }
                 img_tab4.Source = new BitmapImage(new Uri(map_LuJing));
             }

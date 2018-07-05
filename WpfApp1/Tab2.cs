@@ -83,8 +83,8 @@ namespace WpfApp1
         {
             map_Reset_Click(this, null);
 
-            double x = Canvas.GetLeft(ellipse_array[index]);
-            double y = Canvas.GetTop(ellipse_array[index]);
+            double x = Canvas.GetLeft(ellipse_array[index]) - map_rightup_X;
+            double y = Canvas.GetTop(ellipse_array[index]) - map_rightup_Y;
 
             double move_x = (this.Width) * 0.75 / 2 - x;// (img.Height / 2 - x) * sfr.ScaleX;
             double move_y = (this.Height) / 2 - y;// (img.Width / 2 - y) * sfr.ScaleY;
@@ -398,20 +398,7 @@ namespace WpfApp1
 
         private void map_Reset_Click(object sender, RoutedEventArgs e)
         {
-            //Canvas.SetTop(img, 0);
-            //Canvas.SetLeft(img, 0);
-            //this.sfr.CenterX = 0;
-            //this.sfr.CenterY = 0;
-            //this.sfr.ScaleX = 1;
-            //this.sfr.ScaleY = 1;
-            //this.sfr.CenterX = 0;
-            //this.sfr.CenterY = 0;
-            //this.sfr.ScaleX = 1;
-            //this.sfr.ScaleY = 1;
-
-            clear_img_canvas();
-            clear_scale();
-            clear_tlt();
+            Init_map_location_XY(map_rightup_X, map_rightup_Y, 2);
         }
 
         public void clear_img_canvas()
@@ -451,7 +438,7 @@ namespace WpfApp1
         private void DataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             jiedian a = (jiedian)this.DataGrid.SelectedItem;
-
+            
             jiedian_AutoMove(ref Ellipse_Array, (Convert.ToUInt16(a.ID) - 1));
             jiedian_AutoZoom(ref Ellipse_Array, (Convert.ToUInt16(a.ID) - 1));
         }
