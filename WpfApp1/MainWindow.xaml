@@ -2374,12 +2374,12 @@
                             <TextBox x:Name="QiShi1_TextBox_tab6"
                                          Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入起始时间" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="起始："/>
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="起       始："/>
 
                             <TextBox x:Name="ZhongZhi1_TextBox_tab6"
                                          Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入终止时间" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="终止："/>
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="终       止："/>
 
 
                             <Button Content="按探测器查询" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
@@ -2387,7 +2387,7 @@
                             <TextBox x:Name="BianHaoChaXun1_tab6"
                                          Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入节点编号" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编号："/>
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编       号："/>
 
 
                             <Button Content="精确查询" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
@@ -2395,15 +2395,15 @@
                             <TextBox x:Name="BianHaoChaXun2_tab6"
                                          Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入节点编号" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编号："/>
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编       号："/>
                             <TextBox x:Name="QiShi2_TextBox_tab6"
                                          Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入起始时间" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="起始："/>
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="起       始："/>
                             <TextBox x:Name="ZhongZhi2_TextBox_tab6"
                                          Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入终止时间" 
-                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="终止："/>
+                                         Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="终       止："/>
 
                             <Button Grid.Column="0" Grid.Row="10"/>
                             <Button x:Name="DaoChuExcel_Button" Content="导出excel" Click="DaoChuExcel_Button_Click"  Grid.Column="1" Grid.Row="10"/>
