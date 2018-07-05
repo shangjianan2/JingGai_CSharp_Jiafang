@@ -2382,7 +2382,7 @@
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="终止："/>
 
 
-                            <Button Content="按时间查询" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+                            <Button Content="按探测器查询" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
                             <Button x:Name="ChaXun2_tab6" Click="ChaXun2_tab6_Click" Content="查询" Grid.Row="3" Grid.Column="2"/>
                             <TextBox x:Name="BianHaoChaXun1_tab6"
                                          Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Width="Auto"
@@ -2390,7 +2390,7 @@
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编号："/>
 
 
-                            <Button Content="按时间查询" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
+                            <Button Content="精确查询" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
                             <Button x:Name="ChaXun3_tab6" Click="ChaXun3_tab6_Click" Content="查询" Grid.Row="5" Grid.Column="2"/>
                             <TextBox x:Name="BianHaoChaXun2_tab6"
                                          Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3" Width="Auto"

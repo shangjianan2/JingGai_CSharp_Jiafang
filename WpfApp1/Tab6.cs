@@ -80,7 +80,7 @@ namespace WpfApp1
             //chaxun_command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + ", " + ShuJuKu.Table3_JieDian + 
             //    " where " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=" + ShuJuKu.Table3_JieDian + ".id and" + "`Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" order by `Date` desc";
             chaxun_command_str = "select " + ShuJuKu.Table1_ShiJIna_JieDian + ".id, " + ShuJuKu.Table1_ShiJIna_JieDian + ".`gas type`, danwei, status, nongdu, dixian, gaoxian, dianliang, wendu, `Date`, `location`, `time of install` from " + ShuJuKu.Table1_ShiJIna_JieDian + 
-                ", " + ShuJuKu.Table3_JieDian + " where " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=" + ShuJuKu.Table3_JieDian + ".id and" + "`Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" order by `Date` desc;";
+                ", " + ShuJuKu.Table3_JieDian + " where " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=" + ShuJuKu.Table3_JieDian + ".id and" + "`Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" and `status`!=\"\" order by `Date` desc;";
             DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, chaxun_command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
@@ -110,7 +110,7 @@ namespace WpfApp1
 
             //添加列
             chaxun_command_str = "select " + ShuJuKu.Table1_ShiJIna_JieDian + ".id, " + ShuJuKu.Table1_ShiJIna_JieDian + ".`gas type`, danwei, status, nongdu, dixian, gaoxian, dianliang, wendu, `Date`, `location`, `time of install` from " + ShuJuKu.Table1_ShiJIna_JieDian +
-                ", " + ShuJuKu.Table3_JieDian + " where " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=" + ShuJuKu.Table3_JieDian + ".id and " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=\"" + BianHaoChaXun1_tab6.Text + "\" order by `Date` desc;";
+                ", " + ShuJuKu.Table3_JieDian + " where " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=" + ShuJuKu.Table3_JieDian + ".id and " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=\"" + BianHaoChaXun1_tab6.Text + "\" and `status`!=\"\" order by `Date` desc;";
             //string dataSet_temp_str = "select * from test5 order by `Date` desc";
             DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, chaxun_command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
@@ -141,7 +141,7 @@ namespace WpfApp1
 
             //添加列
             chaxun_command_str = "select " + ShuJuKu.Table1_ShiJIna_JieDian + ".id, " + ShuJuKu.Table1_ShiJIna_JieDian + ".`gas type`, danwei, status, nongdu, dixian, gaoxian, dianliang, wendu, `Date`, `location`, `time of install` from " + ShuJuKu.Table1_ShiJIna_JieDian +
-                ", " + ShuJuKu.Table3_JieDian + " where " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=" + ShuJuKu.Table3_JieDian + ".id and" + "`Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" and " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=\"" + BianHaoChaXun1_tab6.Text + "\" order by `Date` desc;";
+                ", " + ShuJuKu.Table3_JieDian + " where " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=" + ShuJuKu.Table3_JieDian + ".id and" + "`Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" and " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=\"" + BianHaoChaXun1_tab6.Text + "\" and `status`!=\"\" order by `Date` desc;";
             //string dataSet_temp_str = "select * from test5 order by `Date` desc";
             DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, chaxun_command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
