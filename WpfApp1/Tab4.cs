@@ -42,12 +42,12 @@ namespace WpfApp1
 
         private void XinXiBianGeng_Tab4_Buttton_Click(object sender, RoutedEventArgs e)
         {
-            Enable_verify_add_del(true, false, false);
+            Enable_verify_add_del(true, false, false, 4);
         }
 
         private void ZengShan_Tab4_Buttton_Click(object sender, RoutedEventArgs e)
         {
-            Enable_verify_add_del(false, true, true);
+            Enable_verify_add_del(false, true, true, 4);
         }
 
         private void ShanChuDianWei_Click(object sender, RoutedEventArgs e)
@@ -151,6 +151,7 @@ namespace WpfApp1
         {
             //tabcontrol.SelectedIndex = 5;
             Tab_change_fore(4, 5);
+            Enable_verify_add_del(false, false, false, 5);
         }
 
         /// <summary>

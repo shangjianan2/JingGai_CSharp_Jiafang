@@ -33,12 +33,12 @@ namespace WpfApp1
 
         private void XinXiBianGeng_Tab5_Buttton_Click(object sender, RoutedEventArgs e)
         {
-            Enable_verify_add_del(true, false, false);
+            Enable_verify_add_del(true, false, false, 5);
         }
 
         private void ZengShan_Tab5_Buttton_Click(object sender, RoutedEventArgs e)
         {
-            Enable_verify_add_del(false, true, true);
+            Enable_verify_add_del(false, true, true, 5);
         }
 
         private void PuTongMoShi_Tab5_Button_Click(object sender, RoutedEventArgs e)
@@ -91,8 +91,21 @@ namespace WpfApp1
             if (e.Key == Key.Enter)
             {
                 Show_Information_Jiedian_tab5(Convert.ToInt16(BianHao_tab5.Text));
-                jiedian_AutoMove_tab4(ref Ellipse_Array_tab4, Convert.ToInt16(BianHao_tab5.Text) - 1);
-                jiedian_AutoZoom_tab4(ref Ellipse_Array_tab4, Convert.ToInt16(BianHao_tab5.Text) - 1);
+
+                DataSet dataSet_temp = new DataSet();
+                string command_str = "select * from " + ShuJuKu.Table3_JieDian + " where `id`=" + BianHao_tab5.Text;
+                dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                                      CommandType.Text, command_str, null);
+                DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+
+                if (temp_DataRow.Count <= 0)//没有相应节点的信息，建立新的节点
+                {
+                    System.Windows.MessageBox.Show("此节点尚未创建", "提示");
+                    return;
+                }
+
+                //jiedian_AutoMove_tab4(ref Ellipse_Array_tab4, Convert.ToInt16(BianHao_tab5.Text) - 1);
+                //jiedian_AutoZoom_tab4(ref Ellipse_Array_tab4, Convert.ToInt16(BianHao_tab5.Text) - 1);
             }
         }
 
@@ -129,6 +142,7 @@ namespace WpfApp1
         {
             //tabcontrol.SelectedIndex = 4;
             Tab_change_fore(5, 4);
+            Enable_verify_add_del(false, false, false, 4);
         }
 
         private void listview_largeicon_MouseMove_tab5(object sender, System.Windows.Forms.MouseEventArgs e)

@@ -40,9 +40,16 @@ namespace WpfApp1
         ScaleTransform[] scaleTransform_Array_Tab3 = new ScaleTransform[size_chanel];
         Ellipse[] Ellipse_Array = new Ellipse[size_chanel];
 
-             
 
-        
+
+        private void TuiChu_Tab2_Buttton_Click(object sender, RoutedEventArgs e)
+        {
+            //确认对话框
+            if (MessageBox.Show("确定退出系统？", "提示", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
+                return;
+
+            Application.Current.Shutdown();//关闭程序
+        }
 
         public void jiedian_AutoZoom(ref Ellipse[] ellipse_array, int index)//从零开始索引
         {

@@ -619,14 +619,14 @@ namespace WpfApp1
                 Tab_change_fore(2, 4);
 
                 //失能tab4右下防的三个按键
-                Enable_verify_add_del(false, false, false);
+                Enable_verify_add_del(false, false, false, 4);
             }
             else if(sender_Button.Name.Contains("ab3"))//如果是Tab3的按键
             {
                 Tab_change_fore(3, 5);
 
                 //失能tab5右下防的三个按键
-                Enable_verify_add_del(false, false, false);
+                Enable_verify_add_del(false, false, false, 5);
             }
         }
 
@@ -636,11 +636,20 @@ namespace WpfApp1
         /// <param name="queren">确认变更 按键</param>
         /// <param name="zengjia">增加点位 按键</param>
         /// <param name="shanchu">删除点位 按键</param>
-        public void Enable_verify_add_del(bool queren, bool zengjia, bool shanchu)
+        public void Enable_verify_add_del(bool queren, bool zengjia, bool shanchu, int tab)
         {
-            QueRenBianGeng_Button.IsEnabled = queren;
-            ZengJiaBianGeng_Button.IsEnabled = zengjia;
-            ShanChuDianWei.IsEnabled = shanchu;
+            if(tab == 4)
+            {
+                QueRenBianGeng_Button.IsEnabled = queren;
+                ZengJiaBianGeng_Button.IsEnabled = zengjia;
+                ShanChuDianWei.IsEnabled = shanchu;
+            }
+            else if(tab == 5)
+            {
+                QueRenBianGeng_Button_tab5.IsEnabled = queren;
+                ZengJiaBianGeng_Button_tab5.IsEnabled = zengjia;
+                ShanChuDianWei_Button_tab5.IsEnabled = shanchu;
+            }
         }
 
 
@@ -649,5 +658,7 @@ namespace WpfApp1
         {
             tabcontrol.SelectedIndex = 2;
         }
+
+        
     }
 }
