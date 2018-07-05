@@ -228,6 +228,10 @@ namespace WpfApp1
                     change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 0);
                 }
             }
+
+            //添加地图偏置
+            Init_map_location_XY(map_rightup_X, map_rightup_Y, 2);
+            Init_map_location_XY(map_rightup_X, map_rightup_Y, 4);
         }
 
 

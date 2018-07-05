@@ -99,9 +99,9 @@ namespace WpfApp1
             }
 
             //能运行到这里说明这个节点使个新的，然后将新的数据输入到数据库
-            string command_str = "INSERT INTO " + ShuJuKu.Table3_JieDian + " (`id`, `gas type`, `location`, `time of install`, `high to warning`, `low to warning` ) VALUES ( \"" +
+            string command_str = "INSERT INTO " + ShuJuKu.Table3_JieDian + " (`id`, `gas type`, `location`, `time of install`, `high to warning`, `low to warning`, `xmin`, `ymin` ) VALUES ( \"" +
                 index.ToString() + "\",  \"" + jianceqiti_tt + "\", \"" + anzhuangweizhi_tt +
-                "\", \"" + anzhuangshijian_tt + "\", \"" + gaoxianbaojing_tt + "\", \"" + dixianbaojing_tt + "\");";
+                "\", \"" + anzhuangshijian_tt + "\", \"" + gaoxianbaojing_tt + "\", \"" + dixianbaojing_tt + "\", \"" + map_rightup_X + "\", \"" + map_rightup_Y + "\");";
             MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, command_str, null);
 
