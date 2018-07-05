@@ -161,7 +161,7 @@ namespace WpfApp1
             catch
             {
                 MessageBox.Show("UDP通讯初始化失败", "error");
-                Application.Current.Shutdown();
+                Environment.Exit(0);
             }
 
             
