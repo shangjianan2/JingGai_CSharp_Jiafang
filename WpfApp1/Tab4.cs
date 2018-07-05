@@ -249,12 +249,30 @@ namespace WpfApp1
         public void jiedian_AutoMove_tab4(ref Ellipse[] ellipse_array, int index)//从零开始索引
         {
             map_Reset_Click_tab4(this, null);
+            
+            double move_x = 0;
+            double move_y = 0;
 
-            double x = Canvas.GetLeft(ellipse_array[index]) - map_rightup_X;
-            double y = Canvas.GetTop(ellipse_array[index]) - map_rightup_Y;
+            if (this.WindowState == WindowState.Maximized)
+            {
+                double x = Canvas.GetLeft(ellipse_array[index]) - map_rightup_X;
+                double y = Canvas.GetTop(ellipse_array[index]) - map_rightup_Y;
 
-            double move_x = (this.Width) * 0.75 / 2 - x;// (img.Height / 2 - x) * sfr.ScaleX;
-            double move_y = (this.Height) / 2 - y;// (img.Width / 2 - y) * sfr.ScaleY;
+                double x1 = SystemParameters.PrimaryScreenWidth;//得到屏幕整体宽度
+                double y1 = SystemParameters.PrimaryScreenHeight;//得到屏幕整体高度
+
+                move_x = x1 * 0.75 / 2 - x;// (img.Height / 2 - x) * sfr.ScaleX;
+                move_y = (y1 - 100) / 2 - y;// (img.Width / 2 - y) * sfr.ScaleY;
+            }
+            else
+            {
+                double x = Canvas.GetLeft(ellipse_array[index]) - map_rightup_X;
+                double y = Canvas.GetTop(ellipse_array[index]) - map_rightup_Y;
+
+                move_x = (this.Width) * 0.75 / 2 - x;// (img.Height / 2 - x) * sfr.ScaleX;
+                move_y = (this.Height - 100) / 2 - y;// (img.Width / 2 - y) * sfr.ScaleY;
+
+            }
 
 
             tlt_tab4.X += move_x;
