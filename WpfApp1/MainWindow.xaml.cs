@@ -618,7 +618,7 @@ namespace WpfApp1
         {
             passwd_str = get_password_from_databases("root");//从数据库中获取相应用户的密码并返回
 
-            PasswordWindow passwd_Form2 = new PasswordWindow(this);
+            PasswordWindow passwd_Form2 = new PasswordWindow(this, 0);
             passwd_Form2.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             passwd_Form2.Owner = this;
             passwd_Form2.ShowDialog();
@@ -682,6 +682,5 @@ namespace WpfApp1
             tabcontrol.SelectedIndex = 2;
         }
 
-        
     }
 }

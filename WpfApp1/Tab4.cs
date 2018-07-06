@@ -40,6 +40,19 @@ namespace WpfApp1
         ScaleTransform[] scaleTransform_Array_tab4 = new ScaleTransform[size_chanel];
         Ellipse[] Ellipse_Array_tab4 = new Ellipse[size_chanel];
 
+
+
+        private void Verify_PassWord_Tab4_Button_Click(object sender, RoutedEventArgs e)
+        {
+            PasswordWindow passwd_Form2 = new PasswordWindow(this, 1);
+            passwd_Form2.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            passwd_Form2.Owner = this;
+            passwd_Form2.ShowDialog();
+
+            if (passwd_Form2.DialogResult == false)
+                return;
+        }
+
         private void XinXiBianGeng_Tab4_Buttton_Click(object sender, RoutedEventArgs e)
         {
             Enable_verify_add_del(true, false, false, 4);
