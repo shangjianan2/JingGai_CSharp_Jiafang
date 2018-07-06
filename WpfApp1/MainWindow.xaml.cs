@@ -356,10 +356,10 @@ namespace WpfApp1
                 //                   temp_DataRow[0][6].ToString(), temp_DataRow[0][7].ToString(), temp_DataRow[0][8].ToString(),
                 //                   temp_DataRow[0][9].ToString(), temp_DataRow[0][10].ToString(), temp_DataRow[0][11].ToString()));
 
-                os.Insert(0, new jiedian(temp_DataRow[0][0].ToString(), temp_DataRow[0][1].ToString(), temp_DataRow[0][2].ToString(),
+                os.add_size_DataGrid_Display(new jiedian(temp_DataRow[0][0].ToString(), temp_DataRow[0][1].ToString(), temp_DataRow[0][2].ToString(),
                                    temp_DataRow[0][3].ToString(), temp_DataRow[0][4].ToString(), temp_DataRow[0][5].ToString(),
                                    temp_DataRow[0][6].ToString(), temp_DataRow[0][7].ToString(), temp_DataRow[0][8].ToString(),
-                                   temp_DataRow[0][9].ToString()));
+                                   temp_DataRow[0][9].ToString()), size_DataGrid_Display);
 
                 //更新ToolTip
                 update_tooltip(ref Ellipse_Array, (message[0] - 1));

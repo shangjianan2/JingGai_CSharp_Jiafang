@@ -34,7 +34,7 @@ namespace WpfApp1
         Point previousMousePoint = new Point(0, 0);
 
         const int size_chanel = 64;
-        const int size_DataGrid_Display = 20;
+        const int size_DataGrid_Display = 25;
 
         TranslateTransform[] translateTransform_Array_Tab3 = new TranslateTransform[size_chanel];
         ScaleTransform[] scaleTransform_Array_Tab3 = new ScaleTransform[size_chanel];
