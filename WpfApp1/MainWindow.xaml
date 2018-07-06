@@ -888,8 +888,18 @@
                                        Fill="White"/>
 
                             <Grid Grid.Row="2" 
-                                        Grid.Column="0" Grid.ColumnSpan="2">
+                                  Grid.Column="0" Grid.ColumnSpan="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Blue">
+                                    实 时 信 息
+                                </TextBlock>
+                                
                                 <DataGrid x:Name="DataGrid" 
+                                          Grid.Row="1" 
                                           ItemsSource="{Binding Source={StaticResource JieDians}}" 
                                           IsReadOnly="true" 
                                           SelectedCellsChanged="DataGrid_SelectedCellsChanged" 
@@ -975,9 +985,18 @@
                                     Grid.Row="1" 
                                     Content="退出系统"/>
 
-                            <Grid Grid.Row="2" 
-                                        Grid.Column="0" Grid.ColumnSpan="2">
+                            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Blue">
+                                    实 时 信 息
+                                </TextBlock>
+
                                 <DataGrid x:Name="DataGrid_tab3" 
+                                          Grid.Row="1"
                                           ItemsSource="{Binding Source={StaticResource JieDians}}" 
                                           IsReadOnly="true" 
                                           Style="{StaticResource DefaultDataGrid}">
@@ -997,6 +1016,11 @@
                                     </DataGrid.Columns>
 
                                 </DataGrid>
+                            </Grid>
+
+                            <Grid Grid.Row="2" 
+                                        Grid.Column="0" Grid.ColumnSpan="2">
+                                
                             </Grid>
                         </Grid>
                     </Grid>
