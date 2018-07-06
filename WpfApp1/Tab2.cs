@@ -407,20 +407,45 @@ namespace WpfApp1
             this.sfr.ScaleX += e.Delta / 1000.0;
             this.sfr.ScaleY += e.Delta / 1000.0;
 
-
-            for (int i = 0; i < size_chanel; i++)//size_chanel
+            //保证ScaleX和ScaleY这两个值大于等于1
+            if (this.sfr.ScaleX < 1 || this.sfr.ScaleY < 1)
             {
-                Point centerPoint2 = e.GetPosition(Ellipse_Array[i]);
-                Point pt2 = Ellipse_Array[i].RenderTransform.Inverse.Transform(centerPoint2);
+                this.sfr.ScaleX = 1;
+                this.sfr.ScaleY = 1;
+
+                for (int i = 0; i < size_chanel; i++)//size_chanel
+                {
+                    Point centerPoint2 = e.GetPosition(Ellipse_Array[i]);
+                    Point pt2 = Ellipse_Array[i].RenderTransform.Inverse.Transform(centerPoint2);
 
 
-                translateTransform_Array_Tab3[i].X = (centerPoint2.X - pt2.X) * scaleTransform_Array_Tab3[i].ScaleX;
-                translateTransform_Array_Tab3[i].Y = (centerPoint2.Y - pt2.Y) * scaleTransform_Array_Tab3[i].ScaleY;
-                scaleTransform_Array_Tab3[i].CenterX = centerPoint2.X;
-                scaleTransform_Array_Tab3[i].CenterY = centerPoint2.Y;
-                scaleTransform_Array_Tab3[i].ScaleX += e.Delta / 1000.0;
-                scaleTransform_Array_Tab3[i].ScaleY += e.Delta / 1000.0;
+                    translateTransform_Array_Tab3[i].X = (centerPoint2.X - pt2.X) * scaleTransform_Array_Tab3[i].ScaleX;
+                    translateTransform_Array_Tab3[i].Y = (centerPoint2.Y - pt2.Y) * scaleTransform_Array_Tab3[i].ScaleY;
+                    scaleTransform_Array_Tab3[i].CenterX = centerPoint2.X;
+                    scaleTransform_Array_Tab3[i].CenterY = centerPoint2.Y;
+                    scaleTransform_Array_Tab3[i].ScaleX = 1;
+                    scaleTransform_Array_Tab3[i].ScaleY = 1;
+                }
             }
+            else
+            {
+                for (int i = 0; i < size_chanel; i++)//size_chanel
+                {
+                    Point centerPoint2 = e.GetPosition(Ellipse_Array[i]);
+                    Point pt2 = Ellipse_Array[i].RenderTransform.Inverse.Transform(centerPoint2);
+
+
+                    translateTransform_Array_Tab3[i].X = (centerPoint2.X - pt2.X) * scaleTransform_Array_Tab3[i].ScaleX;
+                    translateTransform_Array_Tab3[i].Y = (centerPoint2.Y - pt2.Y) * scaleTransform_Array_Tab3[i].ScaleY;
+                    scaleTransform_Array_Tab3[i].CenterX = centerPoint2.X;
+                    scaleTransform_Array_Tab3[i].CenterY = centerPoint2.Y;
+                    scaleTransform_Array_Tab3[i].ScaleX += e.Delta / 1000.0;
+                    scaleTransform_Array_Tab3[i].ScaleY += e.Delta / 1000.0;
+                }
+            }
+
+
+            
         }
         #endregion
 
