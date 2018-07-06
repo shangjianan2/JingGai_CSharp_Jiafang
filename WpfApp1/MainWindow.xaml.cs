@@ -556,14 +556,16 @@ namespace WpfApp1
             if (temp_DataRow.Count <= 0)
                 return;
 
-            ellipse_array[index].ToolTip = "点位号      ：" + temp_DataRow[0][0].ToString() + "\n" +
-                                           "实际位置    ：" + temp_DataRow[0][1].ToString() + "\n" +
-                                           "实时浓度    ：" + temp_DataRow[0][2].ToString() + "\n" +
-                                           "实时电量    ：" + temp_DataRow[0][3].ToString() + "\n" +
-                                           "环境温度    ：" + temp_DataRow[0][8].ToString() + "\n" +
-                                           "水位信息    ：" + temp_DataRow[0][5].ToString() + "\n" +
-                                           "井盖信息    ：" + temp_DataRow[0][6].ToString() + "\n" +
-                                           "数据更新时间：" + temp_DataRow[0][9].ToString();
+            ellipse_array[index].ToolTip = "点 位 号：" + temp_DataRow[0][0].ToString() + "\n" +
+                                           "气体类型：" + temp_DataRow[0][1].ToString() + "\n" +
+                                           "单    位：" + temp_DataRow[0][2].ToString() + "\n" +
+                                           "状    态：" + (temp_DataRow[0][3].ToString() == "" ? "正常" : temp_DataRow[0][3].ToString()) + "\n" +
+                                           "气体浓度：" + temp_DataRow[0][4].ToString() + "\n" +
+                                           "低限浓度：" + temp_DataRow[0][5].ToString() + "\n" +
+                                           "高限浓度：" + temp_DataRow[0][6].ToString() + "\n" +
+                                           "电    量：" + temp_DataRow[0][7].ToString() + "%\n" +
+                                           "温    度：" + temp_DataRow[0][8].ToString() + "\n" +
+                                           "更新时间：" + temp_DataRow[0][9].ToString();
         }
 
         public void change_jiedian_status(ref Ellipse[] ellipse_array, System.Windows.Forms.ListView listView_tt,  int index, int BaoJing)

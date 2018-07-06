@@ -2011,7 +2011,7 @@
                                     Content="普通模式"/>
                             <Button 
                                     Grid.Column="1" Grid.Row="2" 
-                                    Content="备用"/>
+                                    Content="修改密码"/>
 
                             <!--<DataGrid x:Name="DataGrid" 
                                       Grid.Column="0" Grid.ColumnSpan="2" 
