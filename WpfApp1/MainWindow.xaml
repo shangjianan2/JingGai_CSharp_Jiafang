@@ -904,7 +904,8 @@
                                           IsReadOnly="true" 
                                           SelectedCellsChanged="DataGrid_SelectedCellsChanged" 
                                           ContextMenu="{StaticResource ContextMenu_DataGrid}" 
-                                          Style="{StaticResource DefaultDataGrid}">
+                                          Style="{StaticResource DefaultDataGrid}" 
+                                          Margin="10, 0, 10, 10">
 
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Width="60" Header="编号" Binding="{Binding ID}"/>
@@ -999,7 +1000,8 @@
                                           Grid.Row="1"
                                           ItemsSource="{Binding Source={StaticResource JieDians}}" 
                                           IsReadOnly="true" 
-                                          Style="{StaticResource DefaultDataGrid}">
+                                          Style="{StaticResource DefaultDataGrid}" 
+                                          Margin="10, 0, 10, 10">
 
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Width="60" Header="编号" Binding="{Binding ID}"/>
