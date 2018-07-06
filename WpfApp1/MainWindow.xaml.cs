@@ -74,7 +74,7 @@ namespace WpfApp1
             //mysql_Thread.recThread_Start();//开启类里的线程
             #endregion
 
-            os = (ObservableCollection<jiedian>)DataGrid.ItemsSource;
+            os = (JieDians)DataGrid.ItemsSource;
 
             DataSet dataSet_temp = new DataSet();
             string command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " order by date desc limit " + size_DataGrid_Display.ToString();

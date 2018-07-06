@@ -31,14 +31,14 @@ namespace WpfApp1
         private System.Drawing.Point pointView = new System.Drawing.Point(0, 0);
         public System.Windows.Forms.ToolTip toolTip_tab3 = new System.Windows.Forms.ToolTip();
 
-        ObservableCollection<jiedian> os_tab3 = null;
+        JieDians os_tab3 = null;
 
         public int size_datagrid = 10;
 
         
         public void Init_DataGrid_tab3()
         {
-            os_tab3 = (ObservableCollection<jiedian>)DataGrid_tab3.ItemsSource;
+            os_tab3 = (JieDians)DataGrid_tab3.ItemsSource;
 
             DataSet dataSet_temp = new DataSet();
             string command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " order by date desc limit " + size_datagrid.ToString();

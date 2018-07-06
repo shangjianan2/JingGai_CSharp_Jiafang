@@ -29,12 +29,12 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<jiedian> os = null;
+        JieDians os = null;
 
         Point previousMousePoint = new Point(0, 0);
 
         const int size_chanel = 64;
-        const int size_DataGrid_Display = 20;
+        const int size_DataGrid_Display = 40;
 
         TranslateTransform[] translateTransform_Array_Tab3 = new TranslateTransform[size_chanel];
         ScaleTransform[] scaleTransform_Array_Tab3 = new ScaleTransform[size_chanel];

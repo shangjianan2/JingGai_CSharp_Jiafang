@@ -28,7 +28,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<jiedian> os_tab4 = null;
+        JieDians os_tab4 = null;
 
         Point previousMousePoint_tab4 = new Point(0, 0);
         private bool isMouseLeftButtonDown_tab4 = false;
