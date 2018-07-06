@@ -905,19 +905,21 @@
                                           SelectedCellsChanged="DataGrid_SelectedCellsChanged" 
                                           ContextMenu="{StaticResource ContextMenu_DataGrid}" 
                                           Style="{StaticResource DefaultDataGrid}" 
-                                          Margin="10, 0, 10, 10">
+                                          Margin="10, 0, 10, 10" 
+                                          ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
+                                          ScrollViewer.VerticalScrollBarVisibility="Hidden">
 
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Width="60" Header="编号" Binding="{Binding ID}"/>
-                                        <DataGridTextColumn Width="100" Header="气体浓度" Binding="{Binding Gas_Type}"/>
-                                        <DataGridTextColumn Width="100" Header="单位" Binding="{Binding DanWei}"/>
+                                        <!--<DataGridTextColumn Width="100" Header="气体浓度" Binding="{Binding Gas_Type}"/>
+                                        <DataGridTextColumn Width="100" Header="单位" Binding="{Binding DanWei}"/>-->
                                         <DataGridTextColumn Width="100" Header="传感器状态" Binding="{Binding Status}"/>
-                                        <DataGridTextColumn Width="100" Header="浓度" Binding="{Binding NongDu}"/>
+                                        <!--<DataGridTextColumn Width="100" Header="浓度" Binding="{Binding NongDu}"/>
 
                                         <DataGridTextColumn Width="100" Header="低限报警" Binding="{Binding DiXian}"/>
                                         <DataGridTextColumn Width="100" Header="高限报警" Binding="{Binding GaoXian}"/>
                                         <DataGridTextColumn Width="100" Header="电量" Binding="{Binding DianLiang}"/>
-                                        <DataGridTextColumn Width="100" Header="温度" Binding="{Binding WenDu}"/>
+                                        <DataGridTextColumn Width="100" Header="温度" Binding="{Binding WenDu}"/>-->
                                         <DataGridTextColumn Width="120" Header="时间" Binding="{Binding Date}"/>
                                     </DataGrid.Columns>
 
@@ -1001,19 +1003,21 @@
                                           ItemsSource="{Binding Source={StaticResource JieDians}}" 
                                           IsReadOnly="true" 
                                           Style="{StaticResource DefaultDataGrid}" 
-                                          Margin="10, 0, 10, 10">
+                                          Margin="10, 0, 10, 10" 
+                                          ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
+                                          ScrollViewer.VerticalScrollBarVisibility="Hidden">
 
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Width="60" Header="编号" Binding="{Binding ID}"/>
-                                        <DataGridTextColumn Width="100" Header="气体浓度" Binding="{Binding Gas_Type}"/>
-                                        <DataGridTextColumn Width="100" Header="单位" Binding="{Binding DanWei}"/>
+                                        <!--<DataGridTextColumn Width="100" Header="气体浓度" Binding="{Binding Gas_Type}"/>
+                                        <DataGridTextColumn Width="100" Header="单位" Binding="{Binding DanWei}"/>-->
                                         <DataGridTextColumn Width="100" Header="传感器状态" Binding="{Binding Status}"/>
-                                        <DataGridTextColumn Width="100" Header="浓度" Binding="{Binding NongDu}"/>
+                                        <!--<DataGridTextColumn Width="100" Header="浓度" Binding="{Binding NongDu}"/>
 
                                         <DataGridTextColumn Width="100" Header="低限报警" Binding="{Binding DiXian}"/>
                                         <DataGridTextColumn Width="100" Header="高限报警" Binding="{Binding GaoXian}"/>
                                         <DataGridTextColumn Width="100" Header="电量" Binding="{Binding DianLiang}"/>
-                                        <DataGridTextColumn Width="100" Header="温度" Binding="{Binding WenDu}"/>
+                                        <DataGridTextColumn Width="100" Header="温度" Binding="{Binding WenDu}"/>-->
                                         <DataGridTextColumn Width="120" Header="时间" Binding="{Binding Date}"/>
                                     </DataGrid.Columns>
 
