@@ -614,11 +614,13 @@ namespace WpfApp1
 
         private void XiTong_Tab2_Buttton_Click(object sender, RoutedEventArgs e)
         {
-            //tabcontrol.SelectedIndex = 4;
+            passwd_str = get_password_from_databases("root");//从数据库中获取相应用户的密码并返回
+
             PasswordWindow passwd_Form2 = new PasswordWindow(this);
             passwd_Form2.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             passwd_Form2.Owner = this;
             passwd_Form2.ShowDialog();
+                        
             if (passwd_Form2.DialogResult == false)
                 return;
 
@@ -638,6 +640,15 @@ namespace WpfApp1
                 //失能tab5右下防的三个按键
                 Enable_verify_add_del(false, false, false, 5);
             }
+        }
+
+        public string get_password_from_databases(string name)
+        {
+            DataSet dataSet_temp = new DataSet();
+            string command_str = "select `password` from table2_yonghu where name=\"" + name + "\";";
+            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+            return temp_DataRow[0][0].ToString();
         }
 
         /// <summary>
