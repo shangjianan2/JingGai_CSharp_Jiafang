@@ -68,6 +68,9 @@
     <Compile Include="multicombobox.cs" />
     <Compile Include="MySQL_Function.cs" />
     <Compile Include="MySQL_PeiZhiWenJian_JieXi.cs" />
+    <Compile Include="PasswordWindow.xaml.cs">
+      <DependentUpon>PasswordWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShuJuJieXi.cs" />
     <Compile Include="Tab2.cs" />
     <Compile Include="Tab3.cs" />
@@ -93,6 +96,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PasswordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

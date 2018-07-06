@@ -53,6 +53,8 @@ namespace WpfApp1
         const double map_rightup_X = 1500;
         const double map_rightup_Y = 1500;
 
+        public string passwd_str = "1";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -613,6 +615,14 @@ namespace WpfApp1
         private void XiTong_Tab2_Buttton_Click(object sender, RoutedEventArgs e)
         {
             //tabcontrol.SelectedIndex = 4;
+            PasswordWindow passwd_Form2 = new PasswordWindow(this);
+            passwd_Form2.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            passwd_Form2.Owner = this;
+            passwd_Form2.ShowDialog();
+            if (passwd_Form2.DialogResult == false)
+                return;
+
+
             System.Windows.Controls.Button sender_Button = (System.Windows.Controls.Button)sender;
             if(sender_Button.Name.Contains("ab2"))//如果是Tab2的按键
             {
