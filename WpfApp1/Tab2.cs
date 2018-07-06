@@ -34,7 +34,7 @@ namespace WpfApp1
         Point previousMousePoint = new Point(0, 0);
 
         const int size_chanel = 64;
-        const int size_DataGrid_Display = 40;
+        const int size_DataGrid_Display = 20;
 
         TranslateTransform[] translateTransform_Array_Tab3 = new TranslateTransform[size_chanel];
         ScaleTransform[] scaleTransform_Array_Tab3 = new ScaleTransform[size_chanel];
@@ -729,8 +729,13 @@ namespace WpfApp1
     {
         public JieDians()
         {
-            //Add(new jiedian("Jesper", "Aaberg", "1234567890", "Jesper", "Aaberg", "1234567890", "Jesper", "Aaberg", "1234567890", "Jesper", "Aaberg", "1234567890"));
+        }
 
+        public void add_size_DataGrid_Display(jiedian jiedian_tt, int max_size)
+        {
+            while (this.Count > (max_size - 1))//从尾部移除多余数据，保证数据长度不超过max_size
+                this.RemoveAt(this.Count - 1);
+            this.Insert(0, jiedian_tt);//在头部添加新的数据
         }
     }
 }
