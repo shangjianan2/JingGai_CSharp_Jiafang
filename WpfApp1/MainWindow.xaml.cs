@@ -452,11 +452,11 @@ namespace WpfApp1
             double GaoXian = Convert.ToDouble(temp_DataRow[0][1]);
             double DiXian = Convert.ToDouble(temp_DataRow[0][2]);
             string Status = temp_DataRow[0][3].ToString();
-            if (NongDu > GaoXian)//如果大于高限程序返回1
+            if (Status == "低报")//如果大于高限程序返回1
             {
                 return 1;
             }
-            else if(NongDu < DiXian)//小于低限程序返回2
+            else if(Status == "高报")//小于低限程序返回2
             {
                 return 2;
             }
