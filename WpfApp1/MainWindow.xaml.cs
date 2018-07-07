@@ -188,6 +188,7 @@ namespace WpfApp1
         }
 
         /// <summary>
+        /// 从数据库中获取所有信息，重绘节点
         /// 判断所有节点是否显示，并判断是否让其处于报警状态
         /// </summary>
         public void Init_Jiedian_DisplayOrNot()
