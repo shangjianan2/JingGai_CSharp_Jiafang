@@ -55,6 +55,10 @@ namespace WpfApp1
 
         public string passwd_str = "1";
 
+        SolidColorBrush NongDu_BaoJing_Color = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 0, 0));
+        SolidColorBrush ZhengChang_Color = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 0, 255));
+        SolidColorBrush QiTa_BaoJing_Color = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 255, 0));
+
         public MainWindow()
         {
             InitializeComponent();
@@ -573,7 +577,7 @@ namespace WpfApp1
         {
             if(BaoJing == 0)
             {
-                ellipse_array[index].Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 0, 255));
+                ellipse_array[index].Fill = ZhengChang_Color;
                 
 
                 listView_tt.BeginUpdate();
@@ -582,7 +586,7 @@ namespace WpfApp1
             }
             else if(BaoJing == 1)//暂定为浓度超出界限
             {
-                ellipse_array[index].Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 0, 0));
+                ellipse_array[index].Fill = NongDu_BaoJing_Color;
 
                 
 
@@ -592,7 +596,7 @@ namespace WpfApp1
             }
             else if(BaoJing == 2)//暂定为掉线，丢失
             {
-                ellipse_array[index].Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(128, 128, 128));
+                ellipse_array[index].Fill = QiTa_BaoJing_Color;
 
 
 
