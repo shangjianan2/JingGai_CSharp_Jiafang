@@ -14,7 +14,6 @@ E:\biancheng\mysql\0619\WpfApp1\WpfApp1\obj\Debug\WpfApp1.exe
 E:\biancheng\mysql\0619\WpfApp1\WpfApp1\obj\Debug\WpfApp1.pdb
 E:\biancheng\mysql\0619\WpfApp1\WpfApp1\obj\Debug\GeneratedInternalTypeHelper.g.cs
 E:\biancheng\mysql\0619\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.ResolveComReference.cache
-E:\biancheng\mysql\0619\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csprojResolveAssemblyReference.cache
 E:\biancheng\mysql\0619\WpfApp1\WpfApp1\obj\Debug\App.baml
 E:\biancheng\mysql\0619\WpfApp1\WpfApp1\obj\Debug\Dictionary_DataGrid.baml
 E:\biancheng\mysql\0619\WpfApp1\WpfApp1\obj\Debug\PasswordWindow.g.cs

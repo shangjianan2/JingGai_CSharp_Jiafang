@@ -146,7 +146,6 @@
 
         <ContextMenu x:Key="ContextMenu">
             <MenuItem Name="map_Reset" Click="map_Reset_Click" Header="恢复比例"/>
-            <MenuItem Name="AutoZoom" Click="AutoZoom_Click" Header="自动放大"/>
         </ContextMenu>
         <ContextMenu x:Key="ContextMenu_DataGrid">
             <MenuItem Name="hid_jiedian" Click="hid_jiedian_Click" Header="隐藏节点"/>

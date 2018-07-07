@@ -129,12 +129,6 @@ namespace WpfApp1
             
         }
 
-        private void AutoZoom_Click(object sender, RoutedEventArgs e)
-        {
-            jiedian_AutoMove(ref Ellipse_Array, 0);
-            jiedian_AutoZoom(ref Ellipse_Array, 0);
-        }
-
         public void Init_Ellipse_Array()
         {
             Ellipse_Array[0] = Ellipse1;
