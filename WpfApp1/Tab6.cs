@@ -57,6 +57,7 @@ namespace WpfApp1
                 #endregion
 
                 Export(this.DataGrid_tab6, "燃气管道远程无线监控系统");
+                System.Windows.MessageBox.Show("已生成报表", "提示");
             }
             catch
             {
@@ -325,9 +326,9 @@ namespace WpfApp1
                 _Range.EntireColumn.AutoFit(); //自动调整列宽
 
                 //写表头
-                for (int m = 1; m < DT.Columns.Count; m++)
+                for (int m = 0; m < DT.Columns.Count; m++)
                 {
-                    ExcelSheet.Cells[2, m] = DT.Columns[m].ColumnName.ToString();
+                    ExcelSheet.Cells[2, m + 1] = DT.Columns[m].ColumnName.ToString();
 
                     start = "A2";
                     end = ChangeASC(DT.Columns.Count) + "2";
@@ -342,11 +343,11 @@ namespace WpfApp1
                 //写数据
                 for (int i = 0; i < DT.Rows.Count; i++)
                 {
-                    for (int j = 1; j < DT.Columns.Count; j++)
+                    for (int j = 0; j < DT.Columns.Count; j++)
                     {
                         //Excel单元格第一个从索引1开始
                         // if (j == 0) j = 1;
-                        ExcelSheet.Cells[i + 3, j] = DT.Rows[i][j].ToString();
+                        ExcelSheet.Cells[i + 3, j + 1] = DT.Rows[i][j].ToString();
                     }
                 }
 
