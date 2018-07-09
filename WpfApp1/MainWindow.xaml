@@ -2397,7 +2397,8 @@
                                 <RowDefinition Height="50"/>
                                 <RowDefinition Height="50"/>
                                 <RowDefinition Height="50"/>
-                                <RowDefinition Height="50"/>                                
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="50"/>
                             </Grid.RowDefinitions>
@@ -2442,9 +2443,20 @@
                                          local:ControlAttachProperty.Watermark="请输入终止时间" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="终       止："/>
 
-                            <Button Grid.Column="0" Grid.Row="10"/>
-                            <Button x:Name="DaoChuExcel_Button" Content="导出excel" Click="DaoChuExcel_Button_Click"  Grid.Column="1" Grid.Row="10"/>
-                            <Button x:Name="Back_tab6" Content="返回" Click="Back_tab6_Click" Grid.Column="2" Grid.Row="10"/>
+                            <ComboBox Background="Blue"
+                                         Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="3" Width="Auto">
+                                <ComboBoxItem Content="气体报警"/>
+                                <ComboBoxItem Content="低电量报警"/>
+                                <ComboBoxItem Content="低温报警"/>
+                                <ComboBoxItem Content="水位报警"/>
+                                <ComboBoxItem Content="井盖被盗报警"/>
+                                <ComboBoxItem Content="所有报警"/>
+                                <ComboBoxItem Content="所有故障"/>
+                            </ComboBox>
+
+                            <Button Grid.Column="0" Grid.Row="11"/>
+                            <Button x:Name="DaoChuExcel_Button" Content="导出excel" Click="DaoChuExcel_Button_Click"  Grid.Column="1" Grid.Row="11"/>
+                            <Button x:Name="Back_tab6" Content="返回" Click="Back_tab6_Click" Grid.Column="2" Grid.Row="11"/>
                         </Grid>
                     </Grid>
 

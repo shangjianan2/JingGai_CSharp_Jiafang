@@ -41,7 +41,6 @@ namespace WpfApp1
             JieXiWenDu(ref WenDu, array_int[14], array_int[15]);
 
             //×¼±¸´òÓ¡
-            string temp_Display_str;
             if (JianCeQiTiLeiXing == 1)
             {
                 output[0] = "CH4";
