@@ -2443,7 +2443,7 @@
                                          local:ControlAttachProperty.Watermark="请输入终止时间" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="终       止："/>
 
-                            <ComboBox Background="Blue"
+                            <ComboBox x:Name="WarningStyle_ComboBox" 
                                          Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="3" Width="Auto">
                                 <ComboBoxItem Content="气体报警"/>
                                 <ComboBoxItem Content="低电量报警"/>

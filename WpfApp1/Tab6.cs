@@ -100,6 +100,9 @@ namespace WpfApp1
 
         private void ChaXun2_tab6_Click(object sender, RoutedEventArgs e)
         {
+            if (BianHaoChaXun1_tab6.Text == "")
+                return;
+
             string[] temp_str_begin_array = Split_Time(QiShi1_TextBox_tab6.Text);
             string[] temp_str_end_array = Split_Time(ZhongZhi1_TextBox_tab6.Text);
 
@@ -131,6 +134,10 @@ namespace WpfApp1
 
         private void ChaXun3_tab6_Click(object sender, RoutedEventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine(WarningStyle_ComboBox.SelectedIndex.ToString());
+            if (BianHaoChaXun1_tab6.Text == "")
+                return;
+
             string[] temp_str_begin_array = Split_Time(QiShi2_TextBox_tab6.Text);
             string[] temp_str_end_array = Split_Time(ZhongZhi2_TextBox_tab6.Text);
 
