@@ -514,8 +514,7 @@ namespace WpfApp1
 
         private void clear_datagrid_Click(object sender, RoutedEventArgs e)
         {
-            MenuItem dataGrid_tt = (MenuItem)sender;
-            System.Diagnostics.Debug.WriteLine(dataGrid_tt.Name);
+            os.Clear();
         }
     }
 
