@@ -540,19 +540,30 @@ namespace WpfApp1
         private void img_MouseDown_tab4(object sender, MouseButtonEventArgs e)
         {
             //previousMousePoint_tab4 = e.GetPosition(img_tab4);
-
-            
-
-
             if (sender.ToString() == "System.Windows.Shapes.Ellipse")
             {
                 isMouseLeftButtonDown_tab4 = true;//只有在节点处按下按键才算按下
-                previousMousePoint_tab4 = e.GetPosition((System.Windows.Shapes.Ellipse)sender);
+                System.Windows.Shapes.Ellipse ellipse_tt = (System.Windows.Shapes.Ellipse)sender;
+
+                string select_index_ellipse = extract_id_from_ToolTip(ellipse_tt.ToolTip.ToString());
+
+                BianHao.Text = select_index_ellipse;
+
+                Show_Information_Jiedian(Convert.ToInt16(BianHao.Text));
+                
+                previousMousePoint_tab4 = e.GetPosition(ellipse_tt);
             }
             else
             {
                 previousMousePoint_tab4 = e.GetPosition(img_tab4);
             }
+        }
+
+        public string extract_id_from_ToolTip(string tooltip_tt)
+        {
+            string temp_str = tooltip_tt.Replace("点 位 号：", "");
+            int index_first_eol = temp_str.IndexOf('\n');
+            return temp_str.Remove(index_first_eol);
         }
 
         private void img_MouseUp_tab4(object sender, MouseButtonEventArgs e)
