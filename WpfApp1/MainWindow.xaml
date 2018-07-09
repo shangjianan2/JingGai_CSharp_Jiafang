@@ -2012,7 +2012,7 @@
                             <Button x:Name="PuTongMoShi_Tab4_Button"
                                     Grid.Column="0" Grid.Row="2" 
                                     Click="PuTongMoShi_Tab4_Button_Click" 
-                                    Content="普通模式"/>
+                                    Content="返回"/>
                             <Button x:Name="Verify_PassWord_Tab4_Button"
                                     Grid.Column="1" Grid.Row="2" 
                                     Click="Verify_PassWord_Tab4_Button_Click"
@@ -2234,7 +2234,7 @@
                             <Button x:Name="PuTongMoShi_Tab5_Button"
                                     Grid.Column="0" Grid.Row="2" 
                                     Click="PuTongMoShi_Tab5_Button_Click" 
-                                    Content="普通模式"/>
+                                    Content="返回"/>
                             <Button x:Name="Verify_PassWord_Tab5_Button"
                                     Grid.Column="1" Grid.Row="2" 
                                     Click="Verify_PassWord_Tab4_Button_Click"
