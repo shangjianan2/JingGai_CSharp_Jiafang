@@ -32,6 +32,14 @@ namespace WpfApp1
     {
         ObservableCollection<jiedian_tab6> os_tab6 = null;
         string chaxun_command_str = null;
+        //此数组用于将ComboBox中的检测状态转换为数据库相应指令
+        string[] WarningTable_ComboBox_Item_str_array = { " and (`status`=\"低报\" or `status`=\"高报\") ",
+            " and `status`=\"电池电压低\" ",
+            " and `status`=\"温度低\" ",
+            " and `status`=\"有水\" ",
+            " and `status`=\"盗窃\" ",
+            " and (`status`!=\"传感器故障\" and `status`!=\"盗窃\" and `status`!=\"\") ",
+            " and (`status`=\"传感器故障\" or `status`=\"盗窃\") "};
 
 
         private void Back_tab6_Click(object sender, RoutedEventArgs e)
@@ -134,8 +142,9 @@ namespace WpfApp1
 
         private void ChaXun3_tab6_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine(WarningStyle_ComboBox.SelectedIndex.ToString());
-            if (BianHaoChaXun1_tab6.Text == "")
+            if (BianHaoChaXun2_tab6.Text == "")
+                return;
+            if (WarningStyle_ComboBox.SelectedIndex == -1)//如果下面的ComboBox没有选项，就不进行任何操作
                 return;
 
             string[] temp_str_begin_array = Split_Time(QiShi2_TextBox_tab6.Text);
@@ -149,7 +158,7 @@ namespace WpfApp1
 
             //添加列
             chaxun_command_str = "select " + ShuJuKu.Table1_ShiJIna_JieDian + ".id, " + ShuJuKu.Table1_ShiJIna_JieDian + ".`gas type`, danwei, status, nongdu, dixian, gaoxian, dianliang, wendu, `Date`, `location`, `time of install` from " + ShuJuKu.Table1_ShiJIna_JieDian +
-                ", " + ShuJuKu.Table3_JieDian + " where " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=" + ShuJuKu.Table3_JieDian + ".id and" + " `Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" and " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=\"" + BianHaoChaXun2_tab6.Text + "\" and `status`!=\"\" order by `Date` desc;";
+                ", " + ShuJuKu.Table3_JieDian + " where " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=" + ShuJuKu.Table3_JieDian + ".id and" + " `Date`>=\"" + date_begin.ToString() + "\" and `Date`<=\"" + date_end.ToString() + "\" and " + ShuJuKu.Table1_ShiJIna_JieDian + ".id=\"" + BianHaoChaXun2_tab6.Text + "\" " + WarningTable_ComboBox_Item_str_array[WarningStyle_ComboBox.SelectedIndex] + " order by `Date` desc;";
             //string dataSet_temp_str = "select * from test5 order by `Date` desc";
             DataSet dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, chaxun_command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
