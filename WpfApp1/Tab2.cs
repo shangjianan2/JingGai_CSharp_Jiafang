@@ -490,6 +490,15 @@ namespace WpfApp1
             jiedian_AutoZoom(ref Ellipse_Array, (Convert.ToUInt16(a.ID) - 1));
         }
 
+        //为MouseLeftButtonUp创造的重载,目的是可以区分鼠标在DataGrid上的左键右键
+        private void DataGrid_SelectedCellsChanged(object sender, MouseButtonEventArgs e)
+        {
+            jiedian a = (jiedian)this.DataGrid.SelectedItem;
+
+            jiedian_AutoMove(ref Ellipse_Array, (Convert.ToUInt16(a.ID) - 1));
+            jiedian_AutoZoom(ref Ellipse_Array, (Convert.ToUInt16(a.ID) - 1));
+        }
+
         private void hid_jiedian_Click(object sender, RoutedEventArgs e)
         {
             jiedian a = (jiedian)this.DataGrid.SelectedItem;
@@ -500,6 +509,13 @@ namespace WpfApp1
         {
             jiedian a = (jiedian)this.DataGrid.SelectedItem;
             Ellipse_Array[Convert.ToInt16(a.ID) - 1].Visibility = Visibility.Visible;
+        }
+
+
+        private void clear_datagrid_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem dataGrid_tt = (MenuItem)sender;
+            System.Diagnostics.Debug.WriteLine(dataGrid_tt.Name);
         }
     }
 
