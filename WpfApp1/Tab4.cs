@@ -92,7 +92,10 @@ namespace WpfApp1
 
             //根据当前新增节点的坐标更新数据库中的数据
             Init_Jiedian_DisplayOrNot();//刷新所有节点，包括地图模式和列表模式
-            //Update_Information_Jiedian(Ellipse_Array_tab4, Convert.ToInt16(BianHao.Text));
+
+
+            //判断现有所有节点是否掉线
+            DiaoXian();
         }
 
         public void ZengJiaBianGeng(int index, string jianceqiti_tt, string anzhuangweizhi_tt, string anzhuangshijian_tt, string gaoxianbaojing_tt, string dixianbaojing_tt)

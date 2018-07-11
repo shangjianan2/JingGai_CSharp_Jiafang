@@ -67,7 +67,9 @@ namespace WpfApp1
 
             //根据当前新增节点的坐标更新数据库中的数据
             Init_Jiedian_DisplayOrNot();//刷新所有节点，包括地图模式和列表模式
-            //Update_Information_Jiedian(Ellipse_Array_tab4, Convert.ToInt16(BianHao.Text));
+
+            //判断现有所有节点是否掉线
+            DiaoXian();
         }
 
         private void ShanChuDianWei_Button_tab5_Click(object sender, RoutedEventArgs e)
