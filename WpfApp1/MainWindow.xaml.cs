@@ -531,26 +531,11 @@ namespace WpfApp1
             //mysql_Thread.newsock.Connect(lep);
             mysql_Thread.newsock.Send(buff);
 
-#if YanShi
-            if(flag_Tab8 >= 2)
+            //如果程序长期开启，会在每天的凌晨检测有无节点掉线
+            if(DateTime.Now.ToString("hh:mm:ss") == "00:00:00")
             {
-                
+                DiaoXian();
             }
-            else if(flag_Tab8 < 1)
-            {
-                flag_Tab8++;
-            }
-            else
-            {
-                Action<bool> action_tt = (x) =>
-                {
-                    tabcontrol.SelectedIndex = 0;//开启登陆界面
-                };
-                this.Dispatcher.Invoke(action_tt, true);
-                
-                flag_Tab8++;
-            }
-#endif
         }
         #endregion
 

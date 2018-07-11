@@ -303,14 +303,23 @@ namespace WpfApp1
         //这个只是用于测试，并无实际作用
         private void update_all_XY_tab4_Click(object sender, RoutedEventArgs e)
         {
-            int useable_jiedian_count = listview_largeicon_tab5.Items.Count;//获取当前可用节点
-            for (int index = 0; index < useable_jiedian_count; index++)
+            //int useable_jiedian_count = listview_largeicon_tab5.Items.Count;//获取当前可用节点
+            //for (int index = 0; index < useable_jiedian_count; index++)
+            //{
+            //    Point point_temp = Ellipse_Array_tab4[index].TranslatePoint(new Point(0, 0), img_tab4);
+            //    string command_str = "update " + ShuJuKu.Table3_JieDian + " SET xmin = '" + point_temp.X.ToString() + "', ymin = '" + point_temp.Y.ToString() + "' WHERE id = " + (index + 1).ToString() + ";";
+            //    MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+            //}
+
+            //Init_Jiedian_DisplayOrNot();//刷新所有节点
+
+            List<int> ids_list = get_exit_jiedian_id_list();
+            foreach (int mem in ids_list)
             {
-                Point point_temp = Ellipse_Array_tab4[index].TranslatePoint(new Point(0, 0), img_tab4);
-                string command_str = "update " + ShuJuKu.Table3_JieDian + " SET xmin = '" + point_temp.X.ToString() + "', ymin = '" + point_temp.Y.ToString() + "' WHERE id = " + (index + 1).ToString() + ";";
+                Point point_temp = Ellipse_Array_tab4[mem].TranslatePoint(new Point(0, 0), img_tab4);
+                string command_str = "update " + ShuJuKu.Table3_JieDian + " SET xmin = '" + point_temp.X.ToString() + "', ymin = '" + point_temp.Y.ToString() + "' WHERE id = " + (mem + 1).ToString() + ";";
                 MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
             }
-
             Init_Jiedian_DisplayOrNot();//刷新所有节点
         }
 
