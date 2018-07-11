@@ -373,6 +373,7 @@ namespace WpfApp1
 
                 //更新ToolTip
                 update_tooltip(ref Ellipse_Array, (message[0] - 1), false);
+                update_tooltip(ref Ellipse_Array_tab4, (message[0] - 1), false);
 
                 /////////
                 int temp_index = Convert.ToInt16(message[0]);
@@ -543,7 +544,7 @@ namespace WpfApp1
         {
             if(diaoxian == true)
             {
-                ellipse_array[index].ToolTip = "掉线";
+                ellipse_array[index].ToolTip = "点 位 号：" + (index + 1).ToString() + "\n" + "掉线";
                 return;
             }
 

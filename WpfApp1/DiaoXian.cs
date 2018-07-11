@@ -75,6 +75,7 @@ namespace WpfApp1
                 if(jiedian_diaoxian_or_not(mem))
                 {
                     update_tooltip(ref Ellipse_Array, (mem - 1), true);
+                    update_tooltip(ref Ellipse_Array_tab4, (mem - 1), true);
 
                     /////////
                     int temp_index = (mem - 1);
