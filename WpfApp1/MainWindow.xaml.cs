@@ -395,7 +395,7 @@ namespace WpfApp1
         public bool remember_to_databases_or_not(string[] temp_array_str_tt, int index)
         {
             DataSet dataSet_temp = new DataSet();
-            string command_str = "select `status`, `date` from table1_shijian_jiedian where to_days(now())-to_days(date) < 1 and id=" + index.ToString() + " order by date desc limit 1";
+            string command_str = "select `status`, `date` from " + ShuJuKu.Table1_ShiJIna_JieDian + " where to_days(now())-to_days(date) < 1 and id=" + index.ToString() + " order by date desc limit 1";
             dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
             

@@ -62,6 +62,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ControlAttachProperty.cs" />
+    <Compile Include="DiaoXian.cs" />
     <Compile Include="FButton.cs" />
     <Compile Include="IP_PeiZhiWenJian_JieXi.cs" />
     <Compile Include="Map_PeiZhiWenJian_JieXi.cs" />
