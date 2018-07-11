@@ -104,7 +104,7 @@ namespace WpfApp1
 
             for (int i = 0; i < size_chanel; i++)
             {
-                update_tooltip(ref Ellipse_Array, i);
+                update_tooltip(ref Ellipse_Array, i, false);
             }
 
             //Tab4地图初始化
@@ -114,7 +114,7 @@ namespace WpfApp1
 
             for (int i = 0; i < size_chanel; i++)
             {
-                update_tooltip(ref Ellipse_Array_tab4, i);
+                update_tooltip(ref Ellipse_Array_tab4, i, false);
             }
 
 
@@ -153,6 +153,9 @@ namespace WpfApp1
             //每次重新绘制地图的时候都会有一定的偏置
             Init_map_location_XY(map_rightup_X, map_rightup_Y, 2);
             Init_map_location_XY(map_rightup_X, map_rightup_Y, 4);
+
+            //判断现有所有节点是否掉线
+            DiaoXian();
         }
 
         public void Init_map_location_XY(double X, double Y, int tab)
@@ -369,7 +372,7 @@ namespace WpfApp1
                                    temp_DataRow[0][9].ToString()), size_DataGrid_Display);
 
                 //更新ToolTip
-                update_tooltip(ref Ellipse_Array, (message[0] - 1));
+                update_tooltip(ref Ellipse_Array, (message[0] - 1), false);
 
                 /////////
                 int temp_index = Convert.ToInt16(message[0]);
@@ -551,8 +554,14 @@ namespace WpfApp1
         }
         #endregion
 
-        public void update_tooltip(ref Ellipse[] ellipse_array, int index)
+        public void update_tooltip(ref Ellipse[] ellipse_array, int index, bool diaoxian)
         {
+            if(diaoxian == true)
+            {
+                ellipse_array[index].ToolTip = "掉线";
+                return;
+            }
+
             DataSet dataSet_temp = new DataSet();
             string command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " where id = " + (index + 1).ToString() + " order by date desc limit 1";
             dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
