@@ -33,8 +33,7 @@ namespace WpfApp1
         Point previousMousePoint_tab4 = new Point(0, 0);
         private bool isMouseLeftButtonDown_tab4 = false;
 
-        //const int size_chanel = 64;
-        //const int size_DataGrid_Display= 20;
+        const double jiedian_size = 10;
 
         TranslateTransform[] translateTransform_Array_tab4 = new TranslateTransform[size_chanel];
         ScaleTransform[] scaleTransform_Array_tab4 = new ScaleTransform[size_chanel];
@@ -62,8 +61,8 @@ namespace WpfApp1
         {
             //在地图上绘制
             Ellipse ellipse = new Ellipse();
-            ellipse.Width = 100;
-            ellipse.Height = 100;
+            ellipse.Width = jiedian_size;
+            ellipse.Height = jiedian_size;
             ellipse.Fill = Brushes.Red;
             Canvas.SetLeft(ellipse, x);
             Canvas.SetTop(ellipse, y);
@@ -387,8 +386,8 @@ namespace WpfApp1
 
             double x_move = e.GetPosition(canvas_mine_tab4).X;
             double y_move = e.GetPosition(canvas_mine_tab4).Y;
-            Canvas.SetLeft(Ellipse_temp, (x_move - 50));
-            Canvas.SetTop(Ellipse_temp, (y_move - 50));
+            Canvas.SetLeft(Ellipse_temp, (x_move - (jiedian_size / 2)));
+            Canvas.SetTop(Ellipse_temp, (y_move - (jiedian_size / 2)));
         }
 
         private void img_MouseLeave_tab4(object sender, MouseEventArgs e)
