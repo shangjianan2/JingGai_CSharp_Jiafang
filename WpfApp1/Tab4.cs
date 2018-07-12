@@ -80,9 +80,18 @@ namespace WpfApp1
             update_tooltip(ref ellipse, jiedian_id, false);
         }
 
-        public void Remove_JieDian_on_Map(int jiedian_id, ref List<Ellipse> ellipse_list_tt, Canvas canvas_tt)
+        public void Remove_JieDian_on_Map(string jiedian_id, ref List<Ellipse> ellipse_list_tt, Canvas canvas_tt)
         {
             //遍历ellipse_list_tt中所有节点，查找是否是否有节点的id为jiedian_id
+            foreach(Ellipse mem in ellipse_list_tt)
+            {
+                string jiedian_id_str = extract_id_from_ToolTip(mem.ToolTip.ToString());
+                if (jiedian_id == jiedian_id_str)
+                {
+                    canvas_tt.Children.Remove(mem);
+                    return;
+                }
+            }
 
             //如果有id等于jiedian_id的节点，将其从地图中删除
         }
@@ -121,7 +130,9 @@ namespace WpfApp1
             MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, command_str, null);
 
-            Init_Jiedian_DisplayOrNot();//刷新所有节点，包括地图模式和列表模式
+            //删除相应节点
+            Remove_JieDian_on_Map(BianHao.Text, ref ellipse_list_tab2, canvas_mine);
+            Remove_JieDian_on_Map(BianHao.Text, ref ellipse_list_tab4, canvas_mine_tab4);
         }
 
         private void ZengJiaBianGeng_Button_Click(object sender, RoutedEventArgs e)
