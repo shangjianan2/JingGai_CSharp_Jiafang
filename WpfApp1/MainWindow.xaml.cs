@@ -156,7 +156,7 @@ namespace WpfApp1
         {
             if(tab == 2)
             {
-                clear_img_canvas();
+                //clear_img_canvas();
                 clear_scale();
                 clear_tlt();
 
@@ -172,7 +172,7 @@ namespace WpfApp1
             }
             else if(tab == 4)
             {
-                clear_img_canvas_tab4();
+                //clear_img_canvas_tab4();
                 clear_scale_tab4();
                 clear_tlt_tab4();
 

@@ -42,8 +42,8 @@ namespace WpfApp1
         /// </summary>
         public void Init_JieDian_Map_LieBiao()
         {
-            //removeAll_jiedian_in_map(canvas_mine);
-            //removeAll_jiedian_in_map(canvas_mine_tab4);
+            removeAll_jiedian_in_map(canvas_mine);
+            removeAll_jiedian_in_map(canvas_mine_tab4);
 
             DataSet dataSet_temp = new DataSet();
             string command_str = "select * from " + ShuJuKu.Table3_JieDian + ";";
@@ -57,6 +57,18 @@ namespace WpfApp1
                 Draw_JieDian_on_Map(jiedian_id, Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y, ref ellipse_list_tab2, canvas_mine, false);
                 Draw_JieDian_on_Map(jiedian_id, Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y, ref ellipse_list_tab4, canvas_mine_tab4, true);
             }
+        }
+
+        public int mysqlID_to_listID(List<Ellipse> list_ellipse, int mysqlID)
+        {
+            for(int i = 0; i < list_ellipse.Count; i++)
+            {
+                if(Convert.ToInt16(extract_id_from_ToolTip(list_ellipse[i].ToolTip.ToString())) == mysqlID)
+                {
+                    return i;
+                }
+            }
+            return -1;//不存在此节点
         }
 
         public void removeAll_jiedian_in_map(Canvas canvas_tt)
@@ -157,11 +169,8 @@ namespace WpfApp1
 
             bool newJiedian_or_not = ZengJiaBianGeng(Convert.ToInt16(BianHao.Text), JianCeQiTi.Text, AnZhuangWeiZhi.Text, AnZhuangShiJina.Text, GaoXianBaoJing.Text, DiXianBaoJing.Text);
 
-            //在界面中新增数据
-            if(newJiedian_or_not)
-            {
-                //Draw_JieDian_on_Map(Convert.ToInt16(BianHao.Text), )
-            }
+            //刷新相关界面
+            Init_JieDian_Map_LieBiao();
 
 
             //判断现有所有节点是否掉线
@@ -222,8 +231,8 @@ namespace WpfApp1
                     return;
                 }
 
-                jiedian_AutoMove_tab4(ref ellipse_list_tab4, Convert.ToInt16(BianHao.Text) - 1);
-                jiedian_AutoZoom_tab4(ref ellipse_list_tab4, Convert.ToInt16(BianHao.Text) - 1);
+                jiedian_AutoMove_tab4(ref ellipse_list_tab4, Convert.ToInt16(BianHao.Text));
+                jiedian_AutoZoom_tab4(ref ellipse_list_tab4, Convert.ToInt16(BianHao.Text));
             }
         }
 
@@ -306,22 +315,24 @@ namespace WpfApp1
         }
 
 
-        public void jiedian_AutoZoom_tab4(ref List<Ellipse> ellipse_array, int index)//从零开始索引
+        public void jiedian_AutoZoom_tab4(ref List<Ellipse> ellipse_array, int index)
         {
-            double x = Canvas.GetLeft(ellipse_array[index]);
-            double y = Canvas.GetTop(ellipse_array[index]);
+            int i_list = mysqlID_to_listID(ellipse_list_tab4, index);//从数据库id转换为列表id
+
+            double x = Canvas.GetLeft(ellipse_array[i_list]);
+            double y = Canvas.GetTop(ellipse_array[i_list]);
 
             double FangDaBeiShu = 2;
 
             Point centerPoint = new Point(x, y);
-            Point pt = img_tab4.RenderTransform.Inverse.Transform(centerPoint);
+            //Point pt = img_tab4.RenderTransform.Inverse.Transform(centerPoint);
 
-            this.tlt_tab4.X = (centerPoint.X - pt.X) * this.sfr_tab4.ScaleX;
-            this.tlt_tab4.Y = (centerPoint.Y - pt.Y) * this.sfr_tab4.ScaleY;
+            //this.tlt_tab4.X = (centerPoint.X - pt.X) * this.sfr_tab4.ScaleX;
+            //this.tlt_tab4.Y = (centerPoint.Y - pt.Y) * this.sfr_tab4.ScaleY;
             this.sfr_tab4.CenterX = centerPoint.X;
             this.sfr_tab4.CenterY = centerPoint.Y;
-            this.sfr_tab4.ScaleX += FangDaBeiShu;
-            this.sfr_tab4.ScaleY += FangDaBeiShu;
+            this.sfr_tab4.ScaleX = FangDaBeiShu;
+            this.sfr_tab4.ScaleY = FangDaBeiShu;
             
         }
 
@@ -332,10 +343,12 @@ namespace WpfApp1
             double move_x = 0;
             double move_y = 0;
 
+            int i_list = mysqlID_to_listID(ellipse_list_tab4, index);//从数据库id转换为列表id
+
             if (this.WindowState == WindowState.Maximized)
             {
-                double x = Canvas.GetLeft(ellipse_array[index]) - map_rightup_X;
-                double y = Canvas.GetTop(ellipse_array[index]) - map_rightup_Y;
+                double x = Canvas.GetLeft(ellipse_array[i_list]) - map_rightup_X;
+                double y = Canvas.GetTop(ellipse_array[i_list]) - map_rightup_Y;
 
                 double x1 = SystemParameters.PrimaryScreenWidth;//得到屏幕整体宽度
                 double y1 = SystemParameters.PrimaryScreenHeight;//得到屏幕整体高度
@@ -345,8 +358,8 @@ namespace WpfApp1
             }
             else
             {
-                double x = Canvas.GetLeft(ellipse_array[index]) - map_rightup_X;
-                double y = Canvas.GetTop(ellipse_array[index]) - map_rightup_Y;
+                double x = Canvas.GetLeft(ellipse_array[i_list]) - map_rightup_X;
+                double y = Canvas.GetTop(ellipse_array[i_list]) - map_rightup_Y;
 
                 move_x = (this.Width) * 0.75 / 2 - x;// (img.Height / 2 - x) * sfr.ScaleX;
                 move_y = (this.Height - 100) / 2 - y;// (img.Width / 2 - y) * sfr.ScaleY;
