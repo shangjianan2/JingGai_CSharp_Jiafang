@@ -50,7 +50,7 @@ namespace WpfApp1
         {
             if (BianHao_tab5.Text == "")//如果TextBox中没有数据就不进行任何操作
                 return;
-            Update_Information_Jiedian(Ellipse_Array_tab4, Convert.ToInt16(BianHao_tab5.Text), JianCeQiTi_tab5.Text, AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text, GaoXianBaoJing_tab5.Text, DiXianBaoJing_tab5.Text);
+            //Update_Information_Jiedian(Ellipse_Array_tab4, Convert.ToInt16(BianHao_tab5.Text), JianCeQiTi_tab5.Text, AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text, GaoXianBaoJing_tab5.Text, DiXianBaoJing_tab5.Text);
             Init_Jiedian_DisplayOrNot();//刷新所有节点
         }
 

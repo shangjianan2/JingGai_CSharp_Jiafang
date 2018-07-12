@@ -37,7 +37,6 @@ namespace WpfApp1
 
         TranslateTransform[] translateTransform_Array_tab4 = new TranslateTransform[size_chanel];
         ScaleTransform[] scaleTransform_Array_tab4 = new ScaleTransform[size_chanel];
-        Ellipse[] Ellipse_Array_tab4 = new Ellipse[size_chanel];
         List<Ellipse> ellipse_list_tab4 = new List<Ellipse>();
 
         /// <summary>
@@ -180,8 +179,8 @@ namespace WpfApp1
                     return;
                 }
 
-                jiedian_AutoMove_tab4(ref Ellipse_Array_tab4, Convert.ToInt16(BianHao.Text) - 1);
-                jiedian_AutoZoom_tab4(ref Ellipse_Array_tab4, Convert.ToInt16(BianHao.Text) - 1);
+                jiedian_AutoMove_tab4(ref ellipse_list_tab4, Convert.ToInt16(BianHao.Text) - 1);
+                jiedian_AutoZoom_tab4(ref ellipse_list_tab4, Convert.ToInt16(BianHao.Text) - 1);
             }
         }
 
@@ -189,7 +188,7 @@ namespace WpfApp1
         {
             if (BianHao.Text == "")//如果TextBox中没有数据就不进行任何操作
                 return;
-            Update_Information_Jiedian(Ellipse_Array_tab4, Convert.ToInt16(BianHao.Text), JianCeQiTi.Text, AnZhuangWeiZhi.Text, AnZhuangShiJina.Text, GaoXianBaoJing.Text, DiXianBaoJing.Text);
+            Update_Information_Jiedian(ellipse_list_tab4, Convert.ToInt16(BianHao.Text), JianCeQiTi.Text, AnZhuangWeiZhi.Text, AnZhuangShiJina.Text, GaoXianBaoJing.Text, DiXianBaoJing.Text);
             Init_Jiedian_DisplayOrNot();//刷新所有节点
         }
 
@@ -238,7 +237,7 @@ namespace WpfApp1
         /// <summary>
         /// 更改或新增节点信息。编号，检测气体， 安装位置，安装时间，高限报警，低限报警
         /// </summary>
-        public void Update_Information_Jiedian(Ellipse[] Ellipse_Array_tt, int index, string jianceqiti_tt, string anzhuangweizhi_tt, string anzhuangshijian_tt, string gaoxianbaojing_tt, string dixianbaojing_tt)
+        public void Update_Information_Jiedian(List<Ellipse> Ellipse_Array_tt, int index, string jianceqiti_tt, string anzhuangweizhi_tt, string anzhuangshijian_tt, string gaoxianbaojing_tt, string dixianbaojing_tt)
         {
             DataSet dataSet_temp = new DataSet();
             string command_str = "select * from " + ShuJuKu.Table3_JieDian + " where `id`=" + index.ToString();
@@ -264,7 +263,7 @@ namespace WpfApp1
         }
 
 
-        public void jiedian_AutoZoom_tab4(ref Ellipse[] ellipse_array, int index)//从零开始索引
+        public void jiedian_AutoZoom_tab4(ref List<Ellipse> ellipse_array, int index)//从零开始索引
         {
             double x = Canvas.GetLeft(ellipse_array[index]);
             double y = Canvas.GetTop(ellipse_array[index]);
@@ -283,7 +282,7 @@ namespace WpfApp1
             
         }
 
-        public void jiedian_AutoMove_tab4(ref Ellipse[] ellipse_array, int index)//从零开始索引
+        public void jiedian_AutoMove_tab4(ref List<Ellipse> ellipse_array, int index)//从零开始索引
         {
             map_Reset_Click_tab4(this, null);
             
@@ -323,7 +322,7 @@ namespace WpfApp1
             List<int> ids_list = get_exit_jiedian_id_list();
             foreach (int mem in ids_list)
             {
-                Point point_temp = Ellipse_Array_tab4[(mem - 1)].TranslatePoint(new Point(0, 0), img_tab4);
+                Point point_temp = ellipse_list_tab4[(mem - 1)].TranslatePoint(new Point(0, 0), img_tab4);
                 string command_str = "update " + ShuJuKu.Table3_JieDian + " SET xmin = '" + point_temp.X.ToString() + "', ymin = '" + point_temp.Y.ToString() + "' WHERE id = " + (mem).ToString() + ";";
                 MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
             }
@@ -476,13 +475,13 @@ namespace WpfApp1
         private void hid_jiedian_Click_tab4(object sender, RoutedEventArgs e)
         {
             jiedian a = (jiedian)this.DataGrid.SelectedItem;
-            Ellipse_Array_tab4[Convert.ToInt16(a.ID) - 1].Visibility = Visibility.Hidden;
+            ellipse_list_tab4[Convert.ToInt16(a.ID) - 1].Visibility = Visibility.Hidden;
         }
 
         private void show_jiedian_Click_tab4(object sender, RoutedEventArgs e)
         {
             jiedian a = (jiedian)this.DataGrid.SelectedItem;
-            Ellipse_Array_tab4[Convert.ToInt16(a.ID) - 1].Visibility = Visibility.Visible;
+            ellipse_list_tab4[Convert.ToInt16(a.ID) - 1].Visibility = Visibility.Visible;
         }
     }
 }

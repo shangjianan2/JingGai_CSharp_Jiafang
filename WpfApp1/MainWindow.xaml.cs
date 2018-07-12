@@ -209,7 +209,7 @@ namespace WpfApp1
 
 
             //HideOrShow_jiedian_map(temp_DataRow, ref Ellipse_Array);
-            HideOrShow_jiedian_map(temp_DataRow, ref Ellipse_Array_tab4);
+            HideOrShow_jiedian_map(temp_DataRow, ref ellipse_list_tab4);
             HideOrShow_jiedian_liebiao(temp_DataRow, listview_largeicon);
             HideOrShow_jiedian_liebiao(temp_DataRow, listview_largeicon_tab5);
 
@@ -245,7 +245,7 @@ namespace WpfApp1
         /// <param name="temp_DataRow_tt">
         /// 从数据库中获取的集合
         /// </param>
-        public void HideOrShow_jiedian_map(DataRowCollection temp_DataRow_tt, ref Ellipse[] Ellipse_Array_tt)
+        public void HideOrShow_jiedian_map(DataRowCollection temp_DataRow_tt, ref List<Ellipse> Ellipse_Array_tt)
         {
             //将所有节点隐藏
             foreach (Ellipse mem in Ellipse_Array_tt)
@@ -367,7 +367,7 @@ namespace WpfApp1
 
                 //更新ToolTip
                 //update_tooltip(ref Ellipse_Array, (message[0] - 1), false);
-                update_tooltip(ref Ellipse_Array_tab4, (message[0] - 1), false);
+                update_tooltip(ref ellipse_list_tab4, (message[0] - 1), false);
 
                 /////////
                 int temp_index = Convert.ToInt16(message[0]);
@@ -497,7 +497,7 @@ namespace WpfApp1
 
                 for (int i = 0; i < size_chanel; i++)
                 {
-                    change_XY_rectangle(Ellipse_Array_tab4[i], map_rightup_X, map_rightup_Y);
+                    change_XY_rectangle(ellipse_list_tab4[i], map_rightup_X, map_rightup_Y);
                 }
                 img_tab4.Source = new BitmapImage(new Uri(map_LuJing));
             }
@@ -534,7 +534,7 @@ namespace WpfApp1
         }
         #endregion
 
-        public void update_tooltip(ref Ellipse[] ellipse_array, int index, bool diaoxian)
+        public void update_tooltip(ref List<Ellipse> ellipse_array, int index, bool diaoxian)
         {
             if(diaoxian == true)
             {
@@ -562,7 +562,7 @@ namespace WpfApp1
                                            "更新时间：" + temp_DataRow[0][9].ToString();
         }
 
-        public void change_jiedian_status(ref Ellipse[] ellipse_array, System.Windows.Forms.ListView listView_tt,  int index, int BaoJing)
+        public void change_jiedian_status(ref List<Ellipse> ellipse_array, System.Windows.Forms.ListView listView_tt,  int index, int BaoJing)
         {
             if(BaoJing == 0)
             {
