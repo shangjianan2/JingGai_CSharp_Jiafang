@@ -42,6 +42,9 @@ namespace WpfApp1
         /// </summary>
         public void Init_JieDian_Map_LieBiao()
         {
+            //removeAll_jiedian_in_map(canvas_mine);
+            //removeAll_jiedian_in_map(canvas_mine_tab4);
+
             DataSet dataSet_temp = new DataSet();
             string command_str = "select * from " + ShuJuKu.Table3_JieDian + ";";
             dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
@@ -51,12 +54,17 @@ namespace WpfApp1
             for(int i = 0; i < temp_DataRow.Count; i++)
             {
                 int jiedian_id = Convert.ToInt16(temp_DataRow[i][0]);//获取所更新的节点的id
-                Draw_JieDian_on_Map(jiedian_id, Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y, ref ellipse_list_tab2, canvas_mine);
-                Draw_JieDian_on_Map(jiedian_id, Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y, ref ellipse_list_tab4, canvas_mine_tab4);
+                Draw_JieDian_on_Map(jiedian_id, Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y, ref ellipse_list_tab2, canvas_mine, false);
+                Draw_JieDian_on_Map(jiedian_id, Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y, ref ellipse_list_tab4, canvas_mine_tab4, true);
             }
         }
 
-        public void Draw_JieDian_on_Map(int jiedian_id, double x, double y, ref List<Ellipse> ellipse_list_tt, Canvas canvas_tt)
+        public void removeAll_jiedian_in_map(Canvas canvas_tt)
+        {
+            canvas_tt.Children.RemoveRange(1, (canvas_tt.Children.Count - 1));
+        }
+
+        public void Draw_JieDian_on_Map(int jiedian_id, double x, double y, ref List<Ellipse> ellipse_list_tt, Canvas canvas_tt, bool shijian_or_not)
         {
             //在地图上绘制
             Ellipse ellipse = new Ellipse();
@@ -71,10 +79,13 @@ namespace WpfApp1
             ellipse_list_tt.Add(ellipse);
 
             //添加事件
-            ellipse.MouseMove += img_MouseMove_tab4;
-            ellipse.MouseDown += img_MouseDown_tab4;
-            ellipse.MouseUp += img_MouseUp_tab4;
-            ellipse.MouseLeave += img_MouseLeave_tab4;
+            if(shijian_or_not == true)
+            {
+                ellipse.MouseMove += img_MouseMove_tab4;
+                ellipse.MouseDown += img_MouseDown_tab4;
+                ellipse.MouseUp += img_MouseUp_tab4;
+                ellipse.MouseLeave += img_MouseLeave_tab4;
+            }
 
             //更新toolTip
             update_tooltip(ref ellipse, jiedian_id, false);
@@ -144,17 +155,29 @@ namespace WpfApp1
             if (System.Windows.MessageBox.Show("确定增加节点？", "提示", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
                 return;
 
-            ZengJiaBianGeng(Convert.ToInt16(BianHao.Text), JianCeQiTi.Text, AnZhuangWeiZhi.Text, AnZhuangShiJina.Text, GaoXianBaoJing.Text, DiXianBaoJing.Text);
+            bool newJiedian_or_not = ZengJiaBianGeng(Convert.ToInt16(BianHao.Text), JianCeQiTi.Text, AnZhuangWeiZhi.Text, AnZhuangShiJina.Text, GaoXianBaoJing.Text, DiXianBaoJing.Text);
 
-            //根据当前新增节点的坐标更新数据库中的数据
-            Init_Jiedian_DisplayOrNot();//刷新所有节点，包括地图模式和列表模式
+            //在界面中新增数据
+            if(newJiedian_or_not)
+            {
+                //Draw_JieDian_on_Map(Convert.ToInt16(BianHao.Text), )
+            }
 
 
             //判断现有所有节点是否掉线
             DiaoXian();
         }
 
-        public void ZengJiaBianGeng(int index, string jianceqiti_tt, string anzhuangweizhi_tt, string anzhuangshijian_tt, string gaoxianbaojing_tt, string dixianbaojing_tt)
+        /// <summary>
+        /// 添加节点，对数据库进行操作，不涉及界面的显示
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="jianceqiti_tt"></param>
+        /// <param name="anzhuangweizhi_tt"></param>
+        /// <param name="anzhuangshijian_tt"></param>
+        /// <param name="gaoxianbaojing_tt"></param>
+        /// <param name="dixianbaojing_tt"></param>
+        public bool ZengJiaBianGeng(int index, string jianceqiti_tt, string anzhuangweizhi_tt, string anzhuangshijian_tt, string gaoxianbaojing_tt, string dixianbaojing_tt)
         {
             //检测数据库中是否已经存在此节点
             DataSet dataSet_temp = new DataSet();
@@ -166,7 +189,7 @@ namespace WpfApp1
             {
                 if (Convert.ToInt16(temp_DataRow[i][0]) == index)
                 {
-                    return;//如果数据库中已经有这个节点的id的时候，直接跳出
+                    return false;//如果数据库中已经有这个节点的id的时候，直接跳出,并返回false
                 }
             }
 
@@ -177,7 +200,7 @@ namespace WpfApp1
             MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, command_str, null);
 
-            //在此处添加新的节点，根据数据的信息
+            return true;//这是个新的节点，已向数据库中新增新的节点信息
 
         }
 
