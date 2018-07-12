@@ -146,7 +146,7 @@ namespace WpfApp1
             //Init_map_location_XY(map_rightup_X, map_rightup_Y, 2);
             ////Init_map_location_XY(map_rightup_X, map_rightup_Y, 4);
 
-            Init_JieDian_Map_LieBiao();
+            Init_JieDian_Map();
 
             //判断现有所有节点是否掉线
             //DiaoXian();

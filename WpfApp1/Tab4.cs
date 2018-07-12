@@ -40,7 +40,7 @@ namespace WpfApp1
         /// <summary>
         /// 从数据库中获取当前可用节点，并将其按照数据库中的信息进行绘制
         /// </summary>
-        public void Init_JieDian_Map_LieBiao()
+        public void Init_JieDian_Map()
         {
             removeAll_jiedian_in_map(canvas_mine);
             removeAll_jiedian_in_map(canvas_mine_tab4);
@@ -172,7 +172,7 @@ namespace WpfApp1
             bool newJiedian_or_not = ZengJiaBianGeng(Convert.ToInt16(BianHao.Text), JianCeQiTi.Text, AnZhuangWeiZhi.Text, AnZhuangShiJina.Text, GaoXianBaoJing.Text, DiXianBaoJing.Text);
 
             //刷新相关界面
-            Init_JieDian_Map_LieBiao();
+            Init_JieDian_Map();
 
 
             //判断现有所有节点是否掉线
@@ -371,17 +371,16 @@ namespace WpfApp1
             
         }
 
-        //这个只是用于测试，并无实际作用
+        //
         private void update_all_XY_tab4_Click(object sender, RoutedEventArgs e)
         {
-            List<int> ids_list = get_exit_jiedian_id_list();
-            foreach (int mem in ids_list)
+            foreach(Ellipse mem in ellipse_list_tab4)
             {
-                Point point_temp = ellipse_list_tab4[(mem - 1)].TranslatePoint(new Point(0, 0), img_tab4);
-                string command_str = "update " + ShuJuKu.Table3_JieDian + " SET xmin = '" + point_temp.X.ToString() + "', ymin = '" + point_temp.Y.ToString() + "' WHERE id = " + (mem).ToString() + ";";
+                string jiedian_id_str_temp = extract_id_from_ToolTip(mem.ToolTip.ToString());
+                string command_str = "update " + ShuJuKu.Table3_JieDian + " SET xmin = '" + Canvas.GetLeft(mem).ToString() + "', ymin = '" + Canvas.GetTop(mem).ToString() + "' WHERE id = " + jiedian_id_str_temp + ";";
                 MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
             }
-            Init_Jiedian_DisplayOrNot();//刷新所有节点
+            Init_JieDian_Map();//刷新所有节点
         }
 
         public void Init_Ellipse_Array_tab4()
