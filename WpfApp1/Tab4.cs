@@ -359,29 +359,12 @@ namespace WpfApp1
         #region//地图功能的实现
         private void img_MouseDown_tab4(object sender, MouseButtonEventArgs e)
         {
-            Display_where(sender, e);
-
-            //previousMousePoint_tab4 = e.GetPosition(img_tab4);
             if (sender.ToString() == "System.Windows.Shapes.Ellipse")
             {
                 isMouseLeftButtonDown_tab4 = true;//只有在节点处按下按键才算按下
                                                   //System.Windows.Shapes.Ellipse ellipse_tt = (System.Windows.Shapes.Ellipse)sender;
-
-
-                previousMousePoint_tab4 = e.GetPosition(img_tab4);
+                                                  
             }
-            else
-            {
-                previousMousePoint_tab4 = e.GetPosition(canvas_mine);
-            }
-        }
-
-        public void Display_where(object sender, MouseButtonEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("canvas_mine_tab4" + e.GetPosition(canvas_mine_tab4).X.ToString() + ", " +
-                                               e.GetPosition(canvas_mine_tab4).Y.ToString());
-            System.Diagnostics.Debug.WriteLine("img_tab4" + e.GetPosition(img_tab4).X.ToString() + ", " +
-                                               e.GetPosition(img_tab4).Y.ToString());
         }
 
         public string extract_id_from_ToolTip(string tooltip_tt)
