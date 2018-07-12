@@ -164,11 +164,11 @@ namespace WpfApp1
                 tlt.Y = -Y;
 
 
-                for (int i = 0; i < size_chanel; i++)//size_chanel
-                {
-                    translateTransform_Array_Tab3[i].X = -X * scaleTransform_Array_Tab3[i].ScaleX;
-                    translateTransform_Array_Tab3[i].Y = -Y * scaleTransform_Array_Tab3[i].ScaleY;
-                }
+                //for (int i = 0; i < size_chanel; i++)//size_chanel
+                //{
+                //    translateTransform_Array_Tab3[i].X = -X * scaleTransform_Array_Tab3[i].ScaleX;
+                //    translateTransform_Array_Tab3[i].Y = -Y * scaleTransform_Array_Tab3[i].ScaleY;
+                //}
             }
             else if(tab == 4)
             {
@@ -208,7 +208,7 @@ namespace WpfApp1
             clear_tlt();
 
 
-            HideOrShow_jiedian_map(temp_DataRow, ref Ellipse_Array);
+            //HideOrShow_jiedian_map(temp_DataRow, ref Ellipse_Array);
             HideOrShow_jiedian_map(temp_DataRow, ref Ellipse_Array_tab4);
             HideOrShow_jiedian_liebiao(temp_DataRow, listview_largeicon);
             HideOrShow_jiedian_liebiao(temp_DataRow, listview_largeicon_tab5);
@@ -216,21 +216,21 @@ namespace WpfApp1
             for(int i = 0; i < temp_DataRow.Count; i++)
             {
                 int temp_index = Convert.ToInt16(temp_DataRow[i][0]);
-                if (GaoDiXian_BaiJing_PanDuan(temp_index) == 1 || GaoDiXian_BaiJing_PanDuan(temp_index) == 2)
-                {
-                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 1);
-                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 1);
-                }
-                else if(GaoDiXian_BaiJing_PanDuan(temp_index) == 3)
-                {
-                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 2);
-                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 2);
-                }
-                else
-                {
-                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 0);
-                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 0);
-                }
+                //if (GaoDiXian_BaiJing_PanDuan(temp_index) == 1 || GaoDiXian_BaiJing_PanDuan(temp_index) == 2)
+                //{
+                //    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 1);
+                //    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 1);
+                //}
+                //else if(GaoDiXian_BaiJing_PanDuan(temp_index) == 3)
+                //{
+                //    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 2);
+                //    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 2);
+                //}
+                //else
+                //{
+                //    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 0);
+                //    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 0);
+                //}
             }
 
             //添加地图偏置
@@ -366,26 +366,26 @@ namespace WpfApp1
                                    temp_DataRow[0][9].ToString()), size_DataGrid_Display);
 
                 //更新ToolTip
-                update_tooltip(ref Ellipse_Array, (message[0] - 1), false);
+                //update_tooltip(ref Ellipse_Array, (message[0] - 1), false);
                 update_tooltip(ref Ellipse_Array_tab4, (message[0] - 1), false);
 
                 /////////
                 int temp_index = Convert.ToInt16(message[0]);
-                if (GaoDiXian_BaiJing_PanDuan(temp_index) == 1 || GaoDiXian_BaiJing_PanDuan(temp_index) == 2)
-                {
-                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 1);
-                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 1);
-                }
-                else if (GaoDiXian_BaiJing_PanDuan(temp_index) == 3)
-                {
-                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 2);
-                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 2);
-                }
-                else
-                {
-                    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 0);
-                    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 0);
-                }
+                //if (GaoDiXian_BaiJing_PanDuan(temp_index) == 1 || GaoDiXian_BaiJing_PanDuan(temp_index) == 2)
+                //{
+                //    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 1);
+                //    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 1);
+                //}
+                //else if (GaoDiXian_BaiJing_PanDuan(temp_index) == 3)
+                //{
+                //    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 2);
+                //    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 2);
+                //}
+                //else
+                //{
+                //    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 0);
+                //    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 0);
+                //}
             };
             this.Dispatcher.Invoke(action, true);
         }
@@ -481,10 +481,10 @@ namespace WpfApp1
                 clear_scale();//将所有的放大倍数归零（具体是不是放大倍数我也不知道，反正就是将之前所有因为操作而更改的数据全部复位，其中放大倍数应该为1）
 
 
-                for (int i = 0; i < size_chanel; i++)
-                {
-                    change_XY_rectangle(Ellipse_Array[i], map_rightup_X, map_rightup_Y);
-                }
+                //for (int i = 0; i < size_chanel; i++)
+                //{
+                //    change_XY_rectangle(Ellipse_Array[i], map_rightup_X, map_rightup_Y);
+                //}
                 img.Source = new BitmapImage(new Uri(map_LuJing));
 
             }

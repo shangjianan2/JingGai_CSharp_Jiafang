@@ -38,7 +38,7 @@ namespace WpfApp1
         TranslateTransform[] translateTransform_Array_tab4 = new TranslateTransform[size_chanel];
         ScaleTransform[] scaleTransform_Array_tab4 = new ScaleTransform[size_chanel];
         Ellipse[] Ellipse_Array_tab4 = new Ellipse[size_chanel];
-        List<Ellipse> ellipse_list = new List<Ellipse>();
+        List<Ellipse> ellipse_list_tab4 = new List<Ellipse>();
 
         /// <summary>
         /// 从数据库中获取当前可用节点，并将其按照数据库中的信息进行绘制
@@ -53,11 +53,11 @@ namespace WpfApp1
 
             for(int i = 0; i < temp_DataRow.Count; i++)
             {
-                Draw_JieDian_on_Map(Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y, ref ellipse_list);
+                Draw_JieDian_on_Map(Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y, ref ellipse_list_tab4, canvas_mine_tab4);
             }
         }
 
-        public void Draw_JieDian_on_Map(double x, double y, ref List<Ellipse> ellipse_list_tt)
+        public void Draw_JieDian_on_Map(double x, double y, ref List<Ellipse> ellipse_list_tt, Canvas canvas_tt)
         {
             //在地图上绘制
             Ellipse ellipse = new Ellipse();
@@ -66,7 +66,7 @@ namespace WpfApp1
             ellipse.Fill = Brushes.Red;
             Canvas.SetLeft(ellipse, x);
             Canvas.SetTop(ellipse, y);
-            canvas_mine_tab4.Children.Add(ellipse);
+            canvas_tt.Children.Add(ellipse);
 
             //加入到列表中
             ellipse_list_tt.Add(ellipse);
@@ -157,9 +157,8 @@ namespace WpfApp1
             MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, command_str, null);
 
-            //在管理员地图界面和普通地图界面中显示新增节点，初始节点位置为右上角
-            Ellipse_Array[index].Visibility = Visibility.Visible;
-            Ellipse_Array_tab4[index].Visibility = Visibility.Visible;
+            //在此处添加新的节点，根据数据的信息
+
         }
 
         private void BianHao_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
@@ -320,16 +319,6 @@ namespace WpfApp1
         //这个只是用于测试，并无实际作用
         private void update_all_XY_tab4_Click(object sender, RoutedEventArgs e)
         {
-            //int useable_jiedian_count = listview_largeicon_tab5.Items.Count;//获取当前可用节点
-            //for (int index = 0; index < useable_jiedian_count; index++)
-            //{
-            //    Point point_temp = Ellipse_Array_tab4[index].TranslatePoint(new Point(0, 0), img_tab4);
-            //    string command_str = "update " + ShuJuKu.Table3_JieDian + " SET xmin = '" + point_temp.X.ToString() + "', ymin = '" + point_temp.Y.ToString() + "' WHERE id = " + (index + 1).ToString() + ";";
-            //    MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
-            //}
-
-            //Init_Jiedian_DisplayOrNot();//刷新所有节点
-
             List<int> ids_list = get_exit_jiedian_id_list();
             foreach (int mem in ids_list)
             {

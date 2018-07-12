@@ -44,7 +44,7 @@ namespace WpfApp1
 
                     string str_temp = lv.SubItems[0].Text.Replace("#", "");
 
-                    toolTip_tab3.Show(Ellipse_Array[Convert.ToInt16(str_temp) - 1].ToolTip.ToString(), listview_largeicon, new System.Drawing.Point(e.X, e.Y), 10000);
+                    //toolTip_tab3.Show(Ellipse_Array[Convert.ToInt16(str_temp) - 1].ToolTip.ToString(), listview_largeicon, new System.Drawing.Point(e.X, e.Y), 10000);
 
                     pointView.X = e.X;
 
