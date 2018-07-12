@@ -180,11 +180,11 @@ namespace WpfApp1
                 tlt_tab4.Y = -Y;
 
 
-                for (int i = 0; i < size_chanel; i++)//size_chanel
-                {
-                    translateTransform_Array_tab4[i].X = -X * scaleTransform_Array_tab4[i].ScaleX;
-                    translateTransform_Array_tab4[i].Y = -Y * scaleTransform_Array_tab4[i].ScaleY;
-                }
+                //for (int i = 0; i < size_chanel; i++)//size_chanel
+                //{
+                //    translateTransform_Array_tab4[i].X = -X * scaleTransform_Array_tab4[i].ScaleX;
+                //    translateTransform_Array_tab4[i].Y = -Y * scaleTransform_Array_tab4[i].ScaleY;
+                //}
             }
         }
 

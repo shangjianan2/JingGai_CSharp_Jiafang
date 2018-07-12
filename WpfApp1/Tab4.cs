@@ -34,9 +34,7 @@ namespace WpfApp1
         private bool isMouseLeftButtonDown_tab4 = false;
 
         const double jiedian_size = 10;
-
-        TranslateTransform[] translateTransform_Array_tab4 = new TranslateTransform[size_chanel];
-        ScaleTransform[] scaleTransform_Array_tab4 = new ScaleTransform[size_chanel];
+        
         List<Ellipse> ellipse_list_tab4 = new List<Ellipse>();
 
         /// <summary>
@@ -455,11 +453,11 @@ namespace WpfApp1
         {
             this.tlt_tab4.X = 0;
             this.tlt_tab4.Y = 0;
-            for (int i = 0; i < size_chanel; i++)//size_chanel
-            {
-                translateTransform_Array_tab4[i].X = 0;
-                translateTransform_Array_tab4[i].Y = 0;
-            }
+            //for (int i = 0; i < size_chanel; i++)//size_chanel
+            //{
+            //    translateTransform_Array_tab4[i].X = 0;
+            //    translateTransform_Array_tab4[i].Y = 0;
+            //}
         }
 
 
