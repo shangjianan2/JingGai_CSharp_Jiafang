@@ -196,7 +196,7 @@
                             </Canvas.RenderTransform>
                             <Image x:Name="img" Source="C:\NBIoT\timg.jpg" 
 							    Stretch="Uniform"  
-							    RenderOptions.BitmapScalingMode="NearestNeighbor" Canvas.Top="-100" Canvas.Left="-100">
+							    RenderOptions.BitmapScalingMode="NearestNeighbor" Canvas.Top="0" Canvas.Left="0">
 
                             </Image>
 

@@ -53,6 +53,7 @@ namespace WpfApp1
 
             for(int i = 0; i < temp_DataRow.Count; i++)
             {
+                Draw_JieDian_on_Map(Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y, ref ellipse_list_tab2, canvas_mine);
                 Draw_JieDian_on_Map(Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y, ref ellipse_list_tab4, canvas_mine_tab4);
             }
         }
