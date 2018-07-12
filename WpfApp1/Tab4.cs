@@ -393,12 +393,19 @@ namespace WpfApp1
 
         private void img_MouseUp_tab4(object sender, MouseButtonEventArgs e)
         {
-            double x_move = e.GetPosition(canvas_mine_tab4).X;
-            double y_move = e.GetPosition(canvas_mine_tab4).Y;
-            Canvas.SetLeft(ellipse_list[0], (x_move - 50));
-            Canvas.SetTop(ellipse_list[0], (y_move - 50));
+            
             isMouseLeftButtonDown_tab4 = false;
             //System.Diagnostics.Debug.WriteLine(e.GetPosition(canvas_mine_tab4).X.ToString(), e.GetPosition(canvas_mine_tab4).Y.ToString());
+        }
+
+        public void follow_mouse(object sender, MouseEventArgs e)
+        {
+            Ellipse Ellipse_temp = (Ellipse)sender;
+
+            double x_move = e.GetPosition(canvas_mine_tab4).X;
+            double y_move = e.GetPosition(canvas_mine_tab4).Y;
+            Canvas.SetLeft(Ellipse_temp, (x_move - 50));
+            Canvas.SetTop(Ellipse_temp, (y_move - 50));
         }
 
         private void img_MouseLeave_tab4(object sender, MouseEventArgs e)
@@ -407,17 +414,9 @@ namespace WpfApp1
                 return;
             if (sender.ToString() == "System.Windows.Shapes.Ellipse")
             {
-                System.Windows.Shapes.Ellipse Ellipse_temp = (System.Windows.Shapes.Ellipse)sender;
+                //System.Windows.Shapes.Ellipse Ellipse_temp = (System.Windows.Shapes.Ellipse)sender;
 
-                Point position_tab4;
-                position_tab4 = e.GetPosition(img_tab4);
-                //单独拖拽节点只会更改节点的在Canvas中的相对位置（left top），不会更改其他变量
-                double x = Canvas.GetLeft(Ellipse_temp);
-                double y = Canvas.GetTop(Ellipse_temp);
-                double temp_x = x - (position_tab4.X - this.previousMousePoint_tab4.X)*0.1;
-                double temp_y = y - (position_tab4.Y - this.previousMousePoint_tab4.Y) * 0.1;
-                Canvas.SetLeft(Ellipse_temp, temp_x);
-                Canvas.SetTop(Ellipse_temp, temp_y);
+                follow_mouse(sender, e);
             }
         }
 
@@ -427,19 +426,7 @@ namespace WpfApp1
             {
                 if (sender.ToString() == "System.Windows.Shapes.Ellipse")
                 {
-                    System.Windows.Shapes.Ellipse Ellipse_temp = (System.Windows.Shapes.Ellipse)sender;
-
-                    Point position_tab4;
-                    position_tab4 = e.GetPosition(img_tab4);
-                    //单独拖拽节点只会更改节点的在Canvas中的相对位置（left top），不会更改其他变量
-                    double x = Canvas.GetLeft(Ellipse_temp);
-                    double y = Canvas.GetTop(Ellipse_temp);
-                    double temp_x = x - (position_tab4.X - this.previousMousePoint_tab4.X) * 0.1;
-                    double temp_y = y - (position_tab4.Y - this.previousMousePoint_tab4.Y) * 0.1;
-                    Canvas.SetLeft(Ellipse_temp, temp_x);
-                    Canvas.SetTop(Ellipse_temp, temp_y);
-
-                    System.Diagnostics.Debug.WriteLine(Canvas.GetLeft(Ellipse_temp).ToString(), Canvas.GetTop(Ellipse_temp).ToString());
+                    follow_mouse(sender, e);
                 }
 
             }
