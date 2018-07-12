@@ -28,7 +28,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        JieDians os_tab4 = null;
+        //JieDians os_tab4 = null;
 
         Point previousMousePoint_tab4 = new Point(0, 0);
         private bool isMouseLeftButtonDown_tab4 = false;
@@ -39,23 +39,28 @@ namespace WpfApp1
         TranslateTransform[] translateTransform_Array_tab4 = new TranslateTransform[size_chanel];
         ScaleTransform[] scaleTransform_Array_tab4 = new ScaleTransform[size_chanel];
         Ellipse[] Ellipse_Array_tab4 = new Ellipse[size_chanel];
+        List<Ellipse> ellipse_list = new List<Ellipse>();
 
+        /// <summary>
+        /// 从数据库中获取当前可用节点，并将其按照数据库中的信息进行绘制
+        /// </summary>
         public void Init_JieDian_Map_LieBiao()
         {
             DataSet dataSet_temp = new DataSet();
-            string command_str = "select * from table3_jiedian;";
+            string command_str = "select * from " + ShuJuKu.Table3_JieDian + ";";
             dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
             for(int i = 0; i < temp_DataRow.Count; i++)
             {
-                Draw_JieDian_on_Map(Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y);
+                Draw_JieDian_on_Map(Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y, ref ellipse_list);
             }
         }
 
-        public void Draw_JieDian_on_Map(double x, double y)
+        public void Draw_JieDian_on_Map(double x, double y, ref List<Ellipse> ellipse_list_tt)
         {
+            //在地图上绘制
             Ellipse ellipse = new Ellipse();
             ellipse.Width = 100;
             ellipse.Height = 100;
@@ -63,6 +68,15 @@ namespace WpfApp1
             Canvas.SetLeft(ellipse, x);
             Canvas.SetTop(ellipse, y);
             canvas_mine_tab4.Children.Add(ellipse);
+
+            //加入到列表中
+            ellipse_list_tt.Add(ellipse);
+
+            //添加事件
+            ellipse.MouseMove += img_MouseMove_tab4;
+            ellipse.MouseDown += img_MouseDown_tab4;
+            ellipse.MouseUp += img_MouseUp_tab4;
+            ellipse.MouseLeave += img_MouseLeave_tab4;
         }
 
         private void Verify_PassWord_Tab4_Button_Click(object sender, RoutedEventArgs e)
@@ -345,24 +359,29 @@ namespace WpfApp1
         #region//地图功能的实现
         private void img_MouseDown_tab4(object sender, MouseButtonEventArgs e)
         {
+            Display_where(sender, e);
+
             //previousMousePoint_tab4 = e.GetPosition(img_tab4);
             if (sender.ToString() == "System.Windows.Shapes.Ellipse")
             {
                 isMouseLeftButtonDown_tab4 = true;//只有在节点处按下按键才算按下
-                System.Windows.Shapes.Ellipse ellipse_tt = (System.Windows.Shapes.Ellipse)sender;
+                                                  //System.Windows.Shapes.Ellipse ellipse_tt = (System.Windows.Shapes.Ellipse)sender;
 
-                string select_index_ellipse = extract_id_from_ToolTip(ellipse_tt.ToolTip.ToString());
 
-                BianHao.Text = select_index_ellipse;
-
-                Show_Information_Jiedian(Convert.ToInt16(BianHao.Text));
-                
-                previousMousePoint_tab4 = e.GetPosition(ellipse_tt);
+                previousMousePoint_tab4 = e.GetPosition(img_tab4);
             }
             else
             {
-                previousMousePoint_tab4 = e.GetPosition(img_tab4);
+                previousMousePoint_tab4 = e.GetPosition(canvas_mine);
             }
+        }
+
+        public void Display_where(object sender, MouseButtonEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("canvas_mine_tab4" + e.GetPosition(canvas_mine_tab4).X.ToString() + ", " +
+                                               e.GetPosition(canvas_mine_tab4).Y.ToString());
+            System.Diagnostics.Debug.WriteLine("img_tab4" + e.GetPosition(img_tab4).X.ToString() + ", " +
+                                               e.GetPosition(img_tab4).Y.ToString());
         }
 
         public string extract_id_from_ToolTip(string tooltip_tt)
@@ -374,7 +393,12 @@ namespace WpfApp1
 
         private void img_MouseUp_tab4(object sender, MouseButtonEventArgs e)
         {
+            double x_move = e.GetPosition(canvas_mine_tab4).X;
+            double y_move = e.GetPosition(canvas_mine_tab4).Y;
+            Canvas.SetLeft(ellipse_list[0], (x_move - 50));
+            Canvas.SetTop(ellipse_list[0], (y_move - 50));
             isMouseLeftButtonDown_tab4 = false;
+            //System.Diagnostics.Debug.WriteLine(e.GetPosition(canvas_mine_tab4).X.ToString(), e.GetPosition(canvas_mine_tab4).Y.ToString());
         }
 
         private void img_MouseLeave_tab4(object sender, MouseEventArgs e)
@@ -383,12 +407,17 @@ namespace WpfApp1
                 return;
             if (sender.ToString() == "System.Windows.Shapes.Ellipse")
             {
+                System.Windows.Shapes.Ellipse Ellipse_temp = (System.Windows.Shapes.Ellipse)sender;
+
                 Point position_tab4;
-                System.Windows.Shapes.Ellipse ellipse = (System.Windows.Shapes.Ellipse)sender;
-                position_tab4 = e.GetPosition(ellipse);
+                position_tab4 = e.GetPosition(img_tab4);
                 //单独拖拽节点只会更改节点的在Canvas中的相对位置（left top），不会更改其他变量
-                Canvas.SetLeft(ellipse, Canvas.GetLeft(ellipse) + (position_tab4.X - this.previousMousePoint_tab4.X) * sfr_tab4.ScaleX);
-                Canvas.SetTop(ellipse, Canvas.GetTop(ellipse) + (position_tab4.Y - this.previousMousePoint_tab4.Y) * sfr_tab4.ScaleY);
+                double x = Canvas.GetLeft(Ellipse_temp);
+                double y = Canvas.GetTop(Ellipse_temp);
+                double temp_x = x - (position_tab4.X - this.previousMousePoint_tab4.X)*0.1;
+                double temp_y = y - (position_tab4.Y - this.previousMousePoint_tab4.Y) * 0.1;
+                Canvas.SetLeft(Ellipse_temp, temp_x);
+                Canvas.SetTop(Ellipse_temp, temp_y);
             }
         }
 
@@ -401,20 +430,16 @@ namespace WpfApp1
                     System.Windows.Shapes.Ellipse Ellipse_temp = (System.Windows.Shapes.Ellipse)sender;
 
                     Point position_tab4;
+                    position_tab4 = e.GetPosition(img_tab4);
+                    //单独拖拽节点只会更改节点的在Canvas中的相对位置（left top），不会更改其他变量
+                    double x = Canvas.GetLeft(Ellipse_temp);
+                    double y = Canvas.GetTop(Ellipse_temp);
+                    double temp_x = x - (position_tab4.X - this.previousMousePoint_tab4.X) * 0.1;
+                    double temp_y = y - (position_tab4.Y - this.previousMousePoint_tab4.Y) * 0.1;
+                    Canvas.SetLeft(Ellipse_temp, temp_x);
+                    Canvas.SetTop(Ellipse_temp, temp_y);
 
-                    for (int i = 0; i < size_chanel; i++)
-                    {
-                        if (Ellipse_Array_tab4[i].Name == Ellipse_temp.Name)
-                        {
-                            position_tab4 = e.GetPosition(Ellipse_Array_tab4[i]);
-                            //单独拖拽节点只会更改节点的在Canvas中的相对位置（left top），不会更改其他变量
-                            Canvas.SetLeft(Ellipse_Array_tab4[i], Canvas.GetLeft(Ellipse_Array_tab4[i]) + (position_tab4.X - this.previousMousePoint_tab4.X) * scaleTransform_Array_tab4[i].ScaleX);
-                            Canvas.SetTop(Ellipse_Array_tab4[i], Canvas.GetTop(Ellipse_Array_tab4[i]) + (position_tab4.Y - this.previousMousePoint_tab4.Y) * scaleTransform_Array_tab4[i].ScaleY);
-                            //System.Diagnostics.Debug.WriteLine("GetLeft {0} GetTop {1}", Canvas.GetLeft(rectangle_Array[i]), Canvas.GetTop(rectangle_Array[i]));此处显示改变
-                            //System.Diagnostics.Debug.WriteLine("translateTransform_Array {0} {1}", translateTransform_Array[i].X, translateTransform_Array[i].Y);此处显示不变
-                            break;
-                        }
-                    }
+                    System.Diagnostics.Debug.WriteLine(Canvas.GetLeft(Ellipse_temp).ToString(), Canvas.GetTop(Ellipse_temp).ToString());
                 }
 
             }

@@ -149,7 +149,7 @@ namespace WpfApp1
             Init_JieDian_Map_LieBiao();
 
             //判断现有所有节点是否掉线
-            DiaoXian();
+            //DiaoXian();
         }
 
         public void Init_map_location_XY(double X, double Y, int tab)
