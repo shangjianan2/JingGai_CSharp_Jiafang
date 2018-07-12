@@ -44,6 +44,8 @@ namespace WpfApp1
         {
             removeAll_jiedian_in_map(canvas_mine);
             removeAll_jiedian_in_map(canvas_mine_tab4);
+            ellipse_list_tab2.Clear();
+            ellipse_list_tab4.Clear();
 
             DataSet dataSet_temp = new DataSet();
             string command_str = "select * from " + ShuJuKu.Table3_JieDian + ";";
@@ -176,7 +178,7 @@ namespace WpfApp1
 
 
             //判断现有所有节点是否掉线
-            DiaoXian();
+            //DiaoXian();
         }
 
         /// <summary>
@@ -243,7 +245,8 @@ namespace WpfApp1
             if (BianHao.Text == "")//如果TextBox中没有数据就不进行任何操作
                 return;
             Update_Information_Jiedian(ellipse_list_tab4, Convert.ToInt16(BianHao.Text), JianCeQiTi.Text, AnZhuangWeiZhi.Text, AnZhuangShiJina.Text, GaoXianBaoJing.Text, DiXianBaoJing.Text);
-            Init_Jiedian_DisplayOrNot();//刷新所有节点
+            //刷新相关界面
+            Init_JieDian_Map();
         }
 
         private void PuTongMoShi_Tab4_Button_Click(object sender, RoutedEventArgs e)

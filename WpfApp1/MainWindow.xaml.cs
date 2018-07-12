@@ -469,40 +469,40 @@ namespace WpfApp1
         }
 
         #region//有关地图加载
-        public void Init_Map(int num_tab)
-        {
-            map_PZWJ_JieXi.get_JieDianZuoBiao("C:\\NBIoT\\map.txt", size_chanel, ref JieDianZuoBiao_Array_int);
-            map_PZWJ_JieXi.get_DiTuLuJing("C:\\NBIoT\\map.txt", size_chanel, ref map_LuJing);
+        //public void Init_Map(int num_tab)
+        //{
+        //    map_PZWJ_JieXi.get_JieDianZuoBiao("C:\\NBIoT\\map.txt", size_chanel, ref JieDianZuoBiao_Array_int);
+        //    map_PZWJ_JieXi.get_DiTuLuJing("C:\\NBIoT\\map.txt", size_chanel, ref map_LuJing);
 
-            if(num_tab == 2)//更新tab2中的地图
-            {
-                clear_img_canvas();//将地图的图片位置归零
-                clear_tlt();//将每个矩形的tlt清零
-                clear_scale();//将所有的放大倍数归零（具体是不是放大倍数我也不知道，反正就是将之前所有因为操作而更改的数据全部复位，其中放大倍数应该为1）
-
-
-                //for (int i = 0; i < size_chanel; i++)
-                //{
-                //    change_XY_rectangle(Ellipse_Array[i], map_rightup_X, map_rightup_Y);
-                //}
-                img.Source = new BitmapImage(new Uri(map_LuJing));
-
-            }
-            else if(num_tab == 4)//更新他爸中的地图
-            {
-                //clear_img_canvas_tab4();//将地图的图片位置归零
-                clear_tlt_tab4();//将每个矩形的tlt清零
-                clear_scale_tab4();//将所有的放大倍数归零（具体是不是放大倍数我也不知道，反正就是将之前所有因为操作而更改的数据全部复位，其中放大倍数应该为1）
+        //    if(num_tab == 2)//更新tab2中的地图
+        //    {
+        //        clear_img_canvas();//将地图的图片位置归零
+        //        clear_tlt();//将每个矩形的tlt清零
+        //        clear_scale();//将所有的放大倍数归零（具体是不是放大倍数我也不知道，反正就是将之前所有因为操作而更改的数据全部复位，其中放大倍数应该为1）
 
 
-                for (int i = 0; i < size_chanel; i++)
-                {
-                    change_XY_rectangle(ellipse_list_tab4[i], map_rightup_X, map_rightup_Y);
-                }
-                img_tab4.Source = new BitmapImage(new Uri(map_LuJing));
-            }
+        //        //for (int i = 0; i < size_chanel; i++)
+        //        //{
+        //        //    change_XY_rectangle(Ellipse_Array[i], map_rightup_X, map_rightup_Y);
+        //        //}
+        //        img.Source = new BitmapImage(new Uri(map_LuJing));
 
-        }
+        //    }
+        //    else if(num_tab == 4)//更新他爸中的地图
+        //    {
+        //        //clear_img_canvas_tab4();//将地图的图片位置归零
+        //        clear_tlt_tab4();//将每个矩形的tlt清零
+        //        clear_scale_tab4();//将所有的放大倍数归零（具体是不是放大倍数我也不知道，反正就是将之前所有因为操作而更改的数据全部复位，其中放大倍数应该为1）
+
+
+        //        for (int i = 0; i < size_chanel; i++)
+        //        {
+        //            change_XY_rectangle(ellipse_list_tab4[i], map_rightup_X, map_rightup_Y);
+        //        }
+        //        img_tab4.Source = new BitmapImage(new Uri(map_LuJing));
+        //    }
+
+        //}
 
         #region//导入地图的配置文件
         public void change_XY_rectangle(Ellipse rectangle_tt, double x, double y)
