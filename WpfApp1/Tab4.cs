@@ -305,15 +305,26 @@ namespace WpfApp1
             }
             else//将已有的节点信息更改
             {
-                Point point_temp = Ellipse_Array_tt[index - 1].TranslatePoint(new Point(0, 0), img_tab4);
+                int i_temp = mysqlID_to_listID(Ellipse_Array_tt, index);
+                Point point_temp = get_ellipse_XY(Ellipse_Array_tt[i_temp]);
                 string UpdataCommand_str = "UPDATE Table3_JieDian SET `gas type` = '" + jianceqiti_tt +
                     "', location = '" + anzhuangweizhi_tt + "', `time of install` = '" + anzhuangshijian_tt +
                     "', `high to warning` = '" + gaoxianbaojing_tt + "', `low to warning` = '" + dixianbaojing_tt +
                     "', `xmin` = '" + point_temp.X.ToString() + "', `ymin` = '" + point_temp.Y.ToString() +
-                    "' WHERE id = " + index;
+                    "' WHERE id = " + index.ToString();
                 MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, UpdataCommand_str, null);
             }
+        }
+
+        /// <summary>
+        /// 获取指定椭圆的坐标
+        /// </summary>
+        /// <param name="ellipse_tt"></param>
+        /// <returns></returns>
+        public Point get_ellipse_XY(Ellipse ellipse_tt)
+        {
+            return new Point(Canvas.GetLeft(ellipse_tt), Canvas.GetTop(ellipse_tt));
         }
 
 
@@ -490,11 +501,11 @@ namespace WpfApp1
             Init_map_location_XY(map_rightup_X, map_rightup_Y, 4);
         }
 
-        public void clear_img_canvas_tab4()
-        {
-            Canvas.SetTop(img_tab4, 0);
-            Canvas.SetLeft(img_tab4, 0);
-        }
+        //public void clear_img_canvas_tab4()
+        //{
+        //    Canvas.SetTop(img_tab4, 0);
+        //    Canvas.SetLeft(img_tab4, 0);
+        //}
 
         public void clear_scale_tab4()
         {

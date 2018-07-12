@@ -200,7 +200,7 @@ namespace WpfApp1
                                                   CommandType.Text, command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
             
-            clear_img_canvas_tab4();
+            //clear_img_canvas_tab4();
             clear_scale_tab4();
             clear_tlt_tab4();
             clear_img_canvas();
@@ -209,9 +209,9 @@ namespace WpfApp1
 
 
             //HideOrShow_jiedian_map(temp_DataRow, ref Ellipse_Array);
-            HideOrShow_jiedian_map(temp_DataRow, ref ellipse_list_tab4);
-            HideOrShow_jiedian_liebiao(temp_DataRow, listview_largeicon);
-            HideOrShow_jiedian_liebiao(temp_DataRow, listview_largeicon_tab5);
+            //HideOrShow_jiedian_map(temp_DataRow, ref ellipse_list_tab4);
+            //HideOrShow_jiedian_liebiao(temp_DataRow, listview_largeicon);
+            //HideOrShow_jiedian_liebiao(temp_DataRow, listview_largeicon_tab5);
 
             for(int i = 0; i < temp_DataRow.Count; i++)
             {
@@ -490,7 +490,7 @@ namespace WpfApp1
             }
             else if(num_tab == 4)//更新他爸中的地图
             {
-                clear_img_canvas_tab4();//将地图的图片位置归零
+                //clear_img_canvas_tab4();//将地图的图片位置归零
                 clear_tlt_tab4();//将每个矩形的tlt清零
                 clear_scale_tab4();//将所有的放大倍数归零（具体是不是放大倍数我也不知道，反正就是将之前所有因为操作而更改的数据全部复位，其中放大倍数应该为1）
 
