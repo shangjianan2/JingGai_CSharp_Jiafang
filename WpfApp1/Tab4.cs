@@ -416,7 +416,10 @@ namespace WpfApp1
             {
                 isMouseLeftButtonDown_tab4 = true;//只有在节点处按下按键才算按下
                                                   //System.Windows.Shapes.Ellipse ellipse_tt = (System.Windows.Shapes.Ellipse)sender;
-                                                  
+
+                BianHao.Text = extract_id_from_ToolTip(((Ellipse)sender).ToolTip.ToString());
+
+                Show_Information_Jiedian(Convert.ToInt16(BianHao.Text));
             }
         }
 
