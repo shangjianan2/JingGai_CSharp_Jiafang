@@ -50,12 +50,13 @@ namespace WpfApp1
 
             for(int i = 0; i < temp_DataRow.Count; i++)
             {
-                Draw_JieDian_on_Map(Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y, ref ellipse_list_tab2, canvas_mine);
-                Draw_JieDian_on_Map(Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y, ref ellipse_list_tab4, canvas_mine_tab4);
+                int jiedian_id = Convert.ToInt16(temp_DataRow[i][0]);//获取所更新的节点的id
+                Draw_JieDian_on_Map(jiedian_id, Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y, ref ellipse_list_tab2, canvas_mine);
+                Draw_JieDian_on_Map(jiedian_id, Convert.ToDouble(temp_DataRow[i][6]) - map_rightup_X, Convert.ToDouble(temp_DataRow[i][7]) - map_rightup_Y, ref ellipse_list_tab4, canvas_mine_tab4);
             }
         }
 
-        public void Draw_JieDian_on_Map(double x, double y, ref List<Ellipse> ellipse_list_tt, Canvas canvas_tt)
+        public void Draw_JieDian_on_Map(int jiedian_id, double x, double y, ref List<Ellipse> ellipse_list_tt, Canvas canvas_tt)
         {
             //在地图上绘制
             Ellipse ellipse = new Ellipse();
@@ -74,6 +75,16 @@ namespace WpfApp1
             ellipse.MouseDown += img_MouseDown_tab4;
             ellipse.MouseUp += img_MouseUp_tab4;
             ellipse.MouseLeave += img_MouseLeave_tab4;
+
+            //更新toolTip
+            update_tooltip(ref ellipse, jiedian_id, false);
+        }
+
+        public void Remove_JieDian_on_Map(int jiedian_id, ref List<Ellipse> ellipse_list_tt, Canvas canvas_tt)
+        {
+            //遍历ellipse_list_tt中所有节点，查找是否是否有节点的id为jiedian_id
+
+            //如果有id等于jiedian_id的节点，将其从地图中删除
         }
 
         private void Verify_PassWord_Tab4_Button_Click(object sender, RoutedEventArgs e)

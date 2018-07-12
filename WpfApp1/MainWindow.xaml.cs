@@ -562,6 +562,34 @@ namespace WpfApp1
                                            "更新时间：" + temp_DataRow[0][9].ToString();
         }
 
+        public void update_tooltip(ref Ellipse ellipse, int jiedian_id, bool diaoxian)
+        {
+            if (diaoxian == true)
+            {
+                ellipse.ToolTip = "点 位 号：" + jiedian_id.ToString() + "\n" + "掉线";
+                return;
+            }
+
+            DataSet dataSet_temp = new DataSet();
+            string command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " where id = " + jiedian_id.ToString() + " order by date desc limit 1";
+            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+
+            if (temp_DataRow.Count <= 0)
+                return;
+
+            ellipse.ToolTip = "点 位 号：" + temp_DataRow[0][0].ToString() + "\n" +
+                                           "气体类型：" + temp_DataRow[0][1].ToString() + "\n" +
+                                           "单    位：" + temp_DataRow[0][2].ToString() + "\n" +
+                                           "状    态：" + (temp_DataRow[0][3].ToString() == "" ? "正常" : temp_DataRow[0][3].ToString()) + "\n" +
+                                           "气体浓度：" + temp_DataRow[0][4].ToString() + "\n" +
+                                           "低限浓度：" + temp_DataRow[0][5].ToString() + "\n" +
+                                           "高限浓度：" + temp_DataRow[0][6].ToString() + "\n" +
+                                           "电    量：" + temp_DataRow[0][7].ToString() + "%\n" +
+                                           "温    度：" + temp_DataRow[0][8].ToString() + "\n" +
+                                           "更新时间：" + temp_DataRow[0][9].ToString();
+        }
+
         public void change_jiedian_status(ref List<Ellipse> ellipse_array, System.Windows.Forms.ListView listView_tt,  int index, int BaoJing)
         {
             if(BaoJing == 0)
