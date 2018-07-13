@@ -86,8 +86,10 @@ namespace WpfApp1
             }
         }
 
-        public void change_jiedian_status(System.Windows.Forms.ListView listView_tt, int index, int BaoJing)
+        public void change_jiedian_status_LieBiao(System.Windows.Forms.ListView listView_tt, int index_tt, int BaoJing)
         {
+            int index = mysqlID_to_listID(listView_tt, index_tt);
+
             if (BaoJing == 0)
             {
                 listView_tt.BeginUpdate();

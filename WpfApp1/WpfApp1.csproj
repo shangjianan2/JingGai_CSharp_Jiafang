@@ -63,6 +63,7 @@
     </ApplicationDefinition>
     <Compile Include="ControlAttachProperty.cs" />
     <Compile Include="DiaoXian.cs" />
+    <Compile Include="DiTu.cs" />
     <Compile Include="FButton.cs" />
     <Compile Include="IP_PeiZhiWenJian_JieXi.cs" />
     <Compile Include="LieBiao.cs" />

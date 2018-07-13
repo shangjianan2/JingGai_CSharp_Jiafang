@@ -346,21 +346,30 @@ namespace WpfApp1
 
                 /////////
                 int temp_index = Convert.ToInt16(message[0]);
-                //if (GaoDiXian_BaiJing_PanDuan(temp_index) == 1 || GaoDiXian_BaiJing_PanDuan(temp_index) == 2)
-                //{
-                //    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 1);
-                //    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 1);
-                //}
-                //else if (GaoDiXian_BaiJing_PanDuan(temp_index) == 3)
-                //{
-                //    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 2);
-                //    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 2);
-                //}
-                //else
-                //{
-                //    change_jiedian_status(ref Ellipse_Array, listview_largeicon, (temp_index - 1), 0);
-                //    change_jiedian_status(ref Ellipse_Array_tab4, listview_largeicon_tab5, (temp_index - 1), 0);
-                //}
+                if (GaoDiXian_BaiJing_PanDuan(temp_index) == 1 || GaoDiXian_BaiJing_PanDuan(temp_index) == 2)
+                {
+                    change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 1);
+                    change_jiedian_status_LieBiao(listview_largeicon, temp_index, 1);
+
+                    change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 1);
+                    change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 1);
+                }
+                else if (GaoDiXian_BaiJing_PanDuan(temp_index) == 3)
+                {
+                    change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 2);
+                    change_jiedian_status_LieBiao(listview_largeicon, temp_index, 2);
+
+                    change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 2);
+                    change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 2);
+                }
+                else
+                {
+                    change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 0);
+                    change_jiedian_status_LieBiao(listview_largeicon, temp_index, 0);
+
+                    change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 0);
+                    change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 0);
+                }
             };
             this.Dispatcher.Invoke(action, true);
         }
