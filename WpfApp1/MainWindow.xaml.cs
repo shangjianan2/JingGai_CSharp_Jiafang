@@ -123,8 +123,12 @@ namespace WpfApp1
             Init_LieBiao(listview_largeicon, ref imageListLarge);
             Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
 
-            //判断现有所有节点是否掉线
-            //DiaoXian();
+            //更新所有节点的报警状态
+            List<int> temp_int_list = get_exit_jiedian_id_list();
+            foreach(int mem in temp_int_list)
+            {
+                Update_BaoJingStatus(mem);
+            }
         }
 
         public void Init_map_location_XY(double X, double Y, int tab)
@@ -344,34 +348,39 @@ namespace WpfApp1
                 update_tooltip(ref ellipse_list_tab2, (message[0]), false);
                 update_tooltip(ref ellipse_list_tab4, (message[0]), false);
 
-                /////////
-                int temp_index = Convert.ToInt16(message[0]);
-                if (GaoDiXian_BaiJing_PanDuan(temp_index) == 1 || GaoDiXian_BaiJing_PanDuan(temp_index) == 2)
-                {
-                    change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 1);
-                    change_jiedian_status_LieBiao(listview_largeicon, temp_index, 1);
-
-                    change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 1);
-                    change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 1);
-                }
-                else if (GaoDiXian_BaiJing_PanDuan(temp_index) == 3)
-                {
-                    change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 2);
-                    change_jiedian_status_LieBiao(listview_largeicon, temp_index, 2);
-
-                    change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 2);
-                    change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 2);
-                }
-                else
-                {
-                    change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 0);
-                    change_jiedian_status_LieBiao(listview_largeicon, temp_index, 0);
-
-                    change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 0);
-                    change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 0);
-                }
+                //更新报警状态
+                Update_BaoJingStatus(message[0]);
             };
             this.Dispatcher.Invoke(action, true);
+        }
+
+        public void Update_BaoJingStatus(int index)
+        {
+            int temp_index = Convert.ToInt16(index);
+            if (GaoDiXian_BaiJing_PanDuan(temp_index) == 1 || GaoDiXian_BaiJing_PanDuan(temp_index) == 2)
+            {
+                change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 1);
+                change_jiedian_status_LieBiao(listview_largeicon, temp_index, 1);
+
+                change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 1);
+                change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 1);
+            }
+            else if (GaoDiXian_BaiJing_PanDuan(temp_index) == 3)
+            {
+                change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 2);
+                change_jiedian_status_LieBiao(listview_largeicon, temp_index, 2);
+
+                change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 2);
+                change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 2);
+            }
+            else
+            {
+                change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 0);
+                change_jiedian_status_LieBiao(listview_largeicon, temp_index, 0);
+
+                change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 0);
+                change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 0);
+            }
         }
 
         public bool remember_to_databases_or_not(string[] temp_array_str_tt, int index)
