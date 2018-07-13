@@ -158,8 +158,9 @@ namespace WpfApp1
                 {
 
                     string str_temp = lv.SubItems[0].Text.Replace("#", "");
+                    int index_temp = mysqlID_to_listID(ellipse_list_tab4, Convert.ToInt16(str_temp));
 
-                    //toolTip_tab5.Show(Ellipse_Array[Convert.ToInt16(str_temp) - 1].ToolTip.ToString(), listview_largeicon_tab5, new System.Drawing.Point(e.X, e.Y), 10000);
+                    toolTip_tab5.Show(ellipse_list_tab4[index_temp].ToolTip.ToString(), listview_largeicon_tab5, new System.Drawing.Point(e.X, e.Y), 10000);
 
                     pointView_tab5.X = e.X;
 
