@@ -406,7 +406,7 @@ namespace WpfApp1
 
         private void map_Reset_Click_tab4(object sender, RoutedEventArgs e)
         {
-            Init_map_location_XY(map_rightup_X, map_rightup_Y, 4);
+            Init_JieDian_Map();//重新加载地图
         }
 
         //public void clear_img_canvas_tab4()

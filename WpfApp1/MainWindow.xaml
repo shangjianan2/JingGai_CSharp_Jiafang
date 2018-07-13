@@ -156,7 +156,7 @@
             <MenuItem Name="clear_datagrid_tab3" Click="clear_datagrid_Click" Header="清空显示"/>
         </ContextMenu>
         <ContextMenu x:Key="ContextMenu_tab4">
-            <MenuItem Name="map_Reset_tab4" Click="map_Reset_Click_tab4" Header="恢复比例"/>
+            <MenuItem Name="map_Reset_tab4" Click="map_Reset_Click_tab4" Header="恢复"/>
             <MenuItem Name="update_all_XY_tab4" Click="update_all_XY_tab4_Click" Header="更新所有节点坐标"/>
         </ContextMenu>
 
