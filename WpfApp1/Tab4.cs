@@ -76,6 +76,11 @@ namespace WpfApp1
             //删除相应节点
             Remove_JieDian_on_Map(BianHao.Text, ref ellipse_list_tab2, canvas_mine);
             Remove_JieDian_on_Map(BianHao.Text, ref ellipse_list_tab4, canvas_mine_tab4);
+
+            //刷新所有列表
+            Init_ImageList(ref imageListLarge);//初始化imagelist
+            Init_LieBiao(listview_largeicon, ref imageListLarge);
+            Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
         }
 
         private void ZengJiaBianGeng_Button_Click(object sender, RoutedEventArgs e)
@@ -91,7 +96,9 @@ namespace WpfApp1
 
             //刷新相关界面
             Init_JieDian_Map();
-
+            Init_ImageList(ref imageListLarge);//初始化imagelist
+            Init_LieBiao(listview_largeicon, ref imageListLarge);
+            Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
 
             //判断现有所有节点是否掉线
             //DiaoXian();
@@ -163,6 +170,9 @@ namespace WpfApp1
             Update_Information_Jiedian(ellipse_list_tab4, Convert.ToInt16(BianHao.Text), JianCeQiTi.Text, AnZhuangWeiZhi.Text, AnZhuangShiJina.Text, GaoXianBaoJing.Text, DiXianBaoJing.Text);
             //刷新相关界面
             Init_JieDian_Map();
+            Init_ImageList(ref imageListLarge);//初始化imagelist
+            Init_LieBiao(listview_largeicon, ref imageListLarge);
+            Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
         }
 
         private void PuTongMoShi_Tab4_Button_Click(object sender, RoutedEventArgs e)

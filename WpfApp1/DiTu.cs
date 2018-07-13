@@ -110,6 +110,12 @@ namespace WpfApp1
             //添加事件
             if (shijian_or_not == true)
             {
+                //现减再加时为了防止重复注册
+                ellipse.MouseMove -= img_MouseMove_tab4;
+                ellipse.MouseDown -= img_MouseDown_tab4;
+                ellipse.MouseUp -= img_MouseUp_tab4;
+                ellipse.MouseLeave -= img_MouseLeave_tab4;
+
                 ellipse.MouseMove += img_MouseMove_tab4;
                 ellipse.MouseDown += img_MouseDown_tab4;
                 ellipse.MouseUp += img_MouseUp_tab4;

@@ -76,6 +76,8 @@ namespace WpfApp1
 
         public void Init_ImageList(ref ImageList imageList)
         {
+            imageList.Images.Clear();
+
             for (int i = 0; i < size_chanel; i++)
             {
                 System.Drawing.Image image = Bitmap.FromFile(".\\jiedian.png");
