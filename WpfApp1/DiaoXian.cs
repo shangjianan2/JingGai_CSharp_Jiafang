@@ -55,7 +55,7 @@ namespace WpfApp1
         {
             List<int> id_list = new List<int>();
             DataSet dataSet_temp = new DataSet();
-            string command_str = "select `id` from " + ShuJuKu.Table3_JieDian + ";";
+            string command_str = "select `id` from " + ShuJuKu.Table3_JieDian + " order by `id`+0;";
             dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
