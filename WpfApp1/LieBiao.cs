@@ -37,6 +37,15 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private void listview_largeicon_tab5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listview_largeicon_tab5.SelectedItems.Count == 0)//注意：切换选中项的以瞬间会出现没有选中项的情况，切换选中项的时候，第一步撤销旧有选中项（此时出现没有选中项的情况），第二部添加新的选中项
+                return;
+
+            BianHao_tab5.Text = listview_largeicon_tab5.SelectedItems[0].Text.Replace("#", "");
+            Show_Information_Jiedian_tab5(Convert.ToInt16(BianHao_tab5.Text));
+        }
+
         public void Init_LieBiao(System.Windows.Forms.ListView listView_tt, ref ImageList imageList_tt)
         {
             //初始化listview

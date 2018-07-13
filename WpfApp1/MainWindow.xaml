@@ -656,7 +656,8 @@
                         </Grid.ColumnDefinitions>
                         <wfi:WindowsFormsHost Grid.Column="0" Grid.ColumnSpan="3">
                             <wf:ListView x:Name="listview_largeicon_tab5" 
-                         MouseMove="listview_largeicon_MouseMove_tab5"/>
+                                         MouseMove="listview_largeicon_MouseMove_tab5" 
+                                         SelectedIndexChanged="listview_largeicon_tab5_SelectedIndexChanged"/>
                         </wfi:WindowsFormsHost>
 
                         <Grid Grid.Column="3">
