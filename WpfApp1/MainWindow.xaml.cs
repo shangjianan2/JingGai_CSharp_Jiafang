@@ -344,7 +344,7 @@ namespace WpfApp1
 
                 //更新ToolTip
                 //update_tooltip(ref Ellipse_Array, (message[0] - 1), false);
-                update_tooltip(ref ellipse_list_tab4, (message[0] - 1), false);
+                update_tooltip(ref ellipse_list_tab4, (message[0]), false);
 
                 /////////
                 int temp_index = Convert.ToInt16(message[0]);
@@ -515,19 +515,19 @@ namespace WpfApp1
         {
             if(diaoxian == true)
             {
-                ellipse_array[index].ToolTip = "点 位 号：" + (index + 1).ToString() + "\n" + "掉线";
+                ellipse_array[mysqlID_to_listID(ellipse_array, index)].ToolTip = "点 位 号：" + (index).ToString() + "\n" + "掉线";
                 return;
             }
 
             DataSet dataSet_temp = new DataSet();
-            string command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " where id = " + (index + 1).ToString() + " order by date desc limit 1";
+            string command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " where id = " + (index).ToString() + " order by date desc limit 1";
             dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
             if (temp_DataRow.Count <= 0)
                 return;
 
-            ellipse_array[index].ToolTip = "点 位 号：" + temp_DataRow[0][0].ToString() + "\n" +
+            ellipse_array[mysqlID_to_listID(ellipse_array, index)].ToolTip = "点 位 号：" + temp_DataRow[0][0].ToString() + "\n" +
                                            "气体类型：" + temp_DataRow[0][1].ToString() + "\n" +
                                            "单    位：" + temp_DataRow[0][2].ToString() + "\n" +
                                            "状    态：" + (temp_DataRow[0][3].ToString() == "" ? "正常" : temp_DataRow[0][3].ToString()) + "\n" +

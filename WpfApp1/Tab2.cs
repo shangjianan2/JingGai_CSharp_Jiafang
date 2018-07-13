@@ -49,8 +49,10 @@ namespace WpfApp1
             Application.Current.Shutdown();//关闭程序
         }
 
-        public void jiedian_AutoZoom(ref List<Ellipse> ellipse_array, int index)//从零开始索引
+        public void jiedian_AutoZoom(ref List<Ellipse> ellipse_array, int index_tt)//从零开始索引
         {
+            int index = mysqlID_to_listID(ellipse_array, index_tt);
+
             double x = Canvas.GetLeft(ellipse_array[index]) + (jiedian_size / 2);//加上半径的长度，获取圆心
             double y = Canvas.GetTop(ellipse_array[index]) + (jiedian_size / 2);
 
@@ -68,11 +70,11 @@ namespace WpfApp1
             
         }
 
-        public void jiedian_AutoMove(ref List<Ellipse> ellipse_array, int index)//从零开始索引
+        public void jiedian_AutoMove(ref List<Ellipse> ellipse_array, int index_tt)//从零开始索引
         {
             map_Reset_Click(this, null);
 
-            
+            int index = mysqlID_to_listID(ellipse_array, index_tt);
 
             double move_x = 0;
             double move_y = 0;
@@ -216,8 +218,8 @@ namespace WpfApp1
         {
             jiedian a = (jiedian)this.DataGrid.SelectedItem;
             
-            jiedian_AutoMove(ref ellipse_list_tab2, (Convert.ToUInt16(a.ID) - 1));
-            jiedian_AutoZoom(ref ellipse_list_tab2, (Convert.ToUInt16(a.ID) - 1));
+            jiedian_AutoMove(ref ellipse_list_tab2, (Convert.ToUInt16(a.ID)));
+            jiedian_AutoZoom(ref ellipse_list_tab2, (Convert.ToUInt16(a.ID)));
         }
 
         //为MouseLeftButtonUp创造的重载,目的是可以区分鼠标在DataGrid上的左键右键
@@ -225,8 +227,8 @@ namespace WpfApp1
         {
             jiedian a = (jiedian)this.DataGrid.SelectedItem;
 
-            jiedian_AutoMove(ref ellipse_list_tab2, (Convert.ToUInt16(a.ID) - 1));
-            jiedian_AutoZoom(ref ellipse_list_tab2, (Convert.ToUInt16(a.ID) - 1));
+            jiedian_AutoMove(ref ellipse_list_tab2, (Convert.ToUInt16(a.ID)));
+            jiedian_AutoZoom(ref ellipse_list_tab2, (Convert.ToUInt16(a.ID)));
         }
 
         private void hid_jiedian_Click(object sender, RoutedEventArgs e)
