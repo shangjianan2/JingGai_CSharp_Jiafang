@@ -86,7 +86,7 @@ namespace WpfApp1
             Ellipse ellipse = new Ellipse();
             ellipse.Width = jiedian_size;
             ellipse.Height = jiedian_size;
-            ellipse.Fill = Brushes.Red;
+            ellipse.Fill = Brushes.Blue;
             Canvas.SetLeft(ellipse, x);
             Canvas.SetTop(ellipse, y);
             canvas_tt.Children.Add(ellipse);
@@ -397,21 +397,7 @@ namespace WpfApp1
             Init_JieDian_Map();//刷新所有节点
         }
 
-        public void Init_Ellipse_Array_tab4()
-        {
-            
-        }
-
-        public void Init_translateTransform_Array_tab4()
-        {
-            
-        }
-
-        public void Init_scaleTransform_Array_tab4()
-        {
-            
-        }
-
+        
         #region//地图功能的实现
         private void img_MouseDown_tab4(object sender, MouseButtonEventArgs e)
         {

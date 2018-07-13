@@ -98,32 +98,13 @@ namespace WpfApp1
 
 
             ////Tab2地图初始化
-            //Init_Ellipse_Array();
-            //Init_translateTransform_Array();
-            //Init_scaleTransform_Array();
 
-            //for (int i = 0; i < size_chanel; i++)
-            //{
-            //    update_tooltip(ref Ellipse_Array, i, false);
-            //}
 
             ////Tab4地图初始化
-            //Init_Ellipse_Array_tab4();
-            //Init_translateTransform_Array_tab4();
-            //Init_scaleTransform_Array_tab4();
 
-            //for (int i = 0; i < size_chanel; i++)
-            //{
-            //    update_tooltip(ref Ellipse_Array_tab4, i, false);
-            //}
 
 
             ////初始化地图位置
-            //map_Reset_Click(this, null);
-
-            ////加载地图配置文件
-            //Init_Map(2);//更新tab2中的地图
-            //Init_Map(4);//更新tab4中的地图
 
 
             ////**************************************************tab3*******************8
@@ -131,21 +112,17 @@ namespace WpfApp1
 
 
             //// Initialize the ImageList objects with bitmaps.
-            //for (int i = 0; i < size_chanel; i++)
-            //{
-            //    System.Drawing.Image image = Bitmap.FromFile(".\\jiedian.png");
+            for (int i = 0; i < size_chanel; i++)
+            {
+                System.Drawing.Image image = Bitmap.FromFile(".\\jiedian.png");
 
 
-            //    imageListLarge.Images.Add(image);
-            //    imageListLarge.ImageSize = new System.Drawing.Size(50, 75);
-            //}
-            
+                imageListLarge.Images.Add(image);
+                imageListLarge.ImageSize = new System.Drawing.Size(50, 75);
+            }
+
             //Init_Jiedian_DisplayOrNot();
-
-            ////每次重新绘制地图的时候都会有一定的偏置
-            //Init_map_location_XY(map_rightup_X, map_rightup_Y, 2);
-            ////Init_map_location_XY(map_rightup_X, map_rightup_Y, 4);
-
+            
             Init_JieDian_Map();
 
             //判断现有所有节点是否掉线
