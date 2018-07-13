@@ -112,18 +112,16 @@ namespace WpfApp1
 
 
             //// Initialize the ImageList objects with bitmaps.
-            for (int i = 0; i < size_chanel; i++)
-            {
-                System.Drawing.Image image = Bitmap.FromFile(".\\jiedian.png");
-
-
-                imageListLarge.Images.Add(image);
-                imageListLarge.ImageSize = new System.Drawing.Size(50, 75);
-            }
+            
 
             //Init_Jiedian_DisplayOrNot();
-            
+
             Init_JieDian_Map();
+
+            
+            Init_ImageList(ref imageListLarge);//初始化imagelist
+            Init_LieBiao(listview_largeicon, ref imageListLarge);
+            Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
 
             //判断现有所有节点是否掉线
             //DiaoXian();
