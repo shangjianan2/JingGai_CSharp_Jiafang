@@ -77,7 +77,7 @@ namespace WpfApp1
                 lvi.ImageIndex = Convert.ToInt16(temp_DataRow[0][0]);
                 lvi.Text = lvi.ImageIndex.ToString() + "#";
                 listView_tt.Items.Add(lvi);
-                listView_tt.LargeImageList.Images.Add(Bitmap.FromFile("jiedian.png"));
+                //listView_tt.LargeImageList.Images.Add(Bitmap.FromFile("jiedian.png"));
             }
 
             listView_tt.EndUpdate();//更新结束
@@ -86,6 +86,7 @@ namespace WpfApp1
         public void Init_ImageList(ref ImageList imageList)
         {
             imageList.Images.Clear();
+            imageList.ImageSize = new System.Drawing.Size(50, 75);
 
             for (int i = 0; i < size_chanel; i++)
             {
@@ -93,31 +94,53 @@ namespace WpfApp1
 
 
                 imageList.Images.Add(image);
-                imageList.ImageSize = new System.Drawing.Size(50, 75);
+                //imageList.ImageSize = new System.Drawing.Size(50, 75);
             }
         }
 
         public void change_jiedian_status_LieBiao(System.Windows.Forms.ListView listView_tt, int index_tt, int BaoJing)
         {
-            int index = mysqlID_to_listID(listView_tt, index_tt);
+            //int index = mysqlID_to_listID(listView_tt, index_tt);
+            //if (index == -1)
+            //    return;
+
+            //if (BaoJing == 0)
+            //{
+            //    listView_tt.BeginUpdate();
+            //    listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian.png");//这个列表的表头貌似是从1开始索引
+            //    listView_tt.EndUpdate();
+            //}
+            //else if (BaoJing == 1)//暂定为浓度超出界限
+            //{
+
+            //    listView_tt.BeginUpdate();
+            //    listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian_warning.png");//这个列表的表头貌似是从1开始索引
+            //    listView_tt.EndUpdate();
+            //}
+            //else if (BaoJing == 2)//暂定为掉线，丢失
+            //{
+            //    listView_tt.BeginUpdate();
+            //    listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian_warning_diaoxian.png");//这个列表的表头貌似是从1开始索引
+            //    listView_tt.EndUpdate();
+            //}
 
             if (BaoJing == 0)
             {
                 listView_tt.BeginUpdate();
-                listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian.png");//这个列表的表头貌似是从1开始索引
+                listView_tt.LargeImageList.Images[index_tt] = Bitmap.FromFile("jiedian.png");//这个列表的表头貌似是从1开始索引
                 listView_tt.EndUpdate();
             }
             else if (BaoJing == 1)//暂定为浓度超出界限
             {
 
                 listView_tt.BeginUpdate();
-                listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian_warning.png");//这个列表的表头貌似是从1开始索引
+                listView_tt.LargeImageList.Images[index_tt] = Bitmap.FromFile("jiedian_warning.png");//这个列表的表头貌似是从1开始索引
                 listView_tt.EndUpdate();
             }
             else if (BaoJing == 2)//暂定为掉线，丢失
             {
                 listView_tt.BeginUpdate();
-                listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian_warning_diaoxian.png");//这个列表的表头貌似是从1开始索引
+                listView_tt.LargeImageList.Images[index_tt] = Bitmap.FromFile("jiedian_warning_diaoxian.png");//这个列表的表头貌似是从1开始索引
                 listView_tt.EndUpdate();
             }
 

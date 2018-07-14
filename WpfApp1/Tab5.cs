@@ -50,8 +50,19 @@ namespace WpfApp1
         {
             if (BianHao_tab5.Text == "")//如果TextBox中没有数据就不进行任何操作
                 return;
-            //Update_Information_Jiedian(Ellipse_Array_tab4, Convert.ToInt16(BianHao_tab5.Text), JianCeQiTi_tab5.Text, AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text, GaoXianBaoJing_tab5.Text, DiXianBaoJing_tab5.Text);
-            //Init_Jiedian_DisplayOrNot();//刷新所有节点
+            Update_Information_Jiedian(ellipse_list_tab4, Convert.ToInt16(BianHao_tab5.Text), JianCeQiTi_tab5.Text, AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text, GaoXianBaoJing_tab5.Text, DiXianBaoJing_tab5.Text);
+            //刷新相关界面
+            Init_JieDian_Map();
+            Init_ImageList(ref imageListLarge);//初始化imagelist
+            Init_LieBiao(listview_largeicon, ref imageListLarge);
+            Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
+
+            //更新所有节点的报警状态
+            List<int> temp_int_list = get_exit_jiedian_id_list();
+            foreach (int mem in temp_int_list)
+            {
+                Update_BaoJingStatus(mem);
+            }
         }
 
         private void ZengJiaBianGeng_Button_tab5_Click(object sender, RoutedEventArgs e)
@@ -63,13 +74,20 @@ namespace WpfApp1
             if (System.Windows.MessageBox.Show("确定增加节点？", "提示", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
                 return;
 
-            ZengJiaBianGeng(Convert.ToInt16(BianHao_tab5.Text), JianCeQiTi_tab5.Text, AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text, GaoXianBaoJing_tab5.Text, DiXianBaoJing_tab5.Text);
+            bool newJiedian_or_not = ZengJiaBianGeng(Convert.ToInt16(BianHao_tab5.Text), JianCeQiTi_tab5.Text, AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text, GaoXianBaoJing_tab5.Text, DiXianBaoJing_tab5.Text);
 
-            //根据当前新增节点的坐标更新数据库中的数据
-            //Init_Jiedian_DisplayOrNot();//刷新所有节点，包括地图模式和列表模式
+            //刷新相关界面
+            Init_JieDian_Map();
+            Init_ImageList(ref imageListLarge);//初始化imagelist
+            Init_LieBiao(listview_largeicon, ref imageListLarge);
+            Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
 
-            //判断现有所有节点是否掉线
-            DiaoXian();
+            //更新所有节点的报警状态
+            List<int> temp_int_list = get_exit_jiedian_id_list();
+            foreach (int mem in temp_int_list)
+            {
+                Update_BaoJingStatus(mem);
+            }
         }
 
         private void ShanChuDianWei_Button_tab5_Click(object sender, RoutedEventArgs e)
@@ -85,7 +103,21 @@ namespace WpfApp1
             MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, command_str, null);
 
-            //Init_Jiedian_DisplayOrNot();//刷新所有节点，包括地图模式和列表模式
+            //删除相应节点
+            Remove_JieDian_on_Map(BianHao_tab5.Text, ref ellipse_list_tab2, canvas_mine);
+            Remove_JieDian_on_Map(BianHao_tab5.Text, ref ellipse_list_tab4, canvas_mine_tab4);
+
+            //刷新所有列表
+            Init_ImageList(ref imageListLarge);//初始化imagelist
+            Init_LieBiao(listview_largeicon, ref imageListLarge);
+            Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
+
+            //更新所有节点的报警状态
+            List<int> temp_int_list = get_exit_jiedian_id_list();
+            foreach (int mem in temp_int_list)
+            {
+                Update_BaoJingStatus(mem);
+            }
         }
 
         private void BianHao_tab5_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)

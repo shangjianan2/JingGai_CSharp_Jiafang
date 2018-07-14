@@ -38,6 +38,7 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         ImageList imageListLarge = new ImageList();
+        ImageList imageListLarge_tab5 = new ImageList();
 
         public mysql_PZWJ_JieXi ShuJuKu = null;//在处定义，但是是在Test_Enviroment中初始化的
         public UDP_Communication mysql_Thread = null;
@@ -121,11 +122,12 @@ namespace WpfApp1
             
             Init_ImageList(ref imageListLarge);//初始化imagelist
             Init_LieBiao(listview_largeicon, ref imageListLarge);
-            Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
+            Init_ImageList(ref imageListLarge_tab5);
+            Init_LieBiao(listview_largeicon_tab5, ref imageListLarge_tab5);
 
             //更新所有节点的报警状态
             List<int> temp_int_list = get_exit_jiedian_id_list();
-            foreach(int mem in temp_int_list)
+            foreach (int mem in temp_int_list)
             {
                 Update_BaoJingStatus(mem);
             }

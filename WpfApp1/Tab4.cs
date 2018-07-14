@@ -81,6 +81,13 @@ namespace WpfApp1
             Init_ImageList(ref imageListLarge);//初始化imagelist
             Init_LieBiao(listview_largeicon, ref imageListLarge);
             Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
+
+            //更新所有节点的报警状态
+            List<int> temp_int_list = get_exit_jiedian_id_list();
+            foreach (int mem in temp_int_list)
+            {
+                Update_BaoJingStatus(mem);
+            }
         }
 
         private void ZengJiaBianGeng_Button_Click(object sender, RoutedEventArgs e)
@@ -99,6 +106,13 @@ namespace WpfApp1
             Init_ImageList(ref imageListLarge);//初始化imagelist
             Init_LieBiao(listview_largeicon, ref imageListLarge);
             Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
+
+            //更新所有节点的报警状态
+            List<int> temp_int_list = get_exit_jiedian_id_list();
+            foreach (int mem in temp_int_list)
+            {
+                Update_BaoJingStatus(mem);
+            }
 
             //判断现有所有节点是否掉线
             //DiaoXian();
@@ -173,6 +187,13 @@ namespace WpfApp1
             Init_ImageList(ref imageListLarge);//初始化imagelist
             Init_LieBiao(listview_largeicon, ref imageListLarge);
             Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
+
+            //更新所有节点的报警状态
+            List<int> temp_int_list = get_exit_jiedian_id_list();
+            foreach (int mem in temp_int_list)
+            {
+                Update_BaoJingStatus(mem);
+            }
         }
 
         private void PuTongMoShi_Tab4_Button_Click(object sender, RoutedEventArgs e)
