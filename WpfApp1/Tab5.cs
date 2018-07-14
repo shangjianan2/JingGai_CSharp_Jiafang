@@ -51,18 +51,8 @@ namespace WpfApp1
             if (BianHao_tab5.Text == "")//如果TextBox中没有数据就不进行任何操作
                 return;
             Update_Information_Jiedian(ellipse_list_tab4, Convert.ToInt16(BianHao_tab5.Text), JianCeQiTi_tab5.Text, AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text, GaoXianBaoJing_tab5.Text, DiXianBaoJing_tab5.Text);
-            //刷新相关界面
-            Init_JieDian_Map();
-            Init_ImageList(ref imageListLarge);//初始化imagelist
-            Init_LieBiao(listview_largeicon, ref imageListLarge);
-            Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
 
-            //更新所有节点的报警状态
-            List<int> temp_int_list = get_exit_jiedian_id_list();
-            foreach (int mem in temp_int_list)
-            {
-                Update_BaoJingStatus(mem);
-            }
+            update_map_liebiao();
         }
 
         private void ZengJiaBianGeng_Button_tab5_Click(object sender, RoutedEventArgs e)
@@ -76,18 +66,7 @@ namespace WpfApp1
 
             bool newJiedian_or_not = ZengJiaBianGeng(Convert.ToInt16(BianHao_tab5.Text), JianCeQiTi_tab5.Text, AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text, GaoXianBaoJing_tab5.Text, DiXianBaoJing_tab5.Text);
 
-            //刷新相关界面
-            Init_JieDian_Map();
-            Init_ImageList(ref imageListLarge);//初始化imagelist
-            Init_LieBiao(listview_largeicon, ref imageListLarge);
-            Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
-
-            //更新所有节点的报警状态
-            List<int> temp_int_list = get_exit_jiedian_id_list();
-            foreach (int mem in temp_int_list)
-            {
-                Update_BaoJingStatus(mem);
-            }
+            update_map_liebiao();
         }
 
         private void ShanChuDianWei_Button_tab5_Click(object sender, RoutedEventArgs e)

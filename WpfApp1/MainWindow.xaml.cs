@@ -113,13 +113,18 @@ namespace WpfApp1
 
 
             //// Initialize the ImageList objects with bitmaps.
-            
+
 
             //Init_Jiedian_DisplayOrNot();
 
+            update_map_liebiao();
+        }
+
+        public void update_map_liebiao()
+        {
             Init_JieDian_Map();
 
-            
+
             Init_ImageList(ref imageListLarge);//初始化imagelist
             Init_LieBiao(listview_largeicon, ref imageListLarge);
             Init_ImageList(ref imageListLarge_tab5);

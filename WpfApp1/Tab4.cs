@@ -102,17 +102,7 @@ namespace WpfApp1
             bool newJiedian_or_not = ZengJiaBianGeng(Convert.ToInt16(BianHao.Text), JianCeQiTi.Text, AnZhuangWeiZhi.Text, AnZhuangShiJina.Text, GaoXianBaoJing.Text, DiXianBaoJing.Text);
 
             //刷新相关界面
-            Init_JieDian_Map();
-            Init_ImageList(ref imageListLarge);//初始化imagelist
-            Init_LieBiao(listview_largeicon, ref imageListLarge);
-            Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
-
-            //更新所有节点的报警状态
-            List<int> temp_int_list = get_exit_jiedian_id_list();
-            foreach (int mem in temp_int_list)
-            {
-                Update_BaoJingStatus(mem);
-            }
+            update_map_liebiao();
 
             //判断现有所有节点是否掉线
             //DiaoXian();
@@ -183,17 +173,7 @@ namespace WpfApp1
                 return;
             Update_Information_Jiedian(ellipse_list_tab4, Convert.ToInt16(BianHao.Text), JianCeQiTi.Text, AnZhuangWeiZhi.Text, AnZhuangShiJina.Text, GaoXianBaoJing.Text, DiXianBaoJing.Text);
             //刷新相关界面
-            Init_JieDian_Map();
-            Init_ImageList(ref imageListLarge);//初始化imagelist
-            Init_LieBiao(listview_largeicon, ref imageListLarge);
-            Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
-
-            //更新所有节点的报警状态
-            List<int> temp_int_list = get_exit_jiedian_id_list();
-            foreach (int mem in temp_int_list)
-            {
-                Update_BaoJingStatus(mem);
-            }
+            update_map_liebiao();
         }
 
         private void PuTongMoShi_Tab4_Button_Click(object sender, RoutedEventArgs e)
@@ -341,7 +321,15 @@ namespace WpfApp1
                 string command_str = "update " + ShuJuKu.Table3_JieDian + " SET xmin = '" + Canvas.GetLeft(mem).ToString() + "', ymin = '" + Canvas.GetTop(mem).ToString() + "' WHERE id = " + jiedian_id_str_temp + ";";
                 MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
             }
-            Init_JieDian_Map();//刷新所有节点
+            
+            //刷新所有节点
+            Init_JieDian_Map();
+            //更新所有节点的报警状态
+            List<int> temp_int_list = get_exit_jiedian_id_list();
+            foreach (int mem in temp_int_list)
+            {
+                Update_BaoJingStatus(mem);
+            }
         }
 
         
@@ -438,6 +426,13 @@ namespace WpfApp1
         private void map_Reset_Click_tab4(object sender, RoutedEventArgs e)
         {
             Init_JieDian_Map();//重新加载地图
+
+            //更新所有节点的报警状态
+            List<int> temp_int_list = get_exit_jiedian_id_list();
+            foreach (int mem in temp_int_list)
+            {
+                Update_BaoJingStatus(mem);
+            }
         }
 
         //public void clear_img_canvas_tab4()
