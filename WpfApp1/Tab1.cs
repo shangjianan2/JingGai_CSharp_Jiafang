@@ -31,8 +31,13 @@ namespace WpfApp1
     {
         private void SecondPicture_tab1_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            tab0_tab1_or_not = 5;
             tabcontrol.SelectedIndex = 2;//Ìø×ªµ½tab2
+            SecondPicture_tab1.Pause();
+        }
+
+        private void SecondPicture_tab1_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            tabcontrol.SelectedIndex = 2;
         }
     }
 }

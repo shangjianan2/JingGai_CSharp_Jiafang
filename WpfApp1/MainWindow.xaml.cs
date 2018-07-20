@@ -533,21 +533,9 @@ namespace WpfApp1
                     switch (tab0_tab1_or_not)
                     {
                         case 0:
-                            tab0_tab1_or_not++;
+                            tab0_tab1_or_not = 5;
+                            SecondPicture_tab1.Play();
                             tabcontrol.SelectedIndex = 1;
-                            break;
-                        case 1:
-                            tab0_tab1_or_not++;
-                            break;
-                        case 2:
-                            tab0_tab1_or_not++;
-                            break;
-                        case 3:
-                            tab0_tab1_or_not++;
-                            break;
-                        case 4:
-                            tab0_tab1_or_not++;
-                            tabcontrol.SelectedIndex = 2;
                             break;
                     }
                 };
