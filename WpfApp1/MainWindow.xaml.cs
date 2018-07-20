@@ -37,6 +37,8 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        public byte tab0_tab1_or_not = 0;//6种状态0 1 2 3 4 5，分别代表着tab0的三秒，tab2的9秒,5代表结束tab0 tab1
+
         ImageList imageListLarge = new ImageList();
         ImageList imageListLarge_tab5 = new ImageList();
 
@@ -69,7 +71,14 @@ namespace WpfApp1
 
             
 
-            tabcontrol.SelectedIndex = 2;//显示地图模式
+            if(tab0_tab1_or_not == 0)//如果显示tab0和tab1
+            {
+                tabcontrol.SelectedIndex = 0;//显示tab2
+            }
+            else
+            {
+                tabcontrol.SelectedIndex = 2;//显示tab0
+            }
 
             
 
@@ -516,6 +525,36 @@ namespace WpfApp1
         #region//定时器中断
         public void SendToIoTCall(object state)
         {
+            //tab0的暂停效果
+            if(tab0_tab1_or_not != 5)//如果等于5，就说明tab0和tab1已经完事了
+            {
+                Action<bool> action = (x) =>//每次都对当前所有节点进行一次监测
+                {
+                    switch (tab0_tab1_or_not)
+                    {
+                        case 0:
+                            tab0_tab1_or_not++;
+                            tabcontrol.SelectedIndex = 1;
+                            break;
+                        case 1:
+                            tab0_tab1_or_not++;
+                            break;
+                        case 2:
+                            tab0_tab1_or_not++;
+                            break;
+                        case 3:
+                            tab0_tab1_or_not++;
+                            break;
+                        case 4:
+                            tab0_tab1_or_not++;
+                            tabcontrol.SelectedIndex = 2;
+                            break;
+                    }
+                };
+                this.Dispatcher.Invoke(action, true);
+            }           
+
+
             string temp_str = "ep=J4JFAJUGYS3GGF7Z&pw=123456";
             byte[] buff = System.Text.Encoding.ASCII.GetBytes(temp_str);
 

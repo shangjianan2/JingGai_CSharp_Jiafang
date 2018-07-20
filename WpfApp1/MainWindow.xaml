@@ -164,8 +164,15 @@
 
     <Grid>
         <TabControl x:Name="tabcontrol" HorizontalAlignment="Stretch" Height="Auto" Margin="-6,-10,-6,-6" VerticalAlignment="Stretch" Width="Auto">
-            <TabItem x:Name="Tab0" Height="0" Background="Black"/>
-            <TabItem x:Name="Tab1" Height="0" Background="Black"/>
+            <TabItem x:Name="Tab0" Height="0" Background="Black">
+                <Image Source="C:\NBIoT\FirstPicture.png"/>
+            </TabItem>
+            <TabItem x:Name="Tab1" Height="0" Background="Black">
+                <Grid>
+                    <MediaElement x:Name="SecondPicture_tab1" Source="C:\NBIoT\SecondPicture.mp4" MouseUp="SecondPicture_tab1_MouseUp"/>
+                </Grid>
+                
+            </TabItem>
 
             <TabItem x:Name="Tab2" Height="0" Background="Black">
                 <Grid>

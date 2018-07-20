@@ -75,6 +75,7 @@
       <DependentUpon>PasswordWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ShuJuJieXi.cs" />
+    <Compile Include="Tab1.cs" />
     <Compile Include="Tab2.cs" />
     <Compile Include="Tab3.cs" />
     <Compile Include="Tab4.cs" />
