@@ -66,6 +66,9 @@ namespace WpfApp1
         {
             InitializeComponent();
 
+            int a = 123;
+            byte intBuff = (byte)a;
+
             Init_QiDongJianCe(ref ShuJuKu, ref mysql_Thread, ref Local_IP_Byte_Array, ref Local_DuanKou, 
                                                              ref NBIoT_IP_Byte_Array, ref NBIoT_DuanKou);
 
@@ -232,62 +235,8 @@ namespace WpfApp1
             Init_map_location_XY(map_rightup_X, map_rightup_Y, 2);
             Init_map_location_XY(map_rightup_X, map_rightup_Y, 4);
         }
-
-
-        /// <summary>
-        /// 无论数据库中的数据是否是顺序排列，都会检测出哪些节点应该显示，并按照数据库中的信息调整节点位置
-        /// </summary>
-        /// <param name="temp_DataRow_tt">
-        /// 从数据库中获取的集合
-        /// </param>
-        public void HideOrShow_jiedian_map(DataRowCollection temp_DataRow_tt, ref List<Ellipse> Ellipse_Array_tt)
-        {
-            //将所有节点隐藏
-            foreach (Ellipse mem in Ellipse_Array_tt)
-            {
-                mem.Visibility = Visibility.Collapsed;
-            }
-            for(int i = 0; i < temp_DataRow_tt.Count; i++)
-            {
-                int index_tempj = Convert.ToInt16(temp_DataRow_tt[i][0]) - 1;
-                Ellipse_Array_tt[index_tempj].Visibility = Visibility.Visible;
-
-                change_XY_rectangle(Ellipse_Array_tt[index_tempj], 
-                                    Convert.ToDouble(temp_DataRow_tt[i][1]), 
-                                    Convert.ToDouble(temp_DataRow_tt[i][2]));
-            }
-        }
-
-        /// <summary>
-        /// 根据数据库中的实际情况在列表模式下显示相应的节点
-        /// </summary>
-        /// <param name="temp_DataRow_tt">
-        /// 从数据库中获取的集合
-        /// </param>
-        public void HideOrShow_jiedian_liebiao(DataRowCollection temp_DataRow_tt, System.Windows.Forms.ListView listView_tt)
-        {
-            listView_tt.View = View.LargeIcon;
-
-            listView_tt.BackColor = System.Drawing.Color.FromArgb(255, 237, 237, 237);
-
-            listView_tt.LargeImageList = imageListLarge;
-
-            listView_tt.BeginUpdate();
-
-            listView_tt.Items.Clear();
-
-            for (int i = 0; i < temp_DataRow_tt.Count; i++)
-            {
-                System.Windows.Forms.ListViewItem lvi = new System.Windows.Forms.ListViewItem();
-
-                lvi.ImageIndex = Convert.ToInt16(temp_DataRow_tt[i][0]);
-                lvi.Text = lvi.ImageIndex.ToString() + "#";
-                listView_tt.Items.Add(lvi);
-            }
-
-
-            listView_tt.EndUpdate();
-        }
+        
+        
 
         public void Init_LargeIcon_ListView(System.Windows.Forms.ListView listView_tt)
         {
