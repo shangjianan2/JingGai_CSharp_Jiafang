@@ -67,6 +67,7 @@ namespace DianXinPingTai
         public DianXinPingTai_Communication(DateTime dateTime_tt)
         {
             DateTime_NewestData = dateTime_tt;
+            temp_DateTime_NewestData = dateTime_tt;
             Init_accessToken();
 
             Init_Thread();
