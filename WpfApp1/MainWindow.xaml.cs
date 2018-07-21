@@ -68,11 +68,8 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-
-            byte[] byteArray = System.Text.Encoding.Default.GetBytes("16384");
-
-            //Init_QiDongJianCe(ref ShuJuKu, ref mysql_Thread, ref Local_IP_Byte_Array, ref Local_DuanKou,
-            //                                                 ref NBIoT_IP_Byte_Array, ref NBIoT_DuanKou);
+            
+            
             Init_QiDongJianCe(ref ShuJuKu);
 
             //建立与电信平台的连接，初始化某些信息（这些信息对于判断获取到的数据应该进行怎样的操作有很大的作用）
@@ -90,17 +87,7 @@ namespace WpfApp1
             {
                 tabcontrol.SelectedIndex = 2;//显示tab0
             }
-
-
-
-            //#region//udp通讯
-            ////byte[] array_byte = new byte[4] { 192, 168, 1, 84 };
-            ////mysql_Thread = new UDP_Communication(array_byte, 2333);
-            //////注册事件
-            ////mysql_Thread.rev_New2 += new recNewMessage2(rec_NewMessage);
-            ////mysql_Thread.recThread_Start();//开启类里的线程
-            //#endregion
-
+            
             os = (JieDians)DataGrid.ItemsSource;
 
             DataSet dataSet_temp = new DataSet();
@@ -164,13 +151,7 @@ namespace WpfApp1
 
                 tlt.X = -X;
                 tlt.Y = -Y;
-
-
-                //for (int i = 0; i < size_chanel; i++)//size_chanel
-                //{
-                //    translateTransform_Array_Tab3[i].X = -X * scaleTransform_Array_Tab3[i].ScaleX;
-                //    translateTransform_Array_Tab3[i].Y = -Y * scaleTransform_Array_Tab3[i].ScaleY;
-                //}
+                
             }
             else if(tab == 4)
             {
@@ -180,13 +161,7 @@ namespace WpfApp1
 
                 tlt_tab4.X = -X;
                 tlt_tab4.Y = -Y;
-
-
-                //for (int i = 0; i < size_chanel; i++)//size_chanel
-                //{
-                //    translateTransform_Array_tab4[i].X = -X * scaleTransform_Array_tab4[i].ScaleX;
-                //    translateTransform_Array_tab4[i].Y = -Y * scaleTransform_Array_tab4[i].ScaleY;
-                //}
+                
             }
         }
 
@@ -208,12 +183,7 @@ namespace WpfApp1
             clear_img_canvas();
             clear_scale();
             clear_tlt();
-
-
-            //HideOrShow_jiedian_map(temp_DataRow, ref Ellipse_Array);
-            //HideOrShow_jiedian_map(temp_DataRow, ref ellipse_list_tab4);
-            //HideOrShow_jiedian_liebiao(temp_DataRow, listview_largeicon);
-            //HideOrShow_jiedian_liebiao(temp_DataRow, listview_largeicon_tab5);
+            
 
             for(int i = 0; i < temp_DataRow.Count; i++)
             {
@@ -282,7 +252,7 @@ namespace WpfApp1
             //    return false;
 
             string str = "INSERT INTO " + ShuJuKu.Table1_ShiJIna_JieDian + " ( `id`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
-            "VALUES ( \"" + string_array[0] + "\",\"" + string_array[4] + "\",\"" + string_array[5] + "\",\"" + string_array[6] + "\",\"" + string_array[7] + "\",\"" + string_array[8] + "\",\"" + string_array[9] + "\",\"" + string_array[10] + "\",\"" + string_array[11] + "." + string_array[12] + "\",\"" + string_array[13] + "\");";
+            "VALUES ( \"" + string_array[0] + "\",\"" + trans_gas_type(string_array[4]) + "\",\"" + trans_DanWei(string_array[5]) + "\",\"" + trans_status(string_array[6]) + "\",\"" + trans_nongdu(string_array[7]) + "\",\"" + trans_nongdu(string_array[8]) + "\",\"" + trans_nongdu(string_array[9]) + "\",\"" + string_array[10] + "\",\"" + string_array[11] + "." + string_array[12] + "\",\"" + string_array[13] + "\");";
             MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                     CommandType.Text, str, null);
 
