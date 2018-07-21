@@ -71,8 +71,9 @@ namespace WpfApp1
 
             byte[] byteArray = System.Text.Encoding.Default.GetBytes("16384");
 
-            //Init_QiDongJianCe(ref ShuJuKu, ref mysql_Thread, ref Local_IP_Byte_Array, ref Local_DuanKou, 
+            //Init_QiDongJianCe(ref ShuJuKu, ref mysql_Thread, ref Local_IP_Byte_Array, ref Local_DuanKou,
             //                                                 ref NBIoT_IP_Byte_Array, ref NBIoT_DuanKou);
+            Init_QiDongJianCe(ref ShuJuKu);
             mysql_Thread = new DianXinPingTai_Communication();
             mysql_Thread.rev_New += rec_NewMessage_str;
             mysql_Thread.Start_Thread();
@@ -254,6 +255,22 @@ namespace WpfApp1
         public void rec_NewMessage_str(string[] string_array)
         {
             System.Diagnostics.Debug.WriteLine(string_array[0]);
+
+            DataSet dataSet_temp = new DataSet();
+            string command_str = "select `status`, `date` from " + ShuJuKu.Table1_ShiJIna_JieDian + " where to_days(now())-to_days(date) < 1 and id=" + string_array[0] + " order by date desc limit 1";
+            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+
+
+            //如果有对于此节点来说今日已经有数据了，且本次数据和上次数据的状态相同，就不进行任何操作
+            //if (temp_DataRow.Count != 0 && temp_DataRow[0][0].ToString() == temp_array_str_tt[2])
+            //    return false;
+
+            string str = "INSERT INTO " + ShuJuKu.Table1_ShiJIna_JieDian + " ( `id`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
+            "VALUES ( \"" + string_array[0] + "\",\"" + string_array[4] + "\",\"" + string_array[5] + "\",\"" + string_array[6] + "\",\"" + string_array[7] + "\",\"" + string_array[8] + "\",\"" + string_array[9] + "\",\"" + string_array[10] + "\",\"" + string_array[11] + "." + string_array[12] + "\",\"" + string_array[13] + "\");";
+            MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                    CommandType.Text, str, null);
+
         }
 
 

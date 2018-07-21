@@ -211,22 +211,23 @@ namespace DianXinPingTai
                     if (DateTime.Compare(temp_datetime, DateTime_NewestData) > 0)
                     {
                         //如果需要更新，先将数据整理成所需格式，string数组
-                        string[] temp_byte_array = new string[13];
+                        string[] temp_byte_array = new string[14];
                         temp_byte_array[0] = json.devices[i].services[0].data.DiZhiMa.ToString();
-                        temp_byte_array[12] = json.devices[i].services[0].data.GongNengMa.ToString();
-                        temp_byte_array[1] = json.devices[i].services[0].data.ZiJieShu.ToString();
-                        temp_byte_array[2] = json.devices[i].services[0].data.JiQiMa.ToString();
-                        temp_byte_array[3] = json.devices[i].services[0].data.QiTiLeiXing.ToString();
+                        temp_byte_array[1] = json.devices[i].services[0].data.GongNengMa.ToString();
+                        temp_byte_array[2] = json.devices[i].services[0].data.ZiJieShu.ToString();
+                        temp_byte_array[3] = json.devices[i].services[0].data.JiQiMa.ToString();
+                        temp_byte_array[4] = json.devices[i].services[0].data.QiTiLeiXing.ToString();
 
-                        temp_byte_array[4] = json.devices[i].services[0].data.DanWei.ToString();
-                        temp_byte_array[5] = json.devices[i].services[0].data.TangCeQiZhuangTai.ToString();
-                        temp_byte_array[6] = json.devices[i].services[0].data.QiTiNongDu.ToString();
-                        temp_byte_array[7] = json.devices[i].services[0].data.DiXian.ToString();
-                        temp_byte_array[8] = json.devices[i].services[0].data.GaoXian.ToString();
+                        temp_byte_array[5] = json.devices[i].services[0].data.DanWei.ToString();
+                        temp_byte_array[6] = json.devices[i].services[0].data.TangCeQiZhuangTai.ToString();
+                        temp_byte_array[7] = json.devices[i].services[0].data.QiTiNongDu.ToString();
+                        temp_byte_array[8] = json.devices[i].services[0].data.DiXian.ToString();
+                        temp_byte_array[9] = json.devices[i].services[0].data.GaoXian.ToString();
 
-                        temp_byte_array[9] = json.devices[i].services[0].data.DianLiang.ToString();
-                        temp_byte_array[10] = json.devices[i].services[0].data.WenDuZhengShu.ToString();
-                        temp_byte_array[11] = json.devices[i].services[0].data.WenDuXiaoShu.ToString();
+                        temp_byte_array[10] = json.devices[i].services[0].data.DianLiang.ToString();
+                        temp_byte_array[11] = json.devices[i].services[0].data.WenDuZhengShu.ToString();
+                        temp_byte_array[12] = json.devices[i].services[0].data.WenDuXiaoShu.ToString();
+                        temp_byte_array[13] = temp_datetime.ToString("yyyy-MM-dd HH:mm:ss");
 
 
 

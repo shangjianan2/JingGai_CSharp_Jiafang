@@ -166,5 +166,20 @@ namespace WpfApp1
 
             
         }
+
+        public void Init_QiDongJianCe(ref mysql_PZWJ_JieXi ShuJuKu_tt)
+        {
+            try
+            {
+                Init_MySQL(ref ShuJuKu_tt);
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message, "error");
+                Environment.Exit(0);//这里必须使用这个，不能用"Application.Current.Shutdown();"，"Application.Current.Shutdown();"不能将程序立刻关闭
+            }
+
+
+        }
     }
 }
