@@ -238,7 +238,7 @@ namespace WpfApp1
 
         #region//udp接收中断
         public void rec_NewMessage_str(string[] string_array)
-        {
+        {//只有当电信平台中有新的数据的时候才会进入到这个函数中
             System.Diagnostics.Debug.WriteLine(string_array[0]);
 
             DataSet dataSet_temp = new DataSet();
@@ -258,15 +258,8 @@ namespace WpfApp1
 
             Action<bool> action = (x) =>//每次都对当前所有节点进行一次监测，从数据库中重新获取数据
             {
-                DataSet dataSet_temp_action = new DataSet();
-                string command_str_action = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " order by date desc limit 1";
-                dataSet_temp_action = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str_action, null);
-                DataRowCollection temp_DataRow_action = dataSet_temp_action.Tables[0].Rows;//获取列
-                
-                os.add_size_DataGrid_Display(new jiedian(temp_DataRow_action[0][0].ToString(), temp_DataRow_action[0][1].ToString(), temp_DataRow_action[0][2].ToString(),
-                                   temp_DataRow_action[0][3].ToString(), temp_DataRow_action[0][4].ToString(), temp_DataRow_action[0][5].ToString(),
-                                   temp_DataRow_action[0][6].ToString(), temp_DataRow_action[0][7].ToString(), temp_DataRow_action[0][8].ToString(),
-                                   temp_DataRow_action[0][9].ToString()), size_DataGrid_Display);
+                //更新DataGrid
+                update_DataGrid(ref os);
 
                 //更新ToolTip
                 update_tooltip(ref ellipse_list_tab2, Convert.ToInt16(string_array[0]), false);
@@ -545,6 +538,19 @@ namespace WpfApp1
             }
         }
         #endregion
+
+        public void update_DataGrid(ref JieDians os_tt)
+        {
+            DataSet dataSet_temp_action = new DataSet();
+            string command_str_action = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " order by date desc limit 1";
+            dataSet_temp_action = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str_action, null);
+            DataRowCollection temp_DataRow_action = dataSet_temp_action.Tables[0].Rows;//获取列
+
+            os_tt.add_size_DataGrid_Display(new jiedian(temp_DataRow_action[0][0].ToString(), temp_DataRow_action[0][1].ToString(), temp_DataRow_action[0][2].ToString(),
+                               temp_DataRow_action[0][3].ToString(), temp_DataRow_action[0][4].ToString(), temp_DataRow_action[0][5].ToString(),
+                               temp_DataRow_action[0][6].ToString(), temp_DataRow_action[0][7].ToString(), temp_DataRow_action[0][8].ToString(),
+                               temp_DataRow_action[0][9].ToString()), size_DataGrid_Display);
+        }
 
         public void update_tooltip(ref List<Ellipse> ellipse_array, int index_tt, bool diaoxian)
         {
