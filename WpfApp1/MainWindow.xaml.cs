@@ -29,6 +29,7 @@ using System.Drawing;
 using MySQL_PeiZhiWenJian_JieXi;
 using Map_PeiZhiWenJian_JieXi;
 
+using DianXinPingTai;
 
 namespace WpfApp1
 {
@@ -43,7 +44,9 @@ namespace WpfApp1
         ImageList imageListLarge_tab5 = new ImageList();
 
         public mysql_PZWJ_JieXi ShuJuKu = null;//在处定义，但是是在Test_Enviroment中初始化的
-        public UDP_Communication mysql_Thread = null;
+        //public UDP_Communication mysql_Thread = null;
+        public DianXinPingTai_Communication mysql_Thread = null;
+
         public byte[] Local_IP_Byte_Array = new byte[4];
         public UInt16 Local_DuanKou;
         public byte[] NBIoT_IP_Byte_Array = new byte[4];
@@ -66,70 +69,55 @@ namespace WpfApp1
         {
             InitializeComponent();
 
-            int a = 123;
-            byte intBuff = (byte)a;
+            byte[] byteArray = System.Text.Encoding.Default.GetBytes("16384");
 
-            Init_QiDongJianCe(ref ShuJuKu, ref mysql_Thread, ref Local_IP_Byte_Array, ref Local_DuanKou, 
-                                                             ref NBIoT_IP_Byte_Array, ref NBIoT_DuanKou);
-
-            
-
-            if(tab0_tab1_or_not == 0)//如果显示tab0和tab1
-            {
-                tabcontrol.SelectedIndex = 0;//显示tab2
-            }
-            else
-            {
-                tabcontrol.SelectedIndex = 2;//显示tab0
-            }
-
-            
-
-            #region//udp通讯
-            //byte[] array_byte = new byte[4] { 192, 168, 1, 84 };
-            //mysql_Thread = new UDP_Communication(array_byte, 2333);
-            ////注册事件
-            //mysql_Thread.rev_New2 += new recNewMessage2(rec_NewMessage);
-            //mysql_Thread.recThread_Start();//开启类里的线程
-            #endregion
-
-            os = (JieDians)DataGrid.ItemsSource;
-
-            DataSet dataSet_temp = new DataSet();
-            string command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " order by date desc limit " + size_DataGrid_Display.ToString();
-            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
-            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
-
-            for (int i = 0; i < size_DataGrid_Display; i++)
-            {
-                os.Add(new jiedian(temp_DataRow[i][0].ToString(), temp_DataRow[i][1].ToString(), temp_DataRow[i][2].ToString(),
-                                   temp_DataRow[i][3].ToString(), temp_DataRow[i][4].ToString(), temp_DataRow[i][5].ToString(),
-                                   temp_DataRow[i][6].ToString(), temp_DataRow[i][7].ToString(), temp_DataRow[i][8].ToString(),
-                                   temp_DataRow[i][9].ToString()));
-            }
+            //Init_QiDongJianCe(ref ShuJuKu, ref mysql_Thread, ref Local_IP_Byte_Array, ref Local_DuanKou, 
+            //                                                 ref NBIoT_IP_Byte_Array, ref NBIoT_DuanKou);
+            mysql_Thread = new DianXinPingTai_Communication();
+            mysql_Thread.rev_New += rec_NewMessage_str;
+            mysql_Thread.Start_Thread();
 
 
 
-            ////Tab2地图初始化
 
 
-            ////Tab4地图初始化
+            //if (tab0_tab1_or_not == 0)//如果显示tab0和tab1
+            //{
+            //    tabcontrol.SelectedIndex = 0;//显示tab2
+            //}
+            //else
+            //{
+            //    tabcontrol.SelectedIndex = 2;//显示tab0
+            //}
 
 
 
-            ////初始化地图位置
+            //#region//udp通讯
+            ////byte[] array_byte = new byte[4] { 192, 168, 1, 84 };
+            ////mysql_Thread = new UDP_Communication(array_byte, 2333);
+            //////注册事件
+            ////mysql_Thread.rev_New2 += new recNewMessage2(rec_NewMessage);
+            ////mysql_Thread.recThread_Start();//开启类里的线程
+            //#endregion
+
+            //os = (JieDians)DataGrid.ItemsSource;
+
+            //DataSet dataSet_temp = new DataSet();
+            //string command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " order by date desc limit " + size_DataGrid_Display.ToString();
+            //dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+            //DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+
+            //for (int i = 0; i < size_DataGrid_Display; i++)
+            //{
+            //    os.Add(new jiedian(temp_DataRow[i][0].ToString(), temp_DataRow[i][1].ToString(), temp_DataRow[i][2].ToString(),
+            //                       temp_DataRow[i][3].ToString(), temp_DataRow[i][4].ToString(), temp_DataRow[i][5].ToString(),
+            //                       temp_DataRow[i][6].ToString(), temp_DataRow[i][7].ToString(), temp_DataRow[i][8].ToString(),
+            //                       temp_DataRow[i][9].ToString()));
+            //}
 
 
-            ////**************************************************tab3*******************8
-            //// Create two ImageList objects.
 
-
-            //// Initialize the ImageList objects with bitmaps.
-
-
-            //Init_Jiedian_DisplayOrNot();
-
-            update_map_liebiao();
+            //update_map_liebiao();
         }
 
         public void update_map_liebiao()
@@ -263,6 +251,12 @@ namespace WpfApp1
         }
 
         #region//udp接收中断
+        public void rec_NewMessage_str(string[] string_array)
+        {
+            System.Diagnostics.Debug.WriteLine(string_array[0]);
+        }
+
+
         public void rec_NewMessage(byte[] message, ref EndPoint endPoint_tt)
         {
             string temp_str = System.Text.Encoding.ASCII.GetString(message);
@@ -500,7 +494,7 @@ namespace WpfApp1
             //IPEndPoint lep = new IPEndPoint(ip, 6000);
 
             //mysql_Thread.newsock.Connect(lep);
-            mysql_Thread.newsock.Send(buff);
+            //mysql_Thread.newsock.Send(buff);
 
             //如果程序长期开启，会在每天的凌晨检测有无节点掉线
             if(DateTime.Now.ToString("hh:mm:ss") == "00:00:00")
