@@ -146,6 +146,8 @@ namespace WpfApp1
         public void change_jiedian_status_DiTu(List<Ellipse> ellipse_list, int index_tt, int BaoJing)
         {
             int index = mysqlID_to_listID(ellipse_list, index_tt);
+            if (index == -1)
+                return;//说明不存在这个节点
             if (BaoJing == 0)
             {
                 ellipse_list[index].Fill = System.Windows.Media.Brushes.Blue;

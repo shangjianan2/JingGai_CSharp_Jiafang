@@ -75,27 +75,21 @@ namespace WpfApp1
             //                                                 ref NBIoT_IP_Byte_Array, ref NBIoT_DuanKou);
             Init_QiDongJianCe(ref ShuJuKu);
 
-            //读取数据库中table1_shijian_jiedian中的最新时间
-            DataSet dataSet_temp = new DataSet();
-            string command_str = "select `Date` from table1_shijian_jiedian order by `date` desc limit 1;";
-            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
-            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
-            mysql_Thread = new DianXinPingTai_Communication((DateTime)temp_DataRow[0][0]);
-            mysql_Thread.rev_New += rec_NewMessage_str;
-            mysql_Thread.Start_Thread();
+            //建立与电信平台的连接，初始化某些信息（这些信息对于判断获取到的数据应该进行怎样的操作有很大的作用）
+            Init_DianXinPingTai();
 
 
 
 
 
-            //if (tab0_tab1_or_not == 0)//如果显示tab0和tab1
-            //{
-            //    tabcontrol.SelectedIndex = 0;//显示tab2
-            //}
-            //else
-            //{
-            //    tabcontrol.SelectedIndex = 2;//显示tab0
-            //}
+            if (tab0_tab1_or_not == 0)//如果显示tab0和tab1
+            {
+                tabcontrol.SelectedIndex = 0;//显示tab2
+            }
+            else
+            {
+                tabcontrol.SelectedIndex = 2;//显示tab0
+            }
 
 
 
@@ -107,24 +101,39 @@ namespace WpfApp1
             ////mysql_Thread.recThread_Start();//开启类里的线程
             //#endregion
 
-            //os = (JieDians)DataGrid.ItemsSource;
+            os = (JieDians)DataGrid.ItemsSource;
 
-            //DataSet dataSet_temp = new DataSet();
-            //string command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " order by date desc limit " + size_DataGrid_Display.ToString();
-            //dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
-            //DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+            DataSet dataSet_temp = new DataSet();
+            string command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " order by date desc limit " + size_DataGrid_Display.ToString();
+            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
-            //for (int i = 0; i < size_DataGrid_Display; i++)
-            //{
-            //    os.Add(new jiedian(temp_DataRow[i][0].ToString(), temp_DataRow[i][1].ToString(), temp_DataRow[i][2].ToString(),
-            //                       temp_DataRow[i][3].ToString(), temp_DataRow[i][4].ToString(), temp_DataRow[i][5].ToString(),
-            //                       temp_DataRow[i][6].ToString(), temp_DataRow[i][7].ToString(), temp_DataRow[i][8].ToString(),
-            //                       temp_DataRow[i][9].ToString()));
-            //}
+            for (int i = 0; i < size_DataGrid_Display; i++)
+            {
+                os.Add(new jiedian(temp_DataRow[i][0].ToString(), temp_DataRow[i][1].ToString(), temp_DataRow[i][2].ToString(),
+                                   temp_DataRow[i][3].ToString(), temp_DataRow[i][4].ToString(), temp_DataRow[i][5].ToString(),
+                                   temp_DataRow[i][6].ToString(), temp_DataRow[i][7].ToString(), temp_DataRow[i][8].ToString(),
+                                   temp_DataRow[i][9].ToString()));
+            }
 
 
 
-            //update_map_liebiao();
+            update_map_liebiao();
+
+            //开启定时器
+            SendToIoT = new System.Threading.Timer(new System.Threading.TimerCallback(SendToIoTCall_1), this, 3000, 3000);
+        }
+
+        public void Init_DianXinPingTai()
+        {
+            //读取数据库中table1_shijian_jiedian中的最新时间
+            DataSet dataSet_temp = new DataSet();
+            string command_str = "select `Date` from table1_shijian_jiedian order by `date` desc limit 1;";
+            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+            mysql_Thread = new DianXinPingTai_Communication((DateTime)temp_DataRow[0][0]);
+            mysql_Thread.rev_New += rec_NewMessage_str;
+            mysql_Thread.Start_Thread();
         }
 
         public void update_map_liebiao()
@@ -276,6 +285,27 @@ namespace WpfApp1
             "VALUES ( \"" + string_array[0] + "\",\"" + string_array[4] + "\",\"" + string_array[5] + "\",\"" + string_array[6] + "\",\"" + string_array[7] + "\",\"" + string_array[8] + "\",\"" + string_array[9] + "\",\"" + string_array[10] + "\",\"" + string_array[11] + "." + string_array[12] + "\",\"" + string_array[13] + "\");";
             MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                     CommandType.Text, str, null);
+
+            Action<bool> action = (x) =>//每次都对当前所有节点进行一次监测，从数据库中重新获取数据
+            {
+                DataSet dataSet_temp_action = new DataSet();
+                string command_str_action = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " order by date desc limit 1";
+                dataSet_temp_action = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str_action, null);
+                DataRowCollection temp_DataRow_action = dataSet_temp_action.Tables[0].Rows;//获取列
+                
+                os.add_size_DataGrid_Display(new jiedian(temp_DataRow_action[0][0].ToString(), temp_DataRow_action[0][1].ToString(), temp_DataRow_action[0][2].ToString(),
+                                   temp_DataRow_action[0][3].ToString(), temp_DataRow_action[0][4].ToString(), temp_DataRow_action[0][5].ToString(),
+                                   temp_DataRow_action[0][6].ToString(), temp_DataRow_action[0][7].ToString(), temp_DataRow_action[0][8].ToString(),
+                                   temp_DataRow_action[0][9].ToString()), size_DataGrid_Display);
+
+                //更新ToolTip
+                update_tooltip(ref ellipse_list_tab2, Convert.ToInt16(string_array[0]), false);
+                update_tooltip(ref ellipse_list_tab4, Convert.ToInt16(string_array[0]), false);
+
+                //更新报警状态
+                Update_BaoJingStatus(Convert.ToInt16(string_array[0]));
+            };
+            this.Dispatcher.Invoke(action, true);
 
         }
 
@@ -489,6 +519,25 @@ namespace WpfApp1
         #endregion
 
         #region//定时器中断
+        public void SendToIoTCall_1(object state)
+        {
+            //tab0的暂停效果
+            if (tab0_tab1_or_not != 5)//如果等于5，就说明tab0和tab1已经完事了
+            {
+                Action<bool> action = (x) =>//每次都对当前所有节点进行一次监测
+                {
+                    switch (tab0_tab1_or_not)
+                    {
+                        case 0:
+                            tab0_tab1_or_not = 5;
+                            SecondPicture_tab1.Play();
+                            tabcontrol.SelectedIndex = 1;
+                            break;
+                    }
+                };
+                this.Dispatcher.Invoke(action, true);
+            }
+        }
         public void SendToIoTCall(object state)
         {
             //tab0的暂停效果
@@ -530,6 +579,10 @@ namespace WpfApp1
         public void update_tooltip(ref List<Ellipse> ellipse_array, int index_tt, bool diaoxian)
         {
             int index = mysqlID_to_listID(ellipse_array, index_tt);
+
+            if (index == -1)
+                return;//说明不存在这个节点
+
             if (diaoxian == true)
             {
                 ellipse_array[index].ToolTip = "点 位 号：" + (index_tt).ToString() + "\n" + "掉线";
