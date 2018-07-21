@@ -64,9 +64,9 @@ namespace DianXinPingTai
         /*************************************************/
 
 
-        public DianXinPingTai_Communication()
+        public DianXinPingTai_Communication(DateTime dateTime_tt)
         {
-            DateTime_NewestData = DateTime.Now.AddDays(-1);
+            DateTime_NewestData = dateTime_tt;
             Init_accessToken();
 
             Init_Thread();
@@ -207,7 +207,7 @@ namespace DianXinPingTai
                 for(int i = 0; i < len_devices; i++)
                 {
                     //判断时间新旧
-                    DateTime temp_datetime = DateTime.ParseExact(json.devices[i].services[0].eventTime.ToString(), "yyyyMMddThhmmssZ", null); //考虑到之后肯能多次使用这个节点的时间，所以先将其提取出来
+                    DateTime temp_datetime = DateTime.ParseExact(json.devices[i].services[0].eventTime.ToString(), "yyyyMMddTHHmmssZ", null); //考虑到之后肯能多次使用这个节点的时间，所以先将其提取出来
                     if (DateTime.Compare(temp_datetime, DateTime_NewestData) > 0)
                     {
                         //如果需要更新，先将数据整理成所需格式，string数组

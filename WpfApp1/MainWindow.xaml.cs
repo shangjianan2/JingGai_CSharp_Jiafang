@@ -74,7 +74,13 @@ namespace WpfApp1
             //Init_QiDongJianCe(ref ShuJuKu, ref mysql_Thread, ref Local_IP_Byte_Array, ref Local_DuanKou,
             //                                                 ref NBIoT_IP_Byte_Array, ref NBIoT_DuanKou);
             Init_QiDongJianCe(ref ShuJuKu);
-            mysql_Thread = new DianXinPingTai_Communication();
+
+            //读取数据库中table1_shijian_jiedian中的最新时间
+            DataSet dataSet_temp = new DataSet();
+            string command_str = "select `Date` from table1_shijian_jiedian order by `date` desc limit 1;";
+            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+            mysql_Thread = new DianXinPingTai_Communication((DateTime)temp_DataRow[0][0]);
             mysql_Thread.rev_New += rec_NewMessage_str;
             mysql_Thread.Start_Thread();
 
