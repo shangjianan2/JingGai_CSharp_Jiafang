@@ -56,6 +56,8 @@ namespace WpfApp1
         public int[,] JieDianZuoBiao_Array_int = new int[size_chanel, 2];
         public string map_LuJing = null;
 
+        public const int DiaoXian_ShiJian = 1;//掉线时间的判定天数
+
         const double map_rightup_X = 1500;
         const double map_rightup_Y = 1500;
 
@@ -109,6 +111,8 @@ namespace WpfApp1
 
             //开启定时器
             SendToIoT = new System.Threading.Timer(new System.Threading.TimerCallback(SendToIoTCall_1), this, 3000, 3000);
+
+            update_jiedians_DiaoXian();
         }
 
         public void Init_DianXinPingTai()
@@ -236,15 +240,75 @@ namespace WpfApp1
             listView_tt.EndUpdate();
         }
 
+        #region//更新所有可用节点是否处于掉线状态
+        /// <summary>
+        /// 判断某个节点是否掉线
+        /// </summary>
+        /// <param name="index">数据库中的节点号</param>
+        /// <returns>如果掉线返回true，否则false</returns>
+        public bool jiedian_DiaoXian(int index)
+        {
+            DataSet dataSet_temp_action = new DataSet();
+            string command_str_action = "select `Date` from " + ShuJuKu.Table1_ShiJIna_JieDian + " where id = " + index.ToString() + " order by date desc limit 1";
+            dataSet_temp_action = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str_action, null);
+            DataRowCollection temp_DataRow_action = dataSet_temp_action.Tables[0].Rows;//获取列
+
+            DateTime dateTime = DateTime.Now.AddDays(-DiaoXian_ShiJian);
+            
+            return (DateTime.Compare((DateTime)temp_DataRow_action[0][0], dateTime) < 0) ? true : false;
+        }
+
+        public void update_jiedians_DiaoXian()
+        {
+            List<int> list_temp = get_exit_jiedian_id_list();
+
+            foreach(int index in list_temp)
+            {
+                if (jiedian_DiaoXian(index))//如果确实掉线了，注意这里输入的是数据库中的节点号
+                {
+                    change_jiedian_status_DiTu(ellipse_list_tab2, index, 2);//注意这里输入的是数据库中的节点号，下同
+                    change_jiedian_status_LieBiao(listview_largeicon, index, 2);
+
+                    change_jiedian_status_DiTu(ellipse_list_tab4, index, 2);
+                    change_jiedian_status_LieBiao(listview_largeicon_tab5, index, 2);
+
+                    update_tooltip_to_DiaoXian(index);
+                }
+                else//如果没有掉线
+                {
+                    //从逻辑上来看，如果没有掉线，我应该不需要对显示界面进行任何修改
+
+                    //change_jiedian_status_DiTu(ellipse_list_tab2, index, 0);
+                    //change_jiedian_status_LieBiao(listview_largeicon, index, 0);
+
+                    //change_jiedian_status_DiTu(ellipse_list_tab4, index, 0);
+                    //change_jiedian_status_LieBiao(listview_largeicon_tab5, index, 0);
+
+                    ////更新ToolTip
+                    //update_tooltip(ref ellipse_list_tab2, index, false);
+                    //update_tooltip(ref ellipse_list_tab4, index, false);
+                }
+            }
+        }
+
+        public void update_tooltip_to_DiaoXian(int index)
+        {
+            int index_jiemian = mysqlID_to_listID(ellipse_list_tab2, index);//将数据库中的节点转换为界面中的节点
+            ellipse_list_tab2[index_jiemian].ToolTip = "点 位 号：" + index.ToString() + "\n" + "掉线\n";
+            ellipse_list_tab4[index_jiemian].ToolTip = "点 位 号：" + index.ToString() + "\n" + "掉线\n";
+        }
+
+        #endregion
+
         #region//udp接收中断
         public void rec_NewMessage_str(string[] string_array)
         {//只有当电信平台中有新的数据的时候才会进入到这个函数中
             System.Diagnostics.Debug.WriteLine(string_array[0]);
 
-            DataSet dataSet_temp = new DataSet();
-            string command_str = "select `status`, `date` from " + ShuJuKu.Table1_ShiJIna_JieDian + " where to_days(now())-to_days(date) < 1 and id=" + string_array[0] + " order by date desc limit 1";
-            dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
-            DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+            //DataSet dataSet_temp = new DataSet();
+            //string command_str = "select `status`, `date` from " + ShuJuKu.Table1_ShiJIna_JieDian + " where to_days(now())-to_days(date) < 1 and id=" + string_array[0] + " order by date desc limit 1";
+            //dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+            //DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
 
             //如果有对于此节点来说今日已经有数据了，且本次数据和上次数据的状态相同，就不进行任何操作
