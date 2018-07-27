@@ -52,7 +52,7 @@ namespace DianXinPingTai
         //public const string param_login = "{appId=xxlFd26ICnB18C6t2ePHHZXQQkUa, secret=0ggg4uI53fQC3aMrSQpmsqfTIb4a}";
 
         public const string appId = "xxlFd26ICnB18C6t2ePHHZXQQkUa";
-        public const string secret = "0ggg4uI53fQC3aMrSQpmsqfTIb4a";
+        public const string secret = "kbg4dV8XOrt1wGUsBpD_TWJrZVga";
 
         public const string HEADER_APP_KEY = "app_key";
         public const string HEADER_APP_AUTH = "Authorization";
