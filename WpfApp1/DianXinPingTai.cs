@@ -246,6 +246,7 @@ namespace DianXinPingTai
                 //所有节点检测并更新完成之后，用暂存版的datetime更新DateTime_NewestData
                 DateTime_NewestData = temp_DateTime_NewestData;
 
+                System.Threading.Thread.Sleep(500);//连续发送请求可能引起程序错误
             }
         }
 
