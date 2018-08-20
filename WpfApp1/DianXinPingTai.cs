@@ -68,7 +68,7 @@ namespace DianXinPingTai
         {
             DateTime_NewestData = dateTime_tt;
             temp_DateTime_NewestData = dateTime_tt;
-            Init_accessToken();
+            
 
             Init_Thread();
             //Start_Thread();
@@ -187,6 +187,8 @@ namespace DianXinPingTai
 
         public void recThread()
         {
+            Init_accessToken();
+
             HttpsUtil http_utils_test = new HttpsUtil();
             Map paramQueryDeviceData = new HashMap();
             paramQueryDeviceData.put("pageNo", "0");
