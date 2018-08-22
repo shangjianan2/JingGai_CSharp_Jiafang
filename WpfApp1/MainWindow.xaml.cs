@@ -323,7 +323,9 @@ namespace WpfApp1
             Action<bool> action = (x) =>//每次都对当前所有节点进行一次监测，从数据库中重新获取数据
             {
                 //更新DataGrid
-                update_DataGrid(ref os);
+                //update_DataGrid(ref os);
+                os.add_size_DataGrid_Display(new jiedian(string_array[0], trans_gas_type(string_array[4]), trans_DanWei(string_array[5]), trans_status(string_array[6]), trans_nongdu(string_array[7]),
+                    trans_nongdu(string_array[8]), trans_nongdu(string_array[9]), string_array[10], (string_array[11] + "." + string_array[12]), string_array[13]), size_DataGrid_Display);
 
                 //更新ToolTip
                 update_tooltip(ref ellipse_list_tab2, Convert.ToInt16(string_array[0]), false);
