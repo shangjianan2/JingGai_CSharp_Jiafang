@@ -102,7 +102,7 @@ namespace WpfApp1
                 os.Add(new jiedian(temp_DataRow[i][0].ToString(), temp_DataRow[i][1].ToString(), temp_DataRow[i][2].ToString(),
                                    temp_DataRow[i][3].ToString(), temp_DataRow[i][4].ToString(), temp_DataRow[i][5].ToString(),
                                    temp_DataRow[i][6].ToString(), temp_DataRow[i][7].ToString(), temp_DataRow[i][8].ToString(),
-                                   temp_DataRow[i][9].ToString()));
+                                   ((DateTime)temp_DataRow[i][9]).ToString("yyyy-MM-dd HH:mm:ss")));
             }
 
 
@@ -305,15 +305,30 @@ namespace WpfApp1
         {//只有当电信平台中有新的数据的时候才会进入到这个函数中
             System.Diagnostics.Debug.WriteLine(string_array[0]);
 
-            //DataSet dataSet_temp = new DataSet();
-            //string command_str = "select `status`, `date` from " + ShuJuKu.Table1_ShiJIna_JieDian + " where to_days(now())-to_days(date) < 1 and id=" + string_array[0] + " order by date desc limit 1";
-            //dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
-            //DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+            /************************判断此次数据是否有效（正常状态下每天传感器被激活一次，每次发送四组数据，这四组数据内容大体相同，所以只记录其中一组）*******************************/
+            //如果此地址码所对应的节点的状态与上次的状态都是正常（这种无效数据通常是在节点状态正常的时候发生）
+            if (string_array[6] == "0")
+            {
+                //从数据库中获取此地址码对应的节点的最新更新时间
+                DataSet date_temp = new DataSet();
+                string command_str = "select date from table1_shijian_jiedian where id=" + string_array[0] + " order by date desc limit 1;";
+                date_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+                DataRowCollection temp_DataRow = date_temp.Tables[0].Rows;//获取列
+                DateTime dateTime_shujuku = (DateTime)temp_DataRow[0][0];
+                DateTime dateTime_string_array = DateTime.ParseExact(string_array[13], "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.CurrentCulture);
 
-
-            //如果有对于此节点来说今日已经有数据了，且本次数据和上次数据的状态相同，就不进行任何操作
-            //if (temp_DataRow.Count != 0 && temp_DataRow[0][0].ToString() == temp_array_str_tt[2])
-            //    return false;
+                if (temp_DataRow.Count > 0)//如果数据库中含有此地址码所对应节点的数据
+                {
+                    //如果此地址码所对应的数据在几分钟之内已经更新过
+                    TimeSpan timeSpan_temp = dateTime_string_array - dateTime_shujuku;
+                    if (timeSpan_temp.TotalMinutes < 1)//一分钟
+                    {
+                        //运行到这里说明数据无效，抛弃
+                        return;
+                    }
+                }
+                
+            }
 
             string str = "INSERT INTO " + ShuJuKu.Table1_ShiJIna_JieDian + " ( `id`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
             "VALUES ( \"" + string_array[0] + "\",\"" + trans_gas_type(string_array[4]) + "\",\"" + trans_DanWei(string_array[5]) + "\",\"" + trans_status(string_array[6]) + "\",\"" + trans_nongdu(string_array[7]) + "\",\"" + trans_nongdu(string_array[8]) + "\",\"" + trans_nongdu(string_array[9]) + "\",\"" + string_array[10] + "\",\"" + string_array[11] + "." + string_array[12] + "\",\"" + string_array[13] + "\");";
