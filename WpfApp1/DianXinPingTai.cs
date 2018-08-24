@@ -46,7 +46,7 @@ namespace DianXinPingTai
         public DateTime temp_DateTime_NewestData = new DateTime();
 
         /******************************************/
-        public const string path_dir = @"E:\biancheng\wpf_test\jar\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\resource\cert\";
+        public string path_dir = @"E:\biancheng\wpf_test\jar\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\resource\cert\";
 
         public const string url_login = "https://180.101.147.89:8743/iocm/app/sec/v1.1.0/login";
         //public const string param_login = "{appId=xxlFd26ICnB18C6t2ePHHZXQQkUa, secret=0ggg4uI53fQC3aMrSQpmsqfTIb4a}";
@@ -73,7 +73,7 @@ namespace DianXinPingTai
             Init_Thread();
             //Start_Thread();
 
-            //这里应该初始化DateTime_NewestData
+            path_dir = System.IO.Directory.GetCurrentDirectory() + "\\resource\\cert\\";
         }
 
         public void Init_accessToken()
