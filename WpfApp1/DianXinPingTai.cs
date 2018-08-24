@@ -57,7 +57,7 @@ namespace DianXinPingTai
         public const string HEADER_APP_KEY = "app_key";
         public const string HEADER_APP_AUTH = "Authorization";
 
-        public const string urlQueryDeviceData = "https://180.101.147.89:8743/iocm/app/dm/v1.3.0/devices/79ea83fc-1080-43fd-96c8-153381854c11";
+        public const string urlQueryDeviceData = "https://180.101.147.89:8743/iocm/app/dm/v1.3.0/devices/9981963b-a225-4e6b-8e27-4e7016f3a8cc";
         public const string urlQueryDevices = "https://180.101.147.89:8743/iocm/app/dm/v1.3.0/devices";
 
         public string accessToken_str = null;
@@ -102,7 +102,7 @@ namespace DianXinPingTai
             System.Diagnostics.Debug.WriteLine(accessToken_str);
 
 
-            string urlQueryDeviceData = "https://180.101.147.89:8743/iocm/app/dm/v1.3.0/devices/79ea83fc-1080-43fd-96c8-153381854c11";
+            string urlQueryDeviceData = "https://180.101.147.89:8743/iocm/app/dm/v1.3.0/devices/9981963b-a225-4e6b-8e27-4e7016f3a8cc";
             Map paramQueryDeviceData = new HashMap();
             paramQueryDeviceData.put("appId", appId);
             Map header = new HashMap();
