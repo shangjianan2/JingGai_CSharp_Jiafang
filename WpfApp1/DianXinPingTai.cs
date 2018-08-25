@@ -46,7 +46,7 @@ namespace DianXinPingTai
         public DateTime temp_DateTime_NewestData = new DateTime();
 
         /******************************************/
-        public string path_dir = @"E:\biancheng\wpf_test\jar\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\resource\cert\";
+        public string path_dir = null;
 
         public const string url_login = "https://180.101.147.89:8743/iocm/app/sec/v1.1.0/login";
         //public const string param_login = "{appId=xxlFd26ICnB18C6t2ePHHZXQQkUa, secret=0ggg4uI53fQC3aMrSQpmsqfTIb4a}";
@@ -56,8 +56,7 @@ namespace DianXinPingTai
 
         public const string HEADER_APP_KEY = "app_key";
         public const string HEADER_APP_AUTH = "Authorization";
-
-        public const string urlQueryDeviceData = "https://180.101.147.89:8743/iocm/app/dm/v1.3.0/devices/9981963b-a225-4e6b-8e27-4e7016f3a8cc";
+        
         public const string urlQueryDevices = "https://180.101.147.89:8743/iocm/app/dm/v1.3.0/devices";
 
         public string accessToken_str = null;
@@ -88,30 +87,10 @@ namespace DianXinPingTai
             ResponseMsg b = a.sendMsg(url_login, paramLogin);
             HttpsUtil http_utils_test = new HttpsUtil();
 
-            /*
-             * https://180.101.147.89:8743/iocm/app/dm/v1.3.0/devices/79ea83fc-1080-43fd-96c8-153381854c11      urlQueryDeviceData
-             * appId=xxlFd26ICnB18C6t2ePHHZXQQkUa                                                               paramQueryDeviceData
-             * Authorization=Bearer 7194309a7c8eb2f248474c36bee2faa, app_key=xxlFd26ICnB18C6t2ePHHZXQQkUa       header
-             * 
-             */
-            //StreamClosedHttpResponse rec_http = http_utils_test.doGetWithParasGetStatusLine();
-
             string login_str = b.getContent().ToString();
             System.Diagnostics.Debug.WriteLine(login_str);
-            accessToken_str = extract_data_from_json(login_str, "\"accessToken\"", 0).Replace("\"", "");//删除双引号
+            accessToken_str = extract_data_from_json(login_str, "\"accessToken\"", 0).Replace("\"", "");//删除双引号，这里获取的accessToken以后会用到
             System.Diagnostics.Debug.WriteLine(accessToken_str);
-
-
-            string urlQueryDeviceData = "https://180.101.147.89:8743/iocm/app/dm/v1.3.0/devices/9981963b-a225-4e6b-8e27-4e7016f3a8cc";
-            Map paramQueryDeviceData = new HashMap();
-            paramQueryDeviceData.put("appId", appId);
-            Map header = new HashMap();
-            header.put("Authorization", "Bearer " + accessToken_str);
-            header.put("app_key", appId);
-
-            StreamClosedHttpResponse rec_http = http_utils_test.doGetWithParasGetStatusLine(urlQueryDeviceData, paramQueryDeviceData, header);
-            string data_str = extract_data_from_json(rec_http.getContent(), "\"data\"", 0);
-            System.Diagnostics.Debug.WriteLine(data_str);
         }
 
         public string extract_data_from_json(string json_str, string head_str, int startIndex)
