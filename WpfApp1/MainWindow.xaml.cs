@@ -56,7 +56,7 @@ namespace WpfApp1
         public int[,] JieDianZuoBiao_Array_int = new int[size_chanel, 2];
         public string map_LuJing = null;
 
-        public const int DiaoXian_ShiJian = 1;//掉线时间的判定天数
+        public const int DiaoXian_ShiJian = 3;//掉线时间的判定天数
 
         const double map_rightup_X = 1500;
         const double map_rightup_Y = 1500;

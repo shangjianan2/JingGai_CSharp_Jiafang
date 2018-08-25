@@ -433,6 +433,8 @@ namespace WpfApp1
             {
                 Update_BaoJingStatus(mem);
             }
+
+            update_jiedians_DiaoXian();
         }
 
         //public void clear_img_canvas_tab4()
