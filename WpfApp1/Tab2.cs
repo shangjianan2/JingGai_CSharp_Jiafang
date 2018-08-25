@@ -227,8 +227,15 @@ namespace WpfApp1
         {
             jiedian a = (jiedian)this.DataGrid.SelectedItem;
 
-            jiedian_AutoMove(ref ellipse_list_tab2, (Convert.ToUInt16(a.ID)));
-            jiedian_AutoZoom(ref ellipse_list_tab2, (Convert.ToUInt16(a.ID)));
+            try
+            {
+                jiedian_AutoMove(ref ellipse_list_tab2, (Convert.ToUInt16(a.ID)));
+                jiedian_AutoZoom(ref ellipse_list_tab2, (Convert.ToUInt16(a.ID)));
+            }
+            catch
+            {
+                MessageBox.Show("adsdf", "ads");
+            }
         }
 
         private void hid_jiedian_Click(object sender, RoutedEventArgs e)
