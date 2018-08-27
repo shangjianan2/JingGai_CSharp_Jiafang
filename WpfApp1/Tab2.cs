@@ -33,7 +33,7 @@ namespace WpfApp1
 
         Point previousMousePoint = new Point(0, 0);
 
-        const int size_chanel = 64;
+        const int size_chanel = 256;
         const int size_DataGrid_Display = 25;
 
         List<Ellipse> ellipse_list_tab2 = new List<Ellipse>();

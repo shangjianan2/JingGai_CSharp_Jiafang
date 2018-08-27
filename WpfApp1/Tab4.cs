@@ -140,6 +140,12 @@ namespace WpfApp1
             MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, command_str, null);
 
+            //添加节点的同时需要向Table1_shijian_jiedian添加初始化数据
+            string str = "INSERT INTO " + ShuJuKu.Table1_ShiJIna_JieDian + " ( `id`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
+            "VALUES ( \"" + index.ToString() + "\",\"NONE\",\"NONE\",\"NONE\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0001-01-01 00:00:00\");";
+            MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                    CommandType.Text, str, null);
+
             return true;//这是个新的节点，已向数据库中新增新的节点信息
 
         }
