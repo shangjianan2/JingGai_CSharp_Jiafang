@@ -234,7 +234,7 @@ namespace WpfApp1
             }
             catch
             {
-                MessageBox.Show("adsdf", "ads");
+                MessageBox.Show("节点未在地图上注册", "错误");
             }
         }
 
