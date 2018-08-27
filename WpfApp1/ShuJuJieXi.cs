@@ -67,7 +67,7 @@ namespace WpfApp1
         //浓度
         public string trans_nongdu(string str_tt)
         {
-            int temp_int = System.Convert.ToInt16(str_tt);
+            int temp_int = System.Convert.ToInt32(str_tt);
             int tail_int = temp_int & 0x3fff;//将头两位屏蔽
             int head_int = temp_int - tail_int;
             switch(head_int)
