@@ -42,27 +42,67 @@ namespace WpfApp1
         //状态
         public string trans_status(string str_tt)
         {
-            switch(str_tt)
+            //switch(str_tt)
+            //{
+            //    case "0":
+            //        return "";
+            //    case "2":
+            //        return "低报";
+            //    case "4":
+            //        return "高报";
+            //    case "8":
+            //        return "传感器故障";
+            //    case "16":
+            //        return "电池电压低";
+            //    case "32":
+            //        return "有水";
+            //    case "64":
+            //        return "温度低";
+            //    case "128":
+            //        return "盗窃";
+            //    default:
+            //        return "None";
+            //}
+
+            string return_str = "";
+            int temp_int = System.Convert.ToInt32(str_tt);//将字符串转换为数字，用于判断每个标志位的报警状态
+            if(temp_int >= 128)
             {
-                case "0":
-                    return "";
-                case "2":
-                    return "低报";
-                case "4":
-                    return "高报";
-                case "8":
-                    return "传感器故障";
-                case "16":
-                    return "电池电压低";
-                case "32":
-                    return "有水";
-                case "64":
-                    return "温度低";
-                case "128":
-                    return "盗窃";
-                default:
-                    return "None";
+                return_str += "盗窃 ";
+                temp_int -= 128;
             }
+            if (temp_int >= 64)
+            {
+                return_str += "温度低 ";
+                temp_int -= 64;
+            }
+            if (temp_int >= 32)
+            {
+                return_str += "有水 ";
+                temp_int -= 32;
+            }
+            if (temp_int >= 16)
+            {
+                return_str += "电池电压低 ";//"电池电压低";
+                temp_int -= 16;
+            }
+
+            if (temp_int >= 8)
+            {
+                return_str += "传感器故障 ";
+                temp_int -= 8;
+            }
+            if (temp_int >= 4)
+            {
+                return_str += "高报 ";
+                temp_int -= 4;
+            }
+            if (temp_int >= 2)
+            {
+                return_str += "低报 ";
+                temp_int -= 2;
+            }
+            return return_str;
         }
         //浓度
         public string trans_nongdu(string str_tt)
