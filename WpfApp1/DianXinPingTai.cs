@@ -181,8 +181,28 @@ namespace DianXinPingTai
                 StreamClosedHttpResponse rec_http = http_utils_test.doGetWithParasGetStatusLine(urlQueryDevices, paramQueryDeviceData, header);
                 dynamic json = Newtonsoft.Json.Linq.JToken.Parse(rec_http.getContent()) as dynamic;
                 //int a = json.devices[0].services[0].data.DiZhiMa;
-                int len_devices = json.totalCount;//获取本应用中共有几个节点
+                int len_devices = 0;
+                try
+                {
+                    len_devices = json.totalCount;//获取本应用中共有几个节点
+                }
+                catch
+                {
+                    System.Diagnostics.Debug.WriteLine("DianXin error!");
 
+                    Init_accessToken();
+
+                    http_utils_test = new HttpsUtil();
+                    paramQueryDeviceData = new HashMap();
+                    paramQueryDeviceData.put("pageNo", "0");
+                    paramQueryDeviceData.put("appId", appId);
+                    paramQueryDeviceData.put("pageSize", "10");
+                    header = new HashMap();
+                    header.put("Authorization", "Bearer " + accessToken_str);
+                    header.put("app_key", appId);
+
+                    continue;
+                }
                 //返回一个需要更新的节点的列表
 
                 //遍历所有设备信息，如果发现有新的信息，就触发更新事件
@@ -210,9 +230,6 @@ namespace DianXinPingTai
                         temp_byte_array[11] = json.devices[i].services[0].data.WenDuZhengShu.ToString();
                         temp_byte_array[12] = json.devices[i].services[0].data.WenDuXiaoShu.ToString();
                         temp_byte_array[13] = temp_datetime.ToString("yyyy-MM-dd HH:mm:ss");
-
-
-
                         //将整理后的数据传入rev_New中
                         rev_New(temp_byte_array);
 
@@ -227,7 +244,7 @@ namespace DianXinPingTai
                 //所有节点检测并更新完成之后，用暂存版的datetime更新DateTime_NewestData
                 DateTime_NewestData = temp_DateTime_NewestData;
 
-                System.Threading.Thread.Sleep(1500);//连续发送请求可能引起程序错误
+                System.Threading.Thread.Sleep(1000);//连续发送请求可能引起程序错误
             }
         }
 
