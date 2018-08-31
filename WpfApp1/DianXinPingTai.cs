@@ -172,7 +172,7 @@ namespace DianXinPingTai
             Map paramQueryDeviceData = new HashMap();
             paramQueryDeviceData.put("pageNo", "0");
             paramQueryDeviceData.put("appId", appId);
-            paramQueryDeviceData.put("pageSize", "10");
+            paramQueryDeviceData.put("pageSize", "64");
             Map header = new HashMap();
             header.put("Authorization", "Bearer " + accessToken_str);
             header.put("app_key", appId);
@@ -196,7 +196,7 @@ namespace DianXinPingTai
                     paramQueryDeviceData = new HashMap();
                     paramQueryDeviceData.put("pageNo", "0");
                     paramQueryDeviceData.put("appId", appId);
-                    paramQueryDeviceData.put("pageSize", "10");
+                    paramQueryDeviceData.put("pageSize", "64");
                     header = new HashMap();
                     header.put("Authorization", "Bearer " + accessToken_str);
                     header.put("app_key", appId);
