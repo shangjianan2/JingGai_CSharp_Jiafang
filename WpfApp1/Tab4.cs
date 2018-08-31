@@ -77,17 +77,16 @@ namespace WpfApp1
             Remove_JieDian_on_Map(BianHao.Text, ref ellipse_list_tab2, canvas_mine);
             Remove_JieDian_on_Map(BianHao.Text, ref ellipse_list_tab4, canvas_mine_tab4);
 
-            //刷新所有列表
-            Init_ImageList(ref imageListLarge);//初始化imagelist
-            Init_LieBiao(listview_largeicon, ref imageListLarge);
-            Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
+            ////刷新所有列表
+            //Init_ImageList(ref imageListLarge);//初始化imagelist
+            //Init_LieBiao(listview_largeicon, ref imageListLarge);
+            //Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
 
-            //更新所有节点的报警状态
-            List<int> temp_int_list = get_exit_jiedian_id_list();
-            foreach (int mem in temp_int_list)
-            {
-                Update_BaoJingStatus(mem);
-            }
+            //刷新相关界面
+            update_map_liebiao();
+
+            //判断现有所有节点是否掉线
+            update_jiedians_DiaoXian();
         }
 
         private void ZengJiaBianGeng_Button_Click(object sender, RoutedEventArgs e)
@@ -99,13 +98,19 @@ namespace WpfApp1
             if (System.Windows.MessageBox.Show("确定增加节点？", "提示", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
                 return;
 
-            bool newJiedian_or_not = ZengJiaBianGeng(Convert.ToInt16(BianHao.Text), JianCeQiTi.Text, AnZhuangWeiZhi.Text, AnZhuangShiJina.Text, GaoXianBaoJing.Text, DiXianBaoJing.Text);
+            bool newJiedian_or_not = ZengJiaBianGeng(Convert.ToInt16(BianHao.Text), AnZhuangWeiZhi.Text, AnZhuangShiJina.Text);
+
+            if(newJiedian_or_not == false)//如果是旧的节点，就提示用户“增加节点”的这个操作没有执行
+            {
+                MessageBox.Show("此节点已经存在", "错误操作");
+                return;
+            }
 
             //刷新相关界面
             update_map_liebiao();
 
             //判断现有所有节点是否掉线
-            //DiaoXian();
+            update_jiedians_DiaoXian();
         }
 
         /// <summary>
@@ -117,7 +122,7 @@ namespace WpfApp1
         /// <param name="anzhuangshijian_tt"></param>
         /// <param name="gaoxianbaojing_tt"></param>
         /// <param name="dixianbaojing_tt"></param>
-        public bool ZengJiaBianGeng(int index, string jianceqiti_tt, string anzhuangweizhi_tt, string anzhuangshijian_tt, string gaoxianbaojing_tt, string dixianbaojing_tt)
+        public bool ZengJiaBianGeng(int index, string anzhuangweizhi_tt, string anzhuangshijian_tt)
         {
             //检测数据库中是否已经存在此节点
             DataSet dataSet_temp = new DataSet();
@@ -134,13 +139,19 @@ namespace WpfApp1
             }
 
             //能运行到这里说明这个节点使个新的，然后将新的数据输入到数据库
-            string command_str = "INSERT INTO " + ShuJuKu.Table3_JieDian + " (`id`, `gas type`, `location`, `time of install`, `high to warning`, `low to warning`, `xmin`, `ymin` ) VALUES ( \"" +
-                index.ToString() + "\",  \"" + jianceqiti_tt + "\", \"" + anzhuangweizhi_tt +
-                "\", \"" + anzhuangshijian_tt + "\", \"" + gaoxianbaojing_tt + "\", \"" + dixianbaojing_tt + "\", \"" + map_rightup_X + "\", \"" + map_rightup_Y + "\");";
+            string command_str = "INSERT INTO " + ShuJuKu.Table3_JieDian + " (`id`, `location`, `time of install`, `xmin`, `ymin` ) VALUES ( \"" +
+                index.ToString() + "\", \"" + anzhuangweizhi_tt +
+                "\", \"" + anzhuangshijian_tt + "\", \"" + map_rightup_X + "\", \"" + map_rightup_Y + "\");";
             MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, command_str, null);
 
-            //添加节点的同时需要向Table1_shijian_jiedian添加初始化数据
+            /*添加节点的同时需要向Table1_shijian_jiedian添加初始化数据*/
+            //先清理上一次添加这个节点时所剩余的初始节点信息，这个信息的一大特征就是时间为0001-01-01 00:00:00，有则删之，无则加冕
+            string delete_str = "delete from " + ShuJuKu.Table1_ShiJIna_JieDian + " where id=" + index.ToString() + " and date=\"0001-01-01 00:00:00\";";
+            MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                                  CommandType.Text, delete_str, null);
+
+            //新增节点初始信息
             string str = "INSERT INTO " + ShuJuKu.Table1_ShiJIna_JieDian + " ( `id`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
             "VALUES ( \"" + index.ToString() + "\",\"NONE\",\"NONE\",\"NONE\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0001-01-01 00:00:00\");";
             MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
@@ -157,7 +168,7 @@ namespace WpfApp1
                 Show_Information_Jiedian(Convert.ToInt16(BianHao.Text));
 
                 DataSet dataSet_temp = new DataSet();
-                string command_str = "select * from " + ShuJuKu.Table3_JieDian + " where `id`=" + BianHao.Text;
+                string command_str = "select `id` from " + ShuJuKu.Table3_JieDian + " where `id`=" + BianHao.Text;
                 dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                       CommandType.Text, command_str, null);
                 DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
@@ -177,9 +188,11 @@ namespace WpfApp1
         {
             if (BianHao.Text == "")//如果TextBox中没有数据就不进行任何操作
                 return;
-            Update_Information_Jiedian(ellipse_list_tab4, Convert.ToInt16(BianHao.Text), JianCeQiTi.Text, AnZhuangWeiZhi.Text, AnZhuangShiJina.Text, GaoXianBaoJing.Text, DiXianBaoJing.Text);
+            Update_Information_Jiedian(ellipse_list_tab4, Convert.ToInt16(BianHao.Text), AnZhuangWeiZhi.Text, AnZhuangShiJina.Text);
             //刷新相关界面
             update_map_liebiao();
+            //判断现有所有节点是否掉线
+            update_jiedians_DiaoXian();
         }
 
         private void PuTongMoShi_Tab4_Button_Click(object sender, RoutedEventArgs e)
@@ -201,36 +214,43 @@ namespace WpfApp1
         public void Show_Information_Jiedian(int index)
         {
             DataSet dataSet_temp = new DataSet();
-            string command_str = "select * from " + ShuJuKu.Table3_JieDian + " where `id`=" + index.ToString();
+            string command_str = "select `location`, `time of install` from " + ShuJuKu.Table3_JieDian + " where `id`=" + index.ToString();
             dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
             if(temp_DataRow.Count <= 0)//没有相应节点的信息，就将下面的数据设置成默认值
             {
-                JianCeQiTi.Text = "默认值";
-                AnZhuangWeiZhi.Text = "默认值";
+                JianCeQiTi.Text = "无数据";
+                AnZhuangWeiZhi.Text = "无数据";
                 AnZhuangShiJina.Text = DateTime.Now.ToString();//默认为当前时间
-                GaoXianBaoJing.Text = "默认值";
-                DiXianBaoJing.Text = "默认值";
+                GaoXianBaoJing.Text = "无数据";
+                DiXianBaoJing.Text = "无数据";
             }
             else
             {
-                JianCeQiTi.Text = temp_DataRow[0][1].ToString();
-                AnZhuangWeiZhi.Text = temp_DataRow[0][2].ToString();
-                AnZhuangShiJina.Text = temp_DataRow[0][3].ToString();
-                GaoXianBaoJing.Text = temp_DataRow[0][4].ToString();
-                DiXianBaoJing.Text = temp_DataRow[0][5].ToString();
+                DataSet dataSet_temp_table1 = new DataSet();
+                string command_str_table1 = "select `gas type`, `GaoXian`, `DiXian` from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `id`=" + index.ToString() + " order by date desc limit 1;";
+                dataSet_temp_table1 = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                                  CommandType.Text, command_str_table1, null);
+                DataRowCollection temp_DataRow_table1 = dataSet_temp_table1.Tables[0].Rows;//获取列
+
+
+                JianCeQiTi.Text = temp_DataRow_table1[0][0].ToString();
+                AnZhuangWeiZhi.Text = temp_DataRow[0][0].ToString();
+                AnZhuangShiJina.Text = temp_DataRow[0][1].ToString();
+                GaoXianBaoJing.Text = temp_DataRow_table1[0][1].ToString();
+                DiXianBaoJing.Text = temp_DataRow_table1[0][2].ToString();
             }
         }
 
         /// <summary>
         /// 更改或新增节点信息。编号，检测气体， 安装位置，安装时间，高限报警，低限报警
         /// </summary>
-        public void Update_Information_Jiedian(List<Ellipse> Ellipse_Array_tt, int index, string jianceqiti_tt, string anzhuangweizhi_tt, string anzhuangshijian_tt, string gaoxianbaojing_tt, string dixianbaojing_tt)
+        public void Update_Information_Jiedian(List<Ellipse> Ellipse_Array_tt, int index, string anzhuangweizhi_tt, string anzhuangshijian_tt)
         {
             DataSet dataSet_temp = new DataSet();
-            string command_str = "select * from " + ShuJuKu.Table3_JieDian + " where `id`=" + index.ToString();
+            string command_str = "select `id` from " + ShuJuKu.Table3_JieDian + " where `id`=" + index.ToString();
             dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
@@ -243,9 +263,7 @@ namespace WpfApp1
             {
                 int i_temp = mysqlID_to_listID(Ellipse_Array_tt, index);
                 Point point_temp = get_ellipse_XY(Ellipse_Array_tt[i_temp]);
-                string UpdataCommand_str = "UPDATE Table3_JieDian SET `gas type` = '" + jianceqiti_tt +
-                    "', location = '" + anzhuangweizhi_tt + "', `time of install` = '" + anzhuangshijian_tt +
-                    "', `high to warning` = '" + gaoxianbaojing_tt + "', `low to warning` = '" + dixianbaojing_tt +
+                string UpdataCommand_str = "UPDATE Table3_JieDian SET location = '" + anzhuangweizhi_tt + "', `time of install` = '" + anzhuangshijian_tt +
                     "', `xmin` = '" + point_temp.X.ToString() + "', `ymin` = '" + point_temp.Y.ToString() +
                     "' WHERE id = " + index.ToString();
                 MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
@@ -327,15 +345,20 @@ namespace WpfApp1
                 string command_str = "update " + ShuJuKu.Table3_JieDian + " SET xmin = '" + Canvas.GetLeft(mem).ToString() + "', ymin = '" + Canvas.GetTop(mem).ToString() + "' WHERE id = " + jiedian_id_str_temp + ";";
                 MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
             }
-            
-            //刷新所有节点
-            Init_JieDian_Map();
-            //更新所有节点的报警状态
-            List<int> temp_int_list = get_exit_jiedian_id_list();
-            foreach (int mem in temp_int_list)
-            {
-                Update_BaoJingStatus(mem);
-            }
+
+            ////刷新所有节点
+            //Init_JieDian_Map();
+            ////更新所有节点的报警状态
+            //List<int> temp_int_list = get_exit_jiedian_id_list();
+            //foreach (int mem in temp_int_list)
+            //{
+            //    Update_BaoJingStatus(mem);
+            //}
+
+            //刷新相关界面
+            update_map_liebiao();
+            //判断现有所有节点是否掉线
+            update_jiedians_DiaoXian();
         }
 
         

@@ -56,8 +56,8 @@ namespace WpfApp1
             for (int i = 0; i < temp_DataRow.Count; i++)
             {
                 int jiedian_id = Convert.ToInt16(temp_DataRow[i][0]);//获取所更新的节点的id
-                Draw_JieDian_on_Map(jiedian_id, Convert.ToDouble(temp_DataRow[i][6]), Convert.ToDouble(temp_DataRow[i][7]), ref ellipse_list_tab2, canvas_mine, false);
-                Draw_JieDian_on_Map(jiedian_id, Convert.ToDouble(temp_DataRow[i][6]), Convert.ToDouble(temp_DataRow[i][7]), ref ellipse_list_tab4, canvas_mine_tab4, true);
+                Draw_JieDian_on_Map(jiedian_id, Convert.ToDouble(temp_DataRow[i][3]), Convert.ToDouble(temp_DataRow[i][4]), ref ellipse_list_tab2, canvas_mine, false);
+                Draw_JieDian_on_Map(jiedian_id, Convert.ToDouble(temp_DataRow[i][3]), Convert.ToDouble(temp_DataRow[i][4]), ref ellipse_list_tab4, canvas_mine_tab4, true);
             }
             Init_map_location_XY(map_rightup_X, map_rightup_Y, 2);//将canvas整体移动
             Init_map_location_XY(map_rightup_X, map_rightup_Y, 4);

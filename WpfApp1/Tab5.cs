@@ -50,9 +50,12 @@ namespace WpfApp1
         {
             if (BianHao_tab5.Text == "")//如果TextBox中没有数据就不进行任何操作
                 return;
-            Update_Information_Jiedian(ellipse_list_tab4, Convert.ToInt16(BianHao_tab5.Text), JianCeQiTi_tab5.Text, AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text, GaoXianBaoJing_tab5.Text, DiXianBaoJing_tab5.Text);
+            Update_Information_Jiedian(ellipse_list_tab4, Convert.ToInt16(BianHao_tab5.Text), AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text);
 
+            //刷新相关界面
             update_map_liebiao();
+            //判断现有所有节点是否掉线
+            update_jiedians_DiaoXian();
         }
 
         private void ZengJiaBianGeng_Button_tab5_Click(object sender, RoutedEventArgs e)
@@ -64,9 +67,12 @@ namespace WpfApp1
             if (System.Windows.MessageBox.Show("确定增加节点？", "提示", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
                 return;
 
-            bool newJiedian_or_not = ZengJiaBianGeng(Convert.ToInt16(BianHao_tab5.Text), JianCeQiTi_tab5.Text, AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text, GaoXianBaoJing_tab5.Text, DiXianBaoJing_tab5.Text);
+            bool newJiedian_or_not = ZengJiaBianGeng(Convert.ToInt16(BianHao_tab5.Text), AnZhuangWeiZhi_tab5.Text, AnZhuangShiJina_tab5.Text);
 
             update_map_liebiao();
+
+            //判断现有所有节点是否掉线
+            update_jiedians_DiaoXian();
         }
 
         private void ShanChuDianWei_Button_tab5_Click(object sender, RoutedEventArgs e)
@@ -86,17 +92,23 @@ namespace WpfApp1
             Remove_JieDian_on_Map(BianHao_tab5.Text, ref ellipse_list_tab2, canvas_mine);
             Remove_JieDian_on_Map(BianHao_tab5.Text, ref ellipse_list_tab4, canvas_mine_tab4);
 
-            //刷新所有列表
-            Init_ImageList(ref imageListLarge);//初始化imagelist
-            Init_LieBiao(listview_largeicon, ref imageListLarge);
-            Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
+            ////刷新所有列表
+            //Init_ImageList(ref imageListLarge);//初始化imagelist
+            //Init_LieBiao(listview_largeicon, ref imageListLarge);
+            //Init_LieBiao(listview_largeicon_tab5, ref imageListLarge);
 
-            //更新所有节点的报警状态
-            List<int> temp_int_list = get_exit_jiedian_id_list();
-            foreach (int mem in temp_int_list)
-            {
-                Update_BaoJingStatus(mem);
-            }
+            ////更新所有节点的报警状态
+            //List<int> temp_int_list = get_exit_jiedian_id_list();
+            //foreach (int mem in temp_int_list)
+            //{
+            //    Update_BaoJingStatus(mem);
+            //}
+
+            //刷新相关界面
+            update_map_liebiao();
+
+            //判断现有所有节点是否掉线
+            update_jiedians_DiaoXian();
         }
 
         private void BianHao_tab5_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
@@ -127,27 +139,57 @@ namespace WpfApp1
         /// </summary>
         public void Show_Information_Jiedian_tab5(int index)
         {
+            //DataSet dataSet_temp = new DataSet();
+            //string command_str = "select * from " + ShuJuKu.Table3_JieDian + " where `id`=" + index.ToString();
+            //dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+            //                                      CommandType.Text, command_str, null);
+            //DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+
+            //if (temp_DataRow.Count <= 0)//没有相应节点的信息，就将下面的数据设置成默认值
+            //{
+            //    JianCeQiTi_tab5.Text = "默认值";
+            //    AnZhuangWeiZhi_tab5.Text = "默认值";
+            //    AnZhuangShiJina_tab5.Text = DateTime.Now.ToString();//默认为当前时间
+            //    GaoXianBaoJing_tab5.Text = "默认值";
+            //    DiXianBaoJing_tab5.Text = "默认值";
+            //}
+            //else
+            //{
+            //    JianCeQiTi_tab5.Text = temp_DataRow[0][1].ToString();
+            //    AnZhuangWeiZhi_tab5.Text = temp_DataRow[0][2].ToString();
+            //    AnZhuangShiJina_tab5.Text = temp_DataRow[0][3].ToString();
+            //    GaoXianBaoJing_tab5.Text = temp_DataRow[0][4].ToString();
+            //    DiXianBaoJing_tab5.Text = temp_DataRow[0][5].ToString();
+            //}
+
             DataSet dataSet_temp = new DataSet();
-            string command_str = "select * from " + ShuJuKu.Table3_JieDian + " where `id`=" + index.ToString();
+            string command_str = "select `location`, `time of install` from " + ShuJuKu.Table3_JieDian + " where `id`=" + index.ToString();
             dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                                   CommandType.Text, command_str, null);
             DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
             if (temp_DataRow.Count <= 0)//没有相应节点的信息，就将下面的数据设置成默认值
             {
-                JianCeQiTi_tab5.Text = "默认值";
-                AnZhuangWeiZhi_tab5.Text = "默认值";
+                JianCeQiTi_tab5.Text = "无数据";
+                AnZhuangWeiZhi_tab5.Text = "无数据";
                 AnZhuangShiJina_tab5.Text = DateTime.Now.ToString();//默认为当前时间
-                GaoXianBaoJing_tab5.Text = "默认值";
-                DiXianBaoJing_tab5.Text = "默认值";
+                GaoXianBaoJing_tab5.Text = "无数据";
+                DiXianBaoJing_tab5.Text = "无数据";
             }
             else
             {
-                JianCeQiTi_tab5.Text = temp_DataRow[0][1].ToString();
-                AnZhuangWeiZhi_tab5.Text = temp_DataRow[0][2].ToString();
-                AnZhuangShiJina_tab5.Text = temp_DataRow[0][3].ToString();
-                GaoXianBaoJing_tab5.Text = temp_DataRow[0][4].ToString();
-                DiXianBaoJing_tab5.Text = temp_DataRow[0][5].ToString();
+                DataSet dataSet_temp_table1 = new DataSet();
+                string command_str_table1 = "select `gas type`, `GaoXian`, `DiXian` from " + ShuJuKu.Table1_ShiJIna_JieDian + " where `id`=" + index.ToString() + " order by date desc limit 1;";
+                dataSet_temp_table1 = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+                                                  CommandType.Text, command_str_table1, null);
+                DataRowCollection temp_DataRow_table1 = dataSet_temp_table1.Tables[0].Rows;//获取列
+
+
+                JianCeQiTi_tab5.Text = temp_DataRow_table1[0][0].ToString();
+                AnZhuangWeiZhi_tab5.Text = temp_DataRow[0][0].ToString();
+                AnZhuangShiJina_tab5.Text = temp_DataRow[0][1].ToString();
+                GaoXianBaoJing_tab5.Text = temp_DataRow_table1[0][1].ToString();
+                DiXianBaoJing_tab5.Text = temp_DataRow_table1[0][2].ToString();
             }
         }
 

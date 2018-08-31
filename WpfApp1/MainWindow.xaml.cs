@@ -602,8 +602,8 @@ namespace WpfApp1
             }           
 
 
-            string temp_str = "ep=J4JFAJUGYS3GGF7Z&pw=123456";
-            byte[] buff = System.Text.Encoding.ASCII.GetBytes(temp_str);
+            //string temp_str = "ep=J4JFAJUGYS3GGF7Z&pw=123456";
+            //byte[] buff = System.Text.Encoding.ASCII.GetBytes(temp_str);
 
             //byte[] array_byte = new byte[4] { 115, 29, 240, 46 };//设定远程ip地址
             //IPAddress ip = new IPAddress(array_byte);
@@ -612,10 +612,10 @@ namespace WpfApp1
             //mysql_Thread.newsock.Connect(lep);
             //mysql_Thread.newsock.Send(buff);
 
-            //如果程序长期开启，会在每天的凌晨检测有无节点掉线
-            if(DateTime.Now.ToString("hh:mm:ss") == "00:00:00")
+            //如果程序长期开启，会在每小时检测有无节点掉线
+            if(DateTime.Now.ToString("mm:ss") == "00:00")
             {
-                DiaoXian();
+                update_jiedians_DiaoXian();
             }
         }
         #endregion
