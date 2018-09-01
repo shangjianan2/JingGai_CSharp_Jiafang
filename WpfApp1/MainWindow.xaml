@@ -583,6 +583,7 @@
                                 </TextBox>
 
                                 <TextBox x:Name="JianCeQiTi" 
+                                         IsReadOnly="True" 
                                          Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入气体类型" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="检测气体：">
@@ -604,6 +605,7 @@
                                 </TextBox>
 
                                 <TextBox x:Name="GaoXianBaoJing" 
+                                         IsReadOnly="True" 
                                          Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入高限报警" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="高限报警：">
@@ -611,6 +613,7 @@
                                 </TextBox>
 
                                 <TextBox x:Name="DiXianBaoJing" 
+                                         IsReadOnly="True" 
                                          Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入低限报警" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="低限报警：">
@@ -744,6 +747,7 @@
                                 </TextBox>
 
                                 <TextBox x:Name="JianCeQiTi_tab5" 
+                                         IsReadOnly="True" 
                                          Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入气体类型" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="检测气体：">
@@ -765,6 +769,7 @@
                                 </TextBox>
 
                                 <TextBox x:Name="GaoXianBaoJing_tab5" 
+                                         IsReadOnly="True" 
                                          Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入高限报警" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="高限报警：">
@@ -772,6 +777,7 @@
                                 </TextBox>
 
                                 <TextBox x:Name="DiXianBaoJing_tab5" 
+                                         IsReadOnly="True" 
                                          Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入低限报警" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="低限报警：">
