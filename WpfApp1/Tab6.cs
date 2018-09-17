@@ -33,13 +33,13 @@ namespace WpfApp1
         ObservableCollection<jiedian_tab6> os_tab6 = null;
         string chaxun_command_str = null;
         //此数组用于将ComboBox中的检测状态转换为数据库相应指令
-        string[] WarningTable_ComboBox_Item_str_array = { " and (`status`=\"低报\" or `status`=\"高报\") ",
-            " and `status`=\"电池电压低\" ",
-            " and `status`=\"温度低\" ",
-            " and `status`=\"有水\" ",
-            " and `status`=\"盗窃\" ",
-            " and (`status`!=\"传感器故障\" and `status`!=\"盗窃\" and `status`!=\"\") ",
-            " and (`status`=\"传感器故障\" or `status`=\"盗窃\") "};
+        string[] WarningTable_ComboBox_Item_str_array = { " and (`status` like \"%报%\") ",
+            " and `status` like \"%电池电压低%\" ",
+            " and `status` like \"%温度低%\" ",
+            " and `status` like \"%有水%\" ",
+            " and `status` like \"%盗窃%\" ",
+            " and (`status` not like \"%传感器故障%\" and `status` not like \"%盗窃%\" and `status`!=\"\") ",
+            " and (`status` like \"%传感器故障%\" or `status` like \"%盗窃%\") "};
 
 
         private void Back_tab6_Click(object sender, RoutedEventArgs e)
