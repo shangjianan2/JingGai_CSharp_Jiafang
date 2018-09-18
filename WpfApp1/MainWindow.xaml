@@ -266,7 +266,7 @@
                                 <Grid Width="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
                                   MaxHeight="{Binding MaxDropDownHeight, RelativeSource={RelativeSource TemplatedParent}}">
                                     <Border x:Name="PopupBorder" BorderThickness="{TemplateBinding BorderThickness}" HorizontalAlignment="Stretch"
-                                        Height="Auto" BorderBrush="{TemplateBinding BorderBrush}">
+                                        Height="Auto" BorderBrush="{TemplateBinding BorderBrush}" Background="White">
                                     </Border>
                                     <ScrollViewer x:Name="DropDownScrollViewer" BorderThickness="0" Margin="1">
                                         <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" />
