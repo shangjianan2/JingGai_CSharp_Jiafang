@@ -14,14 +14,14 @@
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background">
                 <Setter.Value>
-                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>                    
+                    <ImageBrush ImageSource="C:\NBIoT\button.png"/>
                 </Setter.Value>
             </Setter>
             <Setter Property="Foreground" Value="White" />
         </Style>
-        
-        
-        
+
+
+
         <SolidColorBrush x:Key="TextSelectionBrush" Color="#8F8787"></SolidColorBrush>
         <FontFamily x:Key="FontFamily" >Microsoft YaHei</FontFamily>
         <sys:Double x:Key="FontSize">15</sys:Double>
@@ -126,18 +126,208 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+        <!--下拉条目样式-->
+        <Style TargetType="ComboBoxItem" x:Key="ComboBoxItemStyle">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Height" Value="28" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBoxItem">
+                        <Grid Background="{TemplateBinding Background}" Margin="0,0.5">
+                            <Border x:Name="ItemBackground" IsHitTestVisible="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}" />
+                            <ContentPresenter x:Name="contentPresenter" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="ItemBackground" Property="Background" Value="{StaticResource ItemSelectedBackground}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ItemBackground" Property="Background" Value="{StaticResource ItemMouseOverBackground}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--编辑状态文本框样式-->
+        <Style TargetType="{x:Type TextBox}" x:Key="EditableTextBoxStyle">
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="MaxLength" Value="2048"/>
+            <Setter Property="Foreground" Value="{StaticResource TextForeground}"/>
+            <Setter Property="ContextMenu" Value="{DynamicResource TextBoxContextMenu}" />
+            <Setter Property="SelectionBrush" Value="{StaticResource TextSelectionBrush}" />
+            <Setter Property="FontSize" Value="{StaticResource FontSize}"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}"></Setter>
+            <Setter Property="Focusable" Value="True"/>
+            <Setter Property="CaretBrush" Value="{StaticResource TextForeground}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="SnapsToDevicePixels" Value="True"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsReadOnly" Value="True">
+                    <Setter Property="Opacity" Value="{StaticResource ReadonlyOpacity}"></Setter>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="{StaticResource DisableOpacity}"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--水印：local:ControlAttachProperty.Watermark-->
+        <!--Label区域：local:ControlAttachProperty.LabelTemplate ，local:ControlAttachProperty.Label-->
+        <!--附加内容区域：local:ControlAttachProperty.AttachContent-->
+        <!--圆角：local:ControlAttachProperty.CornerRadius-->
+        <!--local:ControlAttachProperty.MouseOverBorderBrush-->
+        <!--local:ControlAttachProperty.FocusBorderBrush-->
+        <!--local:ControlAttachProperty.FocusBackground-->
+        <Style TargetType="{x:Type ComboBox}" x:Key="DefaultComboBox">
+            <Setter Property="Foreground" Value="{StaticResource TextForeground}" />
+            <Setter Property="Background" Value="{StaticResource TextBackground}" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}" />
+            <!--<Setter Property="local:ControlAttachProperty.FocusBackground" Value="{StaticResource FocusBackground}" />-->
+            <Setter Property="local:ControlAttachProperty.FocusBorderBrush" Value="{StaticResource FocusBorderBrush}" />
+            <Setter Property="local:ControlAttachProperty.MouseOverBorderBrush" Value="{StaticResource MouseOverBorderBrush}" />
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+            <Setter Property="FontSize" Value="{StaticResource FontSize}" />
+            <Setter Property="ItemContainerStyle" Value="{StaticResource ComboBoxItemStyle}" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="MaxDropDownHeight" Value="400" />
+            <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid x:Name="PART_Root">
+                            <Border x:Name="Bg" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                CornerRadius="{TemplateBinding local:ControlAttachProperty.CornerRadius}"
+                                BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="92" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="20" />
+                                </Grid.ColumnDefinitions>
+                                <!--Label区域-->
+                                <!--<ContentControl x:Name="Label" Template="{TemplateBinding local:ControlAttachProperty.LabelTemplate}" IsTabStop="False" IsHitTestVisible="False"
+                                            Content="{TemplateBinding local:ControlAttachProperty.Label}" Margin="1"/>-->
+                                <ContentControl x:Name="Label" Margin="1" Template="{TemplateBinding local:ControlAttachProperty.LabelTemplate}"
+                                            Content="{TemplateBinding local:ControlAttachProperty.Label}"/>
+                                <!--附加内容区域-->
+                                <Border x:Name="PART_AttachContent" Panel.ZIndex="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                                    <ContentControl VerticalAlignment="Center" VerticalContentAlignment="Center" Template="{TemplateBinding local:ControlAttachProperty.AttachContent}" />
+                                </Border>
+                                <!--下拉按钮-->
+                                <ToggleButton x:Name="PART_DropDownToggle"  Grid.Column="2" Grid.ColumnSpan="2" 
+                                               Focusable="false" IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press">
+                                    <ToggleButton.Background>
+                                        <ImageBrush ImageSource="C:\NBIoT\button.png"/>
+                                    </ToggleButton.Background>
+                                </ToggleButton>
+                                <!--水印-->
+                                <Border Grid.Column="1">
+                                    <TextBlock x:Name="Message"  Padding="0" Visibility="Collapsed" Text="{TemplateBinding local:ControlAttachProperty.Watermark}" 
+                                       Foreground="{TemplateBinding Foreground}" IsHitTestVisible="False" Opacity="{StaticResource WatermarkOpacity}" HorizontalAlignment="Left" TextAlignment="Center" 
+                                       VerticalAlignment="Center" Margin="5,2,5,2" />
+                                </Border>
+                                <!--主内容区域-->
+                                <Grid Grid.Column="1" x:Name="ContentSite" Margin="2 0 0 0" >
+                                    <ContentPresenter x:Name="PART_SelectedItem" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                                  ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                                  Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
+                                                  HorizontalAlignment="Stretch" Margin="2,0,2,0" 
+                                                  IsHitTestVisible="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    <!--文本编辑-->
+                                    <TextBox  x:Name="PART_EditableTextBox" Style="{StaticResource EditableTextBoxStyle}" Visibility="Collapsed" 
+                                         HorizontalAlignment="Stretch" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" IsHitTestVisible="True"
+                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         IsReadOnly="{TemplateBinding IsReadOnly}" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}"
+                                         Text="{TemplateBinding Text}" FontSize="{TemplateBinding FontSize}" />
+                                </Grid>
+                            </Grid>
+                            <!--弹出下拉控件-->
+                            <Popup x:Name="PART_Popup" AllowsTransparency="True" Focusable="False"
+                               IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                               PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                                <Grid Width="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                  MaxHeight="{Binding MaxDropDownHeight, RelativeSource={RelativeSource TemplatedParent}}">
+                                    <Border x:Name="PopupBorder" BorderThickness="{TemplateBinding BorderThickness}" HorizontalAlignment="Stretch"
+                                        Height="Auto" BorderBrush="{TemplateBinding BorderBrush}">
+                                    </Border>
+                                    <ScrollViewer x:Name="DropDownScrollViewer" BorderThickness="0" Margin="1">
+                                        <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                        <!--触发器-->
+                        <ControlTemplate.Triggers>
+                            <!--1.显示水印-->
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Text}" Value="">
+                                <Setter TargetName="Message" Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <!--编辑模式-->
+                            <Trigger Property="IsEditable" Value="True">
+                                <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible" />
+                                <Setter TargetName="PART_SelectedItem" Property="Visibility" Value="Collapsed" />
+                                <Setter TargetName="PART_DropDownToggle" Property="Grid.Column" Value="3" />
+                                <Setter TargetName="PART_DropDownToggle" Property="Grid.ColumnSpan" Value="1" />
+                                <Setter TargetName="PART_DropDownToggle" Property="Background" Value="Transparent" />
+                                <Setter Property="IsTabStop" Value="false" />
+                                <Setter TargetName="PART_DropDownToggle" Property="Focusable" Value="False" />
+                            </Trigger>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="{Binding Path=(local:ControlAttachProperty.MouseOverBorderBrush),RelativeSource={RelativeSource Self}}"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter  Property="BorderBrush" Value="{Binding Path=(local:ControlAttachProperty.FocusBorderBrush),RelativeSource={RelativeSource Self}}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                <Setter  Property="BorderBrush" Value="{Binding Path=(local:ControlAttachProperty.FocusBorderBrush),RelativeSource={RelativeSource Self}}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="PART_Root" Property="Opacity" Value="{StaticResource DisableOpacity}"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--ComboBox包含附加属性Label的样式 LabelComboBox -->
+        <Style TargetType="{x:Type ComboBox}" x:Key="LabelComboBox" BasedOn="{StaticResource DefaultComboBox}">
+            <Setter Property="Width" Value="260"></Setter>
+            <Setter Property="local:ControlAttachProperty.LabelTemplate" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="ContentControl">
+                        <Border Width="92" Background="{StaticResource TextLabelBackground}">
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5" Text="{TemplateBinding Content}"></TextBlock>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+
+
+
         <ObjectDataProvider x:Key="JieDians"
                             ObjectType="{x:Type local:JieDians}"/>
 
@@ -176,7 +366,7 @@
                                   LoadedBehavior="Manual" 
                                   Stretch="Fill"/>
                 </Grid>
-                
+
             </TabItem>
 
             <TabItem x:Name="Tab2" Height="0" Background="Black">
@@ -185,7 +375,7 @@
                         <RowDefinition Height="100"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -212,7 +402,7 @@
 
                             </Image>
 
-                            
+
                         </Canvas>
 
                         <Grid Grid.Column="3">
@@ -267,7 +457,7 @@
                                 <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Blue">
                                     实 时 信 息
                                 </TextBlock>
-                                
+
                                 <DataGrid x:Name="DataGrid" 
                                           Grid.Row="1" 
                                           ItemsSource="{Binding Source={StaticResource JieDians}}" 
@@ -397,7 +587,7 @@
 
                             <Grid Grid.Row="2" 
                                         Grid.Column="0" Grid.ColumnSpan="2">
-                                
+
                             </Grid>
                         </Grid>
                     </Grid>
@@ -440,7 +630,7 @@
                                     <TranslateTransform x:Name="tlt_tab4" />
                                 </TransformGroup>
                             </Canvas.RenderTransform>
-                            
+
                             <Image x:Name="img_tab4" Source="C:\NBIoT\timg.jpg"    
 							
 							Stretch="Uniform"  
@@ -579,7 +769,7 @@
                                          Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Width="Auto"
                                          local:ControlAttachProperty.Watermark="请输入编号" 
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="编       号：">
-                                    
+
                                 </TextBox>
 
                                 <TextBox x:Name="JianCeQiTi" 
@@ -809,7 +999,7 @@
                         </Grid>
 
 
-                    </Grid>                    
+                    </Grid>
 
                     <Rectangle Fill="LightBlue" Grid.Row="0" Grid.RowSpan="1"/>
                     <TextBlock Grid.Row="0" Grid.RowSpan="1" 
@@ -819,8 +1009,8 @@
                                Foreground="Blue">
                         燃气管道井远程无线监控系统
                     </TextBlock>
-                    
-                    
+
+
                 </Grid>
             </TabItem>
             <TabItem x:Name="Tab6" Height="0" Background="Black">
@@ -858,7 +1048,7 @@
                                 <DataGridTextColumn Width="120" Header="安装地点" Binding="{Binding Location}"/>
                                 <DataGridTextColumn Width="120" Header="安装时间" Binding="{Binding Time_of_install}"/>
                             </DataGrid.Columns>
-                            
+
 
                         </DataGrid>
 
@@ -919,7 +1109,9 @@
                                          Style="{StaticResource LabelTextBox}" local:ControlAttachProperty.Label="终       止："/>
 
                             <ComboBox x:Name="WarningStyle_ComboBox" 
-                                         Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="3" Width="Auto">
+                                         Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="3" Width="Auto" 
+                                       local:ControlAttachProperty.Label="报警状态：" 
+                      Style="{StaticResource LabelComboBox}"  local:ControlAttachProperty.Watermark="请选择报警状态" >
                                 <ComboBoxItem Content="气体报警"/>
                                 <ComboBoxItem Content="低电量报警"/>
                                 <ComboBoxItem Content="低温报警"/>
