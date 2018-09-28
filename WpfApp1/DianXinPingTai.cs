@@ -179,16 +179,18 @@ namespace DianXinPingTai
             while (true)
             {
                 StreamClosedHttpResponse rec_http = null;
+                dynamic json = null;
                 try
                 {
                     rec_http = http_utils_test.doGetWithParasGetStatusLine(urlQueryDevices, paramQueryDeviceData, header);
+                    json = Newtonsoft.Json.Linq.JToken.Parse(rec_http.getContent()) as dynamic;
                 }
                 catch
                 {
                     System.Threading.Thread.Sleep(3000);
                     continue;
                 }
-                dynamic json = Newtonsoft.Json.Linq.JToken.Parse(rec_http.getContent()) as dynamic;
+                
                 //int a = json.devices[0].services[0].data.DiZhiMa;
                 int len_devices = 0;
                 try
