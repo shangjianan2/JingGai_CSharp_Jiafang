@@ -208,7 +208,7 @@ namespace DianXinPingTai
                 catch(Exception e)
                 {
                     LOG.Error("error", e);///////////////////////////////////////////LOG记录
-
+                    LOG.Info("http content : " + rec_http.getContent());////////////////////////////////将电信平台的返回值也记录下来
                     Init_accessToken();
 
                     http_utils_test = new HttpsUtil();

@@ -78,3 +78,5 @@ E:\biancheng\mysql\0721\WpfApp1\WpfApp1\obj\Release\WpfApp1.csproj.CoreCompileIn
 E:\biancheng\mysql\0721\WpfApp1\WpfApp1\obj\Release\WpfApp1.exe
 E:\biancheng\mysql\0721\WpfApp1\WpfApp1\obj\Release\WpfApp1.pdb
 E:\biancheng\mysql\0721\WpfApp1\WpfApp1\obj\Release\WpfApp1.csprojResolveAssemblyReference.cache
+E:\biancheng\mysql\0721\WpfApp1\WpfApp1\bin\Release\log4net.dll
+E:\biancheng\mysql\0721\WpfApp1\WpfApp1\bin\Release\log4net.xml

@@ -1,2 +1,0 @@
-记录时间：2018-09-28 16:19:31,772 线程ID:[11] 日志级别：INFO  出错类：DianXinPingTai.DianXinPingTai_Communication property:[(null)] - 错误描述：receive new date : 2
-记录时间：2018-09-28 16:19:46,448 线程ID:[11] 日志级别：INFO  出错类：DianXinPingTai.DianXinPingTai_Communication property:[(null)] - 错误描述：receive new date : 2

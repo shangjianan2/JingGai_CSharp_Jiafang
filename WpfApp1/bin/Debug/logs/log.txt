@@ -1,0 +1,28 @@
+2018-09-28 16:24:37,834 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 2
+2018-09-28 16:24:42,908 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 2
+2018-09-28 16:25:29,388 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 2
+2018-09-28 16:25:37,637 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 2
+2018-09-28 16:28:14,535 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 2
+2018-09-28 16:28:32,887 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 2
+2018-09-28 17:03:23,544 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 2
+2018-09-28 17:24:32,334 [11] ERROR DianXinPingTai.DianXinPingTai_Communication: error
+Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: 无法将 null 转换为“int”，因为后者是不可以为 null 的值类型
+   在 CallSite.Target(Closure , CallSite , Object )
+   在 System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   在 CallSite.Target(Closure , CallSite , Object )
+   在 DianXinPingTai.DianXinPingTai_Communication.recThread() 位置 E:\biancheng\mysql\0721\WpfApp1\WpfApp1\DianXinPingTai.cs:行号 206
+2018-09-28 17:35:23,739 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 2
+2018-09-28 20:05:02,365 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 2
+2018-09-28 21:03:42,442 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 2
+2018-09-28 21:04:23,279 [11] ERROR DianXinPingTai.DianXinPingTai_Communication: error
+Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: 无法将 null 转换为“int”，因为后者是不可以为 null 的值类型
+   在 CallSite.Target(Closure , CallSite , Object )
+   在 System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   在 CallSite.Target(Closure , CallSite , Object )
+   在 DianXinPingTai.DianXinPingTai_Communication.recThread() 位置 E:\biancheng\mysql\0721\WpfApp1\WpfApp1\DianXinPingTai.cs:行号 206
+2018-09-28 21:04:23,283 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: http content : {
+    "resultcode":"1010005",
+    "resultmsg":"access token expired"
+}
+2018-09-28 21:06:13,772 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 2
+2018-09-28 21:25:37,156 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 2
