@@ -32,6 +32,10 @@ using System.Threading;
 using com.huawei.myhttpclient;
 using java.util;
 
+using System.Text;
+using System.Reflection;
+using log4net;
+
 
 namespace DianXinPingTai
 {
@@ -61,6 +65,9 @@ namespace DianXinPingTai
 
         public string accessToken_str = null;
         /*************************************************/
+
+        /**********************添加log**************************/
+        static log4net.ILog LOG = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
 
         public DianXinPingTai_Communication(DateTime dateTime_tt)
@@ -185,8 +192,9 @@ namespace DianXinPingTai
                     rec_http = http_utils_test.doGetWithParasGetStatusLine(urlQueryDevices, paramQueryDeviceData, header);
                     json = Newtonsoft.Json.Linq.JToken.Parse(rec_http.getContent()) as dynamic;
                 }
-                catch
+                catch(Exception e)
                 {
+                    LOG.Error("error", e);//////////////////////////////////////////////LOG记录
                     System.Threading.Thread.Sleep(3000);
                     continue;
                 }
@@ -197,9 +205,9 @@ namespace DianXinPingTai
                 {
                     len_devices = json.totalCount;//获取本应用中共有几个节点
                 }
-                catch
+                catch(Exception e)
                 {
-                    System.Diagnostics.Debug.WriteLine("DianXin error!");
+                    LOG.Error("error", e);///////////////////////////////////////////LOG记录
 
                     Init_accessToken();
 
@@ -223,6 +231,8 @@ namespace DianXinPingTai
                     DateTime temp_datetime = DateTime.ParseExact(json.devices[i].services[0].eventTime.ToString(), "yyyyMMddTHHmmssZ", null); //考虑到之后肯能多次使用这个节点的时间，所以先将其提取出来
                     if (DateTime.Compare(temp_datetime, DateTime_NewestData) > 0)
                     {
+                        LOG.Info("receive new date : " + json.devices[i].services[0].data.DiZhiMa.ToString());
+                        
                         //如果需要更新，先将数据整理成所需格式，string数组
                         string[] temp_byte_array = new string[14];
                         temp_byte_array[0] = json.devices[i].services[0].data.DiZhiMa.ToString();

@@ -42,3 +42,5 @@ E:\biancheng\mysql\0721\WpfApp1\WpfApp1\obj\Debug\WpfApp1.exe
 E:\biancheng\mysql\0721\WpfApp1\WpfApp1\obj\Debug\WpfApp1.pdb
 E:\biancheng\mysql\0721\WpfApp1\WpfApp1\bin\Debug\Newtonsoft.Json.dll
 E:\biancheng\mysql\0721\WpfApp1\WpfApp1\bin\Debug\Newtonsoft.Json.xml
+E:\biancheng\mysql\0721\WpfApp1\WpfApp1\bin\Debug\log4net.dll
+E:\biancheng\mysql\0721\WpfApp1\WpfApp1\bin\Debug\log4net.xml
