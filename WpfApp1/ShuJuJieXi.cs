@@ -115,9 +115,9 @@ namespace WpfApp1
                 case 0:
                     return tail_int.ToString();
                 case 0x4000:
-                    return (tail_int * 10).ToString();
+                    return ((double)tail_int / 10.0).ToString("F2");
                 case 0x8000:
-                    return (tail_int * 100).ToString();
+                    return ((double)tail_int / 100.0).ToString("F2");
                 default:
                     return tail_int.ToString();
             }

@@ -354,61 +354,61 @@ namespace WpfApp1
         }
 
 
-        public void rec_NewMessage(byte[] message, ref EndPoint endPoint_tt)
-        {
-            string temp_str = System.Text.Encoding.ASCII.GetString(message);
-            //if (temp_str == "[iotxx:ok]" || temp_str == "[iotxx:update]")//[iotxx:ok]
-            if (temp_str.Contains("[iotxx:"))
-            {
-                System.Diagnostics.Debug.WriteLine("[iotxx:ok]");
-                return;
-            }
+        //public void rec_NewMessage(byte[] message, ref EndPoint endPoint_tt)
+        //{
+        //    string temp_str = System.Text.Encoding.ASCII.GetString(message);
+        //    //if (temp_str == "[iotxx:ok]" || temp_str == "[iotxx:update]")//[iotxx:ok]
+        //    if (temp_str.Contains("[iotxx:"))
+        //    {
+        //        System.Diagnostics.Debug.WriteLine("[iotxx:ok]");
+        //        return;
+        //    }
 
-            //显示源地址和源端口
-            System.Diagnostics.Debug.WriteLine(endPoint_tt.ToString());
+        //    //显示源地址和源端口
+        //    System.Diagnostics.Debug.WriteLine(endPoint_tt.ToString());
 
-            //检测数据中的节点id是否在数据库中存在
-            if (ID_Exsit_or_Not(message[0]) == false)
-                return;
+        //    //检测数据中的节点id是否在数据库中存在
+        //    if (ID_Exsit_or_Not(message[0]) == false)
+        //        return;
 
 
-            string[] temp_array_str = ShuJuJieXi(message);
-            bool change_or_not = remember_to_databases_or_not(temp_array_str, message[0]);//有选择性的将数据输入到数据库
-            if (change_or_not == false)//如果数据库没有更新，就不进行下面的运算
-                return;
+        //    string[] temp_array_str = ShuJuJieXi(message);
+        //    bool change_or_not = remember_to_databases_or_not(temp_array_str, message[0]);//有选择性的将数据输入到数据库
+        //    if (change_or_not == false)//如果数据库没有更新，就不进行下面的运算
+        //        return;
 
-        //    string str = "INSERT INTO " + ShuJuKu.Table1_ShiJIna_JieDian + " ( `id`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
-        //"VALUES ( \"" + (message[0]).ToString() + "\",\"" + temp_array_str[0] + "\",\"" + temp_array_str[1] + "\",\"" + temp_array_str[2] + "\",\"" + temp_array_str[3] + "\",\"" + temp_array_str[4] + "\",\"" + temp_array_str[5] + "\",\"" + temp_array_str[6] + "\",\"" + temp_array_str[7] + "\",now());";
-        //    MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
-        //                            CommandType.Text, str, null);
+        ////    string str = "INSERT INTO " + ShuJuKu.Table1_ShiJIna_JieDian + " ( `id`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
+        ////"VALUES ( \"" + (message[0]).ToString() + "\",\"" + temp_array_str[0] + "\",\"" + temp_array_str[1] + "\",\"" + temp_array_str[2] + "\",\"" + temp_array_str[3] + "\",\"" + temp_array_str[4] + "\",\"" + temp_array_str[5] + "\",\"" + temp_array_str[6] + "\",\"" + temp_array_str[7] + "\",now());";
+        ////    MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
+        ////                            CommandType.Text, str, null);
 
-            Action<bool> action = (x) =>//每次都对当前所有节点进行一次监测
-            {
-                DataSet dataSet_temp = new DataSet();
-                string command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " order by date desc limit 1";
-                dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
-                DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
+        //    Action<bool> action = (x) =>//每次都对当前所有节点进行一次监测
+        //    {
+        //        DataSet dataSet_temp = new DataSet();
+        //        string command_str = "select * from " + ShuJuKu.Table1_ShiJIna_JieDian + " order by date desc limit 1";
+        //        dataSet_temp = MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true", CommandType.Text, command_str, null);
+        //        DataRowCollection temp_DataRow = dataSet_temp.Tables[0].Rows;//获取列
 
-                //更新DataGrid
-                //os.Add(new jiedian(temp_DataRow[0][0].ToString(), temp_DataRow[0][1].ToString(), temp_DataRow[0][2].ToString(),
-                //                   temp_DataRow[0][3].ToString(), temp_DataRow[0][4].ToString(), temp_DataRow[0][5].ToString(),
-                //                   temp_DataRow[0][6].ToString(), temp_DataRow[0][7].ToString(), temp_DataRow[0][8].ToString(),
-                //                   temp_DataRow[0][9].ToString(), temp_DataRow[0][10].ToString(), temp_DataRow[0][11].ToString()));
+        //        //更新DataGrid
+        //        //os.Add(new jiedian(temp_DataRow[0][0].ToString(), temp_DataRow[0][1].ToString(), temp_DataRow[0][2].ToString(),
+        //        //                   temp_DataRow[0][3].ToString(), temp_DataRow[0][4].ToString(), temp_DataRow[0][5].ToString(),
+        //        //                   temp_DataRow[0][6].ToString(), temp_DataRow[0][7].ToString(), temp_DataRow[0][8].ToString(),
+        //        //                   temp_DataRow[0][9].ToString(), temp_DataRow[0][10].ToString(), temp_DataRow[0][11].ToString()));
 
-                os.add_size_DataGrid_Display(new jiedian(temp_DataRow[0][0].ToString(), temp_DataRow[0][1].ToString(), temp_DataRow[0][2].ToString(),
-                                   temp_DataRow[0][3].ToString(), temp_DataRow[0][4].ToString(), temp_DataRow[0][5].ToString(),
-                                   temp_DataRow[0][6].ToString(), temp_DataRow[0][7].ToString(), temp_DataRow[0][8].ToString(),
-                                   temp_DataRow[0][9].ToString()), size_DataGrid_Display);
+        //        os.add_size_DataGrid_Display(new jiedian(temp_DataRow[0][0].ToString(), temp_DataRow[0][1].ToString(), temp_DataRow[0][2].ToString(),
+        //                           temp_DataRow[0][3].ToString(), temp_DataRow[0][4].ToString(), temp_DataRow[0][5].ToString(),
+        //                           temp_DataRow[0][6].ToString(), temp_DataRow[0][7].ToString(), temp_DataRow[0][8].ToString(),
+        //                           temp_DataRow[0][9].ToString()), size_DataGrid_Display);
 
-                //更新ToolTip
-                update_tooltip(ref ellipse_list_tab2, (message[0]), false);
-                update_tooltip(ref ellipse_list_tab4, (message[0]), false);
+        //        //更新ToolTip
+        //        update_tooltip(ref ellipse_list_tab2, (message[0]), false);
+        //        update_tooltip(ref ellipse_list_tab4, (message[0]), false);
 
-                //更新报警状态
-                Update_BaoJingStatus(message[0]);
-            };
-            this.Dispatcher.Invoke(action, true);
-        }
+        //        //更新报警状态
+        //        Update_BaoJingStatus(message[0]);
+        //    };
+        //    this.Dispatcher.Invoke(action, true);
+        //}
 
         public void Update_BaoJingStatus(int index)
         {

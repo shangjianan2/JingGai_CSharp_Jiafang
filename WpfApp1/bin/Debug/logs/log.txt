@@ -26,3 +26,14 @@ Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: 无法将 null 转换为“int”
 }
 2018-09-28 21:06:13,772 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 2
 2018-09-28 21:25:37,156 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 2
+2018-10-22 14:20:27,284 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 19
+2018-10-22 14:20:27,369 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 16
+2018-10-22 14:20:27,384 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 15
+2018-10-22 14:20:27,398 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 18
+2018-10-22 14:20:27,415 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 21
+2018-10-22 14:20:27,431 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 3
+2018-10-22 14:20:27,455 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 0
+2018-10-22 14:20:27,472 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 1
+2018-10-22 14:20:27,495 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 20
+2018-10-22 14:20:27,511 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 5
+2018-10-22 14:31:50,987 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 2

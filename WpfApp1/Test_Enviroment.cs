@@ -100,26 +100,26 @@ namespace WpfApp1
         #endregion
 
         #region
-        public void Init_UDP(ref UDP_Communication mysql_Thread_tt, 
-                             ref byte[] Local_IP_Byte_Array_tt, ref UInt16 Local_DuanKou_tt, 
-                             ref byte[] NBIoT_IP_Byte_Array_tt, ref UInt16 NBIoT_DuanKou_tt)
-        {
-            Init_PeiZhiIPAddress(ref Local_IP_Byte_Array_tt, ref Local_DuanKou_tt, ref NBIoT_IP_Byte_Array_tt, ref NBIoT_DuanKou_tt);//根据配置IP配置文件的内容给全局变量赋值
-            //初始化udp通讯类
-            mysql_Thread_tt = new UDP_Communication(Local_IP_Byte_Array_tt, Local_DuanKou_tt);
-            //注册事件
-            mysql_Thread_tt.rev_New2 += new recNewMessage2(rec_NewMessage);
+        //public void Init_UDP(ref UDP_Communication mysql_Thread_tt, 
+        //                     ref byte[] Local_IP_Byte_Array_tt, ref UInt16 Local_DuanKou_tt, 
+        //                     ref byte[] NBIoT_IP_Byte_Array_tt, ref UInt16 NBIoT_DuanKou_tt)
+        //{
+        //    Init_PeiZhiIPAddress(ref Local_IP_Byte_Array_tt, ref Local_DuanKou_tt, ref NBIoT_IP_Byte_Array_tt, ref NBIoT_DuanKou_tt);//根据配置IP配置文件的内容给全局变量赋值
+        //    //初始化udp通讯类
+        //    mysql_Thread_tt = new UDP_Communication(Local_IP_Byte_Array_tt, Local_DuanKou_tt);
+        //    //注册事件
+        //    mysql_Thread_tt.rev_New2 += new recNewMessage2(rec_NewMessage);
 
-            //注册报警错误事件
-            mysql_Thread_tt.warning_From_Udp += new warning_from_udp(udp_warning_to_shutdown);
+        //    //注册报警错误事件
+        //    mysql_Thread_tt.warning_From_Udp += new warning_from_udp(udp_warning_to_shutdown);
 
-            //mysql_Thread.recThread_Start();
+        //    //mysql_Thread.recThread_Start();
 
-            Init_NBIoT(NBIoT_IP_Byte_Array_tt, NBIoT_DuanKou_tt, ref mysql_Thread_tt);//将NBIoT的远程地址绑定在相应的"UDP_Communication"类里，并发送第一个注册码
+        //    Init_NBIoT(NBIoT_IP_Byte_Array_tt, NBIoT_DuanKou_tt, ref mysql_Thread_tt);//将NBIoT的远程地址绑定在相应的"UDP_Communication"类里，并发送第一个注册码
 
-            //添加定时器，因为长时间上位机不向下位机发送指令上位机与云平台会断线
-            SendToIoT = new System.Threading.Timer(new System.Threading.TimerCallback(SendToIoTCall), this, 3000, 3000);
-        }
+        //    //添加定时器，因为长时间上位机不向下位机发送指令上位机与云平台会断线
+        //    SendToIoT = new System.Threading.Timer(new System.Threading.TimerCallback(SendToIoTCall), this, 3000, 3000);
+        //}
         #endregion
 
         
@@ -134,38 +134,38 @@ namespace WpfApp1
         }
         #endregion
 
-        public void Init_QiDongJianCe( ref mysql_PZWJ_JieXi ShuJuKu_tt, ref UDP_Communication mysql_Thread_tt, 
-                                       ref byte[] Local_IP_Byte_Array_tt, ref UInt16 Local_DuanKou_tt, 
-                                       ref byte[] NBIoT_IP_Byte_Array_tt, ref UInt16 NBIoT_DuanKou_tt)
-        {
-            try
-            {
-                Init_MySQL(ref ShuJuKu_tt);
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, "error");
-                Environment.Exit(0);//这里必须使用这个，不能用"Application.Current.Shutdown();"，"Application.Current.Shutdown();"不能将程序立刻关闭
-            }
+        //public void Init_QiDongJianCe( ref mysql_PZWJ_JieXi ShuJuKu_tt, ref UDP_Communication mysql_Thread_tt, 
+        //                               ref byte[] Local_IP_Byte_Array_tt, ref UInt16 Local_DuanKou_tt, 
+        //                               ref byte[] NBIoT_IP_Byte_Array_tt, ref UInt16 NBIoT_DuanKou_tt)
+        //{
+        //    try
+        //    {
+        //        Init_MySQL(ref ShuJuKu_tt);
+        //    }
+        //    catch (Exception ee)
+        //    {
+        //        MessageBox.Show(ee.Message, "error");
+        //        Environment.Exit(0);//这里必须使用这个，不能用"Application.Current.Shutdown();"，"Application.Current.Shutdown();"不能将程序立刻关闭
+        //    }
 
-            try
-            {
-                Init_UDP(ref mysql_Thread_tt, ref Local_IP_Byte_Array_tt, ref Local_DuanKou_tt, ref NBIoT_IP_Byte_Array_tt, ref NBIoT_DuanKou_tt);//初始化udp通讯，
+        //    try
+        //    {
+        //        Init_UDP(ref mysql_Thread_tt, ref Local_IP_Byte_Array_tt, ref Local_DuanKou_tt, ref NBIoT_IP_Byte_Array_tt, ref NBIoT_DuanKou_tt);//初始化udp通讯，
 
-                byte[] recData = new byte[1024];
-                EndPoint senderRemote = new IPEndPoint(IPAddress.Any, 0);
-                //int n = mysql_Thread.newsock.ReceiveFrom(recData, ref senderRemote);//尝试第一次接收数据,只要有接收的数据（不论是什么内容），就可以继续运行，否则在此等待
+        //        byte[] recData = new byte[1024];
+        //        EndPoint senderRemote = new IPEndPoint(IPAddress.Any, 0);
+        //        //int n = mysql_Thread.newsock.ReceiveFrom(recData, ref senderRemote);//尝试第一次接收数据,只要有接收的数据（不论是什么内容），就可以继续运行，否则在此等待
 
-                mysql_Thread_tt.recThread_Start();//开启类里的线程
-            }
-            catch
-            {
-                MessageBox.Show("UDP通讯初始化失败", "error");
-                Environment.Exit(0);
-            }
+        //        mysql_Thread_tt.recThread_Start();//开启类里的线程
+        //    }
+        //    catch
+        //    {
+        //        MessageBox.Show("UDP通讯初始化失败", "error");
+        //        Environment.Exit(0);
+        //    }
 
             
-        }
+        //}
 
         public void Init_QiDongJianCe(ref mysql_PZWJ_JieXi ShuJuKu_tt)
         {
