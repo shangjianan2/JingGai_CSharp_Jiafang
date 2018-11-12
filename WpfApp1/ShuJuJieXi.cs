@@ -3,9 +3,8 @@ using System.Windows;
 
 using System.Diagnostics;
 
-using System.Linq;
-using System.Text;
 
+using System;
 namespace WpfApp1
 {
     public partial class MainWindow : Window
@@ -121,6 +120,24 @@ namespace WpfApp1
                 default:
                     return tail_int.ToString();
             }
+        }
+
+        //温度
+        public string trans_wendu(string str1_tt, string str2_tt)
+        {
+            string str_re = null;
+            int zhengshu_wendu = Convert.ToInt16(str1_tt);
+
+            if(zhengshu_wendu > 128)
+            {
+                str_re = "-" + (zhengshu_wendu - 128).ToString() + "." + str2_tt;
+            }
+            else
+            {
+                str_re = zhengshu_wendu.ToString() + "." + str2_tt;
+            }
+
+            return str_re;
         }
 
         /***************************原始版的数据解析，谷雨平台*******************************************/

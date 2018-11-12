@@ -331,7 +331,8 @@ namespace WpfApp1
             }
 
             string str = "INSERT INTO " + ShuJuKu.Table1_ShiJIna_JieDian + " ( `id`, `gas type`, `DanWei`,`status`, `NongDu`, `DiXian`, `GaoXian`, `DianLiang`, `WenDu`, `Date` ) " +
-            "VALUES ( \"" + string_array[0] + "\",\"" + trans_gas_type(string_array[4]) + "\",\"" + trans_DanWei(string_array[5]) + "\",\"" + trans_status(string_array[6]) + "\",\"" + trans_nongdu(string_array[7]) + "\",\"" + trans_nongdu(string_array[8]) + "\",\"" + trans_nongdu(string_array[9]) + "\",\"" + string_array[10] + "\",\"" + string_array[11] + "." + string_array[12] + "\",\"" + string_array[13] + "\");";
+            "VALUES ( \"" + string_array[0] + "\",\"" + trans_gas_type(string_array[4]) + "\",\"" + trans_DanWei(string_array[5]) + "\",\"" + trans_status(string_array[6]) + "\",\"" + 
+            trans_nongdu(string_array[7]) + "\",\"" + trans_nongdu(string_array[8]) + "\",\"" + trans_nongdu(string_array[9]) + "\",\"" + string_array[10] + "\",\"" + trans_wendu(string_array[11], string_array[12]) + "\",\"" + string_array[13] + "\");";
             MySqlHelper.GetDataSet("Database='" + ShuJuKu.ShuJuKu_Name + "';Data Source='localhost';User Id='root';Password='123456';charset='utf8';pooling=true",
                                     CommandType.Text, str, null);
 
