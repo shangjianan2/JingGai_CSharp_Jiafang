@@ -67,22 +67,22 @@ namespace WpfApp1
             return id_list;
         }
 
-        public void DiaoXian()
-        {
-            List<int> ids_list = get_exit_jiedian_id_list();
-            foreach(int mem in ids_list)
-            {
-                if(jiedian_diaoxian_or_not(mem))
-                {
-                    update_tooltip(ref ellipse_list_tab2, (mem - 1), true);
-                    update_tooltip(ref ellipse_list_tab4, (mem - 1), true);
+        //public void DiaoXian()
+        //{
+        //    List<int> ids_list = get_exit_jiedian_id_list();
+        //    foreach(int mem in ids_list)
+        //    {
+        //        if(jiedian_diaoxian_or_not(mem))
+        //        {
+        //            update_tooltip(ref ellipse_list_tab2, (mem - 1), true);
+        //            update_tooltip(ref ellipse_list_tab4, (mem - 1), true);
 
-                    /////////
-                    int temp_index = (mem - 1);
-                    change_jiedian_status(ref ellipse_list_tab2, listview_largeicon, (temp_index - 1), 2);
-                    change_jiedian_status(ref ellipse_list_tab4, listview_largeicon_tab5, (temp_index - 1), 2);
-                }
-            }
-        }
+        //            /////////
+        //            int temp_index = (mem - 1);
+        //            change_jiedian_status(ref ellipse_list_tab2, listview_largeicon, (temp_index - 1), 2);
+        //            change_jiedian_status(ref ellipse_list_tab4, listview_largeicon_tab5, (temp_index - 1), 2);
+        //        }
+        //    }
+        //}
     }
 }

@@ -150,7 +150,7 @@ namespace WpfApp1
                 return;//说明不存在这个节点
             if (BaoJing == 0)
             {
-                ellipse_list[index].Fill = System.Windows.Media.Brushes.Blue;
+                ellipse_list[index].Fill = System.Windows.Media.Brushes.Green;
             }
             else if (BaoJing == 1)//暂定为浓度超出界限
             {
@@ -158,9 +158,12 @@ namespace WpfApp1
             }
             else if (BaoJing == 2)//暂定为掉线，丢失
             {
-                ellipse_list[index].Fill = System.Windows.Media.Brushes.Green;
+                ellipse_list[index].Fill = System.Windows.Media.Brushes.Yellow;
             }
-
+            else if (BaoJing == 3)
+            {
+                ellipse_list[index].Fill = System.Windows.Media.Brushes.Gray;
+            }
         }
     }
 }

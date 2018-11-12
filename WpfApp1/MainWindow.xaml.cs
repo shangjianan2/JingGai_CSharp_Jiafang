@@ -266,11 +266,11 @@ namespace WpfApp1
             {
                 if (jiedian_DiaoXian(index))//如果确实掉线了，注意这里输入的是数据库中的节点号
                 {
-                    change_jiedian_status_DiTu(ellipse_list_tab2, index, 2);//注意这里输入的是数据库中的节点号，下同
-                    change_jiedian_status_LieBiao(listview_largeicon, index, 2);
+                    change_jiedian_status_DiTu(ellipse_list_tab2, index, 3);//注意这里输入的是数据库中的节点号，下同
+                    change_jiedian_status_LieBiao(listview_largeicon, index, 3);
 
-                    change_jiedian_status_DiTu(ellipse_list_tab4, index, 2);
-                    change_jiedian_status_LieBiao(listview_largeicon_tab5, index, 2);
+                    change_jiedian_status_DiTu(ellipse_list_tab4, index, 3);
+                    change_jiedian_status_LieBiao(listview_largeicon_tab5, index, 3);
 
                     update_tooltip_to_DiaoXian(index);
                 }
@@ -414,7 +414,40 @@ namespace WpfApp1
         public void Update_BaoJingStatus(int index)
         {
             int temp_index = Convert.ToInt16(index);
-            if (GaoDiXian_BaiJing_PanDuan(temp_index) == 1 || GaoDiXian_BaiJing_PanDuan(temp_index) == 2)
+            //if (GaoDiXian_BaiJing_PanDuan(temp_index) == 1 || GaoDiXian_BaiJing_PanDuan(temp_index) == 2)
+            //{
+            //    change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 1);
+            //    change_jiedian_status_LieBiao(listview_largeicon, temp_index, 1);
+
+            //    change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 1);
+            //    change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 1);
+            //}
+            //else if (GaoDiXian_BaiJing_PanDuan(temp_index) == 3)
+            //{
+            //    change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 2);
+            //    change_jiedian_status_LieBiao(listview_largeicon, temp_index, 2);
+
+            //    change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 2);
+            //    change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 2);
+            //}
+            //else
+            //{
+            //    change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 0);
+            //    change_jiedian_status_LieBiao(listview_largeicon, temp_index, 0);
+
+            //    change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 0);
+            //    change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 0);
+            //}
+
+            if(GaoDiXian_BaiJing_PanDuan(temp_index) == 0)//正常
+            {
+                change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 0);
+                change_jiedian_status_LieBiao(listview_largeicon, temp_index, 0);
+
+                change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 0);
+                change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 0);
+            }
+            else if(GaoDiXian_BaiJing_PanDuan(temp_index) == 1)//报警 高报 低报 有水 盗窃
             {
                 change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 1);
                 change_jiedian_status_LieBiao(listview_largeicon, temp_index, 1);
@@ -422,21 +455,13 @@ namespace WpfApp1
                 change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 1);
                 change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 1);
             }
-            else if (GaoDiXian_BaiJing_PanDuan(temp_index) == 3)
+            else if(GaoDiXian_BaiJing_PanDuan(temp_index) == 2)//故障 传感器故障 电池电压低
             {
                 change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 2);
                 change_jiedian_status_LieBiao(listview_largeicon, temp_index, 2);
 
                 change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 2);
                 change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 2);
-            }
-            else
-            {
-                change_jiedian_status_DiTu(ellipse_list_tab2, temp_index, 0);
-                change_jiedian_status_LieBiao(listview_largeicon, temp_index, 0);
-
-                change_jiedian_status_DiTu(ellipse_list_tab4, temp_index, 0);
-                change_jiedian_status_LieBiao(listview_largeicon_tab5, temp_index, 0);
             }
         }
 
@@ -500,21 +525,21 @@ namespace WpfApp1
             double GaoXian = Convert.ToDouble(temp_DataRow[0][1]);
             double DiXian = Convert.ToDouble(temp_DataRow[0][2]);
             string Status = temp_DataRow[0][3].ToString();
-            if (Status == "低报")//如果大于高限程序返回1
+            if(Status == "")//正常状态
+            {
+                return 0;
+            }
+            else if(Status.Contains("报") || Status.Contains("水") || Status.Contains("盗"))//高报 低报 有水 盗窃
             {
                 return 1;
             }
-            else if(Status == "高报")//小于低限程序返回2
+            else if(Status.Contains("故") || Status.Contains("压"))//传感器故障 电池电压低
             {
                 return 2;
             }
-            else if(Status != "")
+            else
             {
                 return 3;
-            }
-            else//如果浓度在正常范围之内程序返回0
-            {
-                return 0;
             }
         }
 
@@ -579,6 +604,18 @@ namespace WpfApp1
                             tabcontrol.SelectedIndex = 1;
                             break;
                     }
+                };
+                this.Dispatcher.Invoke(action, true);
+            }
+
+            string time_now = DateTime.Now.ToString("mm:ss");
+
+            if (time_now == "00:00" || time_now == "00:01" || time_now == "00:02")//保证每小时检测一次掉线，注意定时器是三秒触发一次
+            {
+                
+                Action<bool> action = (x) =>//每次都对当前所有节点进行一次监测
+                {
+                    update_jiedians_DiaoXian();
                 };
                 this.Dispatcher.Invoke(action, true);
             }
@@ -695,39 +732,39 @@ namespace WpfApp1
                                            "更新时间：" + temp_DataRow[0][9].ToString();
         }
 
-        public void change_jiedian_status(ref List<Ellipse> ellipse_array, System.Windows.Forms.ListView listView_tt,  int index, int BaoJing)
-        {
-            if(BaoJing == 0)
-            {
-                ellipse_array[index].Fill = ZhengChang_Color;
+        //public void change_jiedian_status(ref List<Ellipse> ellipse_array, System.Windows.Forms.ListView listView_tt,  int index, int BaoJing)
+        //{
+        //    if(BaoJing == 0)
+        //    {
+        //        ellipse_array[index].Fill = ZhengChang_Color;
                 
 
-                listView_tt.BeginUpdate();
-                listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian.png");//这个列表的表头貌似是从1开始索引
-                listView_tt.EndUpdate();
-            }
-            else if(BaoJing == 1)//暂定为浓度超出界限
-            {
-                ellipse_array[index].Fill = NongDu_BaoJing_Color;
+        //        listView_tt.BeginUpdate();
+        //        listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian.png");//这个列表的表头貌似是从1开始索引
+        //        listView_tt.EndUpdate();
+        //    }
+        //    else if(BaoJing == 1)//暂定为浓度超出界限
+        //    {
+        //        ellipse_array[index].Fill = NongDu_BaoJing_Color;
 
                 
 
-                listView_tt.BeginUpdate();
-                listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian_warning.png");//这个列表的表头貌似是从1开始索引
-                listView_tt.EndUpdate();
-            }
-            else if(BaoJing == 2)//暂定为掉线，丢失
-            {
-                ellipse_array[index].Fill = QiTa_BaoJing_Color;
+        //        listView_tt.BeginUpdate();
+        //        listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian_warning.png");//这个列表的表头貌似是从1开始索引
+        //        listView_tt.EndUpdate();
+        //    }
+        //    else if(BaoJing == 2)//暂定为掉线，丢失
+        //    {
+        //        ellipse_array[index].Fill = QiTa_BaoJing_Color;
 
 
 
-                listView_tt.BeginUpdate();
-                listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian_warning_diaoxian.png");//这个列表的表头貌似是从1开始索引
-                listView_tt.EndUpdate();
-            }
+        //        listView_tt.BeginUpdate();
+        //        listView_tt.LargeImageList.Images[index + 1] = Bitmap.FromFile("jiedian_warning_diaoxian.png");//这个列表的表头貌似是从1开始索引
+        //        listView_tt.EndUpdate();
+        //    }
             
-        }
+        //}
 
         private void LieBiao_Tab2_Buttton_Click(object sender, RoutedEventArgs e)
         {
