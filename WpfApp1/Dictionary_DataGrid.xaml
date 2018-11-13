@@ -6,12 +6,12 @@
     <SolidColorBrush x:Key="TextForeground" Color="White"></SolidColorBrush>
     <sys:Double x:Key="HeaderFontSize">14</sys:Double>
     <SolidColorBrush x:Key="HeaderBackground" Color="#FF8ECADE"></SolidColorBrush>
-    <SolidColorBrush x:Key="ItemsAlternationContentBackground" Color="#128EE0"></SolidColorBrush>
+    <SolidColorBrush x:Key="ItemsAlternationContentBackground" Color="Red"></SolidColorBrush>
     <SolidColorBrush x:Key="ItemSelectedBackground" Color="#A145F8"></SolidColorBrush>
     <SolidColorBrush x:Key="ItemSelectedForeground" Color="White"></SolidColorBrush>
     <SolidColorBrush x:Key="ItemMouseOverBackground" Color="#BA7DF4"></SolidColorBrush>
     <SolidColorBrush x:Key="ItemMouseOverForeground" Color="White"></SolidColorBrush>
-    <SolidColorBrush x:Key="ItemsContentBackground" Color="Red"></SolidColorBrush>
+    <SolidColorBrush x:Key="ItemsContentBackground" Color="#128EE0"></SolidColorBrush>
     <SolidColorBrush x:Key="ControlBorderBrush" Color="#999C9F"></SolidColorBrush>
     <SolidColorBrush x:Key="GridLinesBrush" Color="#A6D0C2A7"></SolidColorBrush>
     <sys:Double x:Key="DisableOpacity">0.5</sys:Double>
