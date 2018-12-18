@@ -184,7 +184,6 @@ E:\biancheng\mysql\1022\WpfApp1\WpfApp1\bin\Release\MySql.Data.dll
 E:\biancheng\mysql\1022\WpfApp1\WpfApp1\bin\Release\Newtonsoft.Json.dll
 E:\biancheng\mysql\1022\WpfApp1\WpfApp1\bin\Release\log4net.xml
 E:\biancheng\mysql\1022\WpfApp1\WpfApp1\bin\Release\Newtonsoft.Json.xml
-E:\biancheng\mysql\1022\WpfApp1\WpfApp1\obj\Release\WpfApp1.csprojResolveAssemblyReference.cache
 E:\biancheng\mysql\1022\WpfApp1\WpfApp1\obj\Release\WpfApp1.csproj.ResolveComReference.cache
 E:\biancheng\mysql\1022\WpfApp1\WpfApp1\obj\Release\MainWindow.g.cs
 E:\biancheng\mysql\1022\WpfApp1\WpfApp1\obj\Release\PasswordWindow.g.cs
