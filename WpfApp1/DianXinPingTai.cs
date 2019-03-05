@@ -36,6 +36,8 @@ using System.Text;
 using System.Reflection;
 using log4net;
 
+using System.IO;
+
 
 namespace DianXinPingTai
 {
@@ -55,8 +57,8 @@ namespace DianXinPingTai
         public const string url_login = "https://180.101.147.89:8743/iocm/app/sec/v1.1.0/login";
         //public const string param_login = "{appId=xxlFd26ICnB18C6t2ePHHZXQQkUa, secret=0ggg4uI53fQC3aMrSQpmsqfTIb4a}";
 
-        public const string appId = "xxlFd26ICnB18C6t2ePHHZXQQkUa";
-        public const string secret = "kbg4dV8XOrt1wGUsBpD_TWJrZVga";
+        public string appId = "xxlFd26ICnB18C6t2ePHHZXQQkUa";//默认appid
+        public string secret = "kbg4dV8XOrt1wGUsBpD_TWJrZVga";//默认密钥
 
         public const string HEADER_APP_KEY = "app_key";
         public const string HEADER_APP_AUTH = "Authorization";
@@ -74,7 +76,12 @@ namespace DianXinPingTai
         {
             DateTime_NewestData = dateTime_tt;
             temp_DateTime_NewestData = dateTime_tt;
-            
+
+            //按行读取appIDsecret配置文件
+            StreamReader sr = new StreamReader("C:\\NBIoT\\appIDsecret.txt", Encoding.Default);
+            appId = sr.ReadLine();//读取appId
+            secret = sr.ReadLine();//读取密钥
+
 
             Init_Thread();
             //Start_Thread();
