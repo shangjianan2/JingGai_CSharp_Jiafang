@@ -201,3 +201,4 @@ E:\biancheng\mysql\1022\WpfApp1\WpfApp1\obj\Release\WpfApp1.csproj.GenerateResou
 E:\biancheng\mysql\1022\WpfApp1\WpfApp1\obj\Release\WpfApp1.csproj.CoreCompileInputs.cache
 E:\biancheng\mysql\1022\WpfApp1\WpfApp1\obj\Release\WpfApp1.exe
 E:\biancheng\mysql\1022\WpfApp1\WpfApp1\obj\Release\WpfApp1.pdb
+E:\biancheng\mysql\1022\WpfApp1\WpfApp1\obj\Release\WpfApp1.csprojResolveAssemblyReference.cache
