@@ -127,7 +127,7 @@ namespace WpfApp1
         #region//有关数据库加载，监测数据库加载是否正常
         public void Init_MySQL(ref mysql_PZWJ_JieXi ShuJuKu_tt)
         {
-            string[] array_str = mysql_PZWJ_JieXi.read_mysql_PeiZhiWenJian("C:\\NBIoT\\mysql.txt");
+            string[] array_str = mysql_PZWJ_JieXi.read_mysql_PeiZhiWenJian("./config/mysql.txt");
             if (array_str == null)
                 throw new Exception("mysql.txt 配置文件的数据为空");
             ShuJuKu_tt = new mysql_PZWJ_JieXi(array_str[0], array_str[1], array_str[2], array_str[3]);
