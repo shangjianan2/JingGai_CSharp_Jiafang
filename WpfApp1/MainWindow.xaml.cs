@@ -76,10 +76,9 @@ namespace WpfApp1
 
             //建立与电信平台的连接，初始化某些信息（这些信息对于判断获取到的数据应该进行怎样的操作有很大的作用）
             Init_DianXinPingTai();
-
-
-
-
+            
+            img.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "timg.jpg", UriKind.RelativeOrAbsolute));
+            img_tab4.Source = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "timg.jpg", UriKind.RelativeOrAbsolute));
 
             if (tab0_tab1_or_not == 0)//如果显示tab0和tab1
             {

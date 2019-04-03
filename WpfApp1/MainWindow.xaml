@@ -396,7 +396,7 @@
                                     <TranslateTransform x:Name="tlt" />
                                 </TransformGroup>
                             </Canvas.RenderTransform>
-                            <Image x:Name="img" Source="C:\NBIoT\timg.jpg" 
+                            <Image x:Name="img" 
 							    Stretch="Uniform"  
 							    RenderOptions.BitmapScalingMode="NearestNeighbor" Canvas.Top="0" Canvas.Left="0">
 
@@ -631,7 +631,7 @@
                                 </TransformGroup>
                             </Canvas.RenderTransform>
 
-                            <Image x:Name="img_tab4" Source="C:\NBIoT\timg.jpg"    
+                            <Image x:Name="img_tab4"   
 							
 							Stretch="Uniform"  
 							RenderOptions.BitmapScalingMode="NearestNeighbor" Canvas.Top="0" Canvas.Left="0">
