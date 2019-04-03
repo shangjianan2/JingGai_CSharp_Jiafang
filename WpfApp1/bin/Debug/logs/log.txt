@@ -1104,3 +1104,4 @@ Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: 无法将 null 转换为“int”
 2019-04-03 08:52:13,728 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 61
 2019-04-03 08:52:13,741 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 47
 2019-04-03 09:22:43,858 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 61
+2019-04-03 14:10:53,131 [11] INFO  DianXinPingTai.DianXinPingTai_Communication: receive new date : 23
