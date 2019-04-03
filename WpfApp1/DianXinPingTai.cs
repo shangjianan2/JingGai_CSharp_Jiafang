@@ -78,7 +78,7 @@ namespace DianXinPingTai
             temp_DateTime_NewestData = dateTime_tt;
 
             //按行读取appIDsecret配置文件
-            StreamReader sr = new StreamReader("C:\\NBIoT\\appIDsecret.txt", Encoding.Default);
+            StreamReader sr = new StreamReader(".\\appIDsecret.txt", Encoding.Default);
             appId = sr.ReadLine();//读取appId
             secret = sr.ReadLine();//读取密钥
 
