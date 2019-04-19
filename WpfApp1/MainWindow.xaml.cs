@@ -69,8 +69,12 @@ namespace WpfApp1
         SolidColorBrush ZhengChang_Color = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 0, 255));
         SolidColorBrush QiTa_BaoJing_Color = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 255, 0));
 
+        //蜂鸣器报警函数
         [DllImport("user32.dll")]
         public static extern int MessageBeep(uint uType);
+
+        //掉线检测时间计时器
+        int DiaoXian_timer = 0;//在中断服务函数中用于记录“检测掉线状态”的定时器
 
         public MainWindow()
         {
@@ -612,11 +616,13 @@ namespace WpfApp1
                 this.Dispatcher.Invoke(action, true);
             }
 
-            string time_now = DateTime.Now.ToString("mm:ss");
-
-            if (time_now == "00:00" || time_now == "00:01" || time_now == "00:02")//保证每小时检测一次掉线，注意定时器是三秒触发一次
+            if(DiaoXian_timer <= 1200)//此定时器是三秒触发一次，所以此处的实际时间是一个小时左右
             {
-                
+                ++DiaoXian_timer;
+            }
+            else
+            {
+                DiaoXian_timer = 0;
                 Action<bool> action = (x) =>//每次都对当前所有节点进行一次监测
                 {
                     update_jiedians_DiaoXian();
