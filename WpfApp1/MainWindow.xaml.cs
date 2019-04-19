@@ -31,6 +31,8 @@ using Map_PeiZhiWenJian_JieXi;
 
 using DianXinPingTai;
 
+using System.Runtime.InteropServices;
+
 namespace WpfApp1
 {
     /// <summary>
@@ -66,6 +68,9 @@ namespace WpfApp1
         SolidColorBrush NongDu_BaoJing_Color = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 0, 0));
         SolidColorBrush ZhengChang_Color = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 0, 255));
         SolidColorBrush QiTa_BaoJing_Color = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0, 255, 0));
+
+        [DllImport("user32.dll")]
+        public static extern int MessageBeep(uint uType);
 
         public MainWindow()
         {
@@ -618,6 +623,26 @@ namespace WpfApp1
                 };
                 this.Dispatcher.Invoke(action, true);
             }
+
+            //节点报警声音            
+            Action<bool> action_warning = (x) =>//每次都对当前所有节点进行一次监测
+            {
+                bool flag_warning = false;
+                for (int i = 0; i < ellipse_list_tab2.Count; ++i)
+                {
+                    if (ellipse_list_tab2[i].Fill == System.Windows.Media.Brushes.Red || ellipse_list_tab2[i].Fill == System.Windows.Media.Brushes.Yellow)
+                    {
+                        flag_warning = true;
+                        break;
+                    }
+                }
+                if (flag_warning == true)
+                {
+                    MessageBeep((uint)0x00000010);
+                }
+            };
+            this.Dispatcher.Invoke(action_warning, true);
+            
         }
         public void SendToIoTCall(object state)
         {
